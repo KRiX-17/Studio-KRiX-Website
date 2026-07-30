@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MenuIcon } from "@/components/icons";
+import { MobileNavigation } from "@/components/mobile-navigation";
 import { siteConfig } from "@/config/site";
 
 export function SiteHeader() {
@@ -18,20 +18,7 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <details className="mobile-nav">
-          <summary aria-label="Open navigation">
-            <span>Menu</span>
-            <MenuIcon />
-          </summary>
-          <nav aria-label="Mobile navigation">
-            {siteConfig.navigation.map((item, index) => (
-              <Link href={item.href} key={item.href}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-        </details>
+        <MobileNavigation items={siteConfig.navigation} />
       </div>
     </header>
   );
