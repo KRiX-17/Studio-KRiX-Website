@@ -5,9 +5,7 @@ export default function NotFound() {
     <section className="not-found">
       <div className="site-container not-found__inner">
         <p>404</p>
-        <h1>
-          This path went <em>somewhere else.</em>
-        </h1>
+        <h1>This path went somewhere else.</h1>
         <p>
           The page may have moved, or it may not have existed in the first
           place.

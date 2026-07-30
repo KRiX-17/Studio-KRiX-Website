@@ -35,11 +35,7 @@ export default function AboutPage() {
     <>
       <PageIntro
         description="Studio KRiX is an independent engineering and creative studio founded by Christopher Helene in Sydney, Australia."
-        title={
-          <>
-            Practical experience, <em>expressed through making.</em>
-          </>
-        }
+        title="Practical experience, expressed through making."
       />
 
       <section className="about-statement">

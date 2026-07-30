@@ -23,9 +23,8 @@ export function MobileNavigation({ items }: MobileNavigationProps) {
         <MenuIcon />
       </summary>
       <nav aria-label="Mobile navigation">
-        {items.map((item, index) => (
+        {items.map((item) => (
           <Link href={item.href} key={item.href} onNavigate={closeNavigation}>
-            <span>{String(index + 1).padStart(2, "0")}</span>
             {item.label}
           </Link>
         ))}

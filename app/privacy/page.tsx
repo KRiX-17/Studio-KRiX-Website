@@ -146,7 +146,10 @@ const sections = [
     content: (
       <p>
         Privacy questions can be sent to{" "}
-        <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
+        <a href={`mailto:${siteConfig.supportEmail}`}>
+          {siteConfig.supportEmail}
+        </a>
+        .
       </p>
     ),
   },
@@ -158,18 +161,16 @@ export default function PrivacyPage() {
       <PageIntro
         description="How information is handled across the Studio KRiX website and software."
         index="Last updated 30 July 2026"
-        title={
-          <>
-            Privacy, written to be <em>understood.</em>
-          </>
-        }
+        title="Privacy, written to be understood."
       />
       <section className="policy">
         <div className="site-container policy__grid">
           <aside aria-label="Privacy policy summary">
             <p>Studio KRiX</p>
             <p>Sydney, Australia</p>
-            <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+            <a href={`mailto:${siteConfig.supportEmail}`}>
+              {siteConfig.supportEmail}
+            </a>
           </aside>
           <div className="policy__content">
             {sections.map((section, index) => (

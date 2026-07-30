@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { MobileNavigation } from "@/components/mobile-navigation";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { siteConfig } from "@/config/site";
 
 export function SiteHeader() {
@@ -10,15 +11,17 @@ export function SiteHeader() {
           Studio KRiX
         </Link>
 
-        <nav className="desktop-nav" aria-label="Primary navigation">
-          {siteConfig.navigation.map((item) => (
-            <Link href={item.href} key={item.href}>
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-
-        <MobileNavigation items={siteConfig.navigation} />
+        <div className="site-header__actions">
+          <nav className="desktop-nav" aria-label="Primary navigation">
+            {siteConfig.navigation.map((item) => (
+              <Link href={item.href} key={item.href}>
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+          <ThemeToggle />
+          <MobileNavigation items={siteConfig.navigation} />
+        </div>
       </div>
     </header>
   );

@@ -17,11 +17,7 @@ export default function ProjectsPage() {
     <>
       <PageIntro
         description="A growing collection of focused tools and thoughtful experiments across software, engineering and creative work."
-        title={
-          <>
-            Projects built with a <em>practical point of view.</em>
-          </>
-        }
+        title="Projects built with a practical point of view."
       />
       <section className="projects-list">
         <div className="site-container">

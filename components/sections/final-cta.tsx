@@ -5,15 +5,13 @@ import { siteConfig } from "@/config/site";
 type FinalCtaProps = {
   title?: React.ReactNode;
   description?: string;
+  email?: string;
 };
 
 export function FinalCta({
-  title = (
-    <>
-      Have something <em>thoughtful</em> in mind?
-    </>
-  ),
+  title = "Have something thoughtful in mind?",
   description,
+  email = siteConfig.email,
 }: FinalCtaProps) {
   return (
     <section className="final-cta">
@@ -21,15 +19,15 @@ export function FinalCta({
         <h2>{title}</h2>
         {description ? <p>{description}</p> : null}
         <div className="final-cta__actions">
-          <ButtonLink href={`mailto:${siteConfig.email}`} external>
+          <ButtonLink href={`mailto:${email}`} external>
             Start a conversation
           </ButtonLink>
           <ButtonLink
-            href={`mailto:${siteConfig.email}`}
+            href={`mailto:${email}`}
             variant="text"
             external
           >
-            {siteConfig.email}
+            {email}
           </ButtonLink>
         </div>
       </Reveal>

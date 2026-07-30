@@ -44,11 +44,7 @@ export default function SupportPage() {
     <>
       <PageIntro
         description="Straightforward help for OhmXact and future Studio KRiX software."
-        title={
-          <>
-            Support, without the <em>runaround.</em>
-          </>
-        }
+        title="Support, without the runaround."
       />
 
       <section className="support-section">
@@ -100,10 +96,10 @@ export default function SupportPage() {
           </div>
           <div>
             <p>
-              Send the details to {siteConfig.email}. Replies are handled
-              personally and may take a little time.
+              Send the details to {siteConfig.supportEmail}. Replies are
+              handled personally and may take a little time.
             </p>
-            <ButtonLink href={`mailto:${siteConfig.email}`} external>
+            <ButtonLink href={`mailto:${siteConfig.supportEmail}`} external>
               Email support
             </ButtonLink>
           </div>

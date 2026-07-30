@@ -15,9 +15,6 @@ export function DisciplinesSection() {
               delay={index * 0.04}
               key={discipline.name}
             >
-              <span className="discipline-row__number">
-                {discipline.number}
-              </span>
               <h3>{discipline.name}</h3>
               <p>{discipline.description}</p>
             </Reveal>

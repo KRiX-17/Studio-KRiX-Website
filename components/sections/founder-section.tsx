@@ -10,9 +10,7 @@ export function FounderSection() {
         </Reveal>
         <Reveal className="founder-section__copy" delay={0.08}>
           <p className="section-label">About the founder</p>
-          <h2>
-            Built across <em>disciplines.</em>
-          </h2>
+          <h2>Built across disciplines.</h2>
           <p>
             Christopher Helene is a Sydney-based automotive technician,
             engineer and creator working across disability vehicle technology,

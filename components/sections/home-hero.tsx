@@ -7,10 +7,10 @@ export function HomeHero() {
       <div className="site-container home-hero__grid">
         <div className="home-hero__copy">
           <div>
-            <p className="home-hero__brand">Studio KRiX</p>
             <h1>
-              Software, sound and engineering built{" "}
-              <em>differently.</em>
+              <span>Software, sound</span>
+              <span>and engineering</span>
+              <span>built differently.</span>
             </h1>
             <p className="home-hero__lede">
               Independent software, automotive technology and creative
@@ -36,10 +36,6 @@ export function HomeHero() {
           />
           <div className="home-hero__media-edge" />
         </div>
-      </div>
-      <div className="site-container home-hero__next">
-        <span>Featured project</span>
-        <span aria-hidden="true">01</span>
       </div>
     </section>
   );

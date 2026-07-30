@@ -75,9 +75,7 @@ export default function OhmXactPage() {
       <section className="capabilities">
         <div className="site-container capabilities__grid">
           <Reveal>
-            <h2>
-              The answer, <em>without</em> the detour.
-            </h2>
+            <h2>The answer, without the detour.</h2>
           </Reveal>
           <div className="capability-list">
             {capabilities.map((capability, index) => (
@@ -118,11 +116,8 @@ export default function OhmXactPage() {
 
       <FinalCta
         description="Questions about OhmXact are welcome."
-        title={
-          <>
-            Need a hand with <em>OhmXact?</em>
-          </>
-        }
+        email={siteConfig.supportEmail}
+        title="Need a hand with OhmXact?"
       />
       <script
         dangerouslySetInnerHTML={{

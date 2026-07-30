@@ -1,28 +1,22 @@
 export type Discipline = {
-  number: string;
   name: string;
   description: string;
 };
 
 export const disciplines: readonly Discipline[] = [
   {
-    number: "01",
-    name: "Engineering",
-    description: "Automotive systems, electronics and workshop technology.",
-  },
-  {
-    number: "02",
     name: "Software",
-    description: "Focused tools for Apple platforms and the web.",
+    description:
+      "Useful, reliable applications built with performance and simplicity in mind.",
   },
   {
-    number: "03",
-    name: "Music",
-    description: "Sound shaped with the same care as code and hardware.",
+    name: "Automotive Technology",
+    description:
+      "Solutions for diagnostics, integration and custom automotive systems.",
   },
   {
-    number: "04",
-    name: "Photography",
-    description: "Observing detail, material and motion.",
+    name: "Sound & Creative",
+    description:
+      "Audio, music and creative projects that turn ideas into finished work.",
   },
 ];

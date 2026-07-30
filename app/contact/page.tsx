@@ -18,12 +18,8 @@ export default function ContactPage() {
     <>
       <PageIntro
         align="wide"
-        description="For product support, collaborations or a thoughtful introduction, email is the best place to begin."
-        title={
-          <>
-            Start with a <em>good conversation.</em>
-          </>
-        }
+        description="For collaborations, business enquiries or a thoughtful introduction, email is the best place to begin."
+        title="Start with a good conversation."
       />
       <section className="contact-main">
         <div className="site-container contact-main__grid">

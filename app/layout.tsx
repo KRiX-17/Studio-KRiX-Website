@@ -1,21 +1,15 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Instrument_Serif } from "next/font/google";
+import { Geist } from "next/font/google";
 import type { ReactNode } from "react";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { ThemeProvider } from "@/components/theme-provider";
 import { siteConfig } from "@/config/site";
 import "@/styles/globals.css";
 
 const geist = Geist({
   subsets: ["latin"],
   variable: "--font-sans",
-  display: "swap",
-});
-
-const instrumentSerif = Instrument_Serif({
-  subsets: ["latin"],
-  variable: "--font-serif",
-  weight: "400",
   display: "swap",
 });
 
@@ -64,8 +58,11 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  colorScheme: "dark",
-  themeColor: "#09090B",
+  colorScheme: "light dark",
+  themeColor: [
+    { color: "#F6F6F4", media: "(prefers-color-scheme: light)" },
+    { color: "#09090B", media: "(prefers-color-scheme: dark)" },
+  ],
   width: "device-width",
   initialScale: 1,
 };
@@ -113,17 +110,20 @@ const structuredData = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
-      className={`${geist.variable} ${instrumentSerif.variable}`}
+      className={geist.variable}
       data-scroll-behavior="smooth"
       lang="en"
+      suppressHydrationWarning
     >
       <body>
-        <a className="skip-link" href="#main-content">
-          Skip to content
-        </a>
-        <SiteHeader />
-        <main id="main-content">{children}</main>
-        <SiteFooter />
+        <ThemeProvider>
+          <a className="skip-link" href="#main-content">
+            Skip to content
+          </a>
+          <SiteHeader />
+          <main id="main-content">{children}</main>
+          <SiteFooter />
+        </ThemeProvider>
         <script
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
           type="application/ld+json"

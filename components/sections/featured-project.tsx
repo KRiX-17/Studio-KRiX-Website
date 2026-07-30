@@ -7,15 +7,11 @@ export function FeaturedProject() {
   return (
     <section className="featured-project">
       <div className="site-container">
-        <div className="section-rule">
-          <span>01</span>
-          <span>Featured project</span>
-        </div>
         <div className="featured-project__grid">
           <Reveal className="featured-project__copy">
             <p className="section-label">Featured project</p>
             <h2>{featuredProject.name}</h2>
-            <p className="editorial-display">{featuredProject.tagline}</p>
+            <p className="featured-project__tagline">{featuredProject.tagline}</p>
             <p className="body-muted">{featuredProject.description}</p>
             <ButtonLink href={featuredProject.href} variant="text">
               View {featuredProject.name}
