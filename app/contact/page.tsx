@@ -1,4 +1,5 @@
-import { ArrowUpRightIcon } from "@/components/icons";
+import Link from "next/link";
+import { ArrowRightIcon, ArrowUpRightIcon } from "@/components/icons";
 import { PageIntro } from "@/components/page-intro";
 import { Reveal } from "@/components/reveal";
 import { siteConfig } from "@/config/site";
@@ -10,8 +11,6 @@ export const metadata = createMetadata({
     "Contact Studio KRiX about software, engineering and creative work.",
   path: "/contact",
 });
-
-const socialPlaceholders = ["GitHub", "LinkedIn", "Instagram", "YouTube"];
 
 export default function ContactPage() {
   return (
@@ -50,17 +49,15 @@ export default function ContactPage() {
         <div className="site-container">
           <div className="section-rule">
             <span>Elsewhere</span>
-            <span>Links will be added when ready</span>
+            <span>Official links</span>
           </div>
-          <div className="social-placeholder-list">
-            {socialPlaceholders.map((platform, index) => (
-              <div className="social-placeholder" key={platform}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <p>{platform}</p>
-                <span>Coming later</span>
-              </div>
-            ))}
-          </div>
+          <Link className="contact-links-directory" href="/links">
+            <span>
+              <strong>KRiX links</strong>
+              <span>Music, social platforms and projects</span>
+            </span>
+            <ArrowRightIcon />
+          </Link>
         </div>
       </section>
     </>

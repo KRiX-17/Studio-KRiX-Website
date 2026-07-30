@@ -1,3 +1,10 @@
+const navigation = [
+  { label: "Projects", href: "/projects" },
+  { label: "About", href: "/about" },
+  { label: "Support", href: "/support" },
+  { label: "Contact", href: "/contact" },
+] as const;
+
 export const siteConfig = {
   name: "Studio KRiX",
   founder: "Christopher Helene",
@@ -8,13 +15,10 @@ export const siteConfig = {
   supportEmail: "support@studiokrix.com.au",
   location: "Sydney, Australia",
   secondaryDomain: "https://studiokrix.com.au",
-  navigation: [
-    { label: "Projects", href: "/projects" },
-    { label: "About", href: "/about" },
-    { label: "Support", href: "/support" },
-    { label: "Contact", href: "/contact" },
-  ],
+  navigation,
+  mobileNavigation: [{ label: "Links", href: "/links" }, ...navigation],
   footerNavigation: [
+    { label: "Links", href: "/links" },
     { label: "Projects", href: "/projects" },
     { label: "About", href: "/about" },
     { label: "Support", href: "/support" },
@@ -23,4 +27,4 @@ export const siteConfig = {
   ],
 } as const;
 
-export type NavigationItem = (typeof siteConfig.navigation)[number];
+export type NavigationItem = (typeof siteConfig.mobileNavigation)[number];

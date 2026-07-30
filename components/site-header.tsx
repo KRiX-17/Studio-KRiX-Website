@@ -20,7 +20,7 @@ export function SiteHeader() {
             ))}
           </nav>
           <ThemeToggle />
-          <MobileNavigation items={siteConfig.navigation} />
+          <MobileNavigation items={siteConfig.mobileNavigation} />
         </div>
       </div>
     </header>

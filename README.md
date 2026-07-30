@@ -54,6 +54,7 @@ new project available to the reusable project listing.
 ## Routes
 
 - `/`
+- `/links`
 - `/projects`
 - `/ohmxact`
 - `/about`
