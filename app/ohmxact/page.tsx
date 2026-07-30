@@ -49,7 +49,7 @@ export default function OhmXactPage() {
     <>
       <section className="product-hero">
         <div className="site-container product-hero__grid">
-          <Reveal className="product-hero__copy">
+          <div className="product-hero__copy">
             <h1>OhmXact</h1>
             <p className="product-hero__tagline">
               Built for the workshop, the bench, and your pocket.
@@ -65,7 +65,7 @@ export default function OhmXactPage() {
                 Get support
               </ButtonLink>
             </div>
-          </Reveal>
+          </div>
           <Reveal className="product-hero__devices" delay={0.08}>
             <DeviceMockups />
           </Reveal>

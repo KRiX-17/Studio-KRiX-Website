@@ -1,13 +1,12 @@
 import Image from "next/image";
 import { ButtonLink } from "@/components/button-link";
-import { Reveal } from "@/components/reveal";
 
 export function HomeHero() {
   return (
     <section className="home-hero">
       <div className="site-container home-hero__grid">
         <div className="home-hero__copy">
-          <Reveal>
+          <div>
             <p className="home-hero__brand">Studio KRiX</p>
             <h1>
               Software, sound and engineering built{" "}
@@ -23,7 +22,7 @@ export function HomeHero() {
                 Get in Touch
               </ButtonLink>
             </div>
-          </Reveal>
+          </div>
         </div>
 
         <div className="home-hero__media" aria-hidden="true">

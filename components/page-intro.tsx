@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import { Reveal } from "@/components/reveal";
 
 type PageIntroProps = {
   title: ReactNode;
@@ -18,10 +17,10 @@ export function PageIntro({
     <section className={`page-intro page-intro--${align}`}>
       <div className="site-container page-intro__grid">
         <p className="page-intro__index">{index}</p>
-        <Reveal className="page-intro__content">
+        <div className="page-intro__content">
           <h1>{title}</h1>
           <p>{description}</p>
-        </Reveal>
+        </div>
       </div>
     </section>
   );
