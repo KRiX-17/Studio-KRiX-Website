@@ -1,0 +1,17 @@
+{
+  "name": "Studio KRiX",
+  "short_name": "Studio KRiX",
+  "description": "Independent software, automotive technology and creative projects by Christopher Helene.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#09090B",
+  "theme_color": "#09090B",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
