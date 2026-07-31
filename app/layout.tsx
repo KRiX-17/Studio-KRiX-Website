@@ -90,12 +90,25 @@ const structuredData = {
       "@type": "Person",
       "@id": `${siteConfig.url}/#christopher-helene`,
       name: siteConfig.founder,
-      url: `${siteConfig.url}/about`,
+      url: `${siteConfig.url}/professional`,
       jobTitle: "Automotive technician, developer and music producer",
+      knowsAbout: [
+        "Automotive diagnostics",
+        "Automotive electrical systems",
+        "Disability vehicle modifications",
+        "Software development",
+        "Electronic music production",
+      ],
       worksFor: {
         "@id": `${siteConfig.url}/#organization`,
       },
       sameAs: [siteConfig.linkedIn, siteConfig.github],
+      subjectOf: [
+        `${siteConfig.url}/about`,
+        `${siteConfig.url}/professional`,
+        `${siteConfig.url}/projects`,
+        `${siteConfig.url}/music`,
+      ],
     },
     {
       "@type": "WebSite",

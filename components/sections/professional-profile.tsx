@@ -1,5 +1,4 @@
 import { ButtonLink } from "@/components/button-link";
-import { siteConfig } from "@/config/site";
 
 export function ProfessionalProfile() {
   return (
@@ -15,11 +14,8 @@ export function ProfessionalProfile() {
             automation and user-focused technology.
           </p>
           <div className="professional-profile__links">
-            <ButtonLink href={siteConfig.linkedIn} variant="secondary" external>
-              LinkedIn
-            </ButtonLink>
-            <ButtonLink href={siteConfig.github} variant="secondary" external>
-              GitHub
+            <ButtonLink href="/professional" variant="secondary">
+              View Professional Profile
             </ButtonLink>
           </div>
         </div>

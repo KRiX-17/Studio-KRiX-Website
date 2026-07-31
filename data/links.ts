@@ -36,11 +36,38 @@ export const OHMXACT_DESTINATION = "/ohmxact";
 
 export const linksHubItems = [
   {
-    title: "Studio KRiX",
+    title: "Visit Studio KRiX",
     description: "Software, automotive technology and creative projects.",
-    href: "https://studiokrix.com.au",
+    href: "/",
     category: "featured",
     icon: "studio",
+    featured: true,
+    external: false,
+  },
+  {
+    title: "Listen to Music",
+    description: "Releases and official listening links from KRiX.",
+    href: "/music",
+    category: "featured",
+    icon: "apple-music",
+    featured: true,
+    external: false,
+  },
+  {
+    title: "View Projects",
+    description: "Selected software, technical and creative work.",
+    href: "/projects",
+    category: "featured",
+    icon: "studio",
+    featured: true,
+    external: false,
+  },
+  {
+    title: "Professional Profile",
+    description: "Automotive engineering and software capabilities.",
+    href: "/professional",
+    category: "featured",
+    icon: "linkedin",
     featured: true,
     external: false,
   },
@@ -154,7 +181,7 @@ export const linksHubItems = [
   {
     title: "General Contact",
     description: "krix@studiokrix.com.au",
-    href: "mailto:krix@studiokrix.com.au",
+    href: "/contact",
     category: "contact",
     icon: "email",
     featured: false,
@@ -163,7 +190,7 @@ export const linksHubItems = [
   {
     title: "OhmXact Support",
     description: "support@studiokrix.com.au",
-    href: "mailto:support@studiokrix.com.au",
+    href: "/support",
     category: "contact",
     icon: "email",
     featured: false,

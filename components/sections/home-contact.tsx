@@ -1,39 +1,17 @@
-import { ArrowRightIcon } from "@/components/icons";
-import { siteConfig } from "@/config/site";
-
-const contactItems = [
-  {
-    label: "General contact",
-    email: siteConfig.email,
-  },
-  {
-    label: "Application and product support",
-    email: siteConfig.supportEmail,
-  },
-] as const;
+import { ButtonLink } from "@/components/button-link";
 
 export function HomeContact() {
   return (
     <section className="home-contact" id="contact">
-      <div className="site-container">
-        <div className="home-contact__intro">
+      <div className="site-container home-contact__cta">
+        <div>
           <h2>Contact</h2>
           <p>
-            For professional enquiries, creative collaborations or a
-            thoughtful introduction.
+            For professional opportunities, creative collaboration or
+            OhmXact support.
           </p>
         </div>
-        <div className="home-contact__grid">
-          {contactItems.map((item) => (
-            <div className="contact-option" key={item.email}>
-              <p>{item.label}</p>
-              <a href={`mailto:${item.email}`}>
-                <span>{item.email}</span>
-                <ArrowRightIcon />
-              </a>
-            </div>
-          ))}
-        </div>
+        <ButtonLink href="/contact">Choose a contact option</ButtonLink>
       </div>
     </section>
   );

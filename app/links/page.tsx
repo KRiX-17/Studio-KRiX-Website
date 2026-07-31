@@ -11,7 +11,7 @@ import { createMetadata } from "@/lib/metadata";
 
 const title = "KRiX Links | Studio KRiX";
 const description =
-  "Official links for KRiX, Studio KRiX, OhmXact, music, social platforms and contact.";
+  "Official links for KRiX, Studio KRiX, OhmXact, music, professional profiles and contact.";
 
 const baseMetadata = createMetadata({
   title,

@@ -19,12 +19,12 @@ export function HomeHero() {
             Sydney, Australia.
           </p>
           <div className="home-hero__actions">
-            <ButtonLink href="#projects">Explore My Work</ButtonLink>
-            <ButtonLink href="#music" variant="secondary">
-              Listen to Music
+            <ButtonLink href="/music">Explore Music</ButtonLink>
+            <ButtonLink href="/projects" variant="secondary">
+              View Projects
             </ButtonLink>
-            <ButtonLink href="#contact" variant="secondary">
-              Get in Touch
+            <ButtonLink href="/professional" variant="secondary">
+              Professional Profile
             </ButtonLink>
           </div>
         </div>

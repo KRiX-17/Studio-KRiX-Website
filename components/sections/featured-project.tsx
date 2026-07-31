@@ -2,7 +2,13 @@ import { ButtonLink } from "@/components/button-link";
 import { DeviceMockups } from "@/components/device-mockups";
 import { Reveal } from "@/components/reveal";
 
-export function FeaturedProject() {
+type FeaturedProjectProps = {
+  showAllProjectsLink?: boolean;
+};
+
+export function FeaturedProject({
+  showAllProjectsLink = true,
+}: FeaturedProjectProps) {
   return (
     <section className="featured-project" id="projects">
       <div className="site-container">
@@ -19,6 +25,11 @@ export function FeaturedProject() {
             </p>
             <div className="featured-project__links">
               <ButtonLink href="/ohmxact">Explore OhmXact</ButtonLink>
+              {showAllProjectsLink ? (
+                <ButtonLink href="/projects" variant="secondary">
+                  View all projects
+                </ButtonLink>
+              ) : null}
               <ButtonLink href="/support" variant="secondary">
                 Support
               </ButtonLink>

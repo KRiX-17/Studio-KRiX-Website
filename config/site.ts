@@ -1,8 +1,14 @@
 const navigation = [
   { label: "Home", href: "/" },
-  { label: "Music", href: "/#music" },
+  { label: "Music", href: "/music" },
   { label: "Projects", href: "/projects" },
+  { label: "Professional", href: "/professional" },
   { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
+] as const;
+
+const mobileNavigation = [
+  ...navigation.slice(0, -1),
   { label: "Links", href: "/links" },
   { label: "Contact", href: "/contact" },
 ] as const;
@@ -19,10 +25,12 @@ export const siteConfig = {
   linkedIn: "https://www.linkedin.com/in/chris-helene-b0791ba5",
   github: "https://github.com/KRiX-17",
   navigation,
-  mobileNavigation: navigation,
+  mobileNavigation,
   footerNavigation: [
-    { label: "Music", href: "/#music" },
+    { label: "Home", href: "/" },
+    { label: "Music", href: "/music" },
     { label: "Projects", href: "/projects" },
+    { label: "Professional", href: "/professional" },
     { label: "About", href: "/about" },
     { label: "Links", href: "/links" },
     { label: "Contact", href: "/contact" },
