@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ButtonLink } from "@/components/button-link";
 import { ArrowRightIcon } from "@/components/icons";
 import { siteConfig } from "@/config/site";
+import { mondeSoniqAssets } from "@/data/monde-soniq";
 import { createMetadata } from "@/lib/metadata";
 
 const title = "Monde Soniq × Studio KRiX | Creative Event Infrastructure";
@@ -335,6 +337,36 @@ export default function MondeSoniqPage() {
           </div>
         </div>
       </section>
+
+      {mondeSoniqAssets.length > 0 ? (
+        <section
+          className="monde-page-section monde-media"
+          aria-labelledby="monde-media-title"
+        >
+          <div className="site-container">
+            <div className="directory-heading">
+              <div>
+                <p className="section-label">Approved media</p>
+                <h2 id="monde-media-title">From the platform</h2>
+              </div>
+            </div>
+            <div className="monde-media__grid">
+              {mondeSoniqAssets.map((asset) => (
+                <figure className="monde-media__asset" key={asset.id}>
+                  <Image
+                    alt={asset.alt}
+                    height={asset.height}
+                    sizes="(max-width: 680px) 100vw, 50vw"
+                    src={asset.src}
+                    width={asset.width}
+                  />
+                  <figcaption>{asset.caption}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       <section
         className="monde-page-section monde-links"
