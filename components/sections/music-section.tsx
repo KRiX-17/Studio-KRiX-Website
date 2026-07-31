@@ -125,6 +125,27 @@ export function MusicSection() {
         </div>
       </section>
 
+      <section
+        className="music-collaboration"
+        aria-labelledby="music-collaboration-title"
+      >
+        <div className="site-container music-collaboration__panel">
+          <p className="section-label">Creative collaboration</p>
+          <div>
+            <h2 id="music-collaboration-title">Beyond the studio</h2>
+            <p>
+              Studio KRiX also supports Monde Soniq, an independent Sydney
+              electronic-music platform led by NFRMT. The collaboration
+              connects music, events and the systems required to keep creative
+              projects moving.
+            </p>
+            <ButtonLink href="/projects/monde-soniq" variant="secondary">
+              Explore Monde Soniq
+            </ButtonLink>
+          </div>
+        </div>
+      </section>
+
       <section className="music-connect">
         <div className="site-container">
           <div className="directory-heading">

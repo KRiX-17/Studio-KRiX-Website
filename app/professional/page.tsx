@@ -77,6 +77,20 @@ export default function ProfessionalPage() {
               </p>
               <ArrowRightIcon />
             </Link>
+            <Link
+              className="professional-project"
+              href="/projects/monde-soniq"
+            >
+              <span>Music · Events · Creative infrastructure</span>
+              <h3>Monde Soniq</h3>
+              <p>
+                Technical, operational and creative support for an independent
+                Sydney electronic-music events platform led by NFRMT,
+                connecting systems thinking, digital organisation and
+                practical project infrastructure.
+              </p>
+              <ArrowRightIcon />
+            </Link>
           </div>
         </div>
       </section>

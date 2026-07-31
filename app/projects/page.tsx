@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import { ButtonLink } from "@/components/button-link";
 import { PageIntro } from "@/components/page-intro";
 import { FeaturedProject } from "@/components/sections/featured-project";
+import { MondeSoniqPreview } from "@/components/sections/monde-soniq-preview";
 import { createMetadata } from "@/lib/metadata";
 
 const title = "Projects | Studio KRiX";
 const description =
-  "Selected software, app, automotive technology and creative projects by Christopher Helene.";
+  "Selected software, app, automotive technology and creative projects, including the Studio KRiX collaboration with Monde Soniq.";
 
 const baseMetadata = createMetadata({
   title,
@@ -38,6 +39,7 @@ export default function ProjectsPage() {
       />
 
       <FeaturedProject showAllProjectsLink={false} />
+      <MondeSoniqPreview />
 
       <section className="website-project">
         <div className="site-container website-project__panel">

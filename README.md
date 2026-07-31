@@ -58,6 +58,7 @@ new project available to the reusable project listing.
 - `/`
 - `/music`
 - `/projects`
+- `/projects/monde-soniq`
 - `/professional`
 - `/ohmxact`
 - `/about`
