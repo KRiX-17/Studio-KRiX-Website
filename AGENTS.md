@@ -10,10 +10,10 @@ static-first Next.js App Router application intended for Vercel.
 - Keep the site independent of a CMS and backend unless a future task explicitly adds one.
 - Prefer Server Components. Add a Client Component only when an interaction genuinely needs one.
 - Keep projects in `data/projects.ts` so new projects can be added without reshaping page code.
-- Preserve the restrained Studio KRiX design language: near-black canvas, architectural hairlines, open layouts, editorial typography and one restrained violet accent.
+- Preserve the restrained Studio KRiX design language: warm pale-neutral and near-black themes, architectural hairlines, open layouts, Geist typography and a faint crimson environmental glow.
 - Do not add fake clients, statistics, testimonials, reviews, ratings or product claims.
 - Maintain WCAG AA contrast, semantic headings, keyboard access, visible focus and reduced-motion behaviour.
-- Keep canonical URLs on `https://studiokrix.com`.
+- Keep canonical URLs on `https://studiokrix.com.au`.
 
 ## Verification
 

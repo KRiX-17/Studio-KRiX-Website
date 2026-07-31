@@ -16,7 +16,7 @@ const geist = Geist({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Studio KRiX — Engineering, software and creative work",
+    default: "Studio KRiX — Technology, engineering and music",
     template: "%s — Studio KRiX",
   },
   description: siteConfig.description,
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
   manifest: "/manifest.json",
   openGraph: {
-    title: "Studio KRiX — Engineering, software and creative work",
+    title: "Studio KRiX — Technology, engineering and music",
     description: siteConfig.description,
     url: siteConfig.url,
     siteName: siteConfig.name,
@@ -45,13 +45,13 @@ export const metadata: Metadata = {
         url: "/social-preview.svg",
         width: 1200,
         height: 630,
-        alt: "Studio KRiX — software, sound and engineering built differently",
+        alt: "Studio KRiX — technology, engineering and music brought together",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Studio KRiX — Engineering, software and creative work",
+    title: "Studio KRiX — Technology, engineering and music",
     description: siteConfig.description,
     images: ["/social-preview.svg"],
   },
@@ -60,8 +60,8 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   colorScheme: "light dark",
   themeColor: [
-    { color: "#F6F6F4", media: "(prefers-color-scheme: light)" },
-    { color: "#09090B", media: "(prefers-color-scheme: dark)" },
+    { color: "#F8F6F4", media: "(prefers-color-scheme: light)" },
+    { color: "#0A0A0C", media: "(prefers-color-scheme: dark)" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -76,6 +76,7 @@ const structuredData = {
       name: siteConfig.name,
       url: siteConfig.url,
       email: siteConfig.email,
+      sameAs: [siteConfig.linkedIn, siteConfig.github],
       founder: {
         "@id": `${siteConfig.url}/#christopher-helene`,
       },
@@ -90,10 +91,11 @@ const structuredData = {
       "@id": `${siteConfig.url}/#christopher-helene`,
       name: siteConfig.founder,
       url: `${siteConfig.url}/about`,
-      jobTitle: "Founder",
+      jobTitle: "Automotive technician, developer and music producer",
       worksFor: {
         "@id": `${siteConfig.url}/#organization`,
       },
+      sameAs: [siteConfig.linkedIn, siteConfig.github],
     },
     {
       "@type": "WebSite",

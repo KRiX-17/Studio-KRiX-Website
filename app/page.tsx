@@ -1,17 +1,21 @@
-import { DisciplinesSection } from "@/components/sections/disciplines-section";
 import { FeaturedProject } from "@/components/sections/featured-project";
-import { FinalCta } from "@/components/sections/final-cta";
-import { FounderSection } from "@/components/sections/founder-section";
+import { HomeAbout } from "@/components/sections/home-about";
+import { HomeContact } from "@/components/sections/home-contact";
 import { HomeHero } from "@/components/sections/home-hero";
+import { MusicSection } from "@/components/sections/music-section";
+import { ProfessionalProfile } from "@/components/sections/professional-profile";
+import { SkillsSection } from "@/components/sections/skills-section";
 
 export default function HomePage() {
   return (
     <>
       <HomeHero />
+      <MusicSection />
       <FeaturedProject />
-      <DisciplinesSection />
-      <FounderSection />
-      <FinalCta />
+      <ProfessionalProfile />
+      <SkillsSection />
+      <HomeAbout />
+      <HomeContact />
     </>
   );
 }

@@ -10,6 +10,9 @@ export function SiteFooter() {
             Studio KRiX
           </Link>
           <span>{siteConfig.location}</span>
+          <a className="site-footer__domain" href={siteConfig.url}>
+            {siteConfig.url}
+          </a>
         </div>
         <nav className="site-footer__nav" aria-label="Footer navigation">
           {siteConfig.footerNavigation.map((item) => (
@@ -19,7 +22,7 @@ export function SiteFooter() {
           ))}
         </nav>
         <p className="site-footer__copyright">
-          © {new Date().getFullYear()} Studio KRiX
+          © 2026 Studio KRiX
         </p>
       </div>
     </footer>

@@ -16,6 +16,8 @@ export type LinkIconName =
   | "apple-music"
   | "tidal"
   | "deezer"
+  | "linkedin"
+  | "github"
   | "email";
 
 export type LinksHubItem = {
@@ -36,7 +38,7 @@ export const linksHubItems = [
   {
     title: "Studio KRiX",
     description: "Software, automotive technology and creative projects.",
-    href: "https://studiokrix.com",
+    href: "https://studiokrix.com.au",
     category: "featured",
     icon: "studio",
     featured: true,
@@ -50,6 +52,22 @@ export const linksHubItems = [
     icon: "resistor",
     featured: true,
     external: false,
+  },
+  {
+    title: "LinkedIn",
+    href: "https://www.linkedin.com/in/chris-helene-b0791ba5",
+    category: "social",
+    icon: "linkedin",
+    featured: false,
+    external: true,
+  },
+  {
+    title: "GitHub",
+    href: "https://github.com/KRiX-17",
+    category: "social",
+    icon: "github",
+    featured: false,
+    external: true,
   },
   {
     title: "Instagram",
@@ -164,4 +182,25 @@ export function getLinksByCategory<Category extends LinkCategory>(
       { category: Category }
     > => item.category === category,
   );
+}
+
+const musicServiceNames = [
+  "Spotify",
+  "Apple Music",
+  "SoundCloud",
+  "YouTube",
+  "TIDAL",
+  "Deezer",
+] as const;
+
+export function getMusicServiceLinks() {
+  return musicServiceNames.flatMap((name) => {
+    const item = linksHubItems.find(
+      (candidate) =>
+        candidate.title === name &&
+        (candidate.category === "music" || candidate.category === "social"),
+    );
+
+    return item ? [item] : [];
+  });
 }

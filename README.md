@@ -1,7 +1,9 @@
 # Studio KRiX Website
 
-The official website for Studio KRiX, an independent engineering and creative
-studio founded by Christopher Helene in Sydney, Australia.
+The official personal portfolio, creative hub and professional profile for
+Christopher Helene, KRiX and Studio KRiX in Sydney, Australia.
+
+Production: [https://studiokrix.com.au](https://studiokrix.com.au)
 
 ## Stack
 
@@ -54,13 +56,13 @@ new project available to the reusable project listing.
 ## Routes
 
 - `/`
-- `/links`
 - `/projects`
 - `/ohmxact`
 - `/about`
+- `/links`
+- `/contact`
 - `/support`
 - `/privacy`
-- `/contact`
 - custom `404`
 - `/robots.txt`
 - `/sitemap.xml`
@@ -71,20 +73,22 @@ new project available to the reusable project listing.
 1. Import `KRiX-17/Studio-KRiX-Website` into Vercel.
 2. Keep the detected framework as **Next.js**.
 3. Use the default build command (`npm run build`) and output settings.
-4. Add `studiokrix.com` as the primary production domain.
-5. Add `studiokrix.com.au` and configure it to redirect to
-   `https://studiokrix.com`.
-6. Verify both DNS records, then redeploy once the domains are active.
+4. Set `studiokrix.com.au` as the primary production domain.
+5. Assign `studiokrix.com`, `www.studiokrix.com` and
+   `www.studiokrix.com.au` to the same project.
+6. The Next.js host redirects permanently send all three alternate hosts
+   directly to `https://studiokrix.com.au`, preserving paths and query strings.
+7. Do not modify MX, SPF, DKIM, Apple verification or any other mail-related
+   DNS records used by iCloud Custom Email.
 
 No environment variables are currently required.
 
-## Current placeholders
+## Release notes
 
 - OhmXact App Store URL
-- OhmXact iPhone and iPad screenshots
-- Founder portrait
-- GitHub, LinkedIn, Instagram and YouTube profile URLs
 - Final platform-specific App Store privacy disclosures
 
-Replace placeholders only with confirmed production content. Do not invent
-ratings, reviews or availability claims.
+The OhmXact iPhone and iPad screenshots are genuine product screenshots. The
+App Store destination remains intentionally easy to update in
+`data/links.ts`. Do not invent ratings, reviews, availability claims or an App
+Store URL.

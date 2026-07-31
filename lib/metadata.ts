@@ -32,7 +32,7 @@ export function createMetadata({
           url: "/social-preview.svg",
           width: 1200,
           height: 630,
-          alt: `${siteConfig.name} — engineering, software and creative work`,
+          alt: `${siteConfig.name} — technology, engineering and music`,
         },
       ],
     },

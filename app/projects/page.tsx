@@ -16,8 +16,8 @@ export default function ProjectsPage() {
   return (
     <>
       <PageIntro
-        description="A growing collection of focused tools and thoughtful experiments across software, engineering and creative work."
-        title="Projects built with a practical point of view."
+        description="Focused software and practical technology built around real working needs."
+        title="Selected projects."
       />
       <section className="projects-list">
         <div className="site-container">
@@ -28,10 +28,6 @@ export default function ProjectsPage() {
               project={project}
             />
           ))}
-          <div className="future-projects">
-            <span>Next</span>
-            <p>More projects will be added as they are ready.</p>
-          </div>
         </div>
       </section>
       <FinalCta />

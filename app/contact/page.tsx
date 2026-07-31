@@ -17,29 +17,29 @@ export default function ContactPage() {
     <>
       <PageIntro
         align="wide"
-        description="For collaborations, business enquiries or a thoughtful introduction, email is the best place to begin."
-        title="Start with a good conversation."
+        description="For professional enquiries, creative collaborations, product support or a thoughtful introduction."
+        title="Get in touch."
       />
       <section className="contact-main">
         <div className="site-container contact-main__grid">
           <Reveal className="contact-email">
-            <p className="section-label">Email</p>
+            <p className="section-label">General contact</p>
             <a href={`mailto:${siteConfig.email}`}>
               {siteConfig.email}
               <ArrowUpRightIcon />
             </a>
           </Reveal>
-          <Reveal className="contact-notes" delay={0.08}>
+          <Reveal className="contact-email" delay={0.08}>
+            <p className="section-label">Application and product support</p>
+            <a href={`mailto:${siteConfig.supportEmail}`}>
+              {siteConfig.supportEmail}
+              <ArrowUpRightIcon />
+            </a>
+          </Reveal>
+          <Reveal className="contact-notes" delay={0.12}>
             <div>
               <span>Location</span>
               <p>{siteConfig.location}</p>
-            </div>
-            <div>
-              <span>A useful first note</span>
-              <p>
-                A little context about you, what you are working on, and what
-                you would like to discuss.
-              </p>
             </div>
           </Reveal>
         </div>

@@ -2,7 +2,7 @@
 
 import { useTheme } from "next-themes";
 import { useSyncExternalStore } from "react";
-import { MoonIcon, SunIcon } from "@/components/icons";
+import { MoonIcon, SunIcon, SystemIcon } from "@/components/icons";
 
 const subscribe = () => () => {};
 const getClientSnapshot = () => true;
@@ -14,7 +14,7 @@ export function ThemeToggle() {
     getClientSnapshot,
     getServerSnapshot,
   );
-  const { resolvedTheme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme, theme } = useTheme();
 
   if (!mounted) {
     return (
@@ -25,9 +25,22 @@ export function ThemeToggle() {
     );
   }
 
-  const isDark = resolvedTheme === "dark";
-  const nextTheme = isDark ? "light" : "dark";
-  const label = `Switch to ${nextTheme} mode`;
+  const currentTheme = theme ?? "system";
+  const nextTheme =
+    currentTheme === "system"
+      ? "light"
+      : currentTheme === "light"
+        ? "dark"
+        : "system";
+  const label = `Theme: ${currentTheme}. Switch to ${nextTheme} theme`;
+  const icon =
+    currentTheme === "system" ? (
+      <SystemIcon />
+    ) : resolvedTheme === "dark" ? (
+      <MoonIcon />
+    ) : (
+      <SunIcon />
+    );
 
   return (
     <button
@@ -37,7 +50,7 @@ export function ThemeToggle() {
       title={label}
       type="button"
     >
-      {isDark ? <SunIcon /> : <MoonIcon />}
+      {icon}
     </button>
   );
 }

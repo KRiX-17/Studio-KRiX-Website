@@ -1,11 +1,11 @@
 {
   "name": "Studio KRiX",
   "short_name": "Studio KRiX",
-  "description": "Independent software, automotive technology and creative projects by Christopher Helene.",
+  "description": "Automotive technology, practical software and electronic music by Christopher Helene in Sydney, Australia.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#09090B",
-  "theme_color": "#09090B",
+  "background_color": "#0A0A0C",
+  "theme_color": "#0A0A0C",
   "icons": [
     {
       "src": "/favicon.svg",

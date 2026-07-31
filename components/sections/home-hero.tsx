@@ -3,25 +3,29 @@ import { ButtonLink } from "@/components/button-link";
 
 export function HomeHero() {
   return (
-    <section className="home-hero">
+    <section className="home-hero" id="home">
       <div className="site-container home-hero__grid">
         <div className="home-hero__copy">
-          <div>
-            <h1>
-              <span>Software, sound</span>
-              <span>and engineering</span>
-              <span>built differently.</span>
-            </h1>
-            <p className="home-hero__lede">
-              Independent software, automotive technology and creative
-              projects by Christopher Helene.
-            </p>
-            <div className="home-hero__actions">
-              <ButtonLink href="/projects">Explore Projects</ButtonLink>
-              <ButtonLink href="/contact" variant="secondary">
-                Get in Touch
-              </ButtonLink>
-            </div>
+          <p className="home-hero__eyebrow">
+            Christopher Helene <span aria-hidden="true">·</span> KRiX{" "}
+            <span aria-hidden="true">·</span> Studio KRiX
+          </p>
+          <h1>
+            <span>Technology, engineering </span>
+            <span>and music brought together.</span>
+          </h1>
+          <p className="home-hero__lede">
+            Automotive technician, app creator and music producer based in
+            Sydney, Australia.
+          </p>
+          <div className="home-hero__actions">
+            <ButtonLink href="#projects">Explore My Work</ButtonLink>
+            <ButtonLink href="#music" variant="secondary">
+              Listen to Music
+            </ButtonLink>
+            <ButtonLink href="#contact" variant="secondary">
+              Get in Touch
+            </ButtonLink>
           </div>
         </div>
 

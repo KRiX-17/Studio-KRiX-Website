@@ -9,14 +9,14 @@ import { createMetadata } from "@/lib/metadata";
 export const metadata = createMetadata({
   title: "OhmXact",
   description:
-    "Fast, focused resistor calculations for iPhone and iPad. Built for the workshop, the bench, and your pocket.",
+    "A fast resistor calculation app designed for the workshop, the bench and your pocket.",
   path: "/ohmxact",
 });
 
 const capabilities = [
   {
     title: "Fast calculations",
-    description: "Move from colour bands to resistance values quickly.",
+    description: "Calculate series and parallel resistance without a detour.",
   },
   {
     title: "Built for Apple devices",
@@ -36,7 +36,7 @@ const softwareStructuredData = {
   applicationCategory: "UtilitiesApplication",
   operatingSystem: "iOS, iPadOS",
   description:
-    "A focused electrical resistor calculation app for iPhone and iPad.",
+    "A fast resistor calculation app designed for the workshop, the bench and your pocket.",
   creator: {
     "@type": "Organization",
     name: siteConfig.name,

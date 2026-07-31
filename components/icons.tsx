@@ -111,3 +111,30 @@ export function MoonIcon(props: SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+
+export function SystemIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      aria-hidden="true"
+      fill="none"
+      viewBox="0 0 24 24"
+      {...props}
+    >
+      <rect
+        x="3.5"
+        y="4.5"
+        width="17"
+        height="12"
+        rx="2"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      />
+      <path
+        d="M8.5 20h7M12 16.5V20"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeWidth="1.5"
+      />
+    </svg>
+  );
+}

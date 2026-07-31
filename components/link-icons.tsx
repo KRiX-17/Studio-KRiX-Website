@@ -146,6 +146,39 @@ export function LinkIcon({ name, ...props }: LinkIconProps) {
           />
         </svg>
       );
+    case "linkedin":
+      return (
+        <svg {...sharedProps} {...props}>
+          <rect
+            x="3.5"
+            y="3.5"
+            width="17"
+            height="17"
+            rx="3"
+            stroke="currentColor"
+            strokeWidth="1.5"
+          />
+          <path
+            d="M8 10v6M8 7.75v.1M11.5 16v-3.4c0-1.45.85-2.35 2.15-2.35 1.25 0 2.35.8 2.35 2.5V16M11.5 10.5V16"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="1.5"
+          />
+        </svg>
+      );
+    case "github":
+      return (
+        <svg {...sharedProps} {...props}>
+          <path
+            d="M12 3.75a8.25 8.25 0 0 0-2.6 16.08c.4.08.55-.17.55-.38v-1.6c-2.25.49-2.73-.96-2.73-.96-.36-.93-.9-1.18-.9-1.18-.73-.5.06-.49.06-.49.81.06 1.24.83 1.24.83.72 1.24 1.9.88 2.36.67.07-.52.28-.88.51-1.08-1.8-.2-3.69-.9-3.69-4a3.14 3.14 0 0 1 .83-2.17 2.9 2.9 0 0 1 .08-2.14s.68-.22 2.23.83a7.7 7.7 0 0 1 4.06 0c1.55-1.05 2.23-.83 2.23-.83.44 1.08.16 1.87.08 2.14.52.57.83 1.3.83 2.17 0 3.1-1.9 3.8-3.7 4 .3.25.55.75.55 1.52v2.27c0 .21.15.46.56.38A8.25 8.25 0 0 0 12 3.75Z"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="1.25"
+          />
+        </svg>
+      );
     case "email":
       return (
         <svg {...sharedProps} {...props}>

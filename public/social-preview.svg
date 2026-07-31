@@ -1,21 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <defs>
     <linearGradient id="signal" x1="0" x2="1">
-      <stop offset="0" stop-color="#7657FF"/>
-      <stop offset="1" stop-color="#3434B8"/>
+      <stop offset="0" stop-color="#B63B52"/>
+      <stop offset="1" stop-color="#681A2A"/>
     </linearGradient>
     <radialGradient id="light" cx="80%" cy="35%" r="55%">
-      <stop offset="0" stop-color="#1B1926"/>
-      <stop offset="1" stop-color="#09090B"/>
+      <stop offset="0" stop-color="#211216"/>
+      <stop offset="1" stop-color="#0A0A0C"/>
     </radialGradient>
   </defs>
   <rect width="1200" height="630" fill="url(#light)"/>
   <path d="M0 64h1200M64 0v630M1136 0v630M0 566h1200" stroke="#FFFFFF" stroke-opacity=".13"/>
   <path d="M820 64v190c0 44 36 80 80 80h236" fill="none" stroke="url(#signal)" stroke-width="3"/>
-  <circle cx="820" cy="64" r="6" fill="#7657FF"/>
-  <circle cx="1136" cy="334" r="6" fill="#7657FF"/>
+  <circle cx="820" cy="64" r="6" fill="#B63B52"/>
+  <circle cx="1136" cy="334" r="6" fill="#B63B52"/>
   <text x="104" y="130" fill="#F6F5F8" font-family="Arial, sans-serif" font-size="34" letter-spacing="-1.2">Studio KRiX</text>
-  <text x="104" y="276" fill="#F6F5F8" font-family="Arial, sans-serif" font-size="72" letter-spacing="-3">Software, sound and</text>
-  <text x="104" y="358" fill="#F6F5F8" font-family="Arial, sans-serif" font-size="72" letter-spacing="-3">engineering built differently.</text>
-  <text x="104" y="475" fill="#A7A5AE" font-family="Arial, sans-serif" font-size="26">Independent engineering and creative studio · Sydney, Australia</text>
+  <text x="104" y="276" fill="#F6F5F8" font-family="Arial, sans-serif" font-size="68" letter-spacing="-3">Technology, engineering</text>
+  <text x="104" y="354" fill="#F6F5F8" font-family="Arial, sans-serif" font-size="68" letter-spacing="-3">and music brought together.</text>
+  <text x="104" y="475" fill="#A7A5AE" font-family="Arial, sans-serif" font-size="26">Christopher Helene · KRiX · Sydney, Australia</text>
 </svg>

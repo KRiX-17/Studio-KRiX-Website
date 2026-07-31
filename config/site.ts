@@ -1,7 +1,9 @@
 const navigation = [
+  { label: "Home", href: "/" },
+  { label: "Music", href: "/#music" },
   { label: "Projects", href: "/projects" },
   { label: "About", href: "/about" },
-  { label: "Support", href: "/support" },
+  { label: "Links", href: "/links" },
   { label: "Contact", href: "/contact" },
 ] as const;
 
@@ -9,21 +11,23 @@ export const siteConfig = {
   name: "Studio KRiX",
   founder: "Christopher Helene",
   description:
-    "Independent software, automotive technology and creative projects by Christopher Helene.",
-  url: "https://studiokrix.com",
+    "Automotive technology, practical software and electronic music by Christopher Helene in Sydney, Australia.",
+  url: "https://studiokrix.com.au",
   email: "krix@studiokrix.com.au",
   supportEmail: "support@studiokrix.com.au",
   location: "Sydney, Australia",
-  secondaryDomain: "https://studiokrix.com.au",
+  linkedIn: "https://www.linkedin.com/in/chris-helene-b0791ba5",
+  github: "https://github.com/KRiX-17",
   navigation,
-  mobileNavigation: [{ label: "Links", href: "/links" }, ...navigation],
+  mobileNavigation: navigation,
   footerNavigation: [
-    { label: "Links", href: "/links" },
+    { label: "Music", href: "/#music" },
     { label: "Projects", href: "/projects" },
     { label: "About", href: "/about" },
+    { label: "Links", href: "/links" },
+    { label: "Contact", href: "/contact" },
     { label: "Support", href: "/support" },
     { label: "Privacy", href: "/privacy" },
-    { label: "Contact", href: "/contact" },
   ],
 } as const;
 
