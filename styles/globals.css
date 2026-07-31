@@ -3556,6 +3556,22 @@ section[id] {
   padding: clamp(1.75rem, 5vw, 4.5rem);
 }
 
+.monde-preview__logo,
+.music-collaboration__logo,
+.professional-project__logo {
+  display: block;
+  object-fit: contain;
+  border: 1px solid color-mix(in srgb, white 22%, transparent);
+  border-radius: 50%;
+  background: #09090b;
+}
+
+.monde-preview__logo {
+  width: 6rem;
+  height: 6rem;
+  margin-bottom: 2rem;
+}
+
 .monde-preview__heading h2,
 .music-collaboration h2,
 .monde-relationship h2,
@@ -3576,6 +3592,26 @@ section[id] {
   letter-spacing: 0.06em;
   line-height: 1.6;
   text-transform: uppercase;
+}
+
+.monde-preview__artwork {
+  width: min(15rem, 100%);
+  margin: 2.5rem 0 0;
+}
+
+.monde-preview__artwork img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 0.45rem;
+}
+
+.monde-preview__artwork figcaption {
+  margin-top: 0.75rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
 }
 
 .monde-preview__copy > p {
@@ -3617,6 +3653,34 @@ section[id] {
   margin-top: 0;
 }
 
+.music-collaboration__identity {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.music-collaboration__artwork {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-end;
+  margin-top: 2rem;
+}
+
+.music-collaboration__logo {
+  width: 4.5rem;
+  height: 4.5rem;
+}
+
+.music-collaboration__poster {
+  display: block;
+  width: 9rem;
+  height: 11.25rem;
+  object-fit: contain;
+  border: 1px solid var(--line);
+  border-radius: 0.45rem;
+  background: #09090b;
+}
+
 .music-collaboration__panel > div > p {
   max-width: 50rem;
   margin: 1.5rem 0 0;
@@ -3641,8 +3705,22 @@ section[id] {
   align-items: start;
 }
 
+.monde-hero__identity {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.monde-hero__wordmark {
+  display: block;
+  width: clamp(9rem, 14vw, 12rem);
+  height: auto;
+  border: 1px solid var(--line-strong);
+  border-radius: 0.45rem;
+}
+
 .monde-hero__eyebrow {
-  margin: 0.85rem 0 0;
+  margin: 1.5rem 0 0;
   color: var(--accent-soft);
   font-size: 0.78rem;
   font-weight: 570;
@@ -3906,7 +3984,7 @@ section[id] {
 
 .monde-media__grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
   margin-top: clamp(2rem, 4vw, 3.5rem);
 }
@@ -3915,12 +3993,20 @@ section[id] {
   margin: 0;
 }
 
+.monde-media__frame {
+  display: flex;
+  align-items: flex-start;
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+  background: #09090b;
+  padding: clamp(0.45rem, 1vw, 0.8rem);
+}
+
 .monde-media__asset img {
   display: block;
   width: 100%;
   height: auto;
-  border: 1px solid var(--line);
-  border-radius: 0.75rem;
+  object-fit: contain;
 }
 
 .monde-media__asset figcaption {
@@ -3928,6 +4014,55 @@ section[id] {
   color: var(--muted);
   font-size: 0.875rem;
   line-height: 1.5;
+}
+
+.monde-media__asset figcaption strong,
+.monde-media__asset figcaption span {
+  display: block;
+}
+
+.monde-media__asset figcaption strong {
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 610;
+}
+
+.monde-media__asset figcaption span {
+  margin-top: 0.25rem;
+}
+
+.monde-media__asset figcaption a {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  margin-top: 0.35rem;
+  border-bottom: 1px solid var(--line-strong);
+  color: var(--text);
+  font-weight: 570;
+}
+
+.monde-media__asset figcaption a:hover {
+  border-color: var(--text);
+}
+
+.monde-media__attribution {
+  margin: 2.5rem 0 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.professional-project--monde > span {
+  display: block;
+  max-width: calc(100% - 4.5rem);
+}
+
+.professional-project__logo {
+  position: absolute;
+  top: clamp(1.5rem, 4vw, 3.25rem);
+  right: clamp(1.5rem, 4vw, 3.25rem);
+  width: 3.25rem;
+  height: 3.25rem;
 }
 
 .professional-projects__grid {
@@ -3981,6 +4116,10 @@ section[id] {
   }
 
   .monde-principles__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .monde-media__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 

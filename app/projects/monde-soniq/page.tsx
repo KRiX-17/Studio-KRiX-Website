@@ -4,7 +4,11 @@ import Link from "next/link";
 import { ButtonLink } from "@/components/button-link";
 import { ArrowRightIcon } from "@/components/icons";
 import { siteConfig } from "@/config/site";
-import { mondeSoniqAssets } from "@/data/monde-soniq";
+import {
+  mondeSoniqEvents,
+  mondeSoniqLinks,
+  mondeSoniqWordmark,
+} from "@/data/monde-soniq";
 import { createMetadata } from "@/lib/metadata";
 
 const title = "Monde Soniq × Studio KRiX | Creative Event Infrastructure";
@@ -143,7 +147,19 @@ export default function MondeSoniqPage() {
     <>
       <section className="monde-hero">
         <div className="site-container monde-hero__grid">
-          <p className="monde-hero__eyebrow">Studio KRiX × Monde Soniq</p>
+          <div className="monde-hero__identity">
+            <Image
+              alt={mondeSoniqWordmark.alt}
+              className="monde-hero__wordmark"
+              height={mondeSoniqWordmark.height}
+              priority
+              sizes="(max-width: 960px) 160px, 190px"
+              src={mondeSoniqWordmark.src}
+              unoptimized
+              width={mondeSoniqWordmark.width}
+            />
+            <p className="monde-hero__eyebrow">Studio KRiX × Monde Soniq</p>
+          </div>
           <div className="monde-hero__content">
             <h1>
               The structure behind
@@ -338,35 +354,56 @@ export default function MondeSoniqPage() {
         </div>
       </section>
 
-      {mondeSoniqAssets.length > 0 ? (
-        <section
-          className="monde-page-section monde-media"
-          aria-labelledby="monde-media-title"
-        >
-          <div className="site-container">
-            <div className="directory-heading">
-              <div>
-                <p className="section-label">Approved media</p>
-                <h2 id="monde-media-title">From the platform</h2>
-              </div>
+      <section
+        className="monde-page-section monde-media"
+        aria-labelledby="monde-media-title"
+      >
+        <div className="site-container">
+          <div className="directory-heading">
+            <div>
+              <p className="section-label">Approved event artwork</p>
+              <h2 id="monde-media-title">Selected events</h2>
             </div>
-            <div className="monde-media__grid">
-              {mondeSoniqAssets.map((asset) => (
-                <figure className="monde-media__asset" key={asset.id}>
+            <p>
+              A selection of Monde Soniq events and collaborations across
+              Sydney’s underground electronic-music community.
+            </p>
+          </div>
+          <div className="monde-media__grid">
+            {mondeSoniqEvents.map((asset) => (
+              <figure className="monde-media__asset" key={asset.id}>
+                <div className="monde-media__frame">
                   <Image
                     alt={asset.alt}
                     height={asset.height}
-                    sizes="(max-width: 680px) 100vw, 50vw"
+                    sizes="(max-width: 680px) calc(100vw - 2rem), (max-width: 1100px) 50vw, 33vw"
                     src={asset.src}
+                    unoptimized
                     width={asset.width}
                   />
-                  <figcaption>{asset.caption}</figcaption>
-                </figure>
-              ))}
-            </div>
+                </div>
+                <figcaption>
+                  <strong>{asset.eventTitle}</strong>
+                  <span>
+                    {asset.venue} —{" "}
+                    <time dateTime={asset.date}>{asset.dateLabel}</time>
+                  </span>
+                  <a
+                    href={asset.sourceUrl}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    View event on Resident Advisor
+                  </a>
+                </figcaption>
+              </figure>
+            ))}
           </div>
-        </section>
-      ) : null}
+          <p className="monde-media__attribution">
+            Event artwork reproduced with approval from Monde Soniq.
+          </p>
+        </div>
+      </section>
 
       <section
         className="monde-page-section monde-links"
@@ -382,6 +419,9 @@ export default function MondeSoniqPage() {
             </p>
           </div>
           <div className="monde-links__actions">
+            <ButtonLink href={mondeSoniqLinks.muzeek} external>
+              Monde Soniq on Muzeek
+            </ButtonLink>
             <ButtonLink href="/music">Explore Music</ButtonLink>
             <ButtonLink href="/projects" variant="secondary">
               View Studio KRiX Projects

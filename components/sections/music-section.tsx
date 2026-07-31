@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ButtonLink } from "@/components/button-link";
 import { ArrowUpRightIcon } from "@/components/icons";
 import { LinkIcon } from "@/components/link-icons";
@@ -5,6 +6,10 @@ import {
   getLinksByCategory,
   getMusicServiceLinks,
 } from "@/data/links";
+import {
+  mondeSoniqEvents,
+  mondeSoniqIdentity,
+} from "@/data/monde-soniq";
 
 const musicServices = getMusicServiceLinks();
 const trackLinks = getLinksByCategory("track");
@@ -130,7 +135,29 @@ export function MusicSection() {
         aria-labelledby="music-collaboration-title"
       >
         <div className="site-container music-collaboration__panel">
-          <p className="section-label">Creative collaboration</p>
+          <div className="music-collaboration__identity">
+            <p className="section-label">Creative collaboration</p>
+            <div className="music-collaboration__artwork">
+              <Image
+                alt={mondeSoniqIdentity.alt}
+                className="music-collaboration__logo"
+                height={mondeSoniqIdentity.height}
+                sizes="72px"
+                src={mondeSoniqIdentity.src}
+                unoptimized
+                width={mondeSoniqIdentity.width}
+              />
+              <Image
+                alt={mondeSoniqEvents[2].alt}
+                className="music-collaboration__poster"
+                height={mondeSoniqEvents[2].height}
+                sizes="150px"
+                src={mondeSoniqEvents[2].src}
+                unoptimized
+                width={mondeSoniqEvents[2].width}
+              />
+            </div>
+          </div>
           <div>
             <h2 id="music-collaboration-title">Beyond the studio</h2>
             <p>

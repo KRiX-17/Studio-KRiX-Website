@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ButtonLink } from "@/components/button-link";
 import { ArrowRightIcon } from "@/components/icons";
 import { PageIntro } from "@/components/page-intro";
 import { SkillsSection } from "@/components/sections/skills-section";
 import { siteConfig } from "@/config/site";
+import { mondeSoniqIdentity } from "@/data/monde-soniq";
 import { createMetadata } from "@/lib/metadata";
 
 const title = "Professional Profile | Christopher Helene";
@@ -78,10 +80,19 @@ export default function ProfessionalPage() {
               <ArrowRightIcon />
             </Link>
             <Link
-              className="professional-project"
+              className="professional-project professional-project--monde"
               href="/projects/monde-soniq"
             >
               <span>Music · Events · Creative infrastructure</span>
+              <Image
+                alt={mondeSoniqIdentity.alt}
+                className="professional-project__logo"
+                height={mondeSoniqIdentity.height}
+                sizes="52px"
+                src={mondeSoniqIdentity.src}
+                unoptimized
+                width={mondeSoniqIdentity.width}
+              />
               <h3>Monde Soniq</h3>
               <p>
                 Technical, operational and creative support for an independent
