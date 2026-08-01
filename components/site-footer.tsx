@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { StudioKrixLogo } from "@/components/studio-krix-logo";
 import { siteConfig } from "@/config/site";
 
 export function SiteFooter() {
@@ -6,8 +7,17 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div className="site-container site-footer__inner">
         <div className="site-footer__brand">
-          <Link className="wordmark" href="/">
-            Studio KRiX
+          <Link
+            aria-label="Studio KRiX home"
+            className="site-footer__identity"
+            href="/"
+          >
+            <StudioKrixLogo
+              className="site-footer__logo"
+              decorative
+              sizes="48px"
+            />
+            <span className="wordmark">Studio KRiX</span>
           </Link>
           <span>{siteConfig.location}</span>
           <a className="site-footer__domain" href={siteConfig.url}>

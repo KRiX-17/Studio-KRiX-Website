@@ -21,6 +21,10 @@
   --accent: #9f233b;
   --accent-soft: #811c31;
   --accent-subtle: rgba(159, 35, 59, 0.065);
+  --accent-gold: #c9a54a;
+  --accent-gold-soft: #d6b45a;
+  --accent-gold-border: rgba(145, 104, 20, 0.34);
+  --accent-gold-glow: rgba(201, 165, 74, 0.12);
   --header: rgba(248, 246, 244, 0.88);
   --hover: rgba(20, 20, 22, 0.035);
   --shadow: rgba(35, 20, 24, 0.13);
@@ -48,6 +52,10 @@
   --accent: #b63b52;
   --accent-soft: #f08ba0;
   --accent-subtle: rgba(182, 59, 82, 0.1);
+  --accent-gold: #c9a54a;
+  --accent-gold-soft: #d6b45a;
+  --accent-gold-border: rgba(214, 180, 90, 0.3);
+  --accent-gold-glow: rgba(201, 165, 74, 0.11);
   --header: rgba(10, 10, 12, 0.86);
   --hover: rgba(255, 255, 255, 0.025);
   --shadow: rgba(0, 0, 0, 0.48);
@@ -4511,5 +4519,106 @@ section[id] {
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* Studio KRiX identity and restrained gold accents */
+
+.site-brand,
+.site-footer__identity {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.site-brand__logo,
+.site-footer__logo {
+  display: block;
+  flex: 0 0 auto;
+  border-radius: 22%;
+  background: #0a0a0c;
+  object-fit: contain;
+}
+
+.site-brand__logo {
+  width: 2.375rem;
+  height: 2.375rem;
+}
+
+.site-footer__logo {
+  width: 3rem;
+  height: 3rem;
+}
+
+.site-brand .wordmark,
+.site-footer__identity .wordmark {
+  min-height: auto;
+}
+
+.desktop-nav a::after {
+  background: var(--accent-gold);
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent-gold-border);
+}
+
+.site-footer {
+  border-top-color: var(--accent-gold-border);
+}
+
+.home-hero__eyebrow::before,
+.music-feature__label::before,
+.music-release .section-label::before,
+.project-platforms::before,
+.website-project .section-label::before,
+.professional-summary .section-label::before,
+.professional-projects .section-label::before,
+.about-story .section-label::before,
+.contact-destinations .section-label::before,
+.monde-hero__eyebrow::before {
+  display: inline-block;
+  width: 0.38rem;
+  height: 0.38rem;
+  margin-right: 0.65rem;
+  border-radius: 50%;
+  background: var(--accent-gold);
+  box-shadow: 0 0 0 3px var(--accent-gold-glow);
+  content: "";
+  vertical-align: 0.08em;
+}
+
+.featured-music__release,
+.music-release__panel,
+.featured-project__grid {
+  border-top-color: var(--accent-gold-border);
+}
+
+.professional-summary__grid,
+.about-story__grid {
+  border-top-color: var(--accent-gold-border);
+}
+
+.identity-card > span,
+.contact-card a svg {
+  color: var(--accent-gold);
+}
+
+.hub-link--featured::before {
+  background: var(--accent-gold);
+}
+
+.hub-link--featured:hover .hub-link__icon {
+  border-color: var(--accent-gold-border);
+}
+
+@media (max-width: 680px) {
+  .site-brand {
+    gap: 0.6rem;
+  }
+
+  .site-brand__logo {
+    width: 2.125rem;
+    height: 2.125rem;
   }
 }

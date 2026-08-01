@@ -29,8 +29,29 @@ export const metadata: Metadata = {
     canonical: siteConfig.url,
   },
   icons: {
-    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
-    apple: "/apple-touch-icon.svg",
+    icon: [
+      {
+        url: "/brand/studio-krix/studio-krix-sk-logo-16.png",
+        sizes: "16x16",
+        type: "image/png",
+      },
+      {
+        url: "/brand/studio-krix/studio-krix-sk-logo-32.png",
+        sizes: "32x32",
+        type: "image/png",
+      },
+      {
+        url: "/brand/studio-krix/studio-krix-sk-logo-48.png",
+        sizes: "48x48",
+        type: "image/png",
+      },
+    ],
+    shortcut: "/brand/studio-krix/studio-krix-sk-logo-32.png",
+    apple: {
+      url: "/brand/studio-krix/apple-touch-icon-180.png",
+      sizes: "180x180",
+      type: "image/png",
+    },
   },
   manifest: "/manifest.json",
   openGraph: {
@@ -76,6 +97,12 @@ const structuredData = {
       name: siteConfig.name,
       url: siteConfig.url,
       email: siteConfig.email,
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteConfig.url}/brand/studio-krix/studio-krix-sk-logo-512.png`,
+        width: 512,
+        height: 512,
+      },
       sameAs: [siteConfig.linkedIn, siteConfig.github],
       founder: {
         "@id": `${siteConfig.url}/#christopher-helene`,
