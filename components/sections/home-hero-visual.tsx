@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { DeviceMockup } from "@/components/device-mockup";
 import { StudioKrixLogo } from "@/components/studio-krix-logo";
 
 export function HomeHeroVisual() {
@@ -26,8 +27,9 @@ export function HomeHeroVisual() {
       </div>
 
       <div className="home-hero-visual__phone">
-        <Image
+        <DeviceMockup
           alt="OhmXact resistance calculator running on iPhone."
+          device="iphone"
           height={2778}
           quality={92}
           sizes="(max-width: 680px) 44vw, (max-width: 960px) 28vw, 17vw"

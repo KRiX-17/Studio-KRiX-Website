@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { DeviceMockup } from "@/components/device-mockup";
 
 type DeviceMockupsProps = {
   compact?: boolean;
@@ -9,24 +9,24 @@ export function DeviceMockups({ compact = false }: DeviceMockupsProps) {
     <div
       className={`device-stage ${compact ? "device-stage--compact" : ""}`}
       aria-label="OhmXact app screenshots for iPhone and iPad"
+      role="group"
     >
-      <div className="device device--tablet">
-        <Image
-          alt="OhmXact parallel resistance calculator on iPad"
-          fill
-          sizes="(max-width: 680px) 82vw, 48vw"
-          src="/images/ohmxact-ipad-dark.png"
-        />
-      </div>
-      <div className="device device--phone">
-        <div className="device__island" aria-hidden="true" />
-        <Image
-          alt="OhmXact parallel resistance calculator on iPhone"
-          fill
-          sizes="(max-width: 680px) 41vw, 20vw"
-          src="/images/ohmxact-iphone-dark.png"
-        />
-      </div>
+      <DeviceMockup
+        device="ipad"
+        alt="OhmXact parallel resistance calculator on iPad"
+        height={2752}
+        sizes="(max-width: 680px) 58vw, 36vw"
+        src="/images/ohmxact-ipad-dark.png"
+        width={2064}
+      />
+      <DeviceMockup
+        device="iphone"
+        alt="OhmXact parallel resistance calculator on iPhone"
+        height={2778}
+        sizes="(max-width: 680px) 27vw, 17vw"
+        src="/images/ohmxact-iphone-dark.png"
+        width={1284}
+      />
     </div>
   );
 }

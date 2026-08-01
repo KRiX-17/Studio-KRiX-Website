@@ -31,6 +31,17 @@
   --selection: rgba(159, 35, 59, 0.2);
   --glow-primary: rgba(171, 42, 66, 0.085);
   --glow-secondary: rgba(138, 29, 49, 0.045);
+  --glass-background: rgba(255, 253, 251, 0.62);
+  --glass-background-strong: rgba(248, 246, 244, 0.76);
+  --glass-fallback: #fffdfb;
+  --glass-fallback-strong: #f4f1ef;
+  --glass-border: rgba(55, 45, 48, 0.16);
+  --glass-highlight: rgba(255, 255, 255, 0.82);
+  --glass-shadow: 0 1.5rem 4rem -2.7rem rgba(35, 20, 24, 0.26);
+  --glass-inset: inset 0 1px 0 var(--glass-highlight);
+  --glass-blur: 24px;
+  --glass-blur-compact: 16px;
+  --glass-saturation: 128%;
   --font-ui: var(--font-sans), "Helvetica Neue", Arial, sans-serif;
   --container: 92rem;
   --gutter: clamp(1.25rem, 4vw, 4rem);
@@ -62,6 +73,14 @@
   --selection: rgba(182, 59, 82, 0.38);
   --glow-primary: rgba(111, 20, 39, 0.17);
   --glow-secondary: rgba(92, 17, 33, 0.1);
+  --glass-background: rgba(19, 19, 22, 0.58);
+  --glass-background-strong: rgba(10, 10, 12, 0.72);
+  --glass-fallback: #151518;
+  --glass-fallback-strong: #101013;
+  --glass-border: rgba(255, 255, 255, 0.13);
+  --glass-highlight: rgba(255, 255, 255, 0.12);
+  --glass-shadow: 0 1.5rem 4rem -2.4rem rgba(0, 0, 0, 0.78);
+  --glass-saturation: 138%;
 }
 
 * {
@@ -476,12 +495,10 @@ textarea {
   isolation: isolate;
 }
 
-.device {
+.device-mockup {
   position: absolute;
-  display: grid;
-  place-items: center;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.42);
+  background: #050506;
   background:
     radial-gradient(
       circle at 30% 20%,
@@ -489,60 +506,75 @@ textarea {
       transparent 34%
     ),
     linear-gradient(145deg, #17171d, #0d0d10);
-  box-shadow:
-    0 2.5rem 6rem var(--shadow),
-    inset 0 0 0 0.5rem #0b0b0e;
-  color: var(--quiet);
-  font-size: 0.75rem;
+  box-shadow: 0 2.5rem 6rem var(--shadow);
 }
 
-.device img {
-  object-fit: cover;
-  object-position: top center;
-}
-
-.device::before {
-  position: absolute;
-  inset: 0.55rem;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: inherit;
-  content: "";
-}
-
-.device--tablet {
+.device-mockup--ipad {
   top: 0;
   right: 0;
-  width: 77%;
-  height: 91%;
-  border-radius: 2.1rem;
+  width: min(65%, 24rem);
+  aspect-ratio: 215.5 / 281.6;
+  border-radius: 6% / 4.6%;
 }
 
-.device--phone {
+.device-mockup--iphone {
   z-index: 2;
   bottom: 0;
   left: 3%;
-  width: 37%;
-  height: 72%;
-  border-radius: 2.5rem;
+  width: min(30%, 11rem);
+  aspect-ratio: 78.1 / 160.8;
+  border-radius: 16% / 7.8%;
 }
 
-.device__island {
+.device-mockup__screen {
   position: absolute;
-  top: 1rem;
+  z-index: 1;
+  top: 50%;
   left: 50%;
-  width: 4rem;
-  height: 1.15rem;
-  border-radius: 999px;
-  background: #050506;
-  transform: translateX(-50%);
+  overflow: hidden;
+  background: #000;
+  transform: translate(-50%, -50%);
+}
+
+.device-mockup--ipad .device-mockup__screen {
+  width: 96%;
+  border-radius: 4.6% / 3.5%;
+}
+
+.device-mockup--iphone .device-mockup__screen {
+  width: 93%;
+  border-radius: 14% / 6.4%;
+}
+
+.device-mockup__screen img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.device-mockup__shell {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: inherit;
+  box-shadow:
+    inset 0 0 0 0.22rem rgba(3, 3, 4, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  pointer-events: none;
 }
 
 .device-stage--compact {
   min-height: 28rem;
 }
 
-.device-stage--compact .device--tablet {
-  width: 72%;
+.device-stage--compact .device-mockup--ipad {
+  width: min(65%, 20rem);
+}
+
+.device-stage--compact .device-mockup--iphone {
+  width: min(30%, 9rem);
 }
 
 .disciplines-section {
@@ -1966,14 +1998,12 @@ textarea {
     min-height: 25rem;
   }
 
-  .device--tablet {
-    width: 82%;
-    border-radius: 1.4rem;
+  .device-mockup--ipad {
+    width: min(68%, 24rem);
   }
 
-  .device--phone {
-    width: 41%;
-    border-radius: 1.8rem;
+  .device-mockup--iphone {
+    width: min(31%, 11rem);
   }
 
   .device-stage--compact {
@@ -3328,7 +3358,7 @@ section[id] {
   min-height: 31rem;
 }
 
-.device {
+.device-mockup__shell {
   border-color: rgba(255, 255, 255, 0.32);
 }
 
@@ -4696,19 +4726,14 @@ section[id] {
   bottom: -8%;
   left: 7%;
   width: clamp(9rem, 37%, 13.5rem);
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  border-radius: clamp(1.15rem, 2.5vw, 1.75rem);
-  background: #050506;
+}
+
+.home-hero-visual__phone .device-mockup {
+  position: relative;
+  width: 100%;
   box-shadow:
     0 1.75rem 4.5rem rgba(0, 0, 0, 0.58),
     0 0 0 0.2rem rgba(9, 9, 11, 0.5);
-}
-
-.home-hero-visual__phone img {
-  display: block;
-  width: 100%;
-  height: auto;
 }
 
 .home-hero-visual__brand {
@@ -4724,6 +4749,7 @@ section[id] {
   border-radius: 24%;
   background: rgba(9, 9, 11, 0.74);
   box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.34);
+  -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
 }
 
@@ -4812,5 +4838,129 @@ section[id] {
   .home-hero-visual,
   .home-hero-visual * {
     transition: none;
+  }
+}
+
+/* Reusable frosted-glass surface system */
+
+.site-header,
+.site-footer {
+  background: var(--glass-fallback-strong);
+  border-color: var(--glass-border);
+  box-shadow: var(--glass-inset);
+}
+
+.featured-music__release,
+.music-release__panel,
+.music-feature,
+.featured-project__grid,
+.project-card,
+.professional-project,
+.website-project__panel,
+.identity-card,
+.contact-card,
+.professional-connect__grid,
+.skills-section .skill-group,
+.about-next__inner,
+.home-contact__cta,
+.released-track,
+.monde-preview__panel,
+.music-collaboration__panel,
+.monde-relationship__panel,
+.monde-support-card,
+.monde-principle,
+.monde-links__panel,
+.monde-related__project,
+.monde-hero__logo-frame {
+  border-color: var(--glass-border);
+  background: var(--glass-fallback);
+  box-shadow: var(--glass-shadow), var(--glass-inset);
+}
+
+.hub-link,
+.music-action:not(.music-action--primary),
+.music-service,
+.selected-track__links a,
+.music-connect__link,
+.contact-option > a,
+.button-link--secondary {
+  border-color: var(--glass-border);
+  background: var(--glass-fallback);
+  box-shadow: var(--glass-inset);
+}
+
+.project-card {
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  border-radius: 0.75rem;
+  padding-inline: clamp(1.25rem, 3vw, 3rem);
+}
+
+.featured-music__release,
+.music-release__panel,
+.featured-project__grid {
+  border-top-color: var(--accent-gold-border);
+}
+
+.site-footer {
+  border-top-color: var(--accent-gold-border);
+}
+
+.home-hero-visual__brand {
+  border-color: var(--accent-gold-border);
+  box-shadow:
+    0 1rem 2.5rem rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .site-header,
+  .site-footer {
+    background: var(--glass-background-strong);
+    -webkit-backdrop-filter: saturate(var(--glass-saturation))
+      blur(var(--glass-blur));
+    backdrop-filter: saturate(var(--glass-saturation)) blur(var(--glass-blur));
+  }
+
+  .featured-music__release,
+  .music-release__panel,
+  .music-feature,
+  .featured-project__grid,
+  .project-card,
+  .professional-project,
+  .website-project__panel,
+  .identity-card,
+  .contact-card,
+  .professional-connect__grid,
+  .skills-section .skill-group,
+  .about-next__inner,
+  .home-contact__cta,
+  .released-track,
+  .monde-preview__panel,
+  .music-collaboration__panel,
+  .monde-relationship__panel,
+  .monde-support-card,
+  .monde-principle,
+  .monde-links__panel,
+  .monde-related__project,
+  .monde-hero__logo-frame {
+    background: var(--glass-background);
+    -webkit-backdrop-filter: saturate(var(--glass-saturation))
+      blur(var(--glass-blur));
+    backdrop-filter: saturate(var(--glass-saturation)) blur(var(--glass-blur));
+  }
+
+  .hub-link,
+  .music-action:not(.music-action--primary),
+  .music-service,
+  .selected-track__links a,
+  .music-connect__link,
+  .contact-option > a,
+  .button-link--secondary {
+    background: var(--glass-background);
+    -webkit-backdrop-filter: saturate(var(--glass-saturation))
+      blur(var(--glass-blur-compact));
+    backdrop-filter: saturate(var(--glass-saturation))
+      blur(var(--glass-blur-compact));
   }
 }
