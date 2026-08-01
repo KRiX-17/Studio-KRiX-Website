@@ -3,11 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { ButtonLink } from "@/components/button-link";
 import { ArrowRightIcon } from "@/components/icons";
+import { MondeSoniqLogo } from "@/components/monde-soniq-logo";
 import { siteConfig } from "@/config/site";
 import {
   mondeSoniqEvents,
   mondeSoniqLinks,
-  mondeSoniqWordmark,
 } from "@/data/monde-soniq";
 import { createMetadata } from "@/lib/metadata";
 
@@ -148,16 +148,13 @@ export default function MondeSoniqPage() {
       <section className="monde-hero">
         <div className="site-container monde-hero__grid">
           <div className="monde-hero__identity">
-            <Image
-              alt={mondeSoniqWordmark.alt}
-              className="monde-hero__wordmark"
-              height={mondeSoniqWordmark.height}
-              priority
-              sizes="(max-width: 960px) 160px, 190px"
-              src={mondeSoniqWordmark.src}
-              unoptimized
-              width={mondeSoniqWordmark.width}
-            />
+            <div className="monde-hero__logo-frame">
+              <MondeSoniqLogo
+                className="monde-hero__logo"
+                priority
+                sizes="(max-width: 680px) 260px, (max-width: 960px) 360px, 440px"
+              />
+            </div>
             <p className="monde-hero__eyebrow">Studio KRiX × Monde Soniq</p>
           </div>
           <div className="monde-hero__content">

@@ -1,21 +1,28 @@
 type MondeSoniqAssetBase = {
   id: string;
-  kind: "identity" | "event-artwork";
+  kind: "identity" | "logo" | "event-artwork";
   src: string;
   alt: string;
   width: number;
   height: number;
-  sourceUrl: string;
-  originalUrl: string;
   approvedBy: "NFRMT";
 };
 
 export type MondeSoniqIdentityAsset = MondeSoniqAssetBase & {
   kind: "identity";
+  sourceUrl: string;
+  originalUrl: string;
+};
+
+export type MondeSoniqLogoAsset = MondeSoniqAssetBase & {
+  kind: "logo";
+  theme: "light" | "dark" | "neutral";
 };
 
 export type MondeSoniqEventAsset = MondeSoniqAssetBase & {
   kind: "event-artwork";
+  sourceUrl: string;
+  originalUrl: string;
   eventTitle: string;
   venue: string;
   date: string;
@@ -47,6 +54,39 @@ export const mondeSoniqWordmark = {
     "https://images.ra.co/46ca169ce85d9f4f198be4386a6a5b361e4d25ef.jpg",
   approvedBy: "NFRMT",
 } as const satisfies MondeSoniqIdentityAsset;
+
+export const mondeSoniqLogoBlack = {
+  id: "monde-soniq-logo-black",
+  kind: "logo",
+  src: "/images/monde-soniq/monde-soniq-logo-black.png",
+  alt: "Monde Soniq logo",
+  width: 2718,
+  height: 2332,
+  approvedBy: "NFRMT",
+  theme: "light",
+} as const satisfies MondeSoniqLogoAsset;
+
+export const mondeSoniqLogoWhite = {
+  id: "monde-soniq-logo-white",
+  kind: "logo",
+  src: "/images/monde-soniq/monde-soniq-logo-white.png",
+  alt: "Monde Soniq logo",
+  width: 2718,
+  height: 2332,
+  approvedBy: "NFRMT",
+  theme: "dark",
+} as const satisfies MondeSoniqLogoAsset;
+
+export const mondeSoniqLogoOriginal = {
+  id: "monde-soniq-logo-original",
+  kind: "logo",
+  src: "/images/monde-soniq/monde-soniq-logo-original.jpg",
+  alt: "Monde Soniq circular logo on a white background",
+  width: 1080,
+  height: 1350,
+  approvedBy: "NFRMT",
+  theme: "neutral",
+} as const satisfies MondeSoniqLogoAsset;
 
 export const mondeSoniqEvents = [
   {
@@ -104,10 +144,14 @@ export const mondeSoniqLinks = {
 } as const;
 
 export const mondeSoniqAssets = [
+  mondeSoniqLogoBlack,
+  mondeSoniqLogoWhite,
+  mondeSoniqLogoOriginal,
   mondeSoniqIdentity,
   mondeSoniqWordmark,
   ...mondeSoniqEvents,
 ] as const satisfies readonly (
   | MondeSoniqIdentityAsset
+  | MondeSoniqLogoAsset
   | MondeSoniqEventAsset
 )[];

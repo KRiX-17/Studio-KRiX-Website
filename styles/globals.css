@@ -3556,19 +3556,35 @@ section[id] {
   padding: clamp(1.75rem, 5vw, 4.5rem);
 }
 
-.monde-preview__logo,
-.music-collaboration__logo,
-.professional-project__logo {
+.monde-logo {
+  position: relative;
   display: block;
+  aspect-ratio: 2718 / 2332;
+}
+
+.monde-logo__asset {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
-  border: 1px solid color-mix(in srgb, white 22%, transparent);
-  border-radius: 50%;
-  background: #09090b;
+}
+
+.monde-logo__asset--dark {
+  display: none;
+}
+
+.dark .monde-logo__asset--light {
+  display: none;
+}
+
+.dark .monde-logo__asset--dark {
+  display: block;
 }
 
 .monde-preview__logo {
-  width: 6rem;
-  height: 6rem;
+  width: min(15rem, 100%);
   margin-bottom: 2rem;
 }
 
@@ -3667,8 +3683,7 @@ section[id] {
 }
 
 .music-collaboration__logo {
-  width: 4.5rem;
-  height: 4.5rem;
+  width: 9rem;
 }
 
 .music-collaboration__poster {
@@ -3700,8 +3715,8 @@ section[id] {
 
 .monde-hero__grid {
   display: grid;
-  grid-template-columns: minmax(12rem, 0.36fr) minmax(0, 1fr);
-  gap: clamp(3rem, 8vw, 9rem);
+  grid-template-columns: minmax(19rem, 0.58fr) minmax(0, 1fr);
+  gap: clamp(3rem, 6vw, 7rem);
   align-items: start;
 }
 
@@ -3711,12 +3726,23 @@ section[id] {
   align-items: flex-start;
 }
 
-.monde-hero__wordmark {
-  display: block;
-  width: clamp(9rem, 14vw, 12rem);
-  height: auto;
-  border: 1px solid var(--line-strong);
-  border-radius: 0.45rem;
+.monde-hero__logo-frame {
+  display: flex;
+  width: min(100%, 30rem);
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+  background: color-mix(in srgb, var(--surface) 68%, transparent);
+  box-shadow:
+    0 1.5rem 4rem -3.2rem var(--shadow),
+    0 0 5rem -4.25rem var(--accent);
+  padding: clamp(1.25rem, 3vw, 2.25rem);
+  backdrop-filter: blur(12px);
+}
+
+.monde-hero__logo {
+  width: 100%;
 }
 
 .monde-hero__eyebrow {
@@ -4061,8 +4087,7 @@ section[id] {
   position: absolute;
   top: clamp(1.5rem, 4vw, 3.25rem);
   right: clamp(1.5rem, 4vw, 3.25rem);
-  width: 3.25rem;
-  height: 3.25rem;
+  width: 4.75rem;
 }
 
 .professional-projects__grid {
@@ -4113,6 +4138,10 @@ section[id] {
 
   .monde-hero__eyebrow {
     margin-top: 0;
+  }
+
+  .monde-hero__logo-frame {
+    width: min(100%, 23.75rem);
   }
 
   .monde-principles__grid {
@@ -4259,6 +4288,11 @@ section[id] {
 
   .monde-hero {
     padding-block: 4.5rem;
+  }
+
+  .monde-hero__logo-frame {
+    width: min(100%, 18.75rem);
+    padding: 1rem;
   }
 
   .monde-hero__content h1 {

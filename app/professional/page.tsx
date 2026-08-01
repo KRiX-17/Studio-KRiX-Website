@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { ButtonLink } from "@/components/button-link";
 import { ArrowRightIcon } from "@/components/icons";
+import { MondeSoniqLogo } from "@/components/monde-soniq-logo";
 import { PageIntro } from "@/components/page-intro";
 import { SkillsSection } from "@/components/sections/skills-section";
 import { siteConfig } from "@/config/site";
-import { mondeSoniqIdentity } from "@/data/monde-soniq";
 import { createMetadata } from "@/lib/metadata";
 
 const title = "Professional Profile | Christopher Helene";
@@ -84,14 +83,9 @@ export default function ProfessionalPage() {
               href="/projects/monde-soniq"
             >
               <span>Music · Events · Creative infrastructure</span>
-              <Image
-                alt={mondeSoniqIdentity.alt}
+              <MondeSoniqLogo
                 className="professional-project__logo"
-                height={mondeSoniqIdentity.height}
-                sizes="52px"
-                src={mondeSoniqIdentity.src}
-                unoptimized
-                width={mondeSoniqIdentity.width}
+                sizes="76px"
               />
               <h3>Monde Soniq</h3>
               <p>

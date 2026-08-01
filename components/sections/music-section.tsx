@@ -2,14 +2,12 @@ import Image from "next/image";
 import { ButtonLink } from "@/components/button-link";
 import { ArrowUpRightIcon } from "@/components/icons";
 import { LinkIcon } from "@/components/link-icons";
+import { MondeSoniqLogo } from "@/components/monde-soniq-logo";
 import {
   getLinksByCategory,
   getMusicServiceLinks,
 } from "@/data/links";
-import {
-  mondeSoniqEvents,
-  mondeSoniqIdentity,
-} from "@/data/monde-soniq";
+import { mondeSoniqEvents } from "@/data/monde-soniq";
 
 const musicServices = getMusicServiceLinks();
 const trackLinks = getLinksByCategory("track");
@@ -138,14 +136,9 @@ export function MusicSection() {
           <div className="music-collaboration__identity">
             <p className="section-label">Creative collaboration</p>
             <div className="music-collaboration__artwork">
-              <Image
-                alt={mondeSoniqIdentity.alt}
+              <MondeSoniqLogo
                 className="music-collaboration__logo"
-                height={mondeSoniqIdentity.height}
-                sizes="72px"
-                src={mondeSoniqIdentity.src}
-                unoptimized
-                width={mondeSoniqIdentity.width}
+                sizes="(max-width: 680px) 128px, 144px"
               />
               <Image
                 alt={mondeSoniqEvents[2].alt}

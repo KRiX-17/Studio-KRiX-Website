@@ -1,9 +1,7 @@
 import Image from "next/image";
 import { ButtonLink } from "@/components/button-link";
-import {
-  mondeSoniqEvents,
-  mondeSoniqIdentity,
-} from "@/data/monde-soniq";
+import { MondeSoniqLogo } from "@/components/monde-soniq-logo";
+import { mondeSoniqEvents } from "@/data/monde-soniq";
 import { mondeSoniqProject } from "@/data/projects";
 
 type MondeSoniqPreviewProps = {
@@ -17,14 +15,9 @@ export function MondeSoniqPreview({
     <section className="monde-preview" aria-labelledby="monde-preview-title">
       <div className="site-container monde-preview__panel">
         <div className="monde-preview__heading">
-          <Image
-            alt={mondeSoniqIdentity.alt}
+          <MondeSoniqLogo
             className="monde-preview__logo"
-            height={mondeSoniqIdentity.height}
-            sizes="96px"
-            src={mondeSoniqIdentity.src}
-            unoptimized
-            width={mondeSoniqIdentity.width}
+            sizes="(max-width: 680px) 220px, 240px"
           />
           <p className="section-label">Studio KRiX × Monde Soniq</p>
           <h2 id="monde-preview-title">{mondeSoniqProject.name}</h2>
