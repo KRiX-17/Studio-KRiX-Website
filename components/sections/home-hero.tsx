@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { ButtonLink } from "@/components/button-link";
+import { HomeHeroVisual } from "@/components/sections/home-hero-visual";
 
 export function HomeHero() {
   return (
@@ -15,8 +15,8 @@ export function HomeHero() {
             <span>and music brought together.</span>
           </h1>
           <p className="home-hero__lede">
-            Automotive technician, app creator and music producer based in
-            Sydney, Australia.
+            Automotive technician, software developer and music producer based
+            in Sydney, Australia.
           </p>
           <div className="home-hero__actions">
             <ButtonLink href="/music">Explore Music</ButtonLink>
@@ -29,16 +29,8 @@ export function HomeHero() {
           </div>
         </div>
 
-        <div className="home-hero__media" aria-hidden="true">
-          <Image
-            alt=""
-            fill
-            priority
-            quality={92}
-            sizes="(max-width: 800px) 100vw, 58vw"
-            src="/images/studio-krix-precision-engineering.png"
-          />
-          <div className="home-hero__media-edge" />
+        <div className="home-hero__media">
+          <HomeHeroVisual />
         </div>
       </div>
     </section>
