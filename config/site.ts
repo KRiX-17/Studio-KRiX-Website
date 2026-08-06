@@ -19,8 +19,6 @@ export const siteConfig = {
   description:
     "Automotive technology, practical software and electronic music by Christopher Helene in Sydney, Australia.",
   url: "https://studiokrix.com.au",
-  email: "krix@studiokrix.com.au",
-  supportEmail: "support@studiokrix.com.au",
   location: "Sydney, Australia",
   linkedIn: "https://www.linkedin.com/in/chris-helene-b0791ba5",
   github: "https://github.com/KRiX-17",

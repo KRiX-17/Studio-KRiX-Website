@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
 import type { ReactNode } from "react";
+import { JsonLd } from "@/components/json-ld";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -96,7 +97,6 @@ const structuredData = {
       "@id": `${siteConfig.url}/#organization`,
       name: siteConfig.name,
       url: siteConfig.url,
-      email: siteConfig.email,
       logo: {
         "@type": "ImageObject",
         url: `${siteConfig.url}/brand/studio-krix/studio-krix-sk-logo-512.png`,
@@ -167,10 +167,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <main id="main-content">{children}</main>
           <SiteFooter />
         </ThemeProvider>
-        <script
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-          type="application/ld+json"
-        />
+        <JsonLd data={structuredData} />
       </body>
     </html>
   );

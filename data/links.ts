@@ -180,7 +180,7 @@ export const linksHubItems = [
   },
   {
     title: "General Contact",
-    description: "krix@studiokrix.com.au",
+    description: "Secure contact form",
     href: "/contact",
     category: "contact",
     icon: "email",
@@ -189,7 +189,7 @@ export const linksHubItems = [
   },
   {
     title: "OhmXact Support",
-    description: "support@studiokrix.com.au",
+    description: "Private support form",
     href: "/support",
     category: "contact",
     icon: "email",
