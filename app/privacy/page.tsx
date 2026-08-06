@@ -1,6 +1,5 @@
 import { PageIntro } from "@/components/page-intro";
 import { createMetadata } from "@/lib/metadata";
-import { siteConfig } from "@/config/site";
 
 export const metadata = createMetadata({
   title: "Privacy",
@@ -31,8 +30,9 @@ const sections = [
     content: (
       <>
         <p>
-          This is currently a static website. It does not provide user
-          accounts, accept payments or use an embedded contact form.
+          This website does not provide user accounts, accept payments or run
+          analytics. Its contact and support forms collect only the information
+          a visitor chooses to submit.
         </p>
         <p>
           The hosting provider may process routine technical information such
@@ -61,36 +61,35 @@ const sections = [
     ),
   },
   {
-    title: "Email",
+    title: "Contact and support forms",
     content: (
       <>
         <p>
-          When you contact Studio KRiX by email, the message may include your
-          email address, name, device details, screenshots and any other
-          information you choose to provide.
+          A form submission may include your name, reply email, enquiry or
+          product details, device and software versions, issue descriptions and
+          reproduction steps. The forms do not accept file uploads and should
+          not be used for sensitive personal information.
         </p>
         <p>
-          That information is used to respond, provide support, understand
-          product issues and keep an appropriate record of the conversation.
-          Please avoid sending sensitive personal information that is not
-          necessary for the request.
+          That information is used only to respond, provide support and
+          understand product issues. It is not added to a marketing list.
         </p>
       </>
     ),
   },
   {
-    title: "Future analytics and contact forms",
+    title: "Email delivery and anti-abuse processing",
     content: (
       <>
         <p>
-          Studio KRiX may add privacy-conscious analytics or contact forms in
-          the future. Before doing so, this policy will be updated to explain
-          what is collected, why it is needed, the service providers involved,
-          the relevant choices and any applicable retention period.
+          Resend processes submitted form content to deliver it to Studio KRiX.
+          Cloudflare Turnstile processes browser and anti-abuse signals to help
+          distinguish people from automated submissions.
         </p>
         <p>
-          Where consent is legally required, the feature will not be activated
-          for a visitor until that consent is obtained.
+          No advertising or marketing analytics are active. If analytics are
+          introduced later, this policy and any required consent choices will
+          be updated before that processing begins.
         </p>
       </>
     ),
@@ -110,11 +109,11 @@ const sections = [
     title: "Retention and security",
     content: (
       <p>
-        Information is kept only for as long as it is reasonably needed for
-        the purpose for which it was collected, including support, security,
-        legal and record-keeping needs. Reasonable measures are used to protect
-        information, but no internet or email system can be guaranteed to be
-        completely secure.
+        Form submissions and resulting correspondence are kept only for as long
+        as reasonably necessary to answer the enquiry, provide support and meet
+        proportionate legal or record-keeping needs. Reasonable measures are
+        used to protect information, but no internet or email system can be
+        guaranteed to be completely secure.
       </p>
     ),
   },
@@ -124,7 +123,7 @@ const sections = [
       <p>
         Depending on where you live, you may have rights to ask about, access,
         correct or delete personal information, or to object to or restrict
-        certain processing. Contact Studio KRiX using the address below. Some
+        certain processing. Contact Studio KRiX through the contact form. Some
         information may need to be retained where the law permits or requires
         it.
       </p>
@@ -145,11 +144,8 @@ const sections = [
     title: "Contact",
     content: (
       <p>
-        Privacy questions can be sent to{" "}
-        <a href={`mailto:${siteConfig.supportEmail}`}>
-          {siteConfig.supportEmail}
-        </a>
-        .
+        Privacy questions can be sent through the secure{" "}
+        <a href="/contact">contact form</a>.
       </p>
     ),
   },
@@ -160,7 +156,7 @@ export default function PrivacyPage() {
     <>
       <PageIntro
         description="How information is handled across the Studio KRiX website and software."
-        index="Last updated 30 July 2026"
+        index="Last updated 6 August 2026"
         title="Privacy, written to be understood."
       />
       <section className="policy">
@@ -168,9 +164,7 @@ export default function PrivacyPage() {
           <aside aria-label="Privacy policy summary">
             <p>Studio KRiX</p>
             <p>Sydney, Australia</p>
-            <a href={`mailto:${siteConfig.supportEmail}`}>
-              {siteConfig.supportEmail}
-            </a>
+            <a href="/contact">Secure contact form</a>
           </aside>
           <div className="policy__content">
             {sections.map((section, index) => (

@@ -1,7 +1,6 @@
-import { ButtonLink } from "@/components/button-link";
+import { ContactForm } from "@/components/contact-form";
 import { PageIntro } from "@/components/page-intro";
 import { Reveal } from "@/components/reveal";
-import { siteConfig } from "@/config/site";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
@@ -36,7 +35,6 @@ const reportDetails = [
   "App name and version",
   "A clear description of the issue",
   "Steps to reproduce it",
-  "Screenshots, if they help explain the problem",
 ] as const;
 
 export default function SupportPage() {
@@ -73,8 +71,8 @@ export default function SupportPage() {
             <p className="section-label">Bug reports</p>
             <h2>Useful detail helps find a useful answer.</h2>
             <p>
-              If the issue continues, send an email and include as much of the
-              following information as you can.
+              If the issue continues, use the support form and include as much
+              of the following information as you can.
             </p>
           </Reveal>
           <ol className="report-details">
@@ -91,18 +89,14 @@ export default function SupportPage() {
       <section className="support-contact">
         <Reveal className="site-container support-contact__inner">
           <div>
-            <p className="section-label">Email support</p>
+            <p className="section-label">Private support</p>
             <h2>Still need help?</h2>
-          </div>
-          <div>
             <p>
-              Send the details to {siteConfig.supportEmail}. Replies are
-              handled personally and may take a little time.
+              The form sends technical details privately. File uploads are not
+              accepted in this release.
             </p>
-            <ButtonLink href={`mailto:${siteConfig.supportEmail}`} external>
-              Email support
-            </ButtonLink>
           </div>
+          <ContactForm mode="support" />
         </Reveal>
       </section>
     </>

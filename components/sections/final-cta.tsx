@@ -1,17 +1,18 @@
 import { ButtonLink } from "@/components/button-link";
 import { Reveal } from "@/components/reveal";
-import { siteConfig } from "@/config/site";
 
 type FinalCtaProps = {
   title?: React.ReactNode;
   description?: string;
-  email?: string;
+  href?: string;
+  linkLabel?: string;
 };
 
 export function FinalCta({
   title = "Have something thoughtful in mind?",
   description,
-  email = siteConfig.email,
+  href = "/contact",
+  linkLabel = "Start a conversation",
 }: FinalCtaProps) {
   return (
     <section className="final-cta">
@@ -19,15 +20,9 @@ export function FinalCta({
         <h2>{title}</h2>
         {description ? <p>{description}</p> : null}
         <div className="final-cta__actions">
-          <ButtonLink href={`mailto:${email}`} external>
-            Start a conversation
-          </ButtonLink>
-          <ButtonLink
-            href={`mailto:${email}`}
-            variant="text"
-            external
-          >
-            {email}
+          <ButtonLink href={href}>{linkLabel}</ButtonLink>
+          <ButtonLink href="/privacy" variant="text">
+            How messages are handled
           </ButtonLink>
         </div>
       </Reveal>

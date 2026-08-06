@@ -29,12 +29,12 @@ export function ButtonLink({
     </>
   );
 
-  if (href.startsWith("mailto:") || href.startsWith("http")) {
+  if (href.startsWith("http")) {
     return (
       <a
         className={classes}
         href={href}
-        rel={external ? "noreferrer" : undefined}
+        rel={external ? "noopener noreferrer" : undefined}
         target={external ? "_blank" : undefined}
       >
         {content}

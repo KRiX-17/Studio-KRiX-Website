@@ -67,7 +67,7 @@ function HubLink({ item, variant = "compact" }: HubLinkProps) {
     <a
       className={className}
       href={item.href}
-      rel={item.external ? "noreferrer" : undefined}
+      rel={item.external ? "noopener noreferrer" : undefined}
       target={item.external ? "_blank" : undefined}
     >
       {content}

@@ -1,8 +1,20 @@
 import type { NextConfig } from "next";
+import { createSecurityHeaders } from "./lib/security-headers";
+
+const isProduction = process.env.NODE_ENV === "production";
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  productionBrowserSourceMaps: false,
   reactStrictMode: true,
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: createSecurityHeaders(isProduction),
+      },
+    ];
+  },
   async redirects() {
     return [
       {
