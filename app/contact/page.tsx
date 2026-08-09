@@ -1,5 +1,5 @@
 import { ButtonLink } from "@/components/button-link";
-import { ArrowUpRightIcon } from "@/components/icons";
+import { ContactForm } from "@/components/contact-form";
 import { PageIntro } from "@/components/page-intro";
 import { siteConfig } from "@/config/site";
 import { createMetadata } from "@/lib/metadata";
@@ -11,29 +11,6 @@ export const metadata = createMetadata({
   path: "/contact",
 });
 
-const contactOptions = [
-  {
-    title: "General enquiries",
-    description: "Questions, introductions and Studio KRiX enquiries.",
-    email: siteConfig.email,
-  },
-  {
-    title: "Professional opportunities",
-    description: "Recruitment, employment and technical opportunities.",
-    email: siteConfig.email,
-  },
-  {
-    title: "Creative collaboration",
-    description: "Music, sound and thoughtful creative projects.",
-    email: siteConfig.email,
-  },
-  {
-    title: "OhmXact support",
-    description: "Application and product support for OhmXact.",
-    email: siteConfig.supportEmail,
-  },
-] as const;
-
 export default function ContactPage() {
   return (
     <>
@@ -43,20 +20,21 @@ export default function ContactPage() {
         title="Get in touch."
       />
 
-      <section className="contact-directory">
-        <div className="site-container contact-directory__grid">
-          {contactOptions.map((option) => (
-            <article className="contact-card" key={option.title}>
-              <div>
-                <h2>{option.title}</h2>
-                <p>{option.description}</p>
-              </div>
-              <a href={`mailto:${option.email}`}>
-                <span>{option.email}</span>
-                <ArrowUpRightIcon />
-              </a>
-            </article>
-          ))}
+      <section className="secure-form-section">
+        <div className="site-container secure-form-section__grid">
+          <div className="secure-form-section__intro">
+            <p className="section-label">Private contact</p>
+            <h2>One form, routed with care.</h2>
+            <p>
+              Use this form for Studio KRiX enquiries, professional
+              opportunities and creative collaboration. Product problems have
+              a separate support form with space for technical details.
+            </p>
+            <ButtonLink href="/support" variant="secondary">
+              Go to product support
+            </ButtonLink>
+          </div>
+          <ContactForm mode="contact" />
         </div>
       </section>
 

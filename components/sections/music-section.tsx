@@ -38,7 +38,7 @@ export function MusicSection() {
                 className={`music-action ${index === 0 ? "music-action--primary" : ""}`}
                 href={item.href}
                 key={item.href}
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 target="_blank"
               >
                 <LinkIcon name={item.icon} />
@@ -66,7 +66,7 @@ export function MusicSection() {
                 className="music-service"
                 href={item.href}
                 key={item.href}
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 target="_blank"
               >
                 <LinkIcon name={item.icon} />
@@ -95,7 +95,7 @@ export function MusicSection() {
                 <a
                   href={item.href}
                   key={item.href}
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   target="_blank"
                 >
                   <LinkIcon name={item.icon} />
@@ -180,7 +180,7 @@ export function MusicSection() {
                 className="music-connect__link"
                 href={item.href}
                 key={item.href}
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 target="_blank"
               >
                 <LinkIcon name={item.icon} />

@@ -30,6 +30,7 @@ Open [http://localhost:3000](http://localhost:3000).
 ```bash
 npm run lint
 npm run typecheck
+npm test
 npm run build
 ```
 
@@ -81,10 +82,14 @@ new project available to the reusable project listing.
    `www.studiokrix.com.au` to the same project.
 6. The Next.js host redirects permanently send all three alternate hosts
    directly to `https://studiokrix.com.au`, preserving paths and query strings.
-7. Do not modify MX, SPF, DKIM, Apple verification or any other mail-related
-   DNS records used by iCloud Custom Email.
+7. Configure the contact-form services and firewall using
+   [`docs/security-deployment.md`](docs/security-deployment.md).
+8. Do not modify MX, SPF, DKIM, Apple verification or any other mail-related
+   DNS records used by iCloud Custom Email without a deliberate manual review.
 
-No environment variables are currently required.
+The form routes fail closed until the documented Resend and Turnstile
+environment variables are configured. Recipient addresses and service secrets
+must remain server-only.
 
 ## Release notes
 

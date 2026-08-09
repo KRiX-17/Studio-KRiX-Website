@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { JsonLd } from "@/components/json-ld";
 import { ButtonLink } from "@/components/button-link";
 import { ArrowRightIcon } from "@/components/icons";
 import { MondeSoniqLogo } from "@/components/monde-soniq-logo";
@@ -387,7 +388,7 @@ export default function MondeSoniqPage() {
                   </span>
                   <a
                     href={asset.sourceUrl}
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     target="_blank"
                   >
                     View event on Resident Advisor
@@ -464,10 +465,7 @@ export default function MondeSoniqPage() {
         </div>
       </section>
 
-      <script
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        type="application/ld+json"
-      />
+      <JsonLd data={structuredData} />
     </>
   );
 }

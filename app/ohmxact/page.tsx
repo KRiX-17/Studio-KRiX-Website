@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ButtonLink } from "@/components/button-link";
 import { DeviceMockups } from "@/components/device-mockups";
+import { JsonLd } from "@/components/json-ld";
 import { Reveal } from "@/components/reveal";
 import { FinalCta } from "@/components/sections/final-cta";
 import { siteConfig } from "@/config/site";
@@ -116,15 +117,11 @@ export default function OhmXactPage() {
 
       <FinalCta
         description="Questions about OhmXact are welcome."
-        email={siteConfig.supportEmail}
+        href="/support"
+        linkLabel="Open the support form"
         title="Need a hand with OhmXact?"
       />
-      <script
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(softwareStructuredData),
-        }}
-        type="application/ld+json"
-      />
+      <JsonLd data={softwareStructuredData} />
     </>
   );
 }
