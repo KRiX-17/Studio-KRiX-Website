@@ -26,4 +26,9 @@ describe("reveal motion", () => {
       /\.scroll-reveal \{[\s\S]*?min-width: 0;[\s\S]*?max-width: 100%;/,
     );
   });
+
+  it("keeps homepage child reveal motion vertical-only", () => {
+    expect(globalStyles).toContain("transform: translate3d(0, 0.5rem, 0)");
+    expect(globalStyles).not.toContain("translate(0.7rem, 0.5rem)");
+  });
 });

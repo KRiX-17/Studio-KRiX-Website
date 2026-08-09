@@ -8368,7 +8368,7 @@ section[id] {
 
 .home-hero__media.scroll-reveal--ready:not(.scroll-reveal--visible) .home-hero-visual__music {
   opacity: 0;
-  transform: translate(0.7rem, 0.5rem);
+  transform: translate3d(0, 0.5rem, 0);
 }
 
 .home-hero__media.scroll-reveal--ready:not(.scroll-reveal--visible) .home-hero-visual__phone {
