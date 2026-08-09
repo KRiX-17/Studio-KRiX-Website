@@ -4,6 +4,7 @@ import { ButtonLink } from "@/components/button-link";
 import { ConnectedSystemsDiagram } from "@/components/connected-systems-diagram";
 import { ArrowRightIcon } from "@/components/icons";
 import { JsonLd } from "@/components/json-ld";
+import { Reveal } from "@/components/reveal";
 import { siteConfig } from "@/config/site";
 import { createMetadata } from "@/lib/metadata";
 
@@ -56,6 +57,17 @@ const automationCapabilities = [
   "Scheduled actions",
   "Event-triggered automation",
   "Simple manual control",
+] as const;
+
+const localAiCapabilities = [
+  "Local model runtime",
+  "Language and reasoning models",
+  "Coding and development assistants",
+  "Local document retrieval",
+  "Approved multimodal workflows",
+  "Casa intelligence services",
+  "Policy and approval boundaries",
+  "Private infrastructure planning",
 ] as const;
 
 const casaIntegrations = [
@@ -120,7 +132,12 @@ type CapabilityListProps = {
 
 function CapabilityList({ items, label }: CapabilityListProps) {
   return (
-    <ul className="connected-capability__list" aria-label={label}>
+    <Reveal
+      as="ul"
+      ariaLabel={label}
+      className="connected-capability__list"
+      delay={0.06}
+    >
       {items.map((item, index) => (
         <li key={item}>
           <span aria-hidden="true">
@@ -129,7 +146,7 @@ function CapabilityList({ items, label }: CapabilityListProps) {
           <strong>{item}</strong>
         </li>
       ))}
-    </ul>
+    </Reveal>
   );
 }
 
@@ -138,7 +155,7 @@ export default function ConnectedSystemsPage() {
     <>
       <section className="connected-hero">
         <div className="site-container connected-hero__grid">
-          <div className="connected-hero__copy">
+          <Reveal className="connected-hero__copy">
             <p className="connected-hero__eyebrow">
               Studio KRiX Connected Systems
             </p>
@@ -161,11 +178,12 @@ export default function ConnectedSystemsPage() {
                 View Professional Profile
               </ButtonLink>
             </div>
-          </div>
+          </Reveal>
 
-          <aside
+          <Reveal
+            as="aside"
             className="connected-status-card"
-            aria-labelledby="connected-status-title"
+            delay={0.08}
           >
             <div className="connected-status-card__topline">
               <span aria-hidden="true" />
@@ -186,7 +204,7 @@ export default function ConnectedSystemsPage() {
                 <dd>Sydney, Australia</dd>
               </div>
             </dl>
-          </aside>
+          </Reveal>
         </div>
       </section>
 
@@ -196,7 +214,7 @@ export default function ConnectedSystemsPage() {
         aria-labelledby="connected-overview-title"
       >
         <div className="site-container connected-overview__grid">
-          <div className="connected-overview__copy">
+          <Reveal className="connected-overview__copy">
             <p className="section-label">The connected environment</p>
             <h2 id="connected-overview-title">
               Practical systems, considered as a whole.
@@ -210,8 +228,10 @@ export default function ConnectedSystemsPage() {
               needs, using reliable infrastructure, thoughtful automation and
               clear interfaces rather than unnecessary complexity.
             </p>
-          </div>
-          <ConnectedSystemsDiagram />
+          </Reveal>
+          <Reveal delay={0.08} direction="left">
+            <ConnectedSystemsDiagram />
+          </Reveal>
         </div>
       </section>
 
@@ -314,13 +334,57 @@ export default function ConnectedSystemsPage() {
       </section>
 
       <section
+        className="connected-capability connected-capability--alternate connected-capability--local-ai"
+        id="local-ai"
+        aria-labelledby="local-ai-title"
+      >
+        <div className="site-container connected-capability__grid">
+          <div className="connected-capability__copy">
+            <p className="section-label">04 · Local intelligence</p>
+            <h2 id="local-ai-title">Local AI</h2>
+            <p>
+              Selected language, reasoning, retrieval and multimodal workloads
+              can run closer to the private systems and information they
+              support.
+            </p>
+            <p>
+              Studio KRiX is exploring high-memory local hardware, Ollama and
+              a guarded Casa intelligence layer. The work is an architecture
+              direction, not a claim about hardware currently owned or an
+              unrestricted autonomous system.
+            </p>
+            <div className="connected-technology-note">
+              <strong>Control boundary</strong>
+              <p>
+                AI may interpret, retrieve, summarise and suggest. Critical
+                actions remain deterministic and require explicit human
+                approval.
+              </p>
+            </div>
+            <div className="connected-capability__detail-link">
+              <ButtonLink
+                href="/connected-systems/local-ai"
+                variant="secondary"
+              >
+                Explore Local AI
+              </ButtonLink>
+            </div>
+          </div>
+          <CapabilityList
+            items={localAiCapabilities}
+            label="Local AI capabilities"
+          />
+        </div>
+      </section>
+
+      <section
         className="connected-capability connected-capability--casa"
         id="casa-integration"
         aria-labelledby="casa-integration-title"
       >
         <div className="site-container connected-capability__grid">
           <div className="connected-capability__copy">
-            <p className="section-label">04 · Evolving direction</p>
+            <p className="section-label">05 · Evolving direction</p>
             <h2 id="casa-integration-title">
               Casa as the orchestration layer
             </h2>

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
 import type { ReactNode } from "react";
 import { JsonLd } from "@/components/json-ld";
+import { RevealManager } from "@/components/reveal-manager";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -167,6 +168,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <SiteHeader />
           <main id="main-content">{children}</main>
           <SiteFooter />
+          <RevealManager />
         </ThemeProvider>
         <JsonLd data={structuredData} />
       </body>
