@@ -8,6 +8,7 @@ const routes = [
   "/links",
   "/projects",
   "/projects/monde-soniq",
+  "/connected-systems",
   "/ohmxact",
   "/about",
   "/support",
@@ -18,7 +19,7 @@ const routes = [
 export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map((route) => ({
     url: `${siteConfig.url}${route}`,
-    lastModified: new Date("2026-07-31"),
+    lastModified: new Date("2026-08-09"),
     changeFrequency:
       route === "" ||
       route === "/music" ||
@@ -33,6 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
           ? 0.9
           : route === "/music" ||
               route === "/professional" ||
+              route === "/connected-systems" ||
               route === "/projects/monde-soniq"
             ? 0.85
           : route === "/links"

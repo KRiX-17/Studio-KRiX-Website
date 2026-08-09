@@ -9,7 +9,8 @@ export type Project = {
     | "Available soon"
     | "In development"
     | "Released"
-    | "Ongoing collaboration";
+    | "Ongoing collaboration"
+    | "Active exploration";
   href: string;
   accent: string;
   featured: boolean;
@@ -29,6 +30,20 @@ export const mondeSoniqProject: Project = {
   featured: true,
 };
 
+export const connectedSystemsProject: Project = {
+  slug: "connected-systems",
+  name: "Connected Systems",
+  category: "Network · Automation · Security · Software",
+  description:
+    "A Studio KRiX exploration of reliable network infrastructure, UniFi systems, home automation and Casa integration.",
+  tagline: "Networks, automation and software working together.",
+  platforms: ["Infrastructure", "Security", "Automation", "Software"],
+  status: "Active exploration",
+  href: "/connected-systems",
+  accent: "#9f233b",
+  featured: false,
+};
+
 export const projects: readonly Project[] = [
   {
     slug: "ohmxact",
@@ -43,6 +58,7 @@ export const projects: readonly Project[] = [
     accent: "#9f233b",
     featured: true,
   },
+  connectedSystemsProject,
   mondeSoniqProject,
   {
     slug: "studio-krix-website",
