@@ -6,8 +6,8 @@ const architectureLayers = [
   },
   {
     number: "02",
-    title: "Local AI runtime",
-    items: ["Ollama"],
+    title: "Runtime & model management",
+    items: ["Ollama", "Model serving"],
   },
   {
     number: "03",
