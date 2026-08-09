@@ -44,6 +44,20 @@ export const connectedSystemsProject: Project = {
   featured: false,
 };
 
+export const casaProject: Project = {
+  slug: "casa",
+  name: "Casa",
+  category: "Software · Household Operations · Connected Systems",
+  description:
+    "An evolving Studio KRiX product concept exploring a clear, human-facing layer for household tasks, routines, alerts and selected connected-system information.",
+  tagline: "A simpler way to run the household.",
+  platforms: ["Product concept", "Household operations", "Software"],
+  status: "In development",
+  href: "/casa",
+  accent: "#a87438",
+  featured: false,
+};
+
 export const projects: readonly Project[] = [
   {
     slug: "ohmxact",
@@ -59,6 +73,7 @@ export const projects: readonly Project[] = [
     featured: true,
   },
   connectedSystemsProject,
+  casaProject,
   mondeSoniqProject,
   {
     slug: "studio-krix-website",

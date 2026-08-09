@@ -91,6 +91,16 @@ export default function ProfessionalPage() {
               </p>
               <ArrowRightIcon />
             </Link>
+            <Link className="professional-project" href="/casa">
+              <span>Product concept · UX · Systems integration</span>
+              <h3>Casa</h3>
+              <p>
+                An evolving household-operations concept demonstrating product
+                thinking, systems architecture, UX design and integration
+                planning without overstating unfinished capability.
+              </p>
+              <ArrowRightIcon />
+            </Link>
             <Link
               className="professional-project professional-project--monde"
               href="/projects/monde-soniq"

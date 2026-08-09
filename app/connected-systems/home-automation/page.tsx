@@ -421,11 +421,16 @@ export default function HomeAutomationPage() {
               <p className="section-label">Evolving human-facing layer</p>
               <h2 id="home-auto-casa-title">Casa + Home Automation</h2>
             </div>
-            <p>
-              Casa is being developed as the human-facing layer of the Studio
-              KRiX connected-home concept. The automation system handles
-              devices and rules. Casa focuses on the household.
-            </p>
+            <div className="home-auto-casa__intro">
+              <p>
+                Casa is being developed as the human-facing layer of the Studio
+                KRiX connected-home concept. The automation system handles
+                devices and rules. Casa focuses on the household.
+              </p>
+              <ButtonLink href="/casa" variant="secondary">
+                Explore Casa
+              </ButtonLink>
+            </div>
           </div>
 
           <div className="home-auto-casa__comparison">
