@@ -7,7 +7,15 @@ import type {
 
 const resendEndpoint = "https://api.resend.com/emails";
 const resendTimeoutMs = 8_000;
+const resendMaximumAttempts = 2;
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+type DeliveryResult =
+  | { status: "sent" }
+  | { status: "configuration_error" }
+  | { status: "message_build_error" }
+  | { errorClass: string; status: "resend_request_error" }
+  | { responseStatus: number; status: "resend_rejected" };
 
 function isSafeHeader(value: string | undefined, maximum = 320) {
   return Boolean(
@@ -79,10 +87,22 @@ function supportEmail(submission: SupportSubmission) {
   };
 }
 
+function safeErrorClass(error: unknown) {
+  if (
+    error instanceof Error &&
+    /^[A-Za-z][A-Za-z0-9_-]{0,63}$/.test(error.name)
+  ) {
+    return error.name;
+  }
+
+  return "UnknownError";
+}
+
 export async function sendSubmission(
   mode: FormMode,
   submission: ValidSubmission,
-) {
+  requestId: string,
+): Promise<DeliveryResult> {
   const apiKey = process.env.RESEND_API_KEY;
   const from = process.env.CONTACT_FROM_EMAIL;
   const to = destinationFor(mode);
@@ -93,33 +113,56 @@ export async function sendSubmission(
     !isDestinationEmail(to) ||
     !isDestinationEmail(submission.replyEmail)
   ) {
-    return "unavailable" as const;
+    return { status: "configuration_error" };
   }
 
-  const email =
-    mode === "contact"
-      ? contactEmail(submission as ContactSubmission)
-      : supportEmail(submission as SupportSubmission);
-
+  let body: string;
   try {
-    const response = await fetch(resendEndpoint, {
-      body: JSON.stringify({
-        from,
-        reply_to: submission.replyEmail,
-        subject: email.subject,
-        text: email.text,
-        to: [to],
-      }),
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-      signal: AbortSignal.timeout(resendTimeoutMs),
+    const email =
+      mode === "contact"
+        ? contactEmail(submission as ContactSubmission)
+        : supportEmail(submission as SupportSubmission);
+    body = JSON.stringify({
+      from,
+      reply_to: submission.replyEmail,
+      subject: email.subject,
+      text: email.text,
+      to: [to],
     });
-
-    return response.ok ? ("sent" as const) : ("failed" as const);
   } catch {
-    return "failed" as const;
+    return { status: "message_build_error" };
   }
+
+  const headers = {
+    Authorization: `Bearer ${apiKey}`,
+    "Content-Type": "application/json",
+    "Idempotency-Key": `form/${requestId}`,
+  };
+
+  for (let attempt = 1; attempt <= resendMaximumAttempts; attempt += 1) {
+    try {
+      const response = await fetch(resendEndpoint, {
+        body,
+        headers,
+        method: "POST",
+        signal: AbortSignal.timeout(resendTimeoutMs),
+      });
+
+      if (response.ok) {
+        return { status: "sent" };
+      }
+      if (response.status < 500 || attempt === resendMaximumAttempts) {
+        return { responseStatus: response.status, status: "resend_rejected" };
+      }
+    } catch (error) {
+      if (attempt === resendMaximumAttempts) {
+        return {
+          errorClass: safeErrorClass(error),
+          status: "resend_request_error",
+        };
+      }
+    }
+  }
+
+  return { errorClass: "UnknownError", status: "resend_request_error" };
 }
