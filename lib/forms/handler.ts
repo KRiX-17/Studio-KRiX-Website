@@ -157,6 +157,7 @@ export async function handleSubmission(request: Request, mode: FormMode) {
   }
 
   if (!submissionServicesConfigured(mode)) {
+    operationalError(requestId, "configuration_error");
     return jsonResponse(
       requestId,
       { error: "Messaging is temporarily unavailable. Please try again later." },
@@ -195,10 +196,16 @@ export async function handleSubmission(request: Request, mode: FormMode) {
     );
   }
 
-  const delivery = await sendSubmission(mode, validation.data);
-  if (delivery !== "sent") {
+  const delivery = await sendSubmission(mode, validation.data, requestId);
+  if (delivery.status !== "sent") {
     releaseSubmission(reservation.key);
-    operationalError(requestId, `delivery_${delivery}`);
+    const detail =
+      delivery.status === "resend_request_error"
+        ? ` error=${delivery.errorClass}`
+        : delivery.status === "resend_rejected"
+          ? ` status=${delivery.responseStatus}`
+          : "";
+    operationalError(requestId, `${delivery.status}${detail}`);
     return jsonResponse(
       requestId,
       { error: "The message could not be sent right now. Please try again later." },
