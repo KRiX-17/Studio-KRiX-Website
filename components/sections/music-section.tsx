@@ -3,6 +3,7 @@ import { ButtonLink } from "@/components/button-link";
 import { ArrowUpRightIcon } from "@/components/icons";
 import { LinkIcon } from "@/components/link-icons";
 import { MondeSoniqLogo } from "@/components/monde-soniq-logo";
+import { Reveal } from "@/components/reveal";
 import {
   getLinksByCategory,
   getMusicServiceLinks,
@@ -23,7 +24,7 @@ export function MusicSection() {
   return (
     <>
       <section className="music-release">
-        <div className="site-container music-release__panel">
+        <Reveal className="site-container music-release__panel">
           <div>
             <p className="section-label">Featured release</p>
             <h2>Keep Walking Your Path</h2>
@@ -48,11 +49,11 @@ export function MusicSection() {
               </a>
             ))}
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <section className="music-platforms">
-        <div className="site-container">
+        <Reveal className="site-container">
           <div className="directory-heading">
             <div>
               <p className="section-label">Official destinations</p>
@@ -76,11 +77,11 @@ export function MusicSection() {
               </a>
             ))}
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <section className="selected-tracks">
-        <div className="site-container">
+        <Reveal className="site-container">
           <div className="section-rule">
             <span>Selected track</span>
             <span>KRiX</span>
@@ -106,11 +107,11 @@ export function MusicSection() {
               ))}
             </div>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <section className="artist-profile">
-        <div className="site-container artist-profile__grid">
+        <Reveal className="site-container artist-profile__grid">
           <div>
             <p className="section-label">Artist profile</p>
             <h2>KRiX</h2>
@@ -125,14 +126,14 @@ export function MusicSection() {
               About Christopher and Studio KRiX
             </ButtonLink>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <section
         className="music-collaboration"
         aria-labelledby="music-collaboration-title"
       >
-        <div className="site-container music-collaboration__panel">
+        <Reveal className="site-container music-collaboration__panel">
           <div className="music-collaboration__identity">
             <p className="section-label">Creative collaboration</p>
             <div className="music-collaboration__artwork">
@@ -163,11 +164,11 @@ export function MusicSection() {
               Explore Monde Soniq
             </ButtonLink>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <section className="music-connect">
-        <div className="site-container">
+        <Reveal className="site-container">
           <div className="directory-heading">
             <div>
               <p className="section-label">Elsewhere</p>
@@ -193,7 +194,7 @@ export function MusicSection() {
               Contact Studio KRiX
             </ButtonLink>
           </div>
-        </div>
+        </Reveal>
       </section>
     </>
   );

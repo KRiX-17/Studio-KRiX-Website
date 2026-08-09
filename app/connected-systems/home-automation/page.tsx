@@ -4,6 +4,7 @@ import { ButtonLink } from "@/components/button-link";
 import { HomeAutomationArchitecture } from "@/components/home-automation-architecture";
 import { ArrowRightIcon } from "@/components/icons";
 import { JsonLd } from "@/components/json-ld";
+import { Reveal } from "@/components/reveal";
 import { siteConfig } from "@/config/site";
 import { createMetadata } from "@/lib/metadata";
 
@@ -220,7 +221,7 @@ export default function HomeAutomationPage() {
     <>
       <section className="connected-hero home-auto-hero">
         <div className="site-container connected-hero__grid">
-          <div className="connected-hero__copy">
+          <Reveal className="connected-hero__copy">
             <p className="connected-hero__eyebrow">
               Connected Systems · Home Automation
             </p>
@@ -243,11 +244,12 @@ export default function HomeAutomationPage() {
                 Connected Systems
               </ButtonLink>
             </div>
-          </div>
+          </Reveal>
 
-          <aside
+          <Reveal
+            as="aside"
             className="connected-status-card home-auto-status"
-            aria-labelledby="home-auto-status-title"
+            delay={0.08}
           >
             <div className="connected-status-card__topline">
               <span aria-hidden="true" />
@@ -268,7 +270,7 @@ export default function HomeAutomationPage() {
                 <dd>Manual control always remains</dd>
               </div>
             </dl>
-          </aside>
+          </Reveal>
         </div>
       </section>
 
@@ -311,7 +313,7 @@ export default function HomeAutomationPage() {
         aria-labelledby="home-auto-architecture-title"
       >
         <div className="site-container home-auto-architecture__grid">
-          <div className="home-auto-section-copy">
+          <Reveal className="home-auto-section-copy">
             <p className="section-label">The automation architecture</p>
             <h2 id="home-auto-architecture-title">
               A clear stack, designed around people.
@@ -322,8 +324,10 @@ export default function HomeAutomationPage() {
               layers. Casa is being explored above them as a simpler way to
               understand household context and act when something matters.
             </p>
-          </div>
-          <HomeAutomationArchitecture />
+          </Reveal>
+          <Reveal delay={0.08} direction="left">
+            <HomeAutomationArchitecture />
+          </Reveal>
         </div>
       </section>
 
@@ -552,8 +556,8 @@ export default function HomeAutomationPage() {
               <h2 id="home-auto-related-title">Where to next</h2>
             </div>
             <p>
-              Return to the complete Connected Systems capability or explore
-              the professional practice behind the work.
+              Return to Connected Systems, explore the optional Local AI
+              intelligence layer or see the practice behind the work.
             </p>
           </div>
           <div className="home-auto-related__grid">
@@ -572,6 +576,15 @@ export default function HomeAutomationPage() {
               <p>
                 The practical capabilities and approach behind Studio KRiX
                 systems work.
+              </p>
+              <ArrowRightIcon />
+            </Link>
+            <Link href="/connected-systems/local-ai">
+              <span>Private infrastructure · Ollama · Casa</span>
+              <h3>Local AI</h3>
+              <p>
+                A guarded architecture for local models, retrieval and
+                optional household intelligence.
               </p>
               <ArrowRightIcon />
             </Link>

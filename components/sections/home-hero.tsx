@@ -1,11 +1,12 @@
 import { ButtonLink } from "@/components/button-link";
 import { HomeHeroVisual } from "@/components/sections/home-hero-visual";
+import { Reveal } from "@/components/reveal";
 
 export function HomeHero() {
   return (
     <section className="home-hero" id="home">
       <div className="site-container home-hero__grid">
-        <div className="home-hero__copy">
+        <Reveal className="home-hero__copy">
           <p className="home-hero__eyebrow">
             Christopher Helene <span aria-hidden="true">·</span> KRiX{" "}
             <span aria-hidden="true">·</span> Studio KRiX
@@ -27,11 +28,11 @@ export function HomeHero() {
               Professional Profile
             </ButtonLink>
           </div>
-        </div>
+        </Reveal>
 
-        <div className="home-hero__media">
+        <Reveal className="home-hero__media" delay={0.08} direction="left">
           <HomeHeroVisual />
-        </div>
+        </Reveal>
       </div>
     </section>
   );

@@ -5,6 +5,7 @@ import { CasaArchitecture } from "@/components/casa-architecture";
 import { CasaDashboard } from "@/components/casa-dashboard";
 import { ArrowRightIcon } from "@/components/icons";
 import { JsonLd } from "@/components/json-ld";
+import { Reveal } from "@/components/reveal";
 import { siteConfig } from "@/config/site";
 import { createMetadata } from "@/lib/metadata";
 
@@ -160,6 +161,12 @@ const relatedLinks = [
     href: "/connected-systems/home-automation",
   },
   {
+    eyebrow: "Optional intelligence layer",
+    title: "Local AI",
+    description: "Private local models, retrieval and guarded Casa integration.",
+    href: "/connected-systems/local-ai",
+  },
+  {
     eyebrow: "Studio work",
     title: "Projects",
     description: "Explore software, engineering and creative technology projects.",
@@ -192,7 +199,7 @@ export default function CasaPage() {
     <>
       <section className="connected-hero casa-hero">
         <div className="site-container connected-hero__grid">
-          <div className="connected-hero__copy">
+          <Reveal className="connected-hero__copy">
             <p className="connected-hero__eyebrow">Studio KRiX · Casa</p>
             <h1>
               A simpler way to
@@ -213,9 +220,9 @@ export default function CasaPage() {
                 Connected Systems
               </ButtonLink>
             </div>
-          </div>
+          </Reveal>
 
-          <aside className="connected-status-card casa-status-card" aria-labelledby="casa-status-title">
+          <Reveal as="aside" className="connected-status-card casa-status-card" delay={0.08}>
             <div className="connected-status-card__topline">
               <span aria-hidden="true" />
               <span>Active concept</span>
@@ -235,7 +242,7 @@ export default function CasaPage() {
                 <dd>Studio KRiX</dd>
               </div>
             </dl>
-          </aside>
+          </Reveal>
         </div>
       </section>
 
@@ -375,7 +382,9 @@ export default function CasaPage() {
               do. It avoids control-room density, fake live data and device-by-device noise.
             </p>
           </div>
-          <CasaDashboard />
+          <Reveal>
+            <CasaDashboard />
+          </Reveal>
         </div>
       </section>
 
@@ -389,7 +398,9 @@ export default function CasaPage() {
               layer and the specialist platforms that already do their jobs well.
             </p>
           </div>
-          <CasaArchitecture />
+          <Reveal delay={0.08} direction="left">
+            <CasaArchitecture />
+          </Reveal>
         </div>
       </section>
 
@@ -441,7 +452,11 @@ export default function CasaPage() {
             <p className="eyebrow">Continue exploring</p>
             <h2 id="casa-related-title">The work around Casa</h2>
           </div>
-          <nav className="casa-related__links" aria-label="Related Casa pages">
+          <Reveal
+            as="nav"
+            ariaLabel="Related Casa pages"
+            className="casa-related__links"
+          >
             {relatedLinks.map((item) => (
               <Link href={item.href} key={item.href}>
                 <span>{item.eyebrow}</span>
@@ -450,7 +465,7 @@ export default function CasaPage() {
                 <ArrowRightIcon aria-hidden="true" />
               </Link>
             ))}
-          </nav>
+          </Reveal>
         </div>
       </section>
 

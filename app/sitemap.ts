@@ -10,6 +10,7 @@ const routes = [
   "/projects/monde-soniq",
   "/connected-systems",
   "/connected-systems/home-automation",
+  "/connected-systems/local-ai",
   "/casa",
   "/ohmxact",
   "/about",
@@ -38,6 +39,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
               route === "/professional" ||
               route === "/connected-systems" ||
               route === "/connected-systems/home-automation" ||
+              route === "/connected-systems/local-ai" ||
               route === "/casa" ||
               route === "/projects/monde-soniq"
             ? 0.85
