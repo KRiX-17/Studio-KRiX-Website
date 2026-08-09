@@ -297,6 +297,14 @@ export default function ConnectedSystemsPage() {
                 not claims about a specific deployed system.
               </p>
             </div>
+            <div className="connected-capability__detail-link">
+              <ButtonLink
+                href="/connected-systems/home-automation"
+                variant="secondary"
+              >
+                Explore Home Automation
+              </ButtonLink>
+            </div>
           </div>
           <CapabilityList
             items={automationCapabilities}

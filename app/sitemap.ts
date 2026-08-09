@@ -9,6 +9,7 @@ const routes = [
   "/projects",
   "/projects/monde-soniq",
   "/connected-systems",
+  "/connected-systems/home-automation",
   "/ohmxact",
   "/about",
   "/support",
@@ -35,6 +36,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
           : route === "/music" ||
               route === "/professional" ||
               route === "/connected-systems" ||
+              route === "/connected-systems/home-automation" ||
               route === "/projects/monde-soniq"
             ? 0.85
           : route === "/links"
