@@ -27,23 +27,20 @@ type RevealProps = {
 type RevealStyle = CSSProperties & {
   "--reveal-blur": string;
   "--reveal-delay": string;
-  "--reveal-x": string;
   "--reveal-y": string;
 };
 
-function getOffset(direction: RevealDirection, distance: number) {
+export function getRevealOffset(direction: RevealDirection, distance: number) {
   switch (direction) {
     case "down":
-      return { x: 0, y: -distance };
-    case "left":
-      return { x: distance, y: 0 };
-    case "right":
-      return { x: -distance, y: 0 };
+      return -distance;
     case "none":
-      return { x: 0, y: 0 };
+      return 0;
+    case "left":
+    case "right":
     case "up":
     default:
-      return { x: 0, y: distance };
+      return distance;
   }
 }
 
@@ -56,17 +53,16 @@ export function Reveal({
   delay = 0,
   direction = "up",
   disabled = false,
-  distance = 32,
+  distance = 24,
 }: RevealProps) {
   const safeDistance = Math.min(Math.max(distance, 0), 80);
   const safeDelay = Math.min(Math.max(delay, 0), 0.24);
   const safeBlur = Math.min(Math.max(blur, 0), 6);
-  const offset = getOffset(direction, safeDistance);
+  const offset = getRevealOffset(direction, safeDistance);
   const style: RevealStyle = {
     "--reveal-blur": `${safeBlur}px`,
     "--reveal-delay": `${safeDelay * 1000}ms`,
-    "--reveal-x": `${offset.x}px`,
-    "--reveal-y": `${offset.y}px`,
+    "--reveal-y": `${offset}px`,
   };
 
   return (

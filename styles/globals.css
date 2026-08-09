@@ -10,6 +10,8 @@
 /* Progressive scroll reveal: visible by default, enhanced after hydration. */
 
 .scroll-reveal {
+  min-width: 0;
+  max-width: 100%;
   opacity: 1;
   filter: none;
   transform: none;
@@ -18,11 +20,7 @@
 .scroll-reveal.scroll-reveal--ready:not(.scroll-reveal--visible) {
   opacity: 0;
   filter: blur(var(--reveal-blur, 3px));
-  transform: translate3d(
-    var(--reveal-x, 0),
-    var(--reveal-y, 32px),
-    0
-  );
+  transform: translate3d(0, var(--reveal-y, 24px), 0);
   transition:
     opacity 760ms var(--ease-out) var(--reveal-delay, 0ms),
     filter 760ms var(--ease-out) var(--reveal-delay, 0ms),
@@ -727,10 +725,6 @@
 .local-ai-privacy,
 .local-ai-related {
   padding-block: clamp(5rem, 9vw, 8.5rem);
-}
-
-.local-ai-architecture {
-  overflow-x: clip;
 }
 
 .local-ai-hero::before {
@@ -3551,7 +3545,7 @@ html {
 body {
   position: relative;
   overflow-x: clip;
-  min-width: 20rem;
+  min-width: 0;
   margin: 0;
   background: var(--background);
   color: var(--text);
@@ -3586,6 +3580,7 @@ body > * {
 
 img {
   max-width: 100%;
+  height: auto;
 }
 
 em,
