@@ -697,6 +697,920 @@
   grid-template-columns: repeat(auto-fit, minmax(min(17rem, 100%), 1fr));
 }
 
+/* Casa household operations concept */
+
+.casa-problem,
+.casa-layer,
+.casa-comparison,
+.casa-pillars,
+.casa-interface,
+.casa-architecture,
+.casa-philosophy,
+.casa-privacy,
+.casa-related,
+.casa-project-preview {
+  border-bottom: 1px solid var(--line);
+  padding-block: clamp(5rem, 9vw, 8.5rem);
+}
+
+.casa-hero::before {
+  background:
+    radial-gradient(circle at 83% 31%, var(--accent-gold-glow), transparent 28rem),
+    radial-gradient(circle at 65% 82%, var(--accent-subtle), transparent 35rem);
+}
+
+.casa-hero__actions {
+  align-items: center;
+}
+
+.casa-status-card {
+  border-top-color: var(--accent-gold-border);
+}
+
+.casa-status-card .connected-status-card__topline > span:first-child {
+  background: var(--accent-gold);
+  box-shadow: 0 0 0 4px var(--accent-gold-glow);
+}
+
+.casa-status-card h2 {
+  font-size: clamp(2.8rem, 4.5vw, 4.8rem);
+}
+
+.casa-status-card dl > div {
+  grid-template-columns: minmax(4.75rem, 0.38fr) minmax(0, 1.62fr);
+}
+
+.casa-section-heading .eyebrow,
+.casa-comparison__statement .eyebrow,
+.casa-dashboard .eyebrow,
+.casa-comparison__systems .eyebrow,
+.casa-philosophy .eyebrow,
+.casa-architecture .eyebrow,
+.casa-related .eyebrow {
+  margin: 0;
+  color: var(--accent-soft);
+  font-size: 0.75rem;
+  font-weight: 560;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.casa-section-heading h2,
+.casa-comparison__statement h2,
+.casa-philosophy h2,
+.casa-related h2 {
+  max-width: 50rem;
+  margin: 1rem 0 0;
+  font-size: clamp(2.65rem, 4.8vw, 5rem);
+  font-weight: 610;
+  line-height: 0.98;
+  letter-spacing: -0.062em;
+}
+
+.casa-section-heading > p:not(.eyebrow),
+.casa-section-heading > div > p:not(.eyebrow),
+.casa-comparison__statement > p:not(.eyebrow),
+.casa-philosophy__grid > div > p:not(.eyebrow),
+.casa-architecture__grid > .casa-section-heading > p:not(.eyebrow) {
+  max-width: 43rem;
+  margin: 1.5rem 0 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.72;
+}
+
+.casa-section-heading--split {
+  display: grid;
+  grid-template-columns: minmax(20rem, 0.88fr) minmax(24rem, 1.12fr);
+  gap: clamp(2.5rem, 8vw, 8rem);
+  align-items: end;
+}
+
+.casa-section-heading--split > p,
+.casa-section-heading--split > div:last-child > p {
+  margin: 0;
+}
+
+.casa-section-heading--split .casa-section-heading__note {
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.casa-problem__grid {
+  display: grid;
+  grid-template-columns: minmax(18rem, 0.72fr) minmax(28rem, 1.28fr);
+  gap: clamp(3rem, 8vw, 9rem);
+  align-items: start;
+}
+
+.casa-problem .casa-section-heading {
+  position: sticky;
+  top: 7rem;
+}
+
+.casa-problem__list {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line-strong);
+  list-style: none;
+}
+
+.casa-problem__list li {
+  display: grid;
+  min-height: 5.4rem;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  gap: 1rem;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+}
+
+.casa-problem__list span,
+.casa-layer__grid span,
+.casa-privacy__grid span,
+.casa-pillar__number {
+  color: var(--accent-gold);
+  font-size: 0.72rem;
+  font-weight: 620;
+  letter-spacing: 0.12em;
+}
+
+.casa-problem__list p {
+  margin: 0;
+  color: var(--muted-strong);
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  letter-spacing: -0.02em;
+}
+
+.casa-problem__summary {
+  max-width: 48rem;
+  margin: 2.5rem 0 0;
+  color: var(--text);
+  font-size: clamp(1.35rem, 2.2vw, 2rem);
+  line-height: 1.35;
+  letter-spacing: -0.035em;
+}
+
+.casa-layer {
+  position: relative;
+  overflow: hidden;
+}
+
+.casa-layer::before {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 16% 54%, var(--accent-gold-glow), transparent 34rem);
+  content: "";
+  pointer-events: none;
+}
+
+.casa-layer > .site-container {
+  position: relative;
+}
+
+.casa-layer__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: clamp(3rem, 6vw, 5.5rem) 0 0;
+  padding: 0;
+  border-top: 1px solid var(--line-strong);
+  border-left: 1px solid var(--line);
+  list-style: none;
+}
+
+.casa-layer__grid li {
+  display: flex;
+  min-height: 10.5rem;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 1.4rem;
+}
+
+.casa-layer__grid strong {
+  max-width: 13rem;
+  font-size: clamp(1rem, 1.35vw, 1.2rem);
+  font-weight: 550;
+  line-height: 1.35;
+  letter-spacing: -0.025em;
+}
+
+.casa-comparison__statement {
+  display: grid;
+  grid-template-columns: minmax(19rem, 0.52fr) minmax(24rem, 1.48fr);
+  gap: 0 clamp(3rem, 8vw, 9rem);
+  align-items: end;
+}
+
+.casa-comparison__statement .eyebrow {
+  grid-column: 1;
+}
+
+.casa-comparison__statement h2 {
+  grid-row: 2;
+  grid-column: 1 / -1;
+  max-width: 72rem;
+}
+
+.casa-comparison__statement > p:last-child {
+  grid-row: 3;
+  grid-column: 2;
+  max-width: 46rem;
+}
+
+.casa-comparison__systems {
+  display: grid;
+  overflow: hidden;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: clamp(3rem, 6vw, 5.5rem);
+  border: 1px solid var(--glass-border);
+  border-top-color: var(--accent-gold-border);
+  border-radius: 0.75rem;
+  background: var(--glass-fallback);
+  box-shadow: var(--glass-shadow), var(--glass-inset);
+}
+
+.casa-comparison__systems article {
+  position: relative;
+  min-width: 0;
+  padding: clamp(1.5rem, 3vw, 2.75rem);
+}
+
+.casa-comparison__systems article + article {
+  border-left: 1px solid var(--line);
+}
+
+.casa-comparison__systems h3 {
+  margin: 3rem 0 0;
+  font-size: clamp(2rem, 3vw, 3.25rem);
+  font-weight: 610;
+  line-height: 1;
+  letter-spacing: -0.055em;
+}
+
+.casa-comparison__systems article > p:not(.eyebrow) {
+  min-height: 8.5rem;
+  margin: 1.5rem 0 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.casa-comparison__systems ul,
+.casa-pillar ul {
+  margin: 0;
+  padding: 1.2rem 0 0;
+  border-top: 1px solid var(--line);
+  list-style: none;
+}
+
+.casa-comparison__systems li,
+.casa-pillar li {
+  position: relative;
+  padding: 0.45rem 0 0.45rem 1rem;
+  color: var(--muted-strong);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.casa-comparison__systems li::before,
+.casa-pillar li::before {
+  position: absolute;
+  top: 0.92rem;
+  left: 0;
+  width: 0.3rem;
+  height: 0.3rem;
+  border-radius: 50%;
+  background: var(--accent-gold);
+  content: "";
+}
+
+.casa-comparison__system--accent {
+  background: linear-gradient(145deg, var(--accent-gold-glow), transparent 48%);
+}
+
+.casa-comparison__system--accent::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-gold), var(--accent));
+  content: "";
+}
+
+.casa-pillars__grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: clamp(3rem, 6vw, 5.5rem);
+}
+
+.casa-pillar {
+  grid-column: span 3;
+  min-width: 0;
+  border: 1px solid var(--glass-border);
+  border-radius: 0.75rem;
+  padding: clamp(1.5rem, 3vw, 2.6rem);
+  background: var(--glass-fallback);
+  box-shadow: var(--glass-shadow), var(--glass-inset);
+}
+
+.casa-pillar:nth-child(-n + 2) {
+  grid-column: span 6;
+}
+
+.casa-pillar h3 {
+  margin: clamp(3.5rem, 7vw, 6rem) 0 0;
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  font-weight: 610;
+  line-height: 1;
+  letter-spacing: -0.052em;
+}
+
+.casa-pillar > p {
+  min-height: 7.4rem;
+  margin: 1.25rem 0 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.casa-dashboard {
+  overflow: hidden;
+  margin: clamp(3rem, 6vw, 5.5rem) 0 0;
+  border: 1px solid var(--glass-border);
+  border-top-color: var(--accent-gold-border);
+  border-radius: 0.85rem;
+  background:
+    linear-gradient(145deg, var(--accent-gold-glow), transparent 28%),
+    var(--glass-fallback);
+  box-shadow: var(--glass-shadow), var(--glass-inset);
+}
+
+.casa-dashboard__topbar {
+  display: flex;
+  min-height: 10rem;
+  align-items: end;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: clamp(1.5rem, 4vw, 3.25rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.casa-dashboard__topbar h3 {
+  margin: 0.9rem 0 0;
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  font-weight: 610;
+  line-height: 0.98;
+  letter-spacing: -0.065em;
+}
+
+.casa-dashboard__date {
+  margin: 0;
+  color: var(--muted-strong);
+  font-size: 0.85rem;
+}
+
+.casa-dashboard__groups {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.casa-dashboard__group {
+  min-width: 0;
+  padding: clamp(1.25rem, 2.5vw, 2.25rem);
+}
+
+.casa-dashboard__group + .casa-dashboard__group {
+  border-left: 1px solid var(--line);
+}
+
+.casa-dashboard__group h4 {
+  margin: 0 0 1.5rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.casa-dashboard__group ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.casa-dashboard__group li {
+  display: grid;
+  min-height: 4rem;
+  grid-template-columns: 0.55rem minmax(0, 1fr);
+  gap: 0.8rem;
+  align-items: center;
+  border-top: 1px solid var(--line);
+}
+
+.casa-dashboard__group strong {
+  min-width: 0;
+  font-size: 0.9rem;
+  font-weight: 520;
+  line-height: 1.45;
+}
+
+.casa-dashboard__signal {
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 50%;
+  background: var(--quiet);
+  box-shadow: 0 0 0 3px var(--hover);
+}
+
+.casa-dashboard__signal--gold {
+  background: var(--accent-gold);
+  box-shadow: 0 0 0 3px var(--accent-gold-glow);
+}
+
+.casa-dashboard__signal--crimson {
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-subtle);
+}
+
+.casa-dashboard__signal--positive {
+  background: var(--muted-strong);
+}
+
+.casa-dashboard figcaption,
+.casa-architecture-diagram figcaption {
+  padding: 1.2rem clamp(1.5rem, 4vw, 3.25rem);
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+
+.casa-architecture__grid {
+  display: grid;
+  grid-template-columns: minmax(18rem, 0.62fr) minmax(30rem, 1.38fr);
+  gap: clamp(3rem, 8vw, 8rem);
+  align-items: start;
+}
+
+.casa-architecture__grid > .casa-section-heading {
+  position: sticky;
+  top: 7rem;
+}
+
+.casa-architecture-diagram {
+  overflow: hidden;
+  min-width: 0;
+  margin: 0;
+  border: 1px solid var(--glass-border);
+  border-top-color: var(--accent-gold-border);
+  border-radius: 0.8rem;
+  background: var(--glass-fallback);
+  box-shadow: var(--glass-shadow), var(--glass-inset);
+}
+
+.casa-architecture-diagram > ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.casa-architecture-diagram > ol > li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  gap: 1rem;
+  padding: clamp(1.25rem, 3vw, 2.25rem);
+}
+
+.casa-architecture-diagram > ol > li + li {
+  border-top: 1px solid var(--line);
+}
+
+.casa-architecture-diagram > ol > li + li::before {
+  position: absolute;
+  top: -0.45rem;
+  left: calc(clamp(1.25rem, 3vw, 2.25rem) + 1.1rem);
+  width: 0.75rem;
+  height: 0.75rem;
+  border-right: 1px solid var(--accent-gold);
+  border-bottom: 1px solid var(--accent-gold);
+  background: var(--glass-fallback);
+  content: "";
+  transform: rotate(45deg);
+}
+
+.casa-architecture-diagram__layer--accent {
+  background: linear-gradient(90deg, var(--accent-gold-glow), transparent 72%);
+}
+
+.casa-architecture-diagram__index {
+  padding-top: 0.22rem;
+  color: var(--accent-gold);
+  font-size: 0.72rem;
+  font-weight: 620;
+  letter-spacing: 0.12em;
+}
+
+.casa-architecture-diagram h3 {
+  margin: 0;
+  font-size: clamp(1.35rem, 2.4vw, 2.2rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
+.casa-architecture-diagram ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.casa-architecture-diagram ul li {
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.casa-architecture-diagram ul li:not(:last-child)::after {
+  margin-inline: 0.65rem;
+  color: var(--line-strong);
+  content: "·";
+}
+
+.casa-philosophy {
+  position: relative;
+  overflow: hidden;
+}
+
+.casa-philosophy::before {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 14% 12%, var(--accent-subtle), transparent 34rem),
+    radial-gradient(circle at 88% 84%, var(--accent-gold-glow), transparent 30rem);
+  content: "";
+  pointer-events: none;
+}
+
+.casa-philosophy__grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(22rem, 1.15fr) minmax(22rem, 0.85fr);
+  gap: clamp(3rem, 8vw, 9rem);
+  align-items: start;
+}
+
+.casa-philosophy__grid ul {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line-strong);
+  list-style: none;
+}
+
+.casa-philosophy__grid li {
+  padding: 1.3rem 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted-strong);
+  font-size: clamp(1.05rem, 1.7vw, 1.35rem);
+  letter-spacing: -0.02em;
+}
+
+.casa-privacy__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: clamp(3rem, 6vw, 5.5rem) 0 0;
+  padding: 0;
+  border-top: 1px solid var(--line-strong);
+  border-left: 1px solid var(--line);
+  list-style: none;
+}
+
+.casa-privacy__grid li {
+  display: flex;
+  min-height: 9rem;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 1.35rem;
+}
+
+.casa-privacy__grid strong {
+  max-width: 15rem;
+  font-size: 0.95rem;
+  font-weight: 540;
+  line-height: 1.45;
+}
+
+.casa-related .casa-section-heading {
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+.casa-related__links {
+  display: grid;
+  overflow: hidden;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border: 1px solid var(--glass-border);
+  border-radius: 0.75rem;
+  background: var(--glass-fallback);
+  box-shadow: var(--glass-shadow), var(--glass-inset);
+}
+
+.casa-related__links a {
+  position: relative;
+  display: flex;
+  min-height: 18rem;
+  flex-direction: column;
+  padding: clamp(1.4rem, 2.8vw, 2.4rem);
+  transition: background 200ms ease;
+}
+
+.casa-related__links a + a {
+  border-left: 1px solid var(--line);
+}
+
+.casa-related__links a:hover {
+  background: var(--hover);
+}
+
+.casa-related__links a > span {
+  color: var(--accent-soft);
+  font-size: 0.72rem;
+  font-weight: 580;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.casa-related__links h3 {
+  margin: 3rem 0 0;
+  font-size: clamp(1.45rem, 2.4vw, 2.25rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+}
+
+.casa-related__links p {
+  margin: 1rem 0 2rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.casa-related__links svg {
+  width: 1.25rem;
+  margin-top: auto;
+  transition: transform 220ms var(--ease-out);
+}
+
+.casa-related__links a:hover svg {
+  transform: translateX(0.25rem);
+}
+
+.casa-project-preview__panel {
+  display: grid;
+  grid-template-columns: minmax(20rem, 0.9fr) minmax(24rem, 1.1fr);
+  gap: clamp(3rem, 8vw, 8rem);
+  border: 1px solid var(--glass-border);
+  border-top-color: var(--accent-gold-border);
+  border-radius: 0.75rem;
+  padding: clamp(2rem, 5vw, 4.5rem);
+  background:
+    linear-gradient(145deg, var(--accent-gold-glow), transparent 38%),
+    var(--glass-fallback);
+  box-shadow: var(--glass-shadow), var(--glass-inset);
+}
+
+.casa-project-preview__panel > div:first-child > span {
+  display: block;
+  margin-top: 1.25rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.casa-project-preview h2 {
+  margin: 3rem 0 0;
+  font-size: clamp(3rem, 6vw, 6rem);
+  font-weight: 610;
+  line-height: 0.95;
+  letter-spacing: -0.07em;
+}
+
+.casa-project-preview__tagline {
+  margin: 1rem 0 0;
+  color: var(--muted-strong);
+  font-size: clamp(1.1rem, 1.7vw, 1.35rem);
+}
+
+.casa-project-preview__panel > div:last-child > p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.72;
+}
+
+.casa-project-preview__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.home-auto-casa__intro > p {
+  max-width: 42rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.72;
+}
+
+.home-auto-casa__intro .button-link {
+  margin-top: 1.5rem;
+}
+
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .casa-comparison__systems,
+  .casa-pillar,
+  .casa-dashboard,
+  .casa-architecture-diagram,
+  .casa-related__links,
+  .casa-project-preview__panel {
+    background-color: var(--glass-background);
+    -webkit-backdrop-filter: saturate(var(--glass-saturation)) blur(var(--glass-blur));
+    backdrop-filter: saturate(var(--glass-saturation)) blur(var(--glass-blur));
+  }
+}
+
+@media (max-width: 1100px) {
+  .casa-pillar {
+    grid-column: span 6;
+  }
+
+  .casa-dashboard__groups,
+  .casa-privacy__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .casa-dashboard__group:nth-child(3) {
+    border-top: 1px solid var(--line);
+    border-left: 0;
+  }
+
+  .casa-dashboard__group:nth-child(4) {
+    border-top: 1px solid var(--line);
+  }
+
+  .casa-related__links {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .casa-related__links a:nth-child(3) {
+    border-top: 1px solid var(--line);
+    border-left: 0;
+  }
+
+  .casa-related__links a:nth-child(4) {
+    border-top: 1px solid var(--line);
+  }
+}
+
+@media (max-width: 960px) {
+  .casa-section-heading--split,
+  .casa-problem__grid,
+  .casa-comparison__statement,
+  .casa-architecture__grid,
+  .casa-philosophy__grid,
+  .casa-project-preview__panel {
+    grid-template-columns: 1fr;
+  }
+
+  .casa-problem .casa-section-heading,
+  .casa-architecture__grid > .casa-section-heading {
+    position: static;
+  }
+
+  .casa-comparison__statement .eyebrow,
+  .casa-comparison__statement h2,
+  .casa-comparison__statement > p:last-child {
+    grid-row: auto;
+    grid-column: 1;
+  }
+
+  .casa-comparison__systems {
+    grid-template-columns: 1fr;
+  }
+
+  .casa-comparison__systems article + article {
+    border-top: 1px solid var(--line);
+    border-left: 0;
+  }
+
+  .casa-comparison__systems article > p:not(.eyebrow),
+  .casa-pillar > p {
+    min-height: 0;
+  }
+
+  .casa-comparison__systems article > p:not(.eyebrow) {
+    max-width: 44rem;
+    margin-bottom: 2rem;
+  }
+
+  .casa-layer__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .home-auto-casa__heading > .home-auto-casa__intro {
+    max-width: 48rem;
+  }
+}
+
+@media (max-width: 680px) {
+  .casa-hero__actions,
+  .casa-project-preview__actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .casa-hero__actions .button-link,
+  .casa-project-preview__actions .button-link {
+    width: 100%;
+  }
+
+  .casa-layer__grid,
+  .casa-dashboard__groups,
+  .casa-privacy__grid,
+  .casa-related__links {
+    grid-template-columns: 1fr;
+  }
+
+  .casa-layer__grid li,
+  .casa-privacy__grid li {
+    min-height: 7.5rem;
+  }
+
+  .casa-pillar {
+    grid-column: 1 / -1;
+  }
+
+  .casa-dashboard__topbar {
+    min-height: 12rem;
+    align-items: start;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .casa-dashboard__group + .casa-dashboard__group,
+  .casa-dashboard__group:nth-child(3),
+  .casa-dashboard__group:nth-child(4) {
+    border-top: 1px solid var(--line);
+    border-left: 0;
+  }
+
+  .casa-related__links a,
+  .casa-related__links a:nth-child(3),
+  .casa-related__links a:nth-child(4) {
+    min-height: 15rem;
+    border-top: 1px solid var(--line);
+    border-left: 0;
+  }
+
+  .casa-related__links a:first-child {
+    border-top: 0;
+  }
+
+  .casa-architecture-diagram > ol > li {
+    grid-template-columns: 2rem minmax(0, 1fr);
+  }
+
+  .casa-architecture-diagram ul {
+    display: block;
+  }
+
+  .casa-architecture-diagram ul li {
+    padding-block: 0.2rem;
+  }
+
+  .casa-architecture-diagram ul li:not(:last-child)::after {
+    content: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .casa-related__links a,
+  .casa-related__links svg {
+    transition: none;
+  }
+
+  .casa-related__links a:hover svg {
+    transform: none;
+  }
+}
+
 @supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
   .connected-status-card,
   .connected-diagram,
@@ -6543,6 +7457,7 @@ section[id] {
 .site-brand,
 .site-footer__identity {
   display: inline-flex;
+  min-height: 2.75rem;
   align-items: center;
   gap: 0.7rem;
 }

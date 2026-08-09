@@ -343,6 +343,13 @@ export default function ConnectedSystemsPage() {
                 administration are not presented here as completed features.
               </p>
             </div>
+            <ButtonLink
+              className="connected-capability__detail-link"
+              href="/casa"
+              variant="secondary"
+            >
+              Explore Casa
+            </ButtonLink>
           </div>
           <CapabilityList
             items={casaIntegrations}
