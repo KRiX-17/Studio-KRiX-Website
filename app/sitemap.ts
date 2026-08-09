@@ -11,7 +11,7 @@ const routes = [
   "/connected-systems",
   "/connected-systems/home-automation",
   "/connected-systems/local-ai",
-  "/casa",
+  "/lakaz",
   "/ohmxact",
   "/about",
   "/support",
@@ -40,7 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
               route === "/connected-systems" ||
               route === "/connected-systems/home-automation" ||
               route === "/connected-systems/local-ai" ||
-              route === "/casa" ||
+              route === "/lakaz" ||
               route === "/projects/monde-soniq"
             ? 0.85
           : route === "/links"

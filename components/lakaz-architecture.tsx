@@ -23,12 +23,12 @@ const architectureLayers = [
     ],
   },
   {
-    title: "Casa integration layer",
+    title: "Lakaz integration layer",
     items: ["Normalisation", "Household context", "Rules", "Prioritisation"],
     accent: true,
   },
   {
-    title: "Casa experience",
+    title: "Lakaz experience",
     items: ["Tasks", "Alerts", "Status", "Routines", "Actions"],
   },
   {
@@ -37,27 +37,27 @@ const architectureLayers = [
   },
 ] as const;
 
-export function CasaArchitecture() {
+export function LakazArchitecture() {
   return (
     <figure
-      className="casa-architecture-diagram"
-      aria-labelledby="casa-architecture-title"
+      className="lakaz-architecture-diagram"
+      aria-labelledby="lakaz-architecture-title"
     >
       <ol>
         {architectureLayers.map((layer, index) => (
           <li
             className={
               "accent" in layer && layer.accent
-                ? "casa-architecture-diagram__layer--accent"
+                ? "lakaz-architecture-diagram__layer--accent"
                 : undefined
             }
             key={layer.title}
           >
-            <span className="casa-architecture-diagram__index" aria-hidden="true">
+            <span className="lakaz-architecture-diagram__index" aria-hidden="true">
               {String(index + 1).padStart(2, "0")}
             </span>
             <div>
-              <h3 id={index === 0 ? "casa-architecture-title" : undefined}>
+              <h3 id={index === 0 ? "lakaz-architecture-title" : undefined}>
                 {layer.title}
               </h3>
               <ul aria-label={`${layer.title} capabilities`}>

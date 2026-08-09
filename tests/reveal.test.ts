@@ -28,6 +28,15 @@ describe("reveal motion", () => {
   });
 
   it("keeps homepage child reveal motion vertical-only", () => {
+    const readyChildRules = globalStyles.match(
+      /\.home-hero__media\.scroll-reveal--ready:not\(\.scroll-reveal--visible\) \.home-hero-visual__[^{]+\{[^}]+\}/g,
+    );
+
+    expect(readyChildRules).toHaveLength(4);
+    expect(readyChildRules?.join("\n")).not.toMatch(
+      /translate(?:3d)?\((?!0(?:px|rem|em|%|\s|,))/,
+    );
+    expect(readyChildRules?.join("\n")).not.toContain("translateX");
     expect(globalStyles).toContain("transform: translate3d(0, 0.5rem, 0)");
     expect(globalStyles).not.toContain("translate(0.7rem, 0.5rem)");
   });

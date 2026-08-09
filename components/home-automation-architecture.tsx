@@ -25,9 +25,9 @@ const architectureLayers = [
   },
   {
     number: "05",
-    title: "Casa",
+    title: "Lakaz",
     detail: "Household context · Tasks · Status · Alerts · Routines",
-    modifier: "casa",
+    modifier: "lakaz",
   },
   {
     number: "06",
@@ -71,7 +71,7 @@ export function HomeAutomationArchitecture() {
       </ol>
 
       <figcaption id="home-auto-stack-caption">
-        The automation platform handles devices, rules and integrations. Casa
+        The automation platform handles devices, rules and integrations. Lakaz
         is being explored above that layer as a simpler household operations
         and interaction layer; it does not replace specialist network,
         security or automation systems.

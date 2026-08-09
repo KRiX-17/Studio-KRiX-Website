@@ -10,7 +10,7 @@ import { createMetadata } from "@/lib/metadata";
 
 const title = "Connected Systems | Studio KRiX";
 const description =
-  "Explore Studio KRiX connected systems work across network infrastructure, UniFi, cameras, home automation and Casa software integration.";
+  "Explore Studio KRiX connected systems work across network infrastructure, UniFi, cameras, home automation and Lakaz software integration.";
 const path = "/connected-systems";
 
 const baseMetadata = createMetadata({ title, description, path });
@@ -65,12 +65,12 @@ const localAiCapabilities = [
   "Coding and development assistants",
   "Local document retrieval",
   "Approved multimodal workflows",
-  "Casa intelligence services",
+  "Lakaz intelligence services",
   "Policy and approval boundaries",
   "Private infrastructure planning",
 ] as const;
 
-const casaIntegrations = [
+const lakazIntegrations = [
   "Household tasks",
   "Device status",
   "Network health summaries",
@@ -166,7 +166,7 @@ export default function ConnectedSystemsPage() {
             </h1>
             <p>
               From reliable network infrastructure to cameras, access systems,
-              automation and Casa integration, Studio KRiX explores how
+              automation and Lakaz integration, Studio KRiX explores how
               connected environments can be simpler, safer and easier to
               manage.
             </p>
@@ -348,8 +348,8 @@ export default function ConnectedSystemsPage() {
               support.
             </p>
             <p>
-              Studio KRiX is exploring high-memory local hardware, Ollama and
-              a guarded Casa intelligence layer. The work is an architecture
+              Studio KRiX is exploring high-memory local hardware, representative
+              model families and a guarded Lakaz intelligence layer. The work is an architecture
               direction, not a claim about hardware currently owned or an
               unrestricted autonomous system.
             </p>
@@ -378,23 +378,23 @@ export default function ConnectedSystemsPage() {
       </section>
 
       <section
-        className="connected-capability connected-capability--casa"
-        id="casa-integration"
-        aria-labelledby="casa-integration-title"
+        className="connected-capability connected-capability--lakaz"
+        id="lakaz-integration"
+        aria-labelledby="lakaz-integration-title"
       >
         <div className="site-container connected-capability__grid">
           <div className="connected-capability__copy">
             <p className="section-label">05 · Evolving direction</p>
-            <h2 id="casa-integration-title">
-              Casa as the orchestration layer
+            <h2 id="lakaz-integration-title">
+              Lakaz as the orchestration layer
             </h2>
             <p>
-              Casa is being developed as a practical household operations
+              Lakaz is being developed as a practical household operations
               platform.
             </p>
             <p>
               Rather than replacing specialist systems such as networking,
-              cameras or automation controllers, Casa can provide a simpler
+              cameras or automation controllers, Lakaz can provide a simpler
               layer above them, bringing selected information, alerts, tasks
               and actions into one place.
             </p>
@@ -402,22 +402,22 @@ export default function ConnectedSystemsPage() {
               <span>Product direction</span>
               <strong>Designed to integrate, still evolving.</strong>
               <p>
-                Casa supports the concept of a future orchestration layer.
+                Lakaz supports the concept of a future orchestration layer.
                 Direct camera streaming, access control and network
                 administration are not presented here as completed features.
               </p>
             </div>
             <ButtonLink
               className="connected-capability__detail-link"
-              href="/casa"
+              href="/lakaz"
               variant="secondary"
             >
-              Explore Casa
+              Explore Lakaz
             </ButtonLink>
           </div>
           <CapabilityList
-            items={casaIntegrations}
-            label="Potential Casa integrations"
+            items={lakazIntegrations}
+            label="Potential Lakaz integrations"
           />
         </div>
       </section>

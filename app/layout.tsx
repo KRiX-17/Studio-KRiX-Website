@@ -137,6 +137,7 @@ const structuredData = {
         `${siteConfig.url}/projects`,
         `${siteConfig.url}/projects/monde-soniq`,
         `${siteConfig.url}/connected-systems`,
+        `${siteConfig.url}/lakaz`,
         `${siteConfig.url}/music`,
       ],
     },

@@ -91,9 +91,9 @@ export default function ProfessionalPage() {
               </p>
               <ArrowRightIcon />
             </Link>
-            <Link className="professional-project" href="/casa">
+            <Link className="professional-project" href="/lakaz">
               <span>Product concept · UX · Systems integration</span>
-              <h3>Casa</h3>
+              <h3>Lakaz</h3>
               <p>
                 An evolving household-operations concept demonstrating product
                 thinking, systems architecture, UX design and integration

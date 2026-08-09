@@ -11,7 +11,7 @@ import { createMetadata } from "@/lib/metadata";
 
 const title = "Local AI | Studio KRiX";
 const description =
-  "Explore a Studio KRiX architecture concept for private local AI infrastructure, Ollama, high-memory hardware and optional Casa integration.";
+  "Explore a Studio KRiX architecture concept for private local AI infrastructure, representative model families, high-memory hardware and optional Lakaz integration.";
 const path = "/connected-systems/local-ai";
 
 const baseMetadata = createMetadata({ title, description, path });
@@ -33,13 +33,12 @@ const hardwareOptions = [
       "273 GB/s memory bandwidth",
       "Up to 1 PFLOP FP4",
       "CUDA and the NVIDIA AI ecosystem",
-      "Listed by Ollama as supported hardware",
     ],
     description:
       "A compact Arm-based system suited to large local language models, coding agents, multimodal work and retrieval-augmented generation. Its unified memory can accommodate very large quantised models when the model, context and runtime fit within the available pool.",
     modelFit: [
       "gpt-oss 120B",
-      "Larger Qwen3 variants, including 235B-class candidates",
+      "Larger Qwen3 variants",
       "Multiple smaller models",
       "Multimodal workloads",
       "Coding agents",
@@ -57,10 +56,10 @@ const hardwareOptions = [
       "Radeon 8060S integrated graphics · 40 CUs",
       "Up to 128 GB unified LPDDR5x",
       "Approximately 256 GB/s memory bandwidth",
-      "Linux support through Ollama with ROCm; experimental Vulkan path",
+      "Linux acceleration paths through ROCm and compatible runtimes",
     ],
     description:
-      "A compact x86 platform with a large shared memory pool, attractive for familiar desktop and development workloads as well as high-memory local inference. Ollama lists the Ryzen AI Max+ 395 in its Linux ROCm support table.",
+      "A compact x86 platform with a large shared memory pool, attractive for familiar desktop and development workloads as well as high-memory local inference.",
     modelFit: [
       "Qwen3 8B–32B class",
       "Gemma 3 12B / 27B",
@@ -79,14 +78,14 @@ const representativeModels = [
     sizes: "8B · 14B · 30B · 32B",
     role: "General reasoning / agents",
     strengths: "Assistant work · reasoning · multilingual interaction · tools · agents",
-    example: "Casa assistant, tools, multilingual interaction",
+    example: "Lakaz assistant · tool use · multilingual interaction · agent workflows",
   },
   {
     name: "Gemma 3",
     sizes: "4B · 12B · 27B",
     role: "Vision + text",
     strengths: "Multimodal reasoning · document and image interpretation",
-    example: "Approved image understanding, document interpretation",
+    example: "Approved image understanding · document interpretation · multimodal workflows",
   },
   {
     name: "gpt-oss",
@@ -104,7 +103,7 @@ const representativeModels = [
   },
 ] as const;
 
-const casaCapabilities = [
+const lakazCapabilities = [
   "Natural-language household queries",
   "Household and system status summaries",
   "Task extraction",
@@ -155,9 +154,9 @@ const relatedLinks = [
   },
   {
     eyebrow: "Optional intelligence layer",
-    title: "Casa",
+    title: "Lakaz",
     description: "A human-facing household operations concept with explicit permissions.",
-    href: "/casa",
+    href: "/lakaz",
   },
   {
     eyebrow: "Specialist platform",
@@ -184,7 +183,6 @@ const structuredData = {
   },
   keywords: [
     "local AI",
-    "Ollama",
     "private AI infrastructure",
     "NVIDIA DGX Spark",
     "AMD Ryzen AI Max",
@@ -192,7 +190,7 @@ const structuredData = {
     "Gemma 3",
     "gpt-oss",
     "Devstral",
-    "Casa",
+    "Lakaz",
   ],
 };
 
@@ -242,8 +240,8 @@ export default function LocalAiPage() {
                 <dd>Private infrastructure · Optional cloud connections</dd>
               </div>
               <div>
-                <dt>Runtime</dt>
-                <dd>Ollama</dd>
+                <dt>Models</dt>
+                <dd>Qwen3 · Gemma 3 · gpt-oss · Devstral</dd>
               </div>
               <div>
                 <dt>State</dt>
@@ -337,25 +335,19 @@ export default function LocalAiPage() {
           <Reveal className="local-ai-runtime__copy">
             <p className="section-label">Local model runtime</p>
             <h2 id="local-ai-runtime-title">
-              One local runtime, several useful models
+              Models first, with a local serving layer
             </h2>
             <p>
-              Ollama provides a practical local runtime for managing and
-              serving compatible AI models. As the model-management and
-              model-serving layer, it gives Casa, Connected Systems and
-              development tools one considered integration point without
-              promising that every model fits every machine.
+              Qwen3, Gemma 3, gpt-oss and Devstral represent different kinds
+              of work across reasoning, multimodal interpretation and software
+              engineering. A restrained runtime layer can manage and serve
+              compatible models to Lakaz, Connected Systems and development
+              tools without becoming the public-facing capability.
             </p>
-            <a
-              className="local-ai-source-link"
-              href="https://docs.ollama.com/gpu"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <span>Ollama hardware support</span>
-              <ArrowUpRightIcon />
-              <span className="sr-only"> (opens in a new tab)</span>
-            </a>
+            <p className="local-ai-runtime__note">
+              Local runtimes such as Ollama can provide model management and
+              serving.
+            </p>
           </Reveal>
           <Reveal className="local-ai-runtime__figure" delay={0.08}>
             <LocalAiRuntime />
@@ -404,27 +396,27 @@ export default function LocalAiPage() {
         </div>
       </section>
 
-      <section className="local-ai-casa" aria-labelledby="local-ai-casa-title">
+      <section className="local-ai-lakaz" aria-labelledby="local-ai-lakaz-title">
         <div className="site-container">
           <Reveal className="local-ai-heading local-ai-heading--split">
             <div>
               <p className="section-label">Optional intelligence service</p>
-              <h2 id="local-ai-casa-title">Local AI + Casa</h2>
+              <h2 id="local-ai-lakaz-title">Local AI + Lakaz</h2>
             </div>
             <div>
               <p>
-                Local AI could sit behind Casa as a focused intelligence
+                Local AI could sit behind Lakaz as a focused intelligence
                 service: interpreting approved context, finding relevant
                 information and proposing useful summaries or next steps.
               </p>
-              <ButtonLink href="/casa" variant="secondary">
-                Explore Casa
+              <ButtonLink href="/lakaz" variant="secondary">
+                Explore Lakaz
               </ButtonLink>
             </div>
           </Reveal>
 
           <Reveal as="ol" className="local-ai-capabilities" delay={0.06}>
-            {casaCapabilities.map((capability, index) => (
+            {lakazCapabilities.map((capability, index) => (
               <li key={capability}>
                 <span aria-hidden="true">
                   {String(index + 1).padStart(2, "0")}
@@ -449,7 +441,7 @@ export default function LocalAiPage() {
             </h2>
             <p>
               The AI does not receive unrestricted authority over critical
-              systems. It can interpret, retrieve, summarise and suggest; Casa
+              systems. It can interpret, retrieve, summarise and suggest; Lakaz
               remains responsible for deterministic permissions, confirmation
               and audit.
             </p>
