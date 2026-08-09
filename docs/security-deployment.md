@@ -53,12 +53,16 @@ values: use the records shown for this domain in the Resend dashboard.
 
 ## Vercel Firewall rate limit
 
+The Vercel Hobby plan provides one rate-limit rule. Use that rule to protect all
+current and future form API routes under `/api/` while leaving non-POST API
+requests to the application handlers:
+
 Create this rule manually in **Vercel project → Firewall → Configure → New
 Rule**:
 
-- Name: `Studio KRiX form submissions`
+- Name: `Contact Form Rate Limit`
 - Conditions:
-  - `Request Path` → `Is any of` → `/api/contact`, `/api/support`
+  - `Request Path` → `Starts with` → `/api/`
   - AND `Method` → `Equals` → `POST`
 - Action: `Rate Limit`
 - Strategy: `Fixed Window`
@@ -68,6 +72,9 @@ Rule**:
 - Limit response: default `429`
 
 Review the rule, publish it, and confirm matches in the Firewall overview. The
+broader `/api/*` POST scope is intentional because the Hobby plan provides one
+rate-limit rule. GET and other non-POST requests are not counted by the edge
+rule and continue to receive the application-defined response. The
 application also has a conservative in-memory fallback. That fallback is
 process-local and is not a substitute for Vercel's distributed edge limit.
 
