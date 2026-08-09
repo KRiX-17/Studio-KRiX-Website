@@ -37,6 +37,14 @@ const hardwareOptions = [
     ],
     description:
       "A compact Arm-based system suited to large local language models, coding agents, multimodal work and retrieval-augmented generation. Its unified memory can accommodate very large quantised models when the model, context and runtime fit within the available pool.",
+    modelFit: [
+      "gpt-oss 120B",
+      "Larger Qwen3 variants, including 235B-class candidates",
+      "Multiple smaller models",
+      "Multimodal workloads",
+      "Coding agents",
+      "RAG pipelines",
+    ],
     href: "https://www.nvidia.com/en-us/products/workstations/dgx-spark/",
     linkLabel: "NVIDIA specifications",
   },
@@ -53,19 +61,47 @@ const hardwareOptions = [
     ],
     description:
       "A compact x86 platform with a large shared memory pool, attractive for familiar desktop and development workloads as well as high-memory local inference. Ollama lists the Ryzen AI Max+ 395 in its Linux ROCm support table.",
+    modelFit: [
+      "Qwen3 8B–32B class",
+      "Gemma 3 12B / 27B",
+      "gpt-oss 20B",
+      "Devstral 24B",
+      "Larger quantised-model experimentation",
+    ],
     href: "https://developer.amd.com/playbooks/user-guide/",
     linkLabel: "AMD Ryzen AI Halo specifications",
   },
 ] as const;
 
-const modelCategories = [
-  "Fast 7B–14B assistant",
-  "Coding model",
-  "20B–35B reasoning model",
-  "70B-class high-quality assistant",
-  "100B+ quantised model on high-memory hardware",
-  "Embeddings model for local RAG",
-  "Vision model for approved local visual workflows",
+const representativeModels = [
+  {
+    name: "Qwen3",
+    sizes: "8B · 14B · 30B · 32B",
+    role: "General reasoning / agents",
+    strengths: "Assistant work · reasoning · multilingual interaction · tools · agents",
+    example: "Casa assistant, tools, multilingual interaction",
+  },
+  {
+    name: "Gemma 3",
+    sizes: "4B · 12B · 27B",
+    role: "Vision + text",
+    strengths: "Multimodal reasoning · document and image interpretation",
+    example: "Approved image understanding, document interpretation",
+  },
+  {
+    name: "gpt-oss",
+    sizes: "20B · 120B",
+    role: "Heavy reasoning",
+    strengths: "Structured reasoning · agentic workflows · larger local inference",
+    example: "Complex analysis, agentic workflows",
+  },
+  {
+    name: "Devstral",
+    sizes: "24B",
+    role: "Software engineering",
+    strengths: "Coding · codebase exploration · multi-file work · development agents",
+    example: "Local coding agents, diagnostics tooling",
+  },
 ] as const;
 
 const casaCapabilities = [
@@ -152,6 +188,10 @@ const structuredData = {
     "private AI infrastructure",
     "NVIDIA DGX Spark",
     "AMD Ryzen AI Max",
+    "Qwen3",
+    "Gemma 3",
+    "gpt-oss",
+    "Devstral",
     "Casa",
   ],
 };
@@ -255,6 +295,14 @@ export default function LocalAiPage() {
                 <p className="local-ai-hardware-card__description">
                   {hardware.description}
                 </p>
+                <div className="local-ai-hardware-card__fit">
+                  <strong>Representative model fit</strong>
+                  <ul>
+                    {hardware.modelFit.map((model) => (
+                      <li key={model}>{model}</li>
+                    ))}
+                  </ul>
+                </div>
                 <a
                   className="local-ai-source-link"
                   href={hardware.href}
@@ -272,9 +320,10 @@ export default function LocalAiPage() {
           <Reveal className="local-ai-fit-note" distance={24}>
             <strong>Model fit is workload-specific.</strong>
             <p>
-              Parameter count alone does not guarantee support. Quantisation,
-              context size, memory allocated to the GPU and runtime overhead
-              all affect what can run well.
+              Practical fit depends on quantisation, context length, runtime
+              overhead, allocated memory, concurrency and model architecture.
+              These are representative pairings, not speed or capacity
+              guarantees.
             </p>
           </Reveal>
         </div>
@@ -291,11 +340,11 @@ export default function LocalAiPage() {
               One local runtime, several useful models
             </h2>
             <p>
-              Ollama provides a practical local runtime for downloading,
-              running and switching models on supported hardware. It gives
-              Casa, Connected Systems and development tools one considered
-              integration point without promising that every model fits every
-              machine.
+              Ollama provides a practical local runtime for managing and
+              serving compatible AI models. As the model-management and
+              model-serving layer, it gives Casa, Connected Systems and
+              development tools one considered integration point without
+              promising that every model fits every machine.
             </p>
             <a
               className="local-ai-source-link"
@@ -315,22 +364,42 @@ export default function LocalAiPage() {
 
         <div className="site-container local-ai-models">
           <Reveal className="local-ai-models__intro">
-            <p className="section-label">Potential model roles</p>
-            <h2>Choose the model for the work</h2>
+            <p className="section-label">Representative local models</p>
+            <h2>Concrete models, chosen for the work</h2>
             <p>
-              A local system can host several specialised models rather than
-              expecting one model to handle every task.
+              Representative models suited to this architecture include the
+              families below. They are candidates, not a claim that Studio KRiX
+              currently runs every model or size listed.
             </p>
           </Reveal>
-          <Reveal as="ol" className="local-ai-models__list" delay={0.06}>
-            {modelCategories.map((model, index) => (
-              <li key={model}>
-                <span aria-hidden="true">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <strong>{model}</strong>
-              </li>
-            ))}
+          <Reveal className="local-ai-model-matrix" delay={0.06} distance={24}>
+            <table>
+              <caption className="sr-only">
+                Representative local AI models, their roles and example uses
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Model</th>
+                  <th scope="col">Role</th>
+                  <th scope="col">Example use</th>
+                </tr>
+              </thead>
+              <tbody>
+                {representativeModels.map((model) => (
+                  <tr key={model.name}>
+                    <td data-label="Model">
+                      <strong>{model.name}</strong>
+                      <span>{model.sizes}</span>
+                    </td>
+                    <td data-label="Role">
+                      <strong>{model.role}</strong>
+                      <span>{model.strengths}</span>
+                    </td>
+                    <td data-label="Example use">{model.example}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </Reveal>
         </div>
       </section>

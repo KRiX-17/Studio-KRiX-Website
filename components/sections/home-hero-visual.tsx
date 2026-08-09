@@ -38,12 +38,16 @@ export function HomeHeroVisual() {
         />
       </div>
 
-      <div className="home-hero-visual__brand" aria-hidden="true">
+      <div className="home-hero-visual__brand">
         <StudioKrixLogo
           className="home-hero-visual__logo"
           decorative
           sizes="(max-width: 680px) 48px, 64px"
         />
+        <div>
+          <span>Systems layer</span>
+          <strong>Casa · Connected Systems · Local AI</strong>
+        </div>
       </div>
 
       <span className="home-hero-visual__gold-line" aria-hidden="true" />

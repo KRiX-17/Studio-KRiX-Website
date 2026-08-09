@@ -6,8 +6,8 @@ const runtimeLayers = [
   },
   {
     number: "02",
-    title: "Ollama",
-    detail: "The local model runtime",
+    title: "Ollama runtime",
+    detail: "Model management · Model serving",
   },
   {
     number: "03",
