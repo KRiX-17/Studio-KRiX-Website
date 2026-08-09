@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ButtonLink } from "@/components/button-link";
 import { PageIntro } from "@/components/page-intro";
 import { FeaturedProject } from "@/components/sections/featured-project";
+import { ConnectedSystemsPreview } from "@/components/sections/connected-systems-preview";
 import { MondeSoniqPreview } from "@/components/sections/monde-soniq-preview";
 import { createMetadata } from "@/lib/metadata";
 
@@ -40,6 +41,7 @@ export default function ProjectsPage() {
 
       <FeaturedProject showAllProjectsLink={false} />
       <MondeSoniqPreview />
+      <ConnectedSystemsPreview />
 
       <section className="website-project">
         <div className="site-container website-project__panel">

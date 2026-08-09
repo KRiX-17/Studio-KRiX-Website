@@ -79,6 +79,19 @@ export default function ProfessionalPage() {
               <ArrowRightIcon />
             </Link>
             <Link
+              className="professional-project"
+              href="/connected-systems"
+            >
+              <span>Network · Automation · Security · Software</span>
+              <h3>Connected Systems</h3>
+              <p>
+                Network design, UniFi administration, PoE and camera
+                infrastructure, automation integration, dashboards and clear
+                technical documentation considered as one practical system.
+              </p>
+              <ArrowRightIcon />
+            </Link>
+            <Link
               className="professional-project professional-project--monde"
               href="/projects/monde-soniq"
             >

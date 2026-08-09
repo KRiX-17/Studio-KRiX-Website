@@ -461,6 +461,18 @@ export default function MondeSoniqPage() {
               </p>
               <ArrowRightIcon />
             </Link>
+            <Link
+              className="monde-related__project"
+              href="/connected-systems"
+            >
+              <span>Network · Automation · Security · Software</span>
+              <h3>Connected Systems</h3>
+              <p>
+                A practical capability connecting reliable infrastructure,
+                automation, security and evolving Casa integration.
+              </p>
+              <ArrowRightIcon />
+            </Link>
           </div>
         </div>
       </section>

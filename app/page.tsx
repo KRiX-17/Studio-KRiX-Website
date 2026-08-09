@@ -5,6 +5,7 @@ import { HomeContact } from "@/components/sections/home-contact";
 import { HomeHero } from "@/components/sections/home-hero";
 import { MondeSoniqPreview } from "@/components/sections/monde-soniq-preview";
 import { ProfessionalProfile } from "@/components/sections/professional-profile";
+import { ConnectedSystemsPreview } from "@/components/sections/connected-systems-preview";
 
 export default function HomePage() {
   return (
@@ -13,6 +14,7 @@ export default function HomePage() {
       <FeaturedMusic />
       <FeaturedProject />
       <MondeSoniqPreview showAllProjectsLink />
+      <ConnectedSystemsPreview showAllProjectsLink />
       <ProfessionalProfile />
       <HomeAbout />
       <HomeContact />

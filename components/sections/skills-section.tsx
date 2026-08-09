@@ -26,6 +26,20 @@ const skillGroups = [
     ],
   },
   {
+    title: "Connected Systems",
+    items: [
+      "Network design",
+      "UniFi administration",
+      "PoE systems",
+      "Camera infrastructure",
+      "Security-conscious architecture",
+      "Automation integration",
+      "API-based systems thinking",
+      "Dashboard design",
+      "Documentation",
+    ],
+  },
+  {
     title: "Creative",
     items: [
       "Electronic music production",
