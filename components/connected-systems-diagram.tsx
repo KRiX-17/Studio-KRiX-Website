@@ -39,12 +39,12 @@ export function ConnectedSystemsDiagram() {
 
         <span className="connected-diagram__connector" aria-hidden="true" />
 
-        <div className="connected-diagram__tier connected-diagram__tier--casa">
-          <span className="connected-diagram__casa-mark" aria-hidden="true">
-            C
+        <div className="connected-diagram__tier connected-diagram__tier--lakaz">
+          <span className="connected-diagram__lakaz-mark" aria-hidden="true">
+            LK
           </span>
           <div>
-            <strong>Casa</strong>
+            <strong>Lakaz</strong>
             <span>Evolving orchestration layer</span>
           </div>
         </div>
@@ -64,7 +64,7 @@ export function ConnectedSystemsDiagram() {
 
       <figcaption id="connected-diagram-caption">
         Connected devices feed specialist network, security and automation
-        systems. Casa is designed to bring selected information and actions
+        systems. Lakaz is designed to bring selected information and actions
         into a simpler user layer without replacing those specialist systems.
       </figcaption>
     </figure>

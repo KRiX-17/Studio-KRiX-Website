@@ -22,7 +22,7 @@ export function ConnectedSystemsPreview({
             {connectedSystemsProject.category}
           </p>
           <p>
-            Networking, automation, security and Casa integration designed as
+            Networking, automation, security and Lakaz integration designed as
             one practical ecosystem.
           </p>
           <div className="connected-preview__actions">
@@ -48,8 +48,8 @@ export function ConnectedSystemsPreview({
             <span>Automation</span>
           </div>
           <span className="connected-preview__line" />
-          <div className="connected-preview__node connected-preview__node--casa">
-            Casa
+          <div className="connected-preview__node connected-preview__node--lakaz">
+            Lakaz
           </div>
         </div>
       </div>

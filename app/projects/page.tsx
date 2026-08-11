@@ -4,7 +4,7 @@ import { PageIntro } from "@/components/page-intro";
 import { FeaturedProject } from "@/components/sections/featured-project";
 import { ConnectedSystemsPreview } from "@/components/sections/connected-systems-preview";
 import { MondeSoniqPreview } from "@/components/sections/monde-soniq-preview";
-import { casaProject } from "@/data/projects";
+import { lakazProject } from "@/data/projects";
 import { createMetadata } from "@/lib/metadata";
 
 const title = "Projects | Studio KRiX";
@@ -44,18 +44,18 @@ export default function ProjectsPage() {
       <MondeSoniqPreview />
       <ConnectedSystemsPreview />
 
-      <section className="casa-project-preview">
-        <div className="site-container casa-project-preview__panel">
+      <section className="lakaz-project-preview">
+        <div className="site-container lakaz-project-preview__panel">
           <div>
-            <p className="section-label">{casaProject.category}</p>
-            <span>{casaProject.status} · Active concept</span>
-            <h2>{casaProject.name}</h2>
-            <p className="casa-project-preview__tagline">{casaProject.tagline}</p>
+            <p className="section-label">{lakazProject.category}</p>
+            <span>{lakazProject.status} · Active concept</span>
+            <h2>{lakazProject.name}</h2>
+            <p className="lakaz-project-preview__tagline">{lakazProject.tagline}</p>
           </div>
           <div>
-            <p>{casaProject.description}</p>
-            <div className="casa-project-preview__actions">
-              <ButtonLink href={casaProject.href}>Explore Casa</ButtonLink>
+            <p>{lakazProject.description}</p>
+            <div className="lakaz-project-preview__actions">
+              <ButtonLink href={lakazProject.href}>Explore Lakaz</ButtonLink>
               <ButtonLink href="/connected-systems" variant="secondary">
                 Connected Systems
               </ButtonLink>

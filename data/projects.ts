@@ -35,7 +35,7 @@ export const connectedSystemsProject: Project = {
   name: "Connected Systems",
   category: "Network · Automation · Security · Software",
   description:
-    "A Studio KRiX exploration of reliable network infrastructure, UniFi systems, home automation and Casa integration.",
+    "A Studio KRiX exploration of reliable network infrastructure, UniFi systems, home automation and Lakaz integration.",
   tagline: "Networks, automation and software working together.",
   platforms: ["Infrastructure", "Security", "Automation", "Software"],
   status: "Active exploration",
@@ -44,16 +44,16 @@ export const connectedSystemsProject: Project = {
   featured: false,
 };
 
-export const casaProject: Project = {
-  slug: "casa",
-  name: "Casa",
+export const lakazProject: Project = {
+  slug: "lakaz",
+  name: "Lakaz",
   category: "Software · Household Operations · Connected Systems",
   description:
     "An evolving Studio KRiX product concept exploring a clear, human-facing layer for household tasks, routines, alerts and selected connected-system information.",
   tagline: "A simpler way to run the household.",
   platforms: ["Product concept", "Household operations", "Software"],
   status: "In development",
-  href: "/casa",
+  href: "/lakaz",
   accent: "#a87438",
   featured: false,
 };
@@ -73,7 +73,7 @@ export const projects: readonly Project[] = [
     featured: true,
   },
   connectedSystemsProject,
-  casaProject,
+  lakazProject,
   mondeSoniqProject,
   {
     slug: "studio-krix-website",

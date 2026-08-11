@@ -10,7 +10,7 @@ import { createMetadata } from "@/lib/metadata";
 
 const title = "Home Automation | Studio KRiX";
 const description =
-  "Explore Studio KRiX home automation concepts across connected devices, local automation, networking, energy, security awareness and future Casa integration.";
+  "Explore Studio KRiX home automation concepts across connected devices, local automation, networking, energy, security awareness and future Lakaz integration.";
 const path = "/connected-systems/home-automation";
 
 const baseMetadata = createMetadata({ title, description, path });
@@ -110,7 +110,7 @@ const automationAreas = [
     number: "05",
     title: "Security awareness",
     description:
-      "Integration and awareness only: useful states and events can be surfaced without handing security-critical decisions to Casa.",
+      "Integration and awareness only: useful states and events can be surfaced without handing security-critical decisions to Lakaz.",
     items: [
       "Door state",
       "Camera events",
@@ -144,7 +144,7 @@ const automationTechnologies = [
   "Local network integrations",
 ] as const;
 
-const casaFutureIntegrations = [
+const lakazFutureIntegrations = [
   "Household overview",
   "Tasks",
   "Shared routines",
@@ -162,12 +162,12 @@ const scenarios = [
   {
     number: "01",
     title: "Arriving home",
-    body: "Presence is detected. Useful lighting responds. Climate can return to the preferred state. Casa could surface only what actually needs attention.",
+    body: "Presence is detected. Useful lighting responds. Climate can return to the preferred state. Lakaz could surface only what actually needs attention.",
   },
   {
     number: "02",
     title: "Night",
-    body: "Non-essential systems settle down. Relevant household states can be checked. Lighting becomes appropriate for the time, while Casa could offer a concise status rather than a wall of controls.",
+    body: "Non-essential systems settle down. Relevant household states can be checked. Lighting becomes appropriate for the time, while Lakaz could offer a concise status rather than a wall of controls.",
   },
   {
     number: "03",
@@ -212,7 +212,7 @@ const structuredData = {
     "local automation",
     "connected systems",
     "energy awareness",
-    "Casa",
+    "Lakaz",
   ],
 };
 
@@ -321,7 +321,7 @@ export default function HomeAutomationPage() {
             <p>
               Physical systems, reliable networking and a capable automation
               platform do the specialist work. Integrations connect those
-              layers. Casa is being explored above them as a simpler way to
+              layers. Lakaz is being explored above them as a simpler way to
               understand household context and act when something matters.
             </p>
           </Reveal>
@@ -397,7 +397,7 @@ export default function HomeAutomationPage() {
               <span>System responsibility</span>
               <strong>Devices, rules and integrations.</strong>
               <p>
-                Casa remains a separate Studio KRiX software concept above
+                Lakaz remains a separate Studio KRiX software concept above
                 this layer.
               </p>
             </div>
@@ -416,29 +416,29 @@ export default function HomeAutomationPage() {
       </section>
 
       <section
-        className="home-auto-casa"
-        aria-labelledby="home-auto-casa-title"
+        className="home-auto-lakaz"
+        aria-labelledby="home-auto-lakaz-title"
       >
         <div className="site-container">
-          <div className="home-auto-casa__heading">
+          <div className="home-auto-lakaz__heading">
             <div>
               <p className="section-label">Evolving human-facing layer</p>
-              <h2 id="home-auto-casa-title">Casa + Home Automation</h2>
+              <h2 id="home-auto-lakaz-title">Lakaz + Home Automation</h2>
             </div>
-            <div className="home-auto-casa__intro">
+            <div className="home-auto-lakaz__intro">
               <p>
-                Casa is being developed as the human-facing layer of the Studio
+                Lakaz is being developed as the human-facing layer of the Studio
                 KRiX connected-home concept. The automation system handles
-                devices and rules. Casa focuses on the household.
+                devices and rules. Lakaz focuses on the household.
               </p>
-              <ButtonLink href="/casa" variant="secondary">
-                Explore Casa
+              <ButtonLink href="/lakaz" variant="secondary">
+                Explore Lakaz
               </ButtonLink>
             </div>
           </div>
 
-          <div className="home-auto-casa__comparison">
-            <article className="home-auto-casa__engine">
+          <div className="home-auto-lakaz__comparison">
+            <article className="home-auto-lakaz__engine">
               <span>Automation engine</span>
               <h3>Make the lights respond to presence.</h3>
               <p>
@@ -446,8 +446,8 @@ export default function HomeAutomationPage() {
                 in the background.
               </p>
             </article>
-            <article className="home-auto-casa__human">
-              <span>Casa</span>
+            <article className="home-auto-lakaz__human">
+              <span>Lakaz</span>
               <h3>
                 Show that someone is home, the garage door needs attention,
                 the washing is finished and a household task is due.
@@ -460,13 +460,13 @@ export default function HomeAutomationPage() {
             </article>
           </div>
 
-          <div className="home-auto-casa__future">
+          <div className="home-auto-lakaz__future">
             <div>
               <span>Potential future integrations</span>
               <strong>Design direction, not completed capability.</strong>
             </div>
-            <ul aria-label="Potential future Casa integrations">
-              {casaFutureIntegrations.map((integration) => (
+            <ul aria-label="Potential future Lakaz integrations">
+              {lakazFutureIntegrations.map((integration) => (
                 <li key={integration}>{integration}</li>
               ))}
             </ul>
@@ -484,7 +484,7 @@ export default function HomeAutomationPage() {
             <h2 id="home-auto-scenarios-title">What this could feel like</h2>
             <p>
               These scenarios illustrate a design direction. They are not
-              claims about a currently deployed Studio KRiX or Casa system.
+              claims about a currently deployed Studio KRiX or Lakaz system.
             </p>
           </div>
 
@@ -580,7 +580,7 @@ export default function HomeAutomationPage() {
               <ArrowRightIcon />
             </Link>
             <Link href="/connected-systems/local-ai">
-              <span>Private infrastructure · Ollama · Casa</span>
+              <span>Private infrastructure · Local models · Lakaz</span>
               <h3>Local AI</h3>
               <p>
                 A guarded architecture for local models, retrieval and

@@ -7,7 +7,7 @@ const architectureLayers = [
   {
     number: "02",
     title: "Runtime & model management",
-    items: ["Ollama", "Model serving"],
+    items: ["Local model serving", "Model management"],
   },
   {
     number: "03",
@@ -16,7 +16,7 @@ const architectureLayers = [
   },
   {
     number: "04",
-    title: "Casa intelligence layer",
+    title: "Lakaz intelligence layer",
     items: ["Context", "Retrieval", "Summaries", "Suggestions"],
   },
   {

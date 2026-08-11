@@ -1,6 +1,14 @@
 import Image from "next/image";
 import { DeviceMockup } from "@/components/device-mockup";
-import { StudioKrixLogo } from "@/components/studio-krix-logo";
+
+const lakazAreas = [
+  "Household",
+  "Tasks",
+  "Maintenance",
+  "Connected home",
+  "Energy",
+  "Notifications",
+] as const;
 
 export function HomeHeroVisual() {
   return (
@@ -15,6 +23,53 @@ export function HomeHeroVisual() {
           src="/images/studio-krix-precision-engineering.png"
         />
       </div>
+
+      <section
+        aria-label="Lakaz concept interface"
+        className="home-hero-visual__lakaz"
+      >
+        <div className="home-hero-visual__lakaz-heading">
+          <span aria-hidden="true">LK</span>
+          <div>
+            <strong>Lakaz</strong>
+            <small>Concept interface</small>
+          </div>
+        </div>
+
+        <div className="home-hero-visual__lakaz-body">
+          <ul aria-label="Lakaz concept areas">
+            {lakazAreas.map((area, index) => (
+              <li className={index === 0 ? "is-active" : undefined} key={area}>
+                <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                {area}
+              </li>
+            ))}
+          </ul>
+
+          <div
+            aria-label="Conceptual Connected Systems and UniFi infrastructure from gateway to managed switch and household systems"
+            className="home-hero-visual__network"
+            role="img"
+          >
+            <span className="home-hero-visual__network-label">
+              Connected systems / UniFi
+            </span>
+            <span className="home-hero-visual__network-node home-hero-visual__network-node--gateway">
+              Gateway
+            </span>
+            <i aria-hidden="true" />
+            <span className="home-hero-visual__network-node home-hero-visual__network-node--switch">
+              Managed switch
+            </span>
+            <div aria-hidden="true" className="home-hero-visual__network-ports">
+              <span />
+              <span />
+              <span />
+              <span />
+            </div>
+          </div>
+        </div>
+      </section>
 
       <div className="home-hero-visual__music">
         <Image
@@ -38,19 +93,14 @@ export function HomeHeroVisual() {
         />
       </div>
 
-      <div className="home-hero-visual__brand">
-        <StudioKrixLogo
-          className="home-hero-visual__logo"
-          decorative
-          sizes="(max-width: 680px) 48px, 64px"
-        />
+      <div className="home-hero-visual__models">
+        <span aria-hidden="true" />
         <div>
-          <span>Systems layer</span>
-          <strong>Casa · Connected Systems · Local AI</strong>
+          <strong>Local models</strong>
+          <small>Qwen3 · Gemma 3 · gpt-oss · Devstral</small>
         </div>
       </div>
 
-      <span className="home-hero-visual__gold-line" aria-hidden="true" />
       <span className="home-hero-visual__glow" aria-hidden="true" />
     </figure>
   );

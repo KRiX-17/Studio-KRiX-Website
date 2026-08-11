@@ -1,23 +1,23 @@
 const runtimeLayers = [
   {
     number: "01",
-    title: "Local AI hardware",
-    detail: "A high-memory NVIDIA or AMD platform",
+    title: "AI HARDWARE",
+    detail: "High-memory NVIDIA or AMD platform",
   },
   {
     number: "02",
-    title: "Ollama runtime",
+    title: "LOCAL MODEL RUNTIME",
     detail: "Model management · Model serving",
   },
   {
     number: "03",
-    title: "Local models",
-    detail: "Language · Vision · Embeddings · Coding",
+    title: "LOCAL MODELS",
+    detail: "Qwen3 · Gemma 3 · gpt-oss · Devstral",
   },
   {
     number: "04",
-    title: "Useful systems",
-    detail: "Casa · Connected Systems · Development tools",
+    title: "LAKAZ / CONNECTED SYSTEMS / DEVELOPMENT TOOLS",
+    detail: "Approved household · systems · engineering workflows",
   },
 ] as const;
 

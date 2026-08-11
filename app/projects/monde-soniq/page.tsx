@@ -469,7 +469,7 @@ export default function MondeSoniqPage() {
               <h3>Connected Systems</h3>
               <p>
                 A practical capability connecting reliable infrastructure,
-                automation, security and evolving Casa integration.
+                automation, security and evolving Lakaz integration.
               </p>
               <ArrowRightIcon />
             </Link>
