@@ -478,35 +478,49 @@
 }
 
 .connected-network-concept {
-  width: min(100%, 58rem);
+  width: min(100%, 72rem);
   min-width: 0;
   grid-column: 1 / -1;
   justify-self: center;
   margin: clamp(3.5rem, 7vw, 6.5rem) 0 0;
   border-top-color: var(--accent-gold-border);
-  border-radius: 0.85rem;
-  padding: clamp(0.5rem, 1.2vw, 0.85rem);
+  border-radius: 0.8rem;
+  padding: clamp(0.35rem, 0.8vw, 0.6rem);
 }
 
 .connected-network-concept__media {
+  position: relative;
   overflow: hidden;
+  aspect-ratio: 1672 / 940;
   border: 1px solid var(--line);
-  border-radius: 0.55rem;
+  border-radius: 0.52rem;
   background: #0b0d10;
+  box-shadow:
+    0 1.2rem 3rem color-mix(in srgb, #02040a 34%, transparent),
+    inset 0 0 0 1px color-mix(in srgb, white 4%, transparent);
+}
+
+.connected-network-concept__media::after {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, color-mix(in srgb, #08080c 10%, transparent), transparent 28%),
+    linear-gradient(180deg, transparent 72%, color-mix(in srgb, #08080c 12%, transparent));
+  box-shadow: inset 0 0 2.75rem color-mix(in srgb, #08080c 16%, transparent);
+  content: "";
+  pointer-events: none;
 }
 
 .connected-network-concept__image {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .connected-network-concept figcaption {
-  display: grid;
-  grid-template-columns: minmax(12rem, 0.42fr) minmax(0, 0.58fr);
-  gap: 1rem 2rem;
-  align-items: start;
-  padding: 1.1rem 0.5rem 0.45rem;
+  padding: 0.8rem 0.45rem 0.3rem;
 }
 
 .connected-network-concept figcaption strong {
@@ -514,12 +528,6 @@
   font-weight: 620;
   letter-spacing: 0.07em;
   text-transform: uppercase;
-}
-
-.connected-network-concept figcaption span {
-  color: var(--muted);
-  font-size: 0.84rem;
-  line-height: 1.65;
 }
 
 .connected-technology-note,
@@ -2607,9 +2615,12 @@
     margin-top: 3rem;
   }
 
-  .connected-network-concept figcaption {
-    grid-template-columns: 1fr;
-    padding-inline: 0.35rem;
+  .connected-network-concept__media {
+    aspect-ratio: 4 / 3;
+  }
+
+  .connected-network-concept__image {
+    object-position: 70% center;
   }
 
   .connected-environments__grid article,

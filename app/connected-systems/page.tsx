@@ -268,20 +268,16 @@ export default function ConnectedSystemsPage() {
           >
             <div className="connected-network-concept__media">
               <Image
-                alt="Concept rack showing structured Ethernet cabling, managed network switches, storage and battery-backed power infrastructure."
+                alt="Concept network rack with structured cabling, managed switching, storage and protected infrastructure."
                 className="connected-network-concept__image"
                 placeholder="blur"
                 quality={92}
-                sizes="(max-width: 680px) calc(100vw - 2.5rem), (max-width: 960px) calc(100vw - 4rem), 58rem"
+                sizes="(max-width: 680px) calc(100vw - 2.5rem), (max-width: 960px) calc(100vw - 4rem), 72rem"
                 src={networkRackConcept}
               />
             </div>
             <figcaption>
               <strong>Concept network infrastructure</strong>
-              <span>
-                Illustrative rack architecture showing structured networking,
-                PoE, storage and protected power.
-              </span>
             </figcaption>
           </Reveal>
         </div>
