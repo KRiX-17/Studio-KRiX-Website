@@ -80,7 +80,7 @@ export const projects: readonly Project[] = [
     name: "Studio KRiX Website",
     category: "Web",
     description:
-      "A responsive portfolio and creative platform built with Next.js, TypeScript and Vercel.",
+      "A responsive portfolio and personal platform connecting technology, engineering, connected systems and music.",
     tagline: "A clear home for technology, engineering and music.",
     platforms: ["Web"],
     status: "Released",

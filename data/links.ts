@@ -37,7 +37,8 @@ export const OHMXACT_DESTINATION = "/ohmxact";
 export const linksHubItems = [
   {
     title: "Visit Studio KRiX",
-    description: "Software, automotive technology and creative projects.",
+    description:
+      "Software, connected systems, automotive technology and creative work.",
     href: "/",
     category: "featured",
     icon: "studio",
@@ -64,7 +65,8 @@ export const linksHubItems = [
   },
   {
     title: "Professional Profile",
-    description: "Automotive engineering and software capabilities.",
+    description:
+      "Automotive, electrical, software and connected-system capabilities.",
     href: "/professional",
     category: "featured",
     icon: "linkedin",

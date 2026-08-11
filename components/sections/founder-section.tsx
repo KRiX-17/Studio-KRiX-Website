@@ -12,9 +12,10 @@ export function FounderSection() {
           <p className="section-label">About the founder</p>
           <h2>Built across disciplines.</h2>
           <p>
-            Christopher Helene is a Sydney-based automotive technician,
-            engineer and creator working across disability vehicle technology,
-            fabrication, electronics, software, music and photography.
+            Christopher Helene is a Sydney-based multidisciplinary technician,
+            developer and electronic music producer working across automotive
+            and electrical systems, software, networking, connected
+            environments and creative projects.
           </p>
           <ButtonLink href="/about" variant="text">
             More about Christopher

@@ -11,7 +11,7 @@ import { createMetadata } from "@/lib/metadata";
 
 const title = "KRiX Links | Studio KRiX";
 const description =
-  "Official links for KRiX, Studio KRiX, OhmXact, music, professional profiles and contact.";
+  "Official links for KRiX, Studio KRiX, software, connected systems, music, professional profiles and contact.";
 
 const baseMetadata = createMetadata({
   title,
@@ -88,7 +88,8 @@ export default function LinksPage() {
         <div className="links-container">
           <h1>KRiX</h1>
           <p className="links-profile__description">
-            Software, automotive technology and music by Christopher Helene.
+            Software, connected systems, automotive technology and music by
+            Christopher Helene.
           </p>
           <p className="links-profile__location">{siteConfig.location}</p>
           <Link className="links-profile__home" href="/">

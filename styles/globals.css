@@ -6869,9 +6869,55 @@ section[id] {
   line-height: 1.65;
 }
 
+.home-hero__support {
+  max-width: 37rem;
+  margin: 0.75rem 0 0;
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.65;
+}
+
+.home-hero__capabilities {
+  max-width: 41rem;
+  margin-top: 1.35rem;
+}
+
+.home-hero__capabilities ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.home-hero__capabilities a {
+  display: inline-flex;
+  min-height: 2.15rem;
+  align-items: center;
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  padding: 0.4rem 0.72rem;
+  background: var(--glass-fallback);
+  color: var(--muted-strong);
+  font-size: 0.75rem;
+  font-weight: 570;
+  line-height: 1.2;
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    color 180ms ease;
+}
+
+.home-hero__capabilities a:hover {
+  border-color: var(--accent-gold-border);
+  background: var(--hover);
+  color: var(--text);
+}
+
 .home-hero__actions {
   gap: 0.8rem;
-  margin-top: 2.25rem;
+  margin-top: 1.7rem;
 }
 
 .home-hero__media {
@@ -8956,6 +9002,7 @@ section[id] {
   .selected-track__links a,
   .music-connect__link,
   .contact-option > a,
+  .home-hero__capabilities a,
   .button-link--secondary {
     background: var(--glass-background);
     -webkit-backdrop-filter: saturate(var(--glass-saturation))

@@ -7,7 +7,7 @@ import { createMetadata } from "@/lib/metadata";
 export const metadata = createMetadata({
   title: "Contact",
   description:
-    "Contact Studio KRiX about professional opportunities, creative collaboration or OhmXact support.",
+    "Contact Studio KRiX about software, connected systems, automotive and electrical work, professional opportunities or creative projects.",
   path: "/contact",
 });
 
@@ -16,7 +16,7 @@ export default function ContactPage() {
     <>
       <PageIntro
         align="wide"
-        description="Clear contact options for professional opportunities, creative work and product support."
+        description="Clear contact options for software, technical systems, connected environments, automotive and electrical work, creative projects and product support."
         title="Get in touch."
       />
 
@@ -26,9 +26,11 @@ export default function ContactPage() {
             <p className="section-label">Private contact</p>
             <h2>One form, routed with care.</h2>
             <p>
-              Use this form for Studio KRiX enquiries, professional
-              opportunities and creative collaboration. Product problems have
-              a separate support form with space for technical details.
+              Use this form for Studio KRiX enquiries involving software,
+              technical systems, connected environments, automotive or
+              electrical work, professional opportunities and creative
+              projects. Product problems have a separate support form with
+              space for technical details.
             </p>
             <ButtonLink href="/support" variant="secondary">
               Go to product support

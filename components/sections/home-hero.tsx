@@ -1,6 +1,17 @@
+import Link from "next/link";
 import { ButtonLink } from "@/components/button-link";
 import { HomeHeroVisual } from "@/components/sections/home-hero-visual";
 import { Reveal } from "@/components/reveal";
+
+const homeCapabilities = [
+  { label: "Software & Apps", href: "/projects" },
+  { label: "Connected Systems", href: "/connected-systems" },
+  { label: "Networking & PoE", href: "/connected-systems" },
+  { label: "Home Automation", href: "/connected-systems/home-automation" },
+  { label: "Local AI", href: "/connected-systems/local-ai" },
+  { label: "Automotive & Electrical", href: "/professional" },
+  { label: "Music Production", href: "/music" },
+] as const;
 
 export function HomeHero() {
   return (
@@ -16,9 +27,28 @@ export function HomeHero() {
             <span>and music brought together.</span>
           </h1>
           <p className="home-hero__lede">
-            Automotive technician, software developer and music producer based
-            in Sydney, Australia.
+            Studio KRiX brings together software development, connected
+            systems, networking, home automation, local AI, automotive and
+            electrical technology, and electronic music.
           </p>
+          <p className="home-hero__support">
+            From practical apps like OhmXact and evolving platforms like Lakaz
+            to managed network infrastructure, intelligent automation and
+            creative production, I explore how technology can solve real
+            problems and create better experiences.
+          </p>
+          <nav
+            aria-label="Studio KRiX capabilities"
+            className="home-hero__capabilities"
+          >
+            <ul>
+              {homeCapabilities.map((capability) => (
+                <li key={capability.label}>
+                  <Link href={capability.href}>{capability.label}</Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
           <div className="home-hero__actions">
             <ButtonLink href="/music">Explore Music</ButtonLink>
             <ButtonLink href="/projects" variant="secondary">
