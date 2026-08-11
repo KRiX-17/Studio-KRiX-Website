@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ButtonLink } from "@/components/button-link";
 import { ConnectedSystemsDiagram } from "@/components/connected-systems-diagram";
@@ -7,6 +8,7 @@ import { JsonLd } from "@/components/json-ld";
 import { Reveal } from "@/components/reveal";
 import { siteConfig } from "@/config/site";
 import { createMetadata } from "@/lib/metadata";
+import networkRackConcept from "@/public/images/connected-systems/network-rack-concept.webp";
 
 const title = "Connected Systems | Studio KRiX";
 const description =
@@ -249,15 +251,35 @@ export default function ConnectedSystemsPage() {
               properly.
             </p>
             <p>
-              Studio KRiX works with structured network layouts, wired
-              backbones, PoE infrastructure, wireless coverage, segmented
-              services and practical monitoring.
+              Structured networking forms the backbone of a reliable connected
+              environment. Studio KRiX explores managed switching, PoE,
+              segmented networks, protected power and scalable infrastructure
+              designed around the needs of the space.
             </p>
           </div>
           <CapabilityList
             items={networkCapabilities}
             label="Network infrastructure capabilities"
           />
+          <Reveal
+            as="figure"
+            className="connected-network-concept"
+            delay={0.08}
+          >
+            <div className="connected-network-concept__media">
+              <Image
+                alt="Concept network rack with structured cabling, managed switching, storage and protected infrastructure."
+                className="connected-network-concept__image"
+                placeholder="blur"
+                quality={92}
+                sizes="(max-width: 680px) calc(100vw - 2.5rem), (max-width: 960px) calc(100vw - 4rem), 72rem"
+                src={networkRackConcept}
+              />
+            </div>
+            <figcaption>
+              <strong>Concept network infrastructure</strong>
+            </figcaption>
+          </Reveal>
         </div>
       </section>
 

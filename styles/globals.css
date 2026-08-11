@@ -113,6 +113,7 @@
 
 .connected-status-card,
 .connected-diagram,
+.connected-network-concept,
 .connected-direction-card,
 .connected-technology-note,
 .connected-environments__grid article,
@@ -474,6 +475,59 @@
   font-size: clamp(1.05rem, 1.8vw, 1.35rem);
   font-weight: 520;
   letter-spacing: -0.018em;
+}
+
+.connected-network-concept {
+  width: min(100%, 72rem);
+  min-width: 0;
+  grid-column: 1 / -1;
+  justify-self: center;
+  margin: clamp(3.5rem, 7vw, 6.5rem) 0 0;
+  border-top-color: var(--accent-gold-border);
+  border-radius: 0.8rem;
+  padding: clamp(0.35rem, 0.8vw, 0.6rem);
+}
+
+.connected-network-concept__media {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1672 / 940;
+  border: 1px solid var(--line);
+  border-radius: 0.52rem;
+  background: #0b0d10;
+  box-shadow:
+    0 1.2rem 3rem color-mix(in srgb, #02040a 34%, transparent),
+    inset 0 0 0 1px color-mix(in srgb, white 4%, transparent);
+}
+
+.connected-network-concept__media::after {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, color-mix(in srgb, #08080c 10%, transparent), transparent 28%),
+    linear-gradient(180deg, transparent 72%, color-mix(in srgb, #08080c 12%, transparent));
+  box-shadow: inset 0 0 2.75rem color-mix(in srgb, #08080c 16%, transparent);
+  content: "";
+  pointer-events: none;
+}
+
+.connected-network-concept__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.connected-network-concept figcaption {
+  padding: 0.8rem 0.45rem 0.3rem;
+}
+
+.connected-network-concept figcaption strong {
+  font-size: 0.8rem;
+  font-weight: 620;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
 }
 
 .connected-technology-note,
@@ -2410,6 +2464,7 @@
 @supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
   .connected-status-card,
   .connected-diagram,
+  .connected-network-concept,
   .connected-direction-card,
   .connected-technology-note,
   .connected-environments__grid article,
@@ -2554,6 +2609,18 @@
 
   .connected-capability__list li {
     grid-template-columns: 2.5rem minmax(0, 1fr);
+  }
+
+  .connected-network-concept {
+    margin-top: 3rem;
+  }
+
+  .connected-network-concept__media {
+    aspect-ratio: 4 / 3;
+  }
+
+  .connected-network-concept__image {
+    object-position: 70% center;
   }
 
   .connected-environments__grid article,
