@@ -10,7 +10,7 @@ import { createMetadata } from "@/lib/metadata";
 
 const title = "Professional Profile | Christopher Helene";
 const description =
-  "Automotive engineering, diagnostics, software development and technical capabilities of Christopher Helene.";
+  "Automotive, electrical, software, networking, connected-systems and technical capabilities of Christopher Helene.";
 
 const baseMetadata = createMetadata({
   title,
@@ -30,7 +30,7 @@ export default function ProfessionalPage() {
     <>
       <PageIntro
         align="wide"
-        description="Automotive engineering, diagnostics, software development and practical technical capability."
+        description="Automotive engineering, electrical systems, diagnostics, software development, networking and practical connected-system capability."
         index="Christopher Helene"
         title="Professional Profile"
       />
@@ -39,11 +39,14 @@ export default function ProfessionalPage() {
         <div className="site-container professional-summary__grid">
           <p className="section-label">Professional summary</p>
           <p>
-            Christopher is an automotive technician specialising in disability
-            vehicle modifications, automotive electrical systems, diagnostics,
-            fabrication and vehicle communication networks. His work combines
-            hands-on workshop engineering with an interest in software,
-            automation and user-focused technology.
+            Christopher&apos;s strongest established professional foundation is
+            automotive and auto-electrical work, including disability vehicle
+            modifications, diagnostics, fabrication, mechanical installation
+            and CAN/LIN vehicle networks. Alongside that hands-on experience,
+            he develops software, designs and administers networks, and builds
+            practical connected-system concepts. This work combines workshop
+            problem-solving with digital tools, documentation, automation and
+            user-focused technology.
           </p>
         </div>
       </section>
@@ -57,7 +60,10 @@ export default function ProfessionalPage() {
               <p className="section-label">Applied work</p>
               <h2>Selected projects</h2>
             </div>
-            <p>Practical software and a platform for work across disciplines.</p>
+            <p>
+              Practical software, connected-system explorations and a platform
+              for work across disciplines.
+            </p>
           </div>
           <div className="professional-projects__grid">
             <Link className="professional-project" href="/ohmxact">
@@ -73,8 +79,9 @@ export default function ProfessionalPage() {
               <span>Web · Next.js and TypeScript</span>
               <h3>Studio KRiX Website</h3>
               <p>
-                A responsive portfolio and creative platform built with
-                Next.js, TypeScript and Vercel.
+                A responsive portfolio and personal platform connecting
+                technology, engineering, connected systems and music, built
+                with Next.js, TypeScript and Vercel.
               </p>
               <ArrowRightIcon />
             </Link>

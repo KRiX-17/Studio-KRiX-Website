@@ -5,7 +5,7 @@ import { createMetadata } from "@/lib/metadata";
 
 const title = "About Christopher Helene and Studio KRiX";
 const description =
-  "Learn about Christopher Helene, KRiX and the ideas behind Studio KRiX.";
+  "Learn about Christopher Helene, KRiX and Studio KRiX across engineering, software, connected systems, automation, local AI and music.";
 
 const baseMetadata = createMetadata({
   title,
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 const identities = [
   {
     title: "Christopher Helene",
-    body: "A Sydney-based automotive technician, developer and electronic music producer.",
+    body: "A Sydney-based multidisciplinary technician, developer and electronic music producer.",
   },
   {
     title: "KRiX",
@@ -31,7 +31,7 @@ const identities = [
   },
   {
     title: "Studio KRiX",
-    body: "The personal home that brings practical software, automotive technology and creative projects together.",
+    body: "The personal platform connecting engineering, software, connected systems, automation, local AI and creative work.",
   },
 ] as const;
 
@@ -39,7 +39,7 @@ export default function AboutPage() {
   return (
     <>
       <PageIntro
-        description="Christopher Helene, KRiX and Studio KRiX are three parts of one practical and creative body of work."
+        description="Christopher Helene, KRiX and Studio KRiX connect practical engineering, software, systems thinking and creative work."
         title="About Christopher Helene and Studio KRiX"
       />
 
@@ -48,14 +48,20 @@ export default function AboutPage() {
           <p className="section-label">The idea</p>
           <div>
             <p className="large-statement">
-              Christopher Helene is a Sydney-based automotive technician,
-              developer and electronic music producer. Studio KRiX brings
-              those interests together through practical software, automotive
-              technology and creative projects.
+              Christopher Helene is a Sydney-based multidisciplinary
+              technician, developer and electronic music producer. His
+              established foundation spans automotive and electrical systems,
+              diagnostics, vehicle communication networks, mechanical
+              installation, fabrication, software development, networking and
+              practical problem-solving. Studio KRiX connects that foundation
+              with evolving work in connected environments, home automation,
+              local AI and deeper systems integration, alongside KRiX music
+              and creative projects.
             </p>
             <p>
               It is a personal platform rather than a large company or agency:
-              a simple place to share useful work, music and ideas clearly.
+              a simple place to develop and share practical tools,
+              experimental systems, music and ideas clearly.
             </p>
           </div>
         </div>

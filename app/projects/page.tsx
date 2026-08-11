@@ -9,7 +9,7 @@ import { createMetadata } from "@/lib/metadata";
 
 const title = "Projects | Studio KRiX";
 const description =
-  "Selected software, app, automotive technology and creative projects, including the Studio KRiX collaboration with Monde Soniq.";
+  "Studio KRiX projects across software, connected systems, networking, automation, local AI, automotive technology, music and creative infrastructure.";
 
 const baseMetadata = createMetadata({
   title,
@@ -25,18 +25,20 @@ export const metadata: Metadata = {
 };
 
 const futureDirections = [
-  "Apps",
-  "Automotive technology concepts",
-  "Software tools",
-  "Music projects",
-  "Creative releases",
+  "Apps & software",
+  "Connected systems",
+  "Networking & infrastructure",
+  "Automation",
+  "Local AI",
+  "Automotive technology",
+  "Music & creative projects",
 ] as const;
 
 export default function ProjectsPage() {
   return (
     <>
       <PageIntro
-        description="Selected software, technical and creative work built around practical ideas."
+        description="Selected work across software, connected systems, automotive technology and creative production, built around practical ideas."
         title="Projects"
       />
 
@@ -72,8 +74,9 @@ export default function ProjectsPage() {
           </div>
           <div>
             <p>
-              A responsive portfolio and creative platform built with Next.js,
-              TypeScript and Vercel.
+              A responsive portfolio and personal platform connecting
+              technology, engineering, connected systems and music, built with
+              Next.js, TypeScript and Vercel.
             </p>
             <ButtonLink href="/" variant="secondary">
               Visit Studio KRiX
@@ -90,8 +93,8 @@ export default function ProjectsPage() {
           </div>
           <div>
             <p>
-              Future projects can span these disciplines without rendering
-              empty placeholders before the work is ready.
+              The project structure can grow across these directions without
+              publishing empty placeholders before the work is ready.
             </p>
             <ul>
               {futureDirections.map((direction) => (

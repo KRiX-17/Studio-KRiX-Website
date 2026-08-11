@@ -98,6 +98,8 @@ const structuredData = {
       "@id": `${siteConfig.url}/#organization`,
       name: siteConfig.name,
       url: siteConfig.url,
+      description:
+        "A personal platform connecting engineering, software, connected systems, automation, local AI and creative work.",
       logo: {
         "@type": "ImageObject",
         url: `${siteConfig.url}/brand/studio-krix/studio-krix-sk-logo-512.png`,
@@ -119,12 +121,18 @@ const structuredData = {
       "@id": `${siteConfig.url}/#christopher-helene`,
       name: siteConfig.founder,
       url: `${siteConfig.url}/professional`,
-      jobTitle: "Automotive technician, developer and music producer",
+      jobTitle:
+        "Automotive technician, software developer and electronic music producer",
       knowsAbout: [
         "Automotive diagnostics",
         "Automotive electrical systems",
         "Disability vehicle modifications",
+        "CAN and LIN vehicle communication",
         "Software development",
+        "Network infrastructure",
+        "Connected systems",
+        "Home automation",
+        "Local AI architecture",
         "Electronic music production",
       ],
       worksFor: {

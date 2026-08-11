@@ -17,7 +17,7 @@ export const siteConfig = {
   name: "Studio KRiX",
   founder: "Christopher Helene",
   description:
-    "Automotive technology, practical software and electronic music by Christopher Helene in Sydney, Australia.",
+    "Software, automotive and electrical technology, connected systems, automation, local AI and electronic music by Christopher Helene in Sydney, Australia.",
   url: "https://studiokrix.com.au",
   location: "Sydney, Australia",
   linkedIn: "https://www.linkedin.com/in/chris-helene-b0791ba5",
