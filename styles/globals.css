@@ -113,6 +113,7 @@
 
 .connected-status-card,
 .connected-diagram,
+.connected-network-concept,
 .connected-direction-card,
 .connected-technology-note,
 .connected-environments__grid article,
@@ -474,6 +475,51 @@
   font-size: clamp(1.05rem, 1.8vw, 1.35rem);
   font-weight: 520;
   letter-spacing: -0.018em;
+}
+
+.connected-network-concept {
+  width: min(100%, 58rem);
+  min-width: 0;
+  grid-column: 1 / -1;
+  justify-self: center;
+  margin: clamp(3.5rem, 7vw, 6.5rem) 0 0;
+  border-top-color: var(--accent-gold-border);
+  border-radius: 0.85rem;
+  padding: clamp(0.5rem, 1.2vw, 0.85rem);
+}
+
+.connected-network-concept__media {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 0.55rem;
+  background: #0b0d10;
+}
+
+.connected-network-concept__image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.connected-network-concept figcaption {
+  display: grid;
+  grid-template-columns: minmax(12rem, 0.42fr) minmax(0, 0.58fr);
+  gap: 1rem 2rem;
+  align-items: start;
+  padding: 1.1rem 0.5rem 0.45rem;
+}
+
+.connected-network-concept figcaption strong {
+  font-size: 0.8rem;
+  font-weight: 620;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.connected-network-concept figcaption span {
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.65;
 }
 
 .connected-technology-note,
@@ -2410,6 +2456,7 @@
 @supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
   .connected-status-card,
   .connected-diagram,
+  .connected-network-concept,
   .connected-direction-card,
   .connected-technology-note,
   .connected-environments__grid article,
@@ -2554,6 +2601,15 @@
 
   .connected-capability__list li {
     grid-template-columns: 2.5rem minmax(0, 1fr);
+  }
+
+  .connected-network-concept {
+    margin-top: 3rem;
+  }
+
+  .connected-network-concept figcaption {
+    grid-template-columns: 1fr;
+    padding-inline: 0.35rem;
   }
 
   .connected-environments__grid article,
