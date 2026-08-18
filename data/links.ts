@@ -31,7 +31,6 @@ export type LinksHubItem = {
   badge?: string;
 };
 
-// Replace this one value with the public App Store URL after approval.
 export const OHMXACT_DESTINATION = "/ohmxact";
 
 export const linksHubItems = [

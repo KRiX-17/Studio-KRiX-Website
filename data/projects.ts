@@ -66,8 +66,8 @@ export const projects: readonly Project[] = [
     description:
       "A fast resistor calculation app designed for the workshop, the bench and your pocket.",
     tagline: "Built for the workshop, the bench, and your pocket.",
-    platforms: ["iPhone", "iPad"],
-    status: "Available soon",
+    platforms: ["iPhone", "iPad", "Android coming soon"],
+    status: "Released",
     href: "/ohmxact",
     accent: "#9f233b",
     featured: true,

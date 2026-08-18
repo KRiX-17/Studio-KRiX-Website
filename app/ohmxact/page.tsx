@@ -7,6 +7,8 @@ import { FinalCta } from "@/components/sections/final-cta";
 import { siteConfig } from "@/config/site";
 import { createMetadata } from "@/lib/metadata";
 
+const appStoreUrl = "https://apps.apple.com/app/id6795690387";
+
 export const metadata = createMetadata({
   title: "OhmXact",
   description:
@@ -20,8 +22,9 @@ const capabilities = [
     description: "Calculate series and parallel resistance without a detour.",
   },
   {
-    title: "Built for Apple devices",
-    description: "A focused experience for iPhone and iPad.",
+    title: "Available now on Apple devices",
+    description:
+      "Download OhmXact for iPhone and iPad. Android is coming soon.",
   },
   {
     title: "Ready where work happens",
@@ -36,6 +39,8 @@ const softwareStructuredData = {
   name: "OhmXact",
   applicationCategory: "UtilitiesApplication",
   operatingSystem: "iOS, iPadOS",
+  softwareVersion: "1.0",
+  downloadUrl: appStoreUrl,
   description:
     "A fast resistor calculation app designed for the workshop, the bench and your pocket.",
   creator: {
@@ -56,11 +61,15 @@ export default function OhmXactPage() {
               Built for the workshop, the bench, and your pocket.
             </p>
             <p className="body-muted">
-              Fast, focused resistor calculations for iPhone and iPad.
+              OhmXact is available now for iPhone and iPad, with Android coming
+              soon.
             </p>
             <div className="product-hero__actions">
+              <ButtonLink external href={appStoreUrl}>
+                Download on the App Store
+              </ButtonLink>
               <span className="button-placeholder" aria-disabled="true">
-                App Store — coming soon
+                Android — coming soon
               </span>
               <ButtonLink href="/support" variant="text">
                 Get support
