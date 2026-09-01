@@ -31,8 +31,9 @@ export type LinksHubItem = {
   badge?: string;
 };
 
-// Replace this one value with the public App Store URL after approval.
 export const OHMXACT_DESTINATION = "/ohmxact";
+export const OHMXACT_APP_STORE_URL =
+  "https://apps.apple.com/au/app/ohmxact/id6795690387";
 
 export const linksHubItems = [
   {

@@ -31,6 +31,7 @@ export function HomeHeroVisual() {
           alt="OhmXact resistance calculator running on iPhone."
           device="iphone"
           height={2778}
+          priority
           quality={92}
           sizes="(max-width: 680px) 44vw, (max-width: 960px) 28vw, 17vw"
           src="/images/ohmxact-iphone-dark.png"

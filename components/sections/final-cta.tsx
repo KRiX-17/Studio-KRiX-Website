@@ -6,6 +6,7 @@ type FinalCtaProps = {
   description?: string;
   href?: string;
   linkLabel?: string;
+  external?: boolean;
 };
 
 export function FinalCta({
@@ -13,6 +14,7 @@ export function FinalCta({
   description,
   href = "/contact",
   linkLabel = "Start a conversation",
+  external = false,
 }: FinalCtaProps) {
   return (
     <section className="final-cta">
@@ -20,7 +22,9 @@ export function FinalCta({
         <h2>{title}</h2>
         {description ? <p>{description}</p> : null}
         <div className="final-cta__actions">
-          <ButtonLink href={href}>{linkLabel}</ButtonLink>
+          <ButtonLink external={external} href={href}>
+            {linkLabel}
+          </ButtonLink>
           <ButtonLink href="/privacy" variant="text">
             How messages are handled
           </ButtonLink>

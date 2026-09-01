@@ -2,6 +2,7 @@ const navigation = [
   { label: "Home", href: "/" },
   { label: "Music", href: "/music" },
   { label: "Projects", href: "/projects" },
+  { label: "OhmXact", href: "/ohmxact" },
   { label: "Professional", href: "/professional" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },

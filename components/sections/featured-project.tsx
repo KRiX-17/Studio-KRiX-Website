@@ -1,6 +1,7 @@
 import { ButtonLink } from "@/components/button-link";
 import { DeviceMockups } from "@/components/device-mockups";
 import { Reveal } from "@/components/reveal";
+import { OHMXACT_APP_STORE_URL } from "@/data/links";
 
 type FeaturedProjectProps = {
   showAllProjectsLink?: boolean;
@@ -20,11 +21,27 @@ export function FeaturedProject({
             <p className="project-platforms">iPhone · iPad</p>
             <h3>OhmXact</h3>
             <p className="featured-project__tagline">
-              A fast resistor calculation app designed for the workshop, the
-              bench and your pocket.
+              OhmXact 2.0.3 is available now: electrical calculations,
+              Projects and workshop tools for the bench, vehicle and job at
+              hand.
+            </p>
+            <p className="featured-project__status">
+              2.0.3 adds Pro and Pro+, Projects, Workshop Library, expanded
+              electrical calculators, automotive tools and PDF reports.
+            </p>
+            <p className="featured-project__availability">
+              iPhone / iPad: Available now · Mac: Coming very soon · Android /
+              Windows: Coming soon
             </p>
             <div className="featured-project__links">
               <ButtonLink href="/ohmxact">Explore OhmXact</ButtonLink>
+              <ButtonLink
+                external
+                href={OHMXACT_APP_STORE_URL}
+                variant="secondary"
+              >
+                View on the App Store
+              </ButtonLink>
               {showAllProjectsLink ? (
                 <ButtonLink href="/projects" variant="secondary">
                   View all projects

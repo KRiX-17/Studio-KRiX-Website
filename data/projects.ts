@@ -64,10 +64,10 @@ export const projects: readonly Project[] = [
     name: "OhmXact",
     category: "Software",
     description:
-      "A fast resistor calculation app designed for the workshop, the bench and your pocket.",
-    tagline: "Built for the workshop, the bench, and your pocket.",
+      "An electrical calculation and workshop toolkit for practical work on iPhone and iPad.",
+    tagline: "A workshop-grade electrical workspace, built to travel.",
     platforms: ["iPhone", "iPad"],
-    status: "Available soon",
+    status: "Released",
     href: "/ohmxact",
     accent: "#9f233b",
     featured: true,
