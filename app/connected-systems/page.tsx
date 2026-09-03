@@ -490,7 +490,7 @@ export default function ConnectedSystemsPage() {
           </div>
           <div className="connected-related__grid">
             <Link className="connected-related__project" href="/ohmxact">
-              <span>Software · iPhone and iPad</span>
+              <span>Software · iPhone, iPad and Mac</span>
               <h3>OhmXact</h3>
               <p>
                 Focused software designed around practical workshop needs and

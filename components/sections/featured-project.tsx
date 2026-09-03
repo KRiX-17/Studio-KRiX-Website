@@ -18,20 +18,20 @@ export function FeaturedProject({
         </div>
         <div className="featured-project__grid">
           <Reveal className="featured-project__copy">
-            <p className="project-platforms">iPhone · iPad</p>
+            <p className="project-platforms">iPhone · iPad · Mac</p>
             <h3>OhmXact</h3>
             <p className="featured-project__tagline">
-              OhmXact 2.0.3 is available now: electrical calculations,
-              Projects and workshop tools for the bench, vehicle and job at
-              hand.
+              OhmXact 2.0.3 is now on iPhone, iPad and Mac: electrical
+              calculations, Projects and workshop tools for the bench, vehicle
+              and job at hand.
             </p>
             <p className="featured-project__status">
               2.0.3 adds Pro and Pro+, Projects, Workshop Library, expanded
               electrical calculators, automotive tools and PDF reports.
             </p>
             <p className="featured-project__availability">
-              iPhone / iPad: Available now · Mac: Coming very soon · Android /
-              Windows: Coming soon
+              iPhone / iPad / Mac: Available now · Android / Windows: Coming
+              soon
             </p>
             <div className="featured-project__links">
               <ButtonLink href="/ohmxact">Explore OhmXact</ButtonLink>

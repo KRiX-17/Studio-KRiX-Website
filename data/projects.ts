@@ -64,9 +64,9 @@ export const projects: readonly Project[] = [
     name: "OhmXact",
     category: "Software",
     description:
-      "An electrical calculation and workshop toolkit for practical work on iPhone and iPad.",
+      "An electrical calculation and workshop toolkit for practical work on iPhone, iPad and Mac.",
     tagline: "A workshop-grade electrical workspace, built to travel.",
-    platforms: ["iPhone", "iPad"],
+    platforms: ["iPhone", "iPad", "Mac"],
     status: "Released",
     href: "/ohmxact",
     accent: "#9f233b",

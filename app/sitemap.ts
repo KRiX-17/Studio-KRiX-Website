@@ -22,7 +22,9 @@ const routes = [
 export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map((route) => ({
     url: `${siteConfig.url}${route}`,
-    lastModified: new Date("2026-08-09"),
+    lastModified: new Date(
+      route === "" || route === "/ohmxact" ? "2026-09-04" : "2026-08-09",
+    ),
     changeFrequency:
       route === "" ||
       route === "/music" ||

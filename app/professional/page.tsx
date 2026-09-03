@@ -61,7 +61,7 @@ export default function ProfessionalPage() {
           </div>
           <div className="professional-projects__grid">
             <Link className="professional-project" href="/ohmxact">
-              <span>Software · iPhone and iPad</span>
+              <span>Software · iPhone, iPad and Mac</span>
               <h3>OhmXact</h3>
               <p>
                 A fast resistor calculation app designed for the workshop, the

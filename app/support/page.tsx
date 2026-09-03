@@ -25,7 +25,7 @@ const troubleshooting = [
   },
   {
     title: "Check for OS updates",
-    body: "If practical, confirm that your iPhone or iPad is running a current operating system version.",
+    body: "If practical, confirm that your iPhone, iPad or Mac is running a current operating system version.",
   },
 ] as const;
 

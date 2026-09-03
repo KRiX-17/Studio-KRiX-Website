@@ -11,7 +11,7 @@ import { createMetadata } from "@/lib/metadata";
 export const metadata = createMetadata({
   title: "OhmXact 2.0.3 Electrical Workshop Toolkit",
   description:
-    "OhmXact 2.0.3 is an electrical calculator and project workspace for iPhone and iPad, with resistor, automotive electrical, voltage drop, cable sizing, fuse sizing and EV charging tools. Native Mac support is coming very soon.",
+    "OhmXact 2.0.3 is an electrical calculator and project workspace for iPhone, iPad and Mac, with resistor, automotive electrical, voltage drop, cable sizing, fuse sizing and EV charging tools.",
   path: "/ohmxact",
 });
 
@@ -61,9 +61,9 @@ const platforms = [
   },
   {
     name: "Mac",
-    status: "Coming very soon",
+    status: "Available now",
     description:
-      "A native desktop workspace centred on Projects, Workshop Library and wide-screen workflows.",
+      "A native macOS workspace with a sidebar, contextual Inspector, Projects and Workshop Library.",
   },
   {
     name: "Android",
@@ -79,14 +79,47 @@ const platforms = [
   },
 ] as const;
 
+const macScreenshots = [
+  {
+    alt: "OhmXact for Mac Home workspace",
+    caption: "Home workspace",
+    src: "/images/ohmxact-mac-home.png",
+  },
+  {
+    alt: "OhmXact for Mac Ohm’s Law calculator",
+    caption: "Ohm’s Law",
+    src: "/images/ohmxact-mac-ohms-law.png",
+  },
+  {
+    alt: "OhmXact for Mac automotive voltage drop calculator",
+    caption: "Automotive voltage drop",
+    src: "/images/ohmxact-mac-voltage-drop.png",
+  },
+  {
+    alt: "OhmXact for Mac Projects comparison workspace",
+    caption: "Projects and comparison",
+    src: "/images/ohmxact-mac-projects-comparison.png",
+  },
+  {
+    alt: "OhmXact for Mac Workshop Library",
+    caption: "Workshop Library",
+    src: "/images/ohmxact-mac-workshop-library.png",
+  },
+  {
+    alt: "OhmXact for Mac voltage drop reference",
+    caption: "Reference",
+    src: "/images/ohmxact-mac-reference-voltage-drop.png",
+  },
+] as const;
+
 const softwareStructuredData = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   name: "OhmXact 2.0.3",
   applicationCategory: "UtilitiesApplication",
-  operatingSystem: "iOS, iPadOS",
+  operatingSystem: "iOS, iPadOS, macOS",
   description:
-    "An electrical calculation and project workspace for practical work on iPhone and iPad.",
+    "An electrical calculation and project workspace for practical work on iPhone, iPad and Mac.",
   creator: {
     "@type": "Organization",
     name: siteConfig.name,
@@ -118,15 +151,16 @@ export default function OhmXactPage() {
             <p className="section-label">OhmXact 2.0.3 · Electrical workspace</p>
             <h1>Built for the work behind the numbers.</h1>
             <p className="ohmxact-hero__lede">
-              Now available on iPhone and iPad: fast electrical calculations,
-              saved work, Projects and workshop tools in one focused workspace.
+              Now available on iPhone, iPad and Mac: fast electrical
+              calculations, saved work, Projects and workshop tools in one
+              focused workspace.
             </p>
             <div className="ohmxact-hero__actions">
               <ButtonLink external href={OHMXACT_APP_STORE_URL}>
                 View on the App Store
               </ButtonLink>
               <a className="ohmxact-hero__roadmap" href="#platforms">
-                iPhone + iPad available now · Mac coming very soon
+                iPhone + iPad + Mac available now
               </a>
             </div>
           </div>
@@ -249,8 +283,8 @@ export default function OhmXactPage() {
           </div>
           <div className="ohmxact-tiers__content">
             <p>
-              Pro and Pro+ are available now on iPhone and iPad as one-time
-              purchases for the broader workspace. No subscription.
+              Pro and Pro+ retain their one-time pricing across the released
+              Apple-platform product. No subscription.
             </p>
             <dl>
               <div>
@@ -267,9 +301,8 @@ export default function OhmXactPage() {
               </div>
             </dl>
             <p className="ohmxact-tiers__disclaimer">
-              Purchases apply to the available iPhone and iPad release. Native
-              Mac availability will follow when the Mac app is publicly
-              released.
+              Available purchase options are presented in the App Store for
+              each device. No subscription.
             </p>
           </div>
         </div>
@@ -279,12 +312,12 @@ export default function OhmXactPage() {
         <div className="site-container">
           <div className="ohmxact-section-heading">
             <div>
-              <p className="section-label">Platform roadmap</p>
+              <p className="section-label">Platform availability</p>
               <h2>One workspace, more places to work.</h2>
             </div>
             <p>
-              Available now on iPhone and iPad, with native Mac support coming
-              very soon and Android and Windows following.
+              Available now on iPhone, iPad and Mac. Android and Windows are
+              coming soon.
             </p>
           </div>
           <div className="ohmxact-platform-list">
@@ -303,25 +336,57 @@ export default function OhmXactPage() {
       <section className="ohmxact-mac">
         <div className="site-container ohmxact-mac__grid">
           <div>
-            <p className="section-label">Native Mac support</p>
-            <h2>OhmXact for Mac is nearly here.</h2>
+            <p className="section-label">Native macOS workspace</p>
+            <h2>OhmXact for Mac is available now.</h2>
           </div>
           <div>
             <p>
-              The native macOS interface brings a contextual Inspector,
-              Projects, Workshop Library, electrical and automotive tools into
-              a desktop-focused workspace.
+              The native macOS interface pairs a NavigationSplitView sidebar
+              workspace with a contextual Inspector, Projects, Workshop
+              Library, electrical calculators, automotive tools, PDF reports
+              and Reference.
             </p>
             <p className="ohmxact-mac__note">
-              It is designed around a universal-purchase architecture and will
-              be available when the native Mac release is publicly approved.
+              Move through the same workshop-grade calculation and project
+              work with the screen space and native desktop structure the job
+              calls for.
             </p>
+          </div>
+        </div>
+        <div className="site-container ohmxact-mac-gallery">
+          <div className="ohmxact-mac-gallery__heading">
+            <p className="section-label">Mac App Store screenshots</p>
+            <p>
+              A native Mac workspace for calculations, projects, workshop
+              stock and reference material.
+            </p>
+          </div>
+          <div
+            aria-label="OhmXact for Mac screenshots"
+            className="ohmxact-mac-gallery__rail"
+            role="group"
+          >
+            {macScreenshots.map((screenshot) => (
+              <figure
+                className="ohmxact-mac-gallery__item"
+                key={screenshot.src}
+              >
+                <Image
+                  alt={screenshot.alt}
+                  height={800}
+                  sizes="(max-width: 680px) 88vw, (max-width: 960px) 72vw, 48vw"
+                  src={screenshot.src}
+                  width={1280}
+                />
+                <figcaption>{screenshot.caption}</figcaption>
+              </figure>
+            ))}
           </div>
         </div>
       </section>
 
       <FinalCta
-        description="Get the current iPhone and iPad release, or find support and privacy information before you start."
+        description="Get OhmXact for iPhone, iPad or Mac, or find support and privacy information before you start."
         external
         href={OHMXACT_APP_STORE_URL}
         linkLabel="View OhmXact on the App Store"

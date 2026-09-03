@@ -444,7 +444,7 @@ export default function MondeSoniqPage() {
           </div>
           <div className="monde-related__grid">
             <Link className="monde-related__project" href="/ohmxact">
-              <span>Software · iPhone and iPad</span>
+              <span>Software · iPhone, iPad and Mac</span>
               <h3>OhmXact</h3>
               <p>
                 A practical resistor calculation app for the workshop, the

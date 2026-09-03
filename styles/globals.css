@@ -1068,6 +1068,65 @@
   margin-top: 1.35rem;
 }
 
+.ohmxact-mac-gallery {
+  margin-top: clamp(3.5rem, 7vw, 6rem);
+  padding-top: clamp(2.2rem, 4vw, 3.5rem);
+  border-top: 1px solid var(--line);
+}
+
+.ohmxact-mac-gallery__heading {
+  display: grid;
+  grid-template-columns: minmax(14rem, 0.8fr) minmax(18rem, 1.2fr);
+  gap: 2rem;
+  align-items: end;
+  margin-bottom: 1.5rem;
+}
+
+.ohmxact-mac-gallery__heading > p:last-child {
+  max-width: 37rem;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.ohmxact-mac-gallery__rail {
+  display: grid;
+  grid-auto-columns: minmax(23rem, 48vw);
+  grid-auto-flow: column;
+  gap: 1rem;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  padding-bottom: 0.85rem;
+  scroll-padding-inline: 1px;
+  scroll-snap-type: inline mandatory;
+  scrollbar-color: var(--line) transparent;
+}
+
+.ohmxact-mac-gallery__item {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  border-radius: 0.7rem;
+  background: var(--surface);
+  box-shadow: var(--glass-inset);
+  scroll-snap-align: start;
+}
+
+.ohmxact-mac-gallery__item img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.ohmxact-mac-gallery__item figcaption {
+  padding: 0.85rem 1rem 0.95rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
 .ohmxact-platforms {
   overflow: hidden;
 }
@@ -1143,6 +1202,7 @@
   .ohmxact-reports__grid,
   .ohmxact-tiers__grid,
   .ohmxact-mac__grid,
+  .ohmxact-mac-gallery__heading,
   .ohmxact-section-heading {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -1154,6 +1214,10 @@
 
   .ohmxact-workspace__statement {
     position: static;
+  }
+
+  .ohmxact-mac-gallery__rail {
+    grid-auto-columns: minmax(18rem, 72vw);
   }
 
   .ohmxact-tool-groups,

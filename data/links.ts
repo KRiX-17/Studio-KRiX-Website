@@ -74,7 +74,7 @@ export const linksHubItems = [
   },
   {
     title: "OhmXact",
-    description: "Fast resistor calculations for iPhone and iPad.",
+    description: "Fast resistor calculations for iPhone, iPad and Mac.",
     href: OHMXACT_DESTINATION,
     category: "featured",
     icon: "resistor",
