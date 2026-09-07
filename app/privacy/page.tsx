@@ -47,15 +47,85 @@ const sections = [
     content: (
       <>
         <p>
-          OhmXact’s core resistor calculations are designed to be performed on
-          the device. Calculation inputs are not intended to be sent to Studio
-          KRiX as part of that core function.
+          OhmXact is designed as a local-first electrical and electronics
+          workspace. Calculations, Projects, Workshop Library values, History,
+          preferences and locally generated reports stay on the device unless
+          you explicitly choose to export or share them. OhmXact does not
+          provide an OhmXact account or sign-in service.
         </p>
         <p>
-          The App Store privacy information shown for the version you install
-          should be read with this policy. If optional diagnostics or analytics
-          are introduced, the relevant disclosure and this policy will be
-          updated before that processing begins.
+          OhmXact does not include advertising, tracking, analytics or
+          crash-reporting SDKs, and it does not send calculator or workspace
+          data to a Studio KRiX server. The Android app does not request the
+          <code>INTERNET</code> permission. If that implementation changes,
+          this policy and the applicable store disclosures will be updated
+          before the change is released.
+        </p>
+        <p>
+          On Android, cloud backup and device-transfer backup are disabled for
+          OhmXact app data. Clearing app data or uninstalling the app removes
+          its locally stored data, subject to normal device behaviour. Backup
+          and retention behaviour on Apple platforms is governed by the
+          applicable platform and device settings.
+        </p>
+      </>
+    ),
+  },
+  {
+    title: "Camera Reader Beta",
+    content: (
+      <>
+        <p>
+          Camera Reader Beta is optional. OhmXact requests camera permission
+          only when you choose to use the feature. Camera frames and derived
+          colour-recognition data are processed in memory on the device to
+          assist with resistor-band recognition.
+        </p>
+        <p>
+          OhmXact does not save, retain, upload or otherwise transmit camera
+          frames or derived recognition images. Manual resistor tools remain
+          available if you do not grant camera access or choose not to use the
+          Beta feature.
+        </p>
+      </>
+    ),
+  },
+  {
+    title: "Documents, sharing and clipboard",
+    content: (
+      <>
+        <p>
+          Project files and PDF reports are generated locally. Importing a
+          project, choosing an export destination and sharing a report use the
+          operating system&apos;s document picker, file exporter or share sheet
+          only after you select an action and destination. The receiving app,
+          storage provider or service then handles the selected data under its
+          own terms and privacy policy.
+        </p>
+        <p>
+          When you choose Copy Result, OhmXact places the displayed result on
+          the system clipboard. Other apps or system services may be able to
+          read clipboard content according to their platform controls.
+          OhmXact does not transmit clipboard content.
+        </p>
+      </>
+    ),
+  },
+  {
+    title: "Purchases",
+    content: (
+      <>
+        <p>
+          OhmXact offers optional one-time in-app purchases through the Apple
+          App Store or Google Play, depending on your device. Payment details
+          are collected and processed by the relevant store under its own
+          terms and privacy policy; Studio KRiX and OhmXact do not receive or
+          store payment-card information.
+        </p>
+        <p>
+          The app asks the relevant store for product availability and
+          owned-purchase status to apply the appropriate feature entitlement.
+          OhmXact does not offer a subscription.
         </p>
       </>
     ),
@@ -144,8 +214,9 @@ const sections = [
     title: "Contact",
     content: (
       <p>
-        Privacy questions can be sent through the secure{" "}
-        <a href="/contact">contact form</a>.
+        Privacy questions can be sent through the secure <a href="/contact">contact form</a>{" "}
+        or to{" "}
+        <a href="mailto:support@studiokrix.com.au">support@studiokrix.com.au</a>.
       </p>
     ),
   },
@@ -156,7 +227,7 @@ export default function PrivacyPage() {
     <>
       <PageIntro
         description="How information is handled across the Studio KRiX website and software."
-        index="Last updated 6 August 2026"
+        index="Last updated 7 September 2026"
         title="Privacy, written to be understood."
       />
       <section className="policy">
