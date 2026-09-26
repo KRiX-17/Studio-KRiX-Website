@@ -63,6 +63,24 @@ export const linksHubItems = [
     external: false,
   },
   {
+    title: "Apps",
+    description: "OhmXact, Lakaz and practical software from the studio.",
+    href: "/apps",
+    category: "featured",
+    icon: "resistor",
+    featured: true,
+    external: false,
+  },
+  {
+    title: "Photography",
+    description: "Selected photographs by Christopher Helene.",
+    href: "/photography",
+    category: "featured",
+    icon: "studio",
+    featured: true,
+    external: false,
+  },
+  {
     title: "Professional Profile",
     description:
       "Automotive, electrical, software and connected-system capabilities.",

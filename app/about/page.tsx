@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 const identities = [
   {
     title: "Christopher Helene",
-    body: "A Sydney-based multidisciplinary technician, developer and electronic music producer.",
+    body: "A Sydney-based multidisciplinary technician, developer, photographer and electronic music producer.",
   },
   {
     title: "KRiX",
@@ -31,7 +31,7 @@ const identities = [
   },
   {
     title: "Studio KRiX",
-    body: "The personal platform connecting engineering, software, connected systems, automation, local AI and creative work.",
+    body: "The personal platform connecting engineering, software, music, photography and creative work.",
   },
 ] as const;
 

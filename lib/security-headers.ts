@@ -1,13 +1,25 @@
 const cloudflareTurnstileOrigin = "https://challenges.cloudflare.com";
 
+function photoOrigin() {
+  try {
+    const url = new URL(process.env.NEXT_PUBLIC_SUPABASE_URL ?? "");
+    return url.protocol === "https:" && url.hostname.endsWith(".supabase.co")
+      ? url.origin
+      : null;
+  } catch {
+    return null;
+  }
+}
+
 export function createContentSecurityPolicy(isProduction: boolean) {
+  const galleryOrigin = photoOrigin();
   const directives = [
     "default-src 'self'",
     `script-src 'self' 'unsafe-inline' ${cloudflareTurnstileOrigin}`,
     "style-src 'self' 'unsafe-inline'",
-    "img-src 'self' data: blob:",
+    `img-src 'self' data: blob:${galleryOrigin ? ` ${galleryOrigin}` : ""}`,
     "font-src 'self'",
-    `connect-src 'self' ${cloudflareTurnstileOrigin}`,
+    `connect-src 'self' ${cloudflareTurnstileOrigin}${galleryOrigin ? ` ${galleryOrigin}` : ""}`,
     `frame-src ${cloudflareTurnstileOrigin}`,
     "worker-src 'self' blob:",
     "object-src 'none'",

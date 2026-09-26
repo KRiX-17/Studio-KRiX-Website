@@ -4,6 +4,8 @@ import { siteConfig } from "@/config/site";
 const routes = [
   "",
   "/music",
+  "/apps",
+  "/photography",
   "/professional",
   "/links",
   "/projects",

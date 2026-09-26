@@ -7,11 +7,11 @@ export function HomeAbout() {
         <h2>About</h2>
         <div>
           <p>
-            Christopher Helene is a Sydney-based technician, developer and
-            electronic music producer working across software, automotive and
+            Christopher Helene is a Sydney-based technician, developer,
+            electronic music producer and photographer working across software, automotive and
             electrical systems, networking, connected environments, automation
             and local AI. Studio KRiX brings these disciplines together through
-            practical tools, experimental systems and creative projects.
+            practical tools, photography, experimental systems and creative projects.
           </p>
           <ButtonLink href="/about" variant="text">
             More about Christopher
