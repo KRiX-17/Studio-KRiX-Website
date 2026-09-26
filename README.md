@@ -100,3 +100,11 @@ The OhmXact iPhone and iPad screenshots are genuine product screenshots. The
 App Store destination remains intentionally easy to update in
 `data/links.ts`. Do not invent ratings, reviews, availability claims or an App
 Store URL.
+
+## Photography
+
+The `/photography` gallery and owner-only `/studio/photos` publishing workspace
+use a separate Supabase project when configured. See
+[`docs/photography-publishing.md`](docs/photography-publishing.md) for the
+schema, access rules and setup. Without those environment variables, the site
+builds and shows the honest empty gallery state.

@@ -8,6 +8,7 @@ import { SiteHeader } from "@/components/site-header";
 import { ThemeProvider } from "@/components/theme-provider";
 import { siteConfig } from "@/config/site";
 import "@/styles/globals.css";
+import "@/styles/refresh.css";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -18,7 +19,7 @@ const geist = Geist({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Studio KRiX — Technology, engineering and music",
+    default: "Studio KRiX — Music, apps and photography",
     template: "%s — Studio KRiX",
   },
   description: siteConfig.description,
@@ -57,7 +58,7 @@ export const metadata: Metadata = {
   },
   manifest: "/manifest.json",
   openGraph: {
-    title: "Studio KRiX — Technology, engineering and music",
+    title: "Studio KRiX — Music, apps and photography",
     description: siteConfig.description,
     url: siteConfig.url,
     siteName: siteConfig.name,
@@ -68,13 +69,13 @@ export const metadata: Metadata = {
         url: "/social-preview.svg",
         width: 1200,
         height: 630,
-        alt: "Studio KRiX — technology, engineering and music brought together",
+        alt: "Studio KRiX — music, apps and photography by Christopher Helene",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Studio KRiX — Technology, engineering and music",
+    title: "Studio KRiX — Music, apps and photography",
     description: siteConfig.description,
     images: ["/social-preview.svg"],
   },
@@ -134,6 +135,7 @@ const structuredData = {
         "Home automation",
         "Local AI architecture",
         "Electronic music production",
+        "Photography",
       ],
       worksFor: {
         "@id": `${siteConfig.url}/#organization`,
@@ -147,6 +149,8 @@ const structuredData = {
         `${siteConfig.url}/connected-systems`,
         `${siteConfig.url}/lakaz`,
         `${siteConfig.url}/music`,
+        `${siteConfig.url}/apps`,
+        `${siteConfig.url}/photography`,
       ],
     },
     {

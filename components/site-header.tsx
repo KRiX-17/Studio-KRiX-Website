@@ -24,9 +24,17 @@ export function SiteHeader() {
                 {item.label}
               </Link>
             ))}
+            <details className="nav-dropdown">
+              <summary>About Me <span aria-hidden="true">⌄</span></summary>
+              <div className="nav-dropdown__menu">
+                {siteConfig.aboutNavigation.map((item) => (
+                  <Link href={item.href} key={item.href}>{item.label}</Link>
+                ))}
+              </div>
+            </details>
           </nav>
           <ThemeToggle />
-          <MobileNavigation items={siteConfig.mobileNavigation} />
+          <MobileNavigation items={siteConfig.mobileNavigation} aboutItems={siteConfig.aboutNavigation} />
         </div>
       </div>
     </header>

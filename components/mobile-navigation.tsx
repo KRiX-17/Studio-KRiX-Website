@@ -7,9 +7,10 @@ import type { NavigationItem } from "@/config/site";
 
 type MobileNavigationProps = {
   items: readonly NavigationItem[];
+  aboutItems: readonly NavigationItem[];
 };
 
-export function MobileNavigation({ items }: MobileNavigationProps) {
+export function MobileNavigation({ items, aboutItems }: MobileNavigationProps) {
   const detailsRef = useRef<HTMLDetailsElement>(null);
 
   function closeNavigation() {
@@ -28,6 +29,14 @@ export function MobileNavigation({ items }: MobileNavigationProps) {
             {item.label}
           </Link>
         ))}
+        <details className="mobile-nav__group">
+          <summary>About Me</summary>
+          {aboutItems.map((item) => (
+            <Link href={item.href} key={item.href} onNavigate={closeNavigation}>
+              {item.label}
+            </Link>
+          ))}
+        </details>
       </nav>
     </details>
   );

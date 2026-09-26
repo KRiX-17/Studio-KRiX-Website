@@ -13,7 +13,7 @@ export function FeaturedProject({
     <section className="featured-project" id="projects">
       <div className="site-container">
         <div className="home-section-heading">
-          <h2>Selected Projects</h2>
+          <h2>Apps built for real life</h2>
         </div>
         <div className="featured-project__grid">
           <Reveal className="featured-project__copy">
@@ -26,8 +26,8 @@ export function FeaturedProject({
             <div className="featured-project__links">
               <ButtonLink href="/ohmxact">Explore OhmXact</ButtonLink>
               {showAllProjectsLink ? (
-                <ButtonLink href="/projects" variant="secondary">
-                  View all projects
+                <ButtonLink href="/apps" variant="secondary">
+                  View all apps
                 </ButtonLink>
               ) : null}
               <ButtonLink href="/support" variant="secondary">

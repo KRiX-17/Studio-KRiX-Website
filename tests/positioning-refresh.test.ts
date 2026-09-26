@@ -18,34 +18,21 @@ const layout = readSource("app/layout.tsx");
 const site = readSource("config/site.ts");
 
 describe("Studio KRiX positioning refresh", () => {
-  it("uses the approved homepage positioning and linked capability strip", () => {
+  it("gives music, apps and photography clear routes from the homepage", () => {
     const hero = compact(homeHero);
 
-    expect(hero).toContain("Technology, engineering");
-    expect(hero).toContain("and music brought together.");
-    expect(hero).toContain(
-      "Studio KRiX brings together software development, connected systems, networking, home automation, local AI, automotive and electrical technology, and electronic music.",
-    );
-    expect(hero).toContain(
-      "From practical apps like OhmXact and evolving platforms like Lakaz to managed network infrastructure, intelligent automation and creative production, I explore how technology can solve real problems and create better experiences.",
-    );
-
-    for (const [label, href] of [
-      ["Software & Apps", "/projects"],
-      ["Connected Systems", "/connected-systems"],
-      ["Networking & PoE", "/connected-systems"],
-      ["Home Automation", "/connected-systems/home-automation"],
-      ["Local AI", "/connected-systems/local-ai"],
-      ["Automotive & Electrical", "/professional"],
-      ["Music Production", "/music"],
-    ]) {
-      expect(homeHero).toContain(`{ label: "${label}", href: "${href}" }`);
-    }
+    expect(hero).toContain("Music by KRiX, practical apps and photography");
+    expect(hero).toContain('href="/music"');
+    expect(hero).toContain('href="/apps"');
+    expect(site).toContain('{ label: "Photography", href: "/photography" }');
+    expect(site).toContain('{ label: "About", href: "/about" }');
+    expect(site).toContain('{ label: "Links", href: "/links" }');
+    expect(site).toContain('{ label: "Contact", href: "/contact" }');
   });
 
   it("broadens the homepage About and Professional summaries without overclaiming", () => {
     expect(homeAbout).toContain(
-      "Christopher Helene is a Sydney-based technician, developer and electronic music producer working across software, automotive and electrical systems, networking, connected environments, automation and local AI. Studio KRiX brings these disciplines together through practical tools, experimental systems and creative projects.",
+      "Christopher Helene is a Sydney-based technician, developer, electronic music producer and photographer working across software, automotive and electrical systems, networking, connected environments, automation and local AI. Studio KRiX brings these disciplines together through practical tools, photography, experimental systems and creative projects.",
     );
     expect(homeProfessional).toContain(
       "alongside software development, networking and connected-system design",
@@ -89,7 +76,7 @@ describe("Studio KRiX positioning refresh", () => {
       "software, technical systems, connected environments, automotive or electrical work, professional opportunities and creative projects",
     );
     expect(site).toContain(
-      "Software, automotive and electrical technology, connected systems, automation, local AI and electronic music",
+      "Music, apps, photography and technical projects",
     );
     expect(layout).toContain('"Network infrastructure"');
     expect(layout).toContain('"Local AI architecture"');
