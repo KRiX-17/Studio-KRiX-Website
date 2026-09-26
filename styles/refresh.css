@@ -172,12 +172,12 @@
   .apps-feature__media { max-width: 45rem; }
   .site-footer__inner { grid-template-columns: 1fr; }
   .site-footer__right { justify-items: start; }
-}
-@media (max-width: 680px) {
   .mobile-nav__group { border-bottom: 0; }
   .mobile-nav .mobile-nav__group > summary { display: flex; width: 100%; min-height: 4rem; align-items: center; border: 0; border-radius: 0; border-bottom: 1px solid var(--line); padding: 0 1.25rem; font-size: 1rem; }
   .mobile-nav__group > summary::after { margin-left: auto; content: "⌄"; }
   .mobile-nav nav .mobile-nav__group a { min-height: 3.35rem; padding-left: 2.25rem; color: var(--muted-strong); }
+}
+@media (max-width: 680px) {
   .home-hero h1 { font-size: clamp(3.3rem, 12vw, 5rem); }
   .home-hero__grid { padding-block: 5rem 3rem; }
   .home-hero__media { min-height: 21rem; }
