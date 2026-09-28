@@ -1,103 +1,113 @@
 import type { Metadata } from "next";
-import { ButtonLink } from "@/components/button-link";
-import { PageIntro } from "@/components/page-intro";
-import { createMetadata } from "@/lib/metadata";
-
-const title = "About Christopher Helene and Studio KRiX";
-const description =
-  "Learn about Christopher Helene, KRiX and Studio KRiX across engineering, software, connected systems, automation, local AI and music.";
-
-const baseMetadata = createMetadata({
-  title,
-  description,
-  path: "/about",
-});
+import Link from "next/link";
+import { linksHubItems } from "@/data/links";
+import styles from "./about.module.css";
 
 export const metadata: Metadata = {
-  ...baseMetadata,
-  title: {
-    absolute: title,
-  },
+  title: "About Me",
+  description:
+    "About Christopher Helene, Studio KRiX and the photography, music and development work behind the studio.",
 };
 
-const identities = [
+const disciplines = [
   {
-    title: "Christopher Helene",
-    body: "A Sydney-based multidisciplinary technician, developer and electronic music producer.",
+    index: "01",
+    title: "Photography",
+    href: "/photography",
+    body: "Fashion, portraits, events and creative image-making, with a focus on expressive lighting and strong finished frames.",
   },
   {
-    title: "KRiX",
-    body: "Christopher's electronic music identity, shaped by atmosphere, rhythm and emotion.",
+    index: "02",
+    title: "KRiX / Music",
+    href: "/music",
+    body: "DJ sets, electronic music production, releases and collaborations spanning drum & bass, neurofunk and melodic electronic music.",
   },
   {
-    title: "Studio KRiX",
-    body: "The personal platform connecting engineering, software, connected systems, automation, local AI and creative work.",
+    index: "03",
+    title: "Development",
+    href: "/development",
+    body: "Apps, practical tools and software experiments, from OhmXact to LaCaz and future Studio KRiX projects.",
   },
 ] as const;
 
+const socialLinks = linksHubItems.filter(
+  (item) => item.category === "social",
+);
+
 export default function AboutPage() {
   return (
-    <>
-      <PageIntro
-        description="Christopher Helene, KRiX and Studio KRiX connect practical engineering, software, systems thinking and creative work."
-        title="About Christopher Helene and Studio KRiX"
-      />
+    <div className={styles.page}>
+      <section className={styles.hero}>
+        <p className={styles.kicker}>Studio KRiX / About Me</p>
+        <h1>One studio. Three versions of me.</h1>
+        <p className={styles.lead}>
+          I&apos;m Christopher Helene, also known as KRiX. Studio KRiX is the
+          umbrella for the things I keep coming back to: making images, making
+          music and building useful software.
+        </p>
+      </section>
 
-      <section className="about-story">
-        <div className="site-container about-story__grid">
-          <p className="section-label">The idea</p>
-          <div>
-            <p className="large-statement">
-              Christopher Helene is a Sydney-based multidisciplinary
-              technician, developer and electronic music producer. His
-              established foundation spans automotive and electrical systems,
-              diagnostics, vehicle communication networks, mechanical
-              installation, fabrication, software development, networking and
-              practical problem-solving. Studio KRiX connects that foundation
-              with evolving work in connected environments, home automation,
-              local AI and deeper systems integration, alongside KRiX music
-              and creative projects.
-            </p>
-            <p>
-              It is a personal platform rather than a large company or agency:
-              a simple place to develop and share practical tools,
-              experimental systems, music and ideas clearly.
-            </p>
-          </div>
+      <section className={styles.story}>
+        <div>
+          <p className={styles.kicker}>The thread through it</p>
+          <h2>Different tools. Same obsession with making things work.</h2>
+        </div>
+        <div className={styles.copy}>
+          <p>
+            My background is deeply practical and technical, from automotive
+            electrical work, diagnostics and fabrication through to software,
+            networking and systems. Photography and music sit beside that rather
+            than outside it. They are all ways of taking an idea, shaping it and
+            turning it into something finished.
+          </p>
+          <p>
+            Studio KRiX is intentionally personal. It is not pretending to be a
+            giant agency. It is a home for the work I actually make, the tools I
+            actually build and the creative projects I genuinely care about.
+          </p>
         </div>
       </section>
 
-      <section className="identity-section">
-        <div className="site-container identity-grid">
-          {identities.map((identity, index) => (
-            <article className="identity-card" key={identity.title}>
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              <h2>{identity.title}</h2>
-              <p>{identity.body}</p>
-            </article>
+      <section className={styles.disciplines} aria-label="Studio KRiX disciplines">
+        {disciplines.map((discipline) => (
+          <Link className={styles.card} href={discipline.href} key={discipline.href}>
+            <span>{discipline.index}</span>
+            <div>
+              <h2>{discipline.title}</h2>
+              <p>{discipline.body}</p>
+            </div>
+            <strong aria-hidden="true">→</strong>
+          </Link>
+        ))}
+      </section>
+
+      <section className={styles.contact}>
+        <div>
+          <p className={styles.kicker}>Contact + links</p>
+          <h2>Find me where the work lives.</h2>
+          <p>
+            For photography, music, app work or general enquiries, use the
+            contact form or jump straight to the platforms below.
+          </p>
+          <Link className={styles.contactButton} href="/contact">
+            Contact Studio KRiX →
+          </Link>
+        </div>
+
+        <div className={styles.links}>
+          {socialLinks.map((item) => (
+            <a
+              href={item.href}
+              key={item.href}
+              rel="noreferrer"
+              target="_blank"
+            >
+              <span>{item.title}</span>
+              <strong aria-hidden="true">↗</strong>
+            </a>
           ))}
         </div>
       </section>
-
-      <section className="about-next">
-        <div className="site-container about-next__inner">
-          <div>
-            <h2>Explore the work.</h2>
-            <p>
-              Continue through the music, projects or professional profile.
-            </p>
-          </div>
-          <div className="about-next__actions">
-            <ButtonLink href="/music">Music</ButtonLink>
-            <ButtonLink href="/projects" variant="secondary">
-              Projects
-            </ButtonLink>
-            <ButtonLink href="/professional" variant="secondary">
-              Professional
-            </ButtonLink>
-          </div>
-        </div>
-      </section>
-    </>
+    </div>
   );
 }
