@@ -130,6 +130,11 @@
 }
 
 .photography {
+  --trace-color: rgba(222, 59, 82, .95);
+  --trace-x-duration: 10.7s;
+  --trace-y-duration: 13.9s;
+  --trace-x-delay: -3.8s;
+  --trace-y-delay: -8.1s;
   color: #111114;
   background: #e8e4dc;
 }
@@ -140,10 +145,20 @@
 }
 
 .music {
+  --trace-color: rgba(117, 92, 255, .95);
+  --trace-x-duration: 12.3s;
+  --trace-y-duration: 9.8s;
+  --trace-x-delay: -7.2s;
+  --trace-y-delay: -2.6s;
   background: #08080b;
 }
 
 .development {
+  --trace-color: rgba(101, 214, 199, .98);
+  --trace-x-duration: 9.4s;
+  --trace-y-duration: 14.8s;
+  --trace-x-delay: -5.1s;
+  --trace-y-delay: -10.3s;
   background: #0d1219;
 }
 
@@ -176,6 +191,81 @@
   position: absolute;
   inset: 0;
   z-index: -1;
+}
+
+.traceHorizontal,
+.traceVertical {
+  position: absolute;
+  z-index: 2;
+  width: .28rem;
+  height: .28rem;
+  border-radius: 999px;
+  background: var(--trace-color, rgba(107, 145, 255, .9));
+  box-shadow:
+    0 0 .45rem var(--trace-color, rgba(107, 145, 255, .9)),
+    0 0 .9rem color-mix(in srgb, var(--trace-color, #6b91ff) 55%, transparent);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.traceHorizontal {
+  top: -.08rem;
+  left: -.5rem;
+  animation: trace-horizontal var(--trace-x-duration, 11s) linear infinite;
+  animation-delay: var(--trace-x-delay, -4s);
+}
+
+.traceVertical {
+  top: -.5rem;
+  right: -.08rem;
+  animation: trace-vertical var(--trace-y-duration, 13s) linear infinite;
+  animation-delay: var(--trace-y-delay, -7s);
+}
+
+@keyframes trace-horizontal {
+  0%,
+  10% {
+    left: -.5rem;
+    opacity: 0;
+  }
+  16% {
+    opacity: .9;
+  }
+  58% {
+    opacity: .72;
+  }
+  78% {
+    left: calc(100% + .1rem);
+    opacity: .9;
+  }
+  86%,
+  100% {
+    left: calc(100% + .5rem);
+    opacity: 0;
+  }
+}
+
+@keyframes trace-vertical {
+  0%,
+  18% {
+    top: -.5rem;
+    opacity: 0;
+  }
+  24% {
+    opacity: .82;
+  }
+  62% {
+    opacity: .68;
+  }
+  82% {
+    top: calc(100% + .1rem);
+    opacity: .88;
+  }
+  90%,
+  100% {
+    top: calc(100% + .5rem);
+    opacity: 0;
+  }
 }
 
 .photography .overlay {
@@ -320,5 +410,11 @@
   .image,
   .enter {
     transition: none;
+  }
+
+  .traceHorizontal,
+  .traceVertical {
+    animation: none;
+    opacity: 0;
   }
 }
