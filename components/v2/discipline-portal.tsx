@@ -56,6 +56,8 @@ export function DisciplinePortal() {
               src={world.image}
             />
             <div className={styles.overlay} />
+            <span className={styles.traceHorizontal} aria-hidden="true" />
+            <span className={styles.traceVertical} aria-hidden="true" />
             <div className={styles.content}>
               <span className={styles.index}>{world.index}</span>
               <div>
