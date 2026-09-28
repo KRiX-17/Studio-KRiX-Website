@@ -24,7 +24,11 @@ export async function POST(request: NextRequest) {
   }
 
   const body = (await request.json().catch(() => null)) as
-    | { email?: string; displayName?: string }
+    | {
+        email?: string;
+        displayName?: string;
+        role?: "client" | "collaborator";
+      }
     | null;
 
   if (!body?.email) {
