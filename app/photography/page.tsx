@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { createMetadata } from "@/lib/metadata";
 import { getPublicGalleries } from "@/lib/portfolio/public";
 import styles from "./photography.module.css";
 
@@ -21,26 +22,19 @@ const places = [
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Photography",
-    alternates: { canonical: "/photography" },
-    description:
-      "Portrait, fashion, event, travel, automotive and creative photography by Studio KRiX in Sydney.",
-    robots: { index: true, follow: true },
-    openGraph: {
-      title: "Photography — Studio KRiX",
+    ...createMetadata({
+      title: "Photography",
       description:
         "Portrait, fashion, event, travel, automotive and creative photography by Studio KRiX in Sydney.",
-      images: [{
+      path: "/photography",
+      image: {
         url: leadPortrait.src,
         width: leadPortrait.width,
         height: leadPortrait.height,
         alt: leadPortrait.alt,
-      }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      images: [leadPortrait.src],
-    },
+      },
+    }),
+    robots: { index: true, follow: true },
   };
 }
 
