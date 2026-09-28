@@ -2,7 +2,10 @@ const navigation = [
   { label: "About Me", href: "/about" },
 ] as const;
 
-const mobileNavigation = navigation;
+const mobileNavigation = [
+  ...navigation,
+  { label: "Portal", href: "/login" },
+] as const;
 
 export const siteConfig = {
   name: "Studio KRiX",
