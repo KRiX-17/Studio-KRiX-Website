@@ -48,9 +48,9 @@ export function getAal(accessToken: string): "aal1" | "aal2" | null {
     const payload = accessToken.split(".")[1];
     const normalised = payload.replace(/-/g, "+").replace(/_/g, "/");
     const padded = normalised + "=".repeat((4 - (normalised.length % 4)) % 4);
-    const decoded = JSON.parse(
-      Buffer.from(padded, "base64").toString("utf8"),
-    ) as { aal?: "aal1" | "aal2" };
+    const decoded = JSON.parse(atob(padded)) as {
+      aal?: "aal1" | "aal2";
+    };
     return decoded.aal ?? null;
   } catch {
     return null;
