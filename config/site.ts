@@ -1,9 +1,21 @@
 const navigation = [
+  { label: "Photography", href: "/photography" },
+  { label: "Music", href: "/music" },
+  { label: "Development", href: "/development" },
+  { label: "About Me", href: "/about" },
+] as const;
+
+const homeNavigation = [
   { label: "About Me", href: "/about" },
 ] as const;
 
 const mobileNavigation = [
   ...navigation,
+  { label: "Portal", href: "/login" },
+] as const;
+
+const homeMobileNavigation = [
+  ...homeNavigation,
   { label: "Portal", href: "/login" },
 ] as const;
 
@@ -17,8 +29,11 @@ export const siteConfig = {
   linkedIn: "https://www.linkedin.com/in/chris-helene-b0791ba5",
   github: "https://github.com/KRiX-17",
   navigation,
+  homeNavigation,
   mobileNavigation,
+  homeMobileNavigation,
   footerNavigation: [
+    { label: "Now", href: "/now" },
     { label: "About Me", href: "/about" },
     { label: "Contact", href: "/contact" },
     { label: "Support", href: "/support" },
@@ -26,4 +41,6 @@ export const siteConfig = {
   ],
 } as const;
 
-export type NavigationItem = (typeof siteConfig.mobileNavigation)[number];
+export type NavigationItem =
+  | (typeof siteConfig.mobileNavigation)[number]
+  | (typeof siteConfig.homeMobileNavigation)[number];
