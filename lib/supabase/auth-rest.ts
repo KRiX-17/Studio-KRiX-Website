@@ -125,7 +125,6 @@ export function enrollTotp(accessToken: string) {
     body: JSON.stringify({
       factor_type: "totp",
       friendly_name: "Studio KRiX Super Admin",
-      issuer: "https://studiokrix.com.au",
     }),
   });
 }
@@ -159,7 +158,6 @@ export function verifyMfa(
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        factor_id: factorId,
         challenge_id: challengeId,
         code,
       }),
