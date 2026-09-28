@@ -14,6 +14,12 @@ export const metadata = createMetadata({
   description:
     "Electrical calculation tools for iPhone, iPad and Mac, with an Apple Watch companion, designed for the workshop, the bench and your pocket.",
   path: "/ohmxact",
+  image: {
+    url: "/images/ohmxact/home.webp",
+    width: 1284,
+    height: 2778,
+    alt: "OhmXact home screen",
+  },
 });
 
 const capabilities = [
