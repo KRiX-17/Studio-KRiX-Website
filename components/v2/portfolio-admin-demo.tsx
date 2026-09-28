@@ -86,7 +86,7 @@ export function PortfolioAdminDemo() {
         </div>
         <div className={styles.status}>
           <span />
-          Backend not connected yet
+          Portal backend connected · uploads next
         </div>
       </header>
 
@@ -226,7 +226,7 @@ export function PortfolioAdminDemo() {
       <section className={styles.publish}>
         <div>
           <p className={styles.kicker}>03 / Publish</p>
-          <h2>One button when the backend lands.</h2>
+          <h2>Publishing is the next connection.</h2>
           <p>
             Supabase will provide login, metadata storage and the actual photo bucket.
             Until then, this page deliberately cannot publish anything.
