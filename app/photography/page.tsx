@@ -26,6 +26,21 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       "Portrait, fashion, event, travel, automotive and creative photography by Studio KRiX in Sydney.",
     robots: { index: true, follow: true },
+    openGraph: {
+      title: "Photography — Studio KRiX",
+      description:
+        "Portrait, fashion, event, travel, automotive and creative photography by Studio KRiX in Sydney.",
+      images: [{
+        url: leadPortrait.src,
+        width: leadPortrait.width,
+        height: leadPortrait.height,
+        alt: leadPortrait.alt,
+      }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      images: [leadPortrait.src],
+    },
   };
 }
 
