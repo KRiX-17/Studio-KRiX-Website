@@ -48,6 +48,7 @@ function FooterIconLink({
 export function SiteFooter() {
   return (
     <footer className="site-footer">
+      <span className="site-current site-current--footer" aria-hidden="true" />
       <div className="site-container site-footer__inner">
         <div className="site-footer__brand">
           <Link
