@@ -1,6 +1,12 @@
 "use client";
 
-import { FormEvent, useMemo, useState } from "react";
+import {
+  DragEvent,
+  FormEvent,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import styles from "@/app/portal/[slug]/gallery.module.css";
 
 type Data = {
@@ -15,6 +21,7 @@ type Data = {
     status: string;
   };
   canDownload: boolean;
+  canUpload: boolean;
   assets: Array<{
     id: string;
     filename: string;
@@ -54,7 +61,72 @@ function triggerDownload(url: string) {
   anchor.remove();
 }
 
+async function createWebPreview(file: File) {
+  const bitmap = await createImageBitmap(file);
+  const originalWidth = bitmap.width;
+  const originalHeight = bitmap.height;
+  const scale = Math.min(
+    1,
+    3200 / Math.max(originalWidth, originalHeight),
+  );
+  const width = Math.max(1, Math.round(originalWidth * scale));
+  const height = Math.max(1, Math.round(originalHeight * scale));
+
+  const canvas = document.createElement("canvas");
+  canvas.width = width;
+  canvas.height = height;
+  const context = canvas.getContext("2d", { alpha: false });
+
+  if (!context) {
+    bitmap.close();
+    throw new Error("Could not create the web preview.");
+  }
+
+  context.drawImage(bitmap, 0, 0, width, height);
+  bitmap.close();
+
+  const blob = await new Promise<Blob>((resolve, reject) => {
+    canvas.toBlob(
+      (result) =>
+        result
+          ? resolve(result)
+          : reject(new Error("Could not encode the web preview.")),
+      "image/webp",
+      0.88,
+    );
+  });
+
+  const stem = file.name.replace(/\.[^.]+$/, "") || "photo";
+
+  return {
+    file: new File([blob], stem + "-web.webp", {
+      type: "image/webp",
+      lastModified: Date.now(),
+    }),
+    originalWidth,
+    originalHeight,
+  };
+}
+
+async function uploadToSignedUrl(signedUrl: string, file: File) {
+  const form = new FormData();
+  form.append("cacheControl", "3600");
+  form.append("", file);
+
+  const response = await fetch(signedUrl, {
+    method: "PUT",
+    headers: { "x-upsert": "false" },
+    body: form,
+  });
+
+  if (!response.ok) {
+    throw new Error("Storage upload failed for " + file.name);
+  }
+}
+
 export function ClientGallery({ data }: { data: Data }) {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [dragActive, setDragActive] = useState(false);
   const [selected, setSelected] = useState(
     new Set(data.selections.filter((item) => item.selected).map((item) => item.asset_id)),
   );
@@ -62,6 +134,91 @@ export function ClientGallery({ data }: { data: Data }) {
   const [message, setMessage] = useState<string | null>(null);
 
   const selectedCount = useMemo(() => selected.size, [selected]);
+
+  async function uploadFiles(files: File[]) {
+    const images = files.filter((file) =>
+      ["image/jpeg", "image/png", "image/webp"].includes(file.type),
+    );
+    if (!images.length || !data.canUpload) return;
+
+    setBusy("upload");
+    setMessage("Preparing collaborator upload…");
+
+    try {
+      for (let index = 0; index < images.length; index += 1) {
+        const file = images[index];
+        const preview = await createWebPreview(file);
+
+        const [originalTicket, webTicket] = await Promise.all([
+          portalAction<{ storagePath: string; signedUrl: string }>(
+            "create_upload_url",
+            {
+              galleryId: data.gallery.id,
+              filename: file.name,
+              mimeType: file.type,
+              bytes: file.size,
+              kind: "original",
+            },
+          ),
+          portalAction<{ storagePath: string; signedUrl: string }>(
+            "create_upload_url",
+            {
+              galleryId: data.gallery.id,
+              filename: preview.file.name,
+              mimeType: preview.file.type,
+              bytes: preview.file.size,
+              kind: "web",
+            },
+          ),
+        ]);
+
+        setMessage(
+          "Uploading " +
+            String(index + 1) +
+            " of " +
+            String(images.length) +
+            " · " +
+            file.name,
+        );
+
+        await Promise.all([
+          uploadToSignedUrl(originalTicket.signedUrl, file),
+          uploadToSignedUrl(webTicket.signedUrl, preview.file),
+        ]);
+
+        const altText = file.name
+          .replace(/\.[^.]+$/, "")
+          .replace(/[-_]+/g, " ")
+          .trim();
+
+        await portalAction("complete_upload", {
+          galleryId: data.gallery.id,
+          storagePath: originalTicket.storagePath,
+          webStoragePath: webTicket.storagePath,
+          filename: file.name,
+          mimeType: file.type,
+          bytes: file.size,
+          width: preview.originalWidth,
+          height: preview.originalHeight,
+          altText,
+        });
+      }
+
+      setMessage("Upload complete. Studio KRiX can now curate these frames.");
+      window.setTimeout(() => window.location.reload(), 450);
+    } catch (error) {
+      setMessage(
+        error instanceof Error ? error.message : "Collaborator upload failed.",
+      );
+      setBusy(null);
+    }
+  }
+
+  function onUploadDrop(event: DragEvent<HTMLDivElement>) {
+    event.preventDefault();
+    setDragActive(false);
+    void uploadFiles(Array.from(event.dataTransfer.files));
+  }
 
   async function toggle(assetId: string) {
     const next = !selected.has(assetId);
@@ -164,6 +321,54 @@ export function ClientGallery({ data }: { data: Data }) {
       </header>
 
       {message && <p className={styles.message}>{message}</p>}
+
+      {data.canUpload && (
+        <section className={styles.collaboratorUpload}>
+          <div>
+            <p className={styles.kicker}>Collaborator upload</p>
+            <h2>Add finished frames.</h2>
+            <p>
+              Upload rights are limited to this gallery. Studio KRiX keeps
+              publishing, client permissions and user management locked to the
+              Super Admin.
+            </p>
+          </div>
+          <div
+            className={
+              dragActive
+                ? styles.collaboratorDropActive
+                : styles.collaboratorDrop
+            }
+            onDragEnter={() => setDragActive(true)}
+            onDragLeave={() => setDragActive(false)}
+            onDragOver={(event) => event.preventDefault()}
+            onDrop={onUploadDrop}
+          >
+            <input
+              ref={inputRef}
+              hidden
+              multiple
+              accept="image/jpeg,image/png,image/webp"
+              type="file"
+              onChange={(event) => {
+                if (event.target.files) {
+                  void uploadFiles(Array.from(event.target.files));
+                }
+                event.target.value = "";
+              }}
+            />
+            <strong>Drop full-resolution finals here</strong>
+            <span>Web previews are generated automatically</span>
+            <button
+              disabled={busy === "upload"}
+              onClick={() => inputRef.current?.click()}
+              type="button"
+            >
+              {busy === "upload" ? "Uploading…" : "Choose photos"}
+            </button>
+          </div>
+        </section>
+      )}
 
       <section className={styles.grid}>
         {data.assets.map((asset, index) => {
