@@ -9,6 +9,44 @@ export const metadata: Metadata = {
   description: "Apps, tools and software projects by Studio KRiX.",
 };
 
+const systems = [
+  {
+    index: "03",
+    eyebrow: "Systems",
+    title: "Connected Systems",
+    body: "Networks, security, automation and software considered as one practical environment.",
+    href: "/connected-systems",
+  },
+  {
+    index: "04",
+    eyebrow: "Automation",
+    title: "Home Automation",
+    body: "Local-first automation concepts built around reliability, clear control and useful integrations.",
+    href: "/connected-systems/home-automation",
+  },
+  {
+    index: "05",
+    eyebrow: "Exploration",
+    title: "Local AI",
+    body: "Private local model infrastructure, retrieval and guarded intelligence layers for practical systems.",
+    href: "/connected-systems/local-ai",
+  },
+  {
+    index: "06",
+    eyebrow: "Case study",
+    title: "Monde Soniq",
+    body: "Operational, digital and creative infrastructure supporting an independent Sydney music platform.",
+    href: "/projects/monde-soniq",
+  },
+  {
+    index: "07",
+    eyebrow: "Platform",
+    title: "Studio KRiX Website",
+    body: "The portfolio, publishing, private-gallery and product platform you are using right now.",
+    href: "/projects",
+  },
+] as const;
+
 const principles = [
   ["01", "Useful", "Solve a real problem before adding decoration."],
   ["02", "Precise", "Interfaces should feel deliberate, fast and dependable."],
@@ -83,6 +121,21 @@ export default function DevelopmentPage() {
               </p>
             </div>
           </Link>
+        </div>
+
+        <div className={styles.secondaryHeading}>
+          <p>Systems, experiments &amp; infrastructure</p>
+          <h2>Work beyond the product cards.</h2>
+        </div>
+        <div className={styles.secondaryGrid}>
+          {systems.map((system) => (
+            <Link href={system.href} key={system.title}>
+              <span>{system.index} / {system.eyebrow}</span>
+              <h3>{system.title}</h3>
+              <p>{system.body}</p>
+              <strong aria-hidden="true">↗</strong>
+            </Link>
+          ))}
         </div>
       </section>
 
