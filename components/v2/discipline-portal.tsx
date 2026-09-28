@@ -23,7 +23,7 @@ export async function DisciplinePortal() {
       title: "KRiX",
       href: "/music",
       className: styles.music,
-      image: "/images/monde-soniq/ok-williams.webp",
+      image: "/images/music/drift-glass-cover.webp",
       remote: false,
     },
     {

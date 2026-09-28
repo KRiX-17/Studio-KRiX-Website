@@ -6173,11 +6173,21 @@ textarea {
 
 .music-release__panel {
   display: grid;
-  grid-template-columns: minmax(20rem, 1fr) minmax(22rem, 0.9fr);
-  gap: clamp(3rem, 8vw, 9rem);
-  align-items: end;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
   border-radius: 0.75rem;
   padding: clamp(2rem, 6vw, 5.5rem);
+}
+
+.music-release__artwork img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  border: 1px solid var(--line);
+  border-radius: 0.35rem;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.24);
 }
 
 .music-release h2 {
@@ -6189,7 +6199,7 @@ textarea {
   letter-spacing: -0.07em;
 }
 
-.music-release__panel > div > p:last-child {
+.music-release__content > p:last-of-type {
   max-width: 34rem;
   margin: 0;
   color: var(--muted);
@@ -6200,6 +6210,7 @@ textarea {
 .music-release__actions {
   display: grid;
   gap: 0.75rem;
+  margin-top: 2rem;
 }
 
 .directory-heading {
