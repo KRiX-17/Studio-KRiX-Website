@@ -5,7 +5,6 @@ import { JsonLd } from "@/components/json-ld";
 import { RevealManager } from "@/components/reveal-manager";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { ThemeProvider } from "@/components/theme-provider";
 import { siteConfig } from "@/config/site";
 import "@/styles/globals.css";
 
@@ -70,11 +69,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  colorScheme: "light dark",
-  themeColor: [
-    { color: "#F8F6F4", media: "(prefers-color-scheme: light)" },
-    { color: "#0A0A0C", media: "(prefers-color-scheme: dark)" },
-  ],
+  colorScheme: "dark",
+  themeColor: "#0A0A0C",
   width: "device-width",
   initialScale: 1,
 };
@@ -138,21 +134,18 @@ const structuredData = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
-      className={geist.variable}
+      className={`${geist.variable} dark`}
       data-scroll-behavior="smooth"
       lang="en"
-      suppressHydrationWarning
     >
       <body>
-        <ThemeProvider>
-          <a className="skip-link" href="#main-content">
-            Skip to content
-          </a>
-          <SiteHeader />
-          <main id="main-content">{children}</main>
-          <SiteFooter />
-          <RevealManager />
-        </ThemeProvider>
+        <a className="skip-link" href="#main-content">
+          Skip to content
+        </a>
+        <SiteHeader />
+        <main id="main-content">{children}</main>
+        <SiteFooter />
+        <RevealManager />
         <JsonLd data={structuredData} />
       </body>
     </html>
