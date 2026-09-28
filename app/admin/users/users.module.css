@@ -8,7 +8,7 @@
 .create p:last-child{max-width:42rem;color:rgba(243,244,245,.58);line-height:1.6}
 .inviteForm{display:grid;gap:.8rem}
 .inviteForm label,.inviteResult label{display:grid;gap:.4rem;color:rgba(243,244,245,.55);text-transform:uppercase;letter-spacing:.11em;font-size:.66rem}
-.inviteForm input,.inviteResult input{border:1px solid rgba(243,244,245,.16);background:#111720;color:#f3f4f5;padding:.8rem .9rem;font:inherit;text-transform:none;letter-spacing:normal}
+.inviteForm input,.inviteForm select,.inviteResult input{border:1px solid rgba(243,244,245,.16);background:#111720;color:#f3f4f5;padding:.8rem .9rem;font:inherit;text-transform:none;letter-spacing:normal}
 .inviteForm button,.inviteResult button,.list button{border:1px solid rgba(243,244,245,.28);background:transparent;color:inherit;padding:.7rem .85rem;font:inherit;cursor:pointer}
 .inviteForm button{justify-self:start;border-color:#65d6c7;background:#65d6c7;color:#07100f}
 .inviteResult{margin-top:1rem;border:1px solid rgba(101,214,199,.3);background:rgba(101,214,199,.04);padding:1rem;display:grid;gap:.7rem}
