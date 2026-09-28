@@ -40,8 +40,6 @@ export function DisciplinePortal() {
       </div>
 
       <div className={styles.grid}>
-        <span className={styles.pageTraceHorizontal} aria-hidden="true" />
-        <span className={styles.pageTraceVertical} aria-hidden="true" />
         {worlds.map((world) => (
           <Link
             className={[styles.card, world.className].join(" ")}
