@@ -185,10 +185,11 @@ function validateClientForm(mode: FormMode, formData: FormData) {
 }
 
 type ContactFormProps = {
+  defaultSubject?: string;
   mode: FormMode;
 };
 
-export function ContactForm({ mode }: ContactFormProps) {
+export function ContactForm({ defaultSubject = "", mode }: ContactFormProps) {
   const formId = useId();
   const [startedAt, setStartedAt] = useState(() => Date.now());
   const [turnstileToken, setTurnstileToken] = useState("");
@@ -346,7 +347,13 @@ export function ContactForm({ mode }: ContactFormProps) {
             <select
               aria-describedby={fieldErrors.subject ? "subject-error" : undefined}
               aria-invalid={Boolean(fieldErrors.subject)}
-              defaultValue=""
+              defaultValue={
+                CONTACT_SUBJECTS.includes(
+                  defaultSubject as (typeof CONTACT_SUBJECTS)[number],
+                )
+                  ? defaultSubject
+                  : ""
+              }
               id="subject"
               name="subject"
             >
