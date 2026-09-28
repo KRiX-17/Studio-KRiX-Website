@@ -6,7 +6,19 @@ import styles from "./development.module.css";
 export const metadata: Metadata = {
   title: "Development",
   alternates: { canonical: "/development" },
-  description: "Apps, tools and software projects by Studio KRiX.",
+  description: "Apps, tools, connected systems and software projects by Studio KRiX.",
+  openGraph: {
+    images: [{
+      url: "/images/connected-systems/network-rack-concept.webp",
+      width: 1672,
+      height: 940,
+      alt: "Studio KRiX connected systems concept infrastructure",
+    }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/images/connected-systems/network-rack-concept.webp"],
+  },
 };
 
 const systems = [
