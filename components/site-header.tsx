@@ -6,6 +6,7 @@ import { siteConfig } from "@/config/site";
 export function SiteHeader() {
   return (
     <header className="site-header">
+      <span className="site-current site-current--header" aria-hidden="true" />
       <div className="site-container site-header__inner">
         <Link className="site-brand" href="/" aria-label="Studio KRiX home">
           <StudioKrixLogo
