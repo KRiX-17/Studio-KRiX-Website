@@ -6,6 +6,7 @@ import {
   ACCESS_COOKIE,
   getAdminProfiles,
 } from "@/lib/supabase/auth-rest";
+import { AdminUsersManager } from "@/components/admin/admin-users-manager";
 import styles from "./users.module.css";
 
 export const dynamic = "force-dynamic";
@@ -31,36 +32,7 @@ export default async function AdminUsersPage() {
         <Link href="/admin">← Admin</Link>
       </header>
 
-      <section className={styles.create}>
-        <div>
-          <p className={styles.kicker}>Create client</p>
-          <h2>Invitation controls are staged.</h2>
-          <p>
-            The secure invite function is already deployed. Email delivery will
-            be switched on after the Studio KRiX Auth redirect URL is finalised.
-          </p>
-        </div>
-        <button type="button" disabled>
-          Invite client
-        </button>
-      </section>
-
-      <section className={styles.list}>
-        {users.length === 0 ? (
-          <p>No portal users yet.</p>
-        ) : (
-          users.map((user) => (
-            <article key={user.id}>
-              <div>
-                <strong>{user.display_name || user.email || "Unnamed user"}</strong>
-                <span>{user.email}</span>
-              </div>
-              <span>{user.role.replace("_", " ")}</span>
-              <span>{user.is_active ? "Active" : "Disabled"}</span>
-            </article>
-          ))
-        )}
-      </section>
+      <AdminUsersManager users={users} />
     </div>
   );
 }
