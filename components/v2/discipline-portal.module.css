@@ -323,3 +323,21 @@
   }
 
 }
+
+
+.status {
+  display: inline-flex;
+  width: fit-content;
+  margin-bottom: .7rem;
+  border: 1px solid rgba(255,255,255,.32);
+  border-radius: 999px;
+  padding: .34rem .55rem;
+  background: rgba(0,0,0,.28);
+  color: rgba(255,255,255,.86);
+  font-size: .58rem;
+  font-weight: 600;
+  letter-spacing: .13em;
+  line-height: 1;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
