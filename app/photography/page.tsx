@@ -100,6 +100,8 @@ export default async function PhotographyPage() {
       <section className={styles.note}>
         <p>New galleries are published directly from the Studio KRiX photography portal.</p>
         <div>
+          <a href="https://500px.com/p/studio_krix" target="_blank" rel="noreferrer">500px ↗</a>
+          <a href="https://gurushots.com/studiokrix/photos" target="_blank" rel="noreferrer">GuruShots ↗</a>
           <Link href="/about">About Me ↗</Link>
           <Link href="/contact">General enquiries ↗</Link>
         </div>
