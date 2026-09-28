@@ -46,10 +46,10 @@ export default function DevelopmentPage() {
             </div>
             <div className={styles.device}>
               <Image
-                src="/images/ohmxact-iphone-dark.png"
-                alt="OhmXact on iPhone"
-                width={360}
-                height={720}
+                src="/images/ohmxact/home.webp"
+                alt="OhmXact home screen on iPhone"
+                width={1284}
+                height={2778}
                 sizes="(max-width: 760px) 60vw, 24rem"
               />
             </div>

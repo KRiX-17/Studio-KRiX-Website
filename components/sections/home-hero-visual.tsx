@@ -83,12 +83,12 @@ export function HomeHeroVisual() {
 
       <div className="home-hero-visual__phone">
         <DeviceMockup
-          alt="OhmXact resistance calculator running on iPhone."
+          alt="OhmXact home screen running on iPhone."
           device="iphone"
           height={2778}
           quality={92}
           sizes="(max-width: 680px) 44vw, (max-width: 960px) 28vw, 17vw"
-          src="/images/ohmxact-iphone-dark.png"
+          src="/images/ohmxact/home.webp"
           width={1284}
         />
       </div>

@@ -134,6 +134,11 @@
   background: #e8e4dc;
 }
 
+.photography .image {
+  object-fit: contain;
+  object-position: center 18%;
+}
+
 .music {
   background: #08080b;
 }
