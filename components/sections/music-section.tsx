@@ -15,6 +15,7 @@ const trackLinks = getLinksByCategory("track");
 const socialLinks = getLinksByCategory("social").filter(
   (item) => item.title === "Instagram" || item.title === "TikTok",
 );
+const driftGlassPreorderHref = "https://krix17.bandcamp.com";
 
 function ExternalLabel() {
   return <span className="sr-only">(opens in a new tab)</span>;
@@ -26,28 +27,24 @@ export function MusicSection() {
       <section className="music-release">
         <Reveal className="site-container music-release__panel">
           <div>
-            <p className="section-label">Featured release</p>
-            <h2>Keep Walking Your Path</h2>
+            <p className="section-label">Upcoming single</p>
+            <h2>Drift Glass</h2>
             <p>
-              The current KRiX release, available through the official
-              listening links below.
+              Coming 2 October 2026 at 3:00 PM Sydney time. Pre-order now on
+              Bandcamp, with the full streaming release landing on release day.
             </p>
           </div>
           <div className="music-release__actions">
-            {trackLinks.map((item, index) => (
-              <a
-                className={`music-action ${index === 0 ? "music-action--primary" : ""}`}
-                href={item.href}
-                key={item.href}
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <LinkIcon name={item.icon} />
-                <span>Listen on {item.title}</span>
-                <ArrowUpRightIcon />
-                <ExternalLabel />
-              </a>
-            ))}
+            <a
+              className="music-action music-action--primary"
+              href={driftGlassPreorderHref}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <span>Pre-order on Bandcamp</span>
+              <ArrowUpRightIcon />
+              <ExternalLabel />
+            </a>
           </div>
         </Reveal>
       </section>
