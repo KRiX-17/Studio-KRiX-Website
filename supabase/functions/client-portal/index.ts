@@ -65,7 +65,14 @@ Deno.serve(async(req:Request)=>{
    const signedResult=paths.length?await admin.storage.from("client-galleries").createSignedUrls(paths,900):{data:[] as any[]};
    const urlByPath=new Map((signedResult.data??[]).map((s:any)=>[s.path,s.signedUrl]));
    const {data:selections}=await admin.from("gallery_selections").select("asset_id,selected").eq("gallery_id",gallery.id).eq("user_id",user.id);
-   const {data:comments}=await admin.from("gallery_comments").select("id,asset_id,user_id,body,is_resolved,created_at").eq("gallery_id",gallery.id).order("created_at");
+   let commentsQuery=admin.from("gallery_comments")
+     .select("id,asset_id,user_id,body,is_resolved,created_at")
+     .eq("gallery_id",gallery.id)
+     .order("created_at");
+   if(profile.role!=="super_admin"){
+     commentsQuery=commentsQuery.eq("user_id",user.id);
+   }
+   const {data:comments}=await commentsQuery;
    return json({gallery,canDownload:access.canDownload,canUpload:access.canUpload,assets:(assets??[]).map((a:any)=>({...a,preview_url:urlByPath.get(a.web_storage_path||a.storage_path)??null})),selections:selections??[],comments:comments??[]});
  }
  if(action==="create_upload_url"){
