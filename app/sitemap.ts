@@ -5,6 +5,7 @@ import { getPublicGalleries } from "@/lib/portfolio/public";
 const routes = [
   "",
   "/music",
+  "/now",
   "/photography",
   "/development",
   "/about",
@@ -13,6 +14,11 @@ const routes = [
   "/support",
   "/privacy",
   "/contact",
+  "/connected-systems",
+  "/connected-systems/home-automation",
+  "/connected-systems/local-ai",
+  "/projects",
+  "/projects/monde-soniq",
 ] as const;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -20,7 +26,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const staticRoutes: MetadataRoute.Sitemap = routes.map((route) => ({
     url: siteConfig.url + route,
-    lastModified: new Date("2026-09-28"),
+    lastModified: new Date("2026-09-29"),
     changeFrequency:
       route === "" || route === "/music" || route === "/development"
         ? "monthly"
