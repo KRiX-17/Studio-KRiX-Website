@@ -9,6 +9,7 @@ import { siteConfig } from "@/config/site";
 import {
   mondeSoniqEvents,
   mondeSoniqLinks,
+  mondeSoniqUpdates,
 } from "@/data/monde-soniq";
 import { createMetadata } from "@/lib/metadata";
 
@@ -353,6 +354,45 @@ export default function MondeSoniqPage() {
       </section>
 
       <section
+        className="monde-page-section monde-related"
+        aria-labelledby="monde-latest-title"
+      >
+        <div className="site-container">
+          <div className="directory-heading">
+            <div>
+              <p className="section-label">Latest activity</p>
+              <h2 id="monde-latest-title">Recent and next up</h2>
+            </div>
+            <p>
+              Recent Monde Soniq activity, plus the next publicly listed
+              Chinese Laundry takeover.
+            </p>
+          </div>
+          <div className="monde-related__grid">
+            {mondeSoniqUpdates.map((update) => (
+              <a
+                className="monde-related__project"
+                href={update.sourceUrl}
+                key={update.id}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <span>
+                  {update.status} ·{" "}
+                  <time dateTime={update.date}>{update.dateLabel}</time>
+                </span>
+                <h3>{update.title}</h3>
+                <p>
+                  {update.venue}. {update.description}
+                </p>
+                <ArrowRightIcon />
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section
         className="monde-page-section monde-media"
         aria-labelledby="monde-media-title"
       >
@@ -417,6 +457,9 @@ export default function MondeSoniqPage() {
             </p>
           </div>
           <div className="monde-links__actions">
+            <ButtonLink href={mondeSoniqLinks.instagram} external>
+              Monde Soniq on Instagram
+            </ButtonLink>
             <ButtonLink href={mondeSoniqLinks.muzeek} external>
               Monde Soniq on Muzeek
             </ButtonLink>

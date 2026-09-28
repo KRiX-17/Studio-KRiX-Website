@@ -139,7 +139,36 @@ export const mondeSoniqEvents = [
   },
 ] as const satisfies readonly MondeSoniqEventAsset[];
 
+export const mondeSoniqUpdates = [
+  {
+    id: "deverence-friends-july-2026",
+    status: "Past event",
+    date: "2026-07-17",
+    dateLabel: "17 July 2026",
+    title: "Monde Soniq & Deverence & Friends Takeover",
+    venue: "Chinese Laundry",
+    description:
+      "A two-room takeover bringing local selectors together across techno, bass, jungle and UKG, with Monde Soniq leading the Laundry room and Deverence & Friends taking over the Cave.",
+    sourceUrl: "https://ra.co/events/2521312",
+    sourceLabel: "View on Resident Advisor",
+  },
+  {
+    id: "chinese-laundry-october-2026",
+    status: "Next up",
+    date: "2026-10-09",
+    dateLabel: "9 October 2026",
+    title: "Monde Soniq Takeover + Miss Sunshine and Friends",
+    venue: "Chinese Laundry",
+    description:
+      "The next Chinese Laundry takeover is listed for October, with the event page currently marking the lineup as coming soon.",
+    sourceUrl:
+      "https://www.moshtix.com.au/v2/event/chinese-laundry-monde-soniq-takeover-miss-sunshine-and-friends/200856",
+    sourceLabel: "View event and tickets",
+  },
+] as const;
+
 export const mondeSoniqLinks = {
+  instagram: "https://www.instagram.com/mondesoniq/",
   muzeek: "https://muzeek.com/mondesoniq",
 } as const;
 
