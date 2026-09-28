@@ -1,32 +1,43 @@
-import { DeviceMockup } from "@/components/device-mockup";
+import Image from "next/image";
 
 type DeviceMockupsProps = {
   compact?: boolean;
 };
 
+const screens = [
+  {
+    src: "/images/ohmxact/home.webp",
+    alt: "OhmXact home screen with electrical tools and recent calculations",
+    label: "Home",
+  },
+  {
+    src: "/images/ohmxact/colour-code-setup.webp",
+    alt: "Resistor Colour Code screen with four band settings ready to decode",
+    label: "Colour Code setup",
+  },
+  {
+    src: "/images/ohmxact/colour-code-result.webp",
+    alt: "OhmXact Resistor Colour Code result showing 1 kΩ",
+    label: "1 kΩ result",
+  },
+] as const;
+
 export function DeviceMockups({ compact = false }: DeviceMockupsProps) {
   return (
-    <div
-      className={`device-stage ${compact ? "device-stage--compact" : ""}`}
-      aria-label="OhmXact app screenshots for iPhone and iPad"
-      role="group"
-    >
-      <DeviceMockup
-        device="ipad"
-        alt="OhmXact parallel resistance calculator on iPad"
-        height={2752}
-        sizes="(max-width: 680px) 58vw, 36vw"
-        src="/images/ohmxact-ipad-dark.png"
-        width={2064}
-      />
-      <DeviceMockup
-        device="iphone"
-        alt="OhmXact parallel resistance calculator on iPhone"
-        height={2778}
-        sizes="(max-width: 680px) 27vw, 17vw"
-        src="/images/ohmxact-iphone-dark.png"
-        width={1284}
-      />
+    <div className={`ohmxact-screens ${compact ? "ohmxact-screens--compact" : ""}`} role="group" aria-label="OhmXact app screenshots">
+      {screens.map((screen, index) => (
+        <figure className={`ohmxact-screens__screen ${index === 0 ? "ohmxact-screens__screen--primary" : ""}`} key={screen.src}>
+          <Image
+            alt={screen.alt}
+            height={2778}
+            priority={index === 0 && !compact}
+            sizes={index === 0 ? "(max-width: 680px) 47vw, 22vw" : "(max-width: 680px) 20vw, 12vw"}
+            src={screen.src}
+            width={1284}
+          />
+          <figcaption>{screen.label}</figcaption>
+        </figure>
+      ))}
     </div>
   );
 }

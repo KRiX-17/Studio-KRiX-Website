@@ -38,7 +38,7 @@
   opacity: .72;
 }
 
-.page > :global(*) {
+.page > :global(section) {
   position: relative;
   z-index: 1;
 }

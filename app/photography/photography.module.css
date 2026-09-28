@@ -111,3 +111,50 @@
 @media (max-width: 560px) {
   .disciplineGrid { grid-template-columns: 1fr; }
 }
+
+.portfolioHero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, .85fr);
+  gap: clamp(2rem, 7vw, 7rem);
+  align-items: center;
+  padding: clamp(2.5rem, 5vw, 5rem) 0 clamp(3rem, 6vw, 6rem);
+}
+.heroCopy { min-width: 0; }
+.portfolioHero h1 { max-width: 10ch; font-size: clamp(3.5rem, 7.5vw, 8rem); }
+.heroPhoto { width: min(100%, 31rem); margin: 0 auto; }
+.heroPhoto img { display: block; width: 100%; height: auto; }
+.heroPhoto figcaption { margin-top: .65rem; color: var(--muted); font-size: .64rem; text-transform: uppercase; letter-spacing: .14em; }
+
+.editorial {
+  width: min(100% - 2rem, 92rem);
+  margin-inline: auto;
+  padding: clamp(3rem, 6vw, 6rem) 0;
+  border-bottom: 1px solid var(--line);
+}
+.editorialHeading { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(14rem, .7fr); gap: .5rem 3rem; align-items: end; margin-bottom: clamp(2rem, 4vw, 4rem); }
+.editorialHeading .status { grid-column: 1 / -1; }
+.editorialHeading h2 { max-width: 13ch; margin: 0; font-size: clamp(2.5rem, 5.4vw, 5.5rem); line-height: .94; letter-spacing: -.06em; font-weight: 500; }
+.editorialHeading > p:last-child { max-width: 22rem; margin: 0 0 .35rem; color: var(--muted); line-height: 1.6; }
+.portraitGrid { display: grid; grid-template-columns: 1.25fr 1fr 1fr; gap: clamp(.7rem, 1.4vw, 1.4rem); align-items: start; }
+.portraitGrid figure, .placeGrid figure { min-width: 0; margin: 0; }
+.portraitGrid img, .placeGrid img { display: block; width: 100%; height: auto; }
+.portraitGrid .portraitCard { margin-top: clamp(2rem, 8vw, 8rem); }
+.portraitGrid figcaption, .placeGrid figcaption { display: flex; justify-content: space-between; gap: 1rem; padding-top: .8rem; border-top: 1px solid var(--line); margin-top: .8rem; font-size: .85rem; }
+.portraitGrid figcaption span, .placeGrid figcaption span { color: var(--muted); text-transform: uppercase; letter-spacing: .13em; font-size: .64rem; }
+.placeGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(2rem, 4vw, 4rem) clamp(.7rem, 2vw, 2rem); }
+.placeGrid figure:nth-child(even) { margin-top: clamp(1rem, 5vw, 5rem); }
+.portfolioGrid { padding-top: clamp(3rem, 6vw, 6rem); }
+
+@media (max-width: 700px) {
+  .portfolioHero { grid-template-columns: 1fr; padding-top: 2.5rem; }
+  .portfolioHero h1 { font-size: clamp(3.5rem, 14vw, 6rem); }
+  .heroPhoto { width: min(100%, 26rem); }
+  .editorialHeading { grid-template-columns: 1fr; }
+  .portraitGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .portraitLead { grid-column: 1 / -1; width: min(100%, 30rem); }
+  .portraitGrid .portraitCard { margin-top: 0; }
+  .placeGrid { grid-template-columns: 1fr; }
+  .placeGrid figure:nth-child(even) { margin-top: 0; }
+  .portraitGrid figcaption, .placeGrid figcaption { display: block; }
+  .portraitGrid figcaption span, .placeGrid figcaption span { display: block; margin-bottom: .35rem; }
+}

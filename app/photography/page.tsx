@@ -1,26 +1,30 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { getPublicGalleries } from "@/lib/portfolio/public";
 import styles from "./photography.module.css";
 
 export const dynamic = "force-dynamic";
 
-const disciplines = [
-  ["01", "Portraits", "People first. Natural expression, character and atmosphere."],
-  ["02", "Fashion", "Editorial portraits, styling and location-led shoots."],
-  ["03", "Events", "Live energy, nightlife and moments that disappear quickly."],
-  ["04", "Travel", "Sydney, Mauritius and places seen from ground and air."],
-  ["05", "Automotive", "Machines, detail and environments with a technical eye."],
-  ["06", "Creative", "Experiments, nature, long exposure and ideas that do not need a box."],
-];
+const portraits = [
+  { src: "/images/photography/portrait-garden.webp", width: 1492, height: 1800, category: "Portraits", title: "In the garden", alt: "Close portrait in a floral outfit framed by soft greenery, with the original Emma Corsa watermark" },
+  { src: "/images/photography/fashion-floral.webp", width: 1144, height: 1800, category: "Fashion", title: "Floral study", alt: "Fashion portrait in a floral outfit against a soft green background" },
+  { src: "/images/photography/portrait-butterflies.webp", width: 1200, height: 1800, category: "Portraits", title: "Quiet moment", alt: "Portrait of a woman in a butterfly-print outfit beneath the trees, with the original Emma Corsa watermark" },
+] as const;
+
+const places = [
+  { src: "/images/photography/beach-from-above.webp", width: 1182, height: 665, category: "Travel", title: "The shore from above", alt: "Aerial view of swimmers and long shadows along a turquoise shoreline, with the original Emma Corsa watermark" },
+  { src: "/images/photography/coastline-from-above.webp", width: 1182, height: 665, category: "Travel", title: "Coastal geometry", alt: "Aerial view of a green coastline and bright blue water" },
+  { src: "/images/photography/rocky-cove.webp", width: 1182, height: 665, category: "Creative", title: "Between the rocks", alt: "Aerial view of clear water cutting through a rocky coast" },
+  { src: "/images/photography/earthwork-from-above.webp", width: 1182, height: 664, category: "Creative", title: "Earthwork", alt: "Aerial photograph of a circular earthwork in a green landscape" },
+] as const;
 
 export async function generateMetadata(): Promise<Metadata> {
-  const galleries = await getPublicGalleries();
   return {
     title: "Photography",
     description:
       "Portrait, fashion, event, travel, automotive and creative photography by Studio KRiX in Sydney.",
-    robots: { index: galleries.length > 0, follow: true },
+    robots: { index: true, follow: true },
   };
 }
 
@@ -30,20 +34,59 @@ export default async function PhotographyPage() {
   return (
     <div className={styles.page}>
       <section className={styles.portfolioHero}>
-        <p className={styles.status}>Studio KRiX / Photography</p>
-        <h1>People, places and moments.</h1>
-        <p className={styles.lead}>
-          Photography has been part of the Studio KRiX story since 2012, from
-          portraits and fashion to events, travel, automotive and experimental work.
-        </p>
-        <div className={styles.heroActions}>
-          <a href="#work">Explore the work ↓</a>
-          <Link href="/contact?subject=Photography%20enquiry">Enquire / Book a shoot ↗</Link>
+        <div className={styles.heroCopy}>
+          <p className={styles.status}>Studio KRiX / Photography</p>
+          <h1>People, places and moments.</h1>
+          <p className={styles.lead}>
+            Photography has been part of the Studio KRiX story since 2012.
+            The work was previously published as Emma Corsa and now returns as a
+            considered selection of portraits, fashion and places seen from above.
+          </p>
+          <div className={styles.heroActions}>
+            <a href="#work">Explore the work ↓</a>
+            <Link href="/contact?subject=Photography%20enquiry">Enquire / Book a shoot ↗</Link>
+          </div>
+        </div>
+        <figure className={styles.heroPhoto}>
+          <Image src={portraits[0].src} alt={portraits[0].alt} width={portraits[0].width} height={portraits[0].height} sizes="(max-width: 700px) 100vw, 45vw" priority />
+          <figcaption>Portraits / Emma Corsa archive</figcaption>
+        </figure>
+      </section>
+
+      <section className={styles.editorial} id="work" aria-labelledby="people-title">
+        <div className={styles.editorialHeading}>
+          <p className={styles.status}>01 / Portraits &amp; Fashion</p>
+          <h2 id="people-title">A person, a place, a little bit of magic.</h2>
+          <p>Natural expression and styling, captured with room for the person to come through.</p>
+        </div>
+        <div className={styles.portraitGrid}>
+          {portraits.map((photo, index) => (
+            <figure className={index === 0 ? styles.portraitLead : styles.portraitCard} key={photo.src}>
+              <Image src={photo.src} alt={photo.alt} width={photo.width} height={photo.height} sizes={index === 0 ? "(max-width: 700px) 100vw, 45vw" : "(max-width: 700px) 46vw, 23vw"} />
+              <figcaption><span>{photo.category}</span>{photo.title}</figcaption>
+            </figure>
+          ))}
         </div>
       </section>
 
-      {galleries.length > 0 ? (
-        <section className={styles.portfolioGrid} id="work">
+      <section className={styles.editorial} aria-labelledby="places-title">
+        <div className={styles.editorialHeading}>
+          <p className={styles.status}>02 / Travel &amp; Creative</p>
+          <h2 id="places-title">A different point of view.</h2>
+          <p>Coastlines, patterns and the quiet geometry that appears when you step back.</p>
+        </div>
+        <div className={styles.placeGrid}>
+          {places.map((photo) => (
+            <figure key={photo.src}>
+              <Image src={photo.src} alt={photo.alt} width={photo.width} height={photo.height} sizes="(max-width: 700px) 100vw, 46vw" />
+              <figcaption><span>{photo.category}</span>{photo.title}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
+      {galleries.length > 0 && (
+        <section className={styles.portfolioGrid} aria-label="More published galleries">
           {galleries.map((gallery, index) => (
             <Link className={styles.portfolioCard} href={"/photography/" + gallery.slug} key={gallery.id}>
               <div className={styles.portfolioImage}>
@@ -62,27 +105,6 @@ export default async function PhotographyPage() {
             </Link>
           ))}
         </section>
-      ) : (
-        <section className={styles.archive} id="work">
-          <div className={styles.archiveIntro}>
-            <p className={styles.status}>Archive / New portfolio developing</p>
-            <h2>A wider body of work is coming back online.</h2>
-            <p>
-              The old Emma Corsa photography archive is being re-curated for Studio KRiX,
-              alongside new Sydney work. Rather than rebuilding the old wall of images,
-              the strongest photographs will return as focused galleries.
-            </p>
-          </div>
-          <div className={styles.disciplineGrid}>
-            {disciplines.map(([number, title, copy]) => (
-              <article className={styles.discipline} key={title}>
-                <span>{number}</span>
-                <h3>{title}</h3>
-                <p>{copy}</p>
-              </article>
-            ))}
-          </div>
-        </section>
       )}
 
       <section className={styles.booking}>
@@ -98,7 +120,7 @@ export default async function PhotographyPage() {
       </section>
 
       <section className={styles.note}>
-        <p>New galleries are published directly from the Studio KRiX photography portal.</p>
+        <p>Selected work from the Emma Corsa archive, with new Studio KRiX galleries to follow.</p>
         <div>
           <a href="https://500px.com/p/studio_krix" target="_blank" rel="noreferrer">500px ↗</a>
           <a href="https://gurushots.com/studiokrix/photos" target="_blank" rel="noreferrer">GuruShots ↗</a>

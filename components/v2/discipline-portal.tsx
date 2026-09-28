@@ -1,11 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { getPublicGalleries } from "@/lib/portfolio/public";
 import styles from "./discipline-portal.module.css";
 
-export async function DisciplinePortal() {
-  const galleries = await getPublicGalleries();
-  const photographyCover = galleries[0]?.cover_url ?? null;
+export function DisciplinePortal() {
+  const photographyCover = "/images/photography/portrait-garden.webp";
 
   const worlds = [
     {
@@ -15,7 +13,7 @@ export async function DisciplinePortal() {
       href: "/photography",
       className: styles.photography,
       image: photographyCover,
-      remote: Boolean(photographyCover),
+      remote: false,
     },
     {
       index: "02",
@@ -23,7 +21,7 @@ export async function DisciplinePortal() {
       title: "KRiX",
       href: "/music",
       className: styles.music,
-      image: "/images/monde-soniq/ok-williams.webp",
+      image: "/images/music/drift-glass-cover.webp",
       remote: false,
     },
     {
@@ -32,7 +30,7 @@ export async function DisciplinePortal() {
       title: "Development",
       href: "/development",
       className: styles.development,
-      image: "/images/ohmxact-iphone-dark.png",
+      image: "/images/ohmxact/home.webp",
       remote: false,
     },
   ];
