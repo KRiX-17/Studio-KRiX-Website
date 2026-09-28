@@ -50,12 +50,14 @@ export default async function AdminGalleryPage({
     access: Array<{
       user_id: string;
       can_download: boolean;
+      can_upload: boolean;
       expires_at: string | null;
     }>;
     clients: Array<{
       id: string;
       email: string | null;
       display_name: string | null;
+      role: "client" | "collaborator";
     }>;
   }>("admin-portal", accessToken, {
     action: "gallery_detail",
