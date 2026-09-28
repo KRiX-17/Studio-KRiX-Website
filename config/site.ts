@@ -2,10 +2,7 @@ const navigation = [
   { label: "About Me", href: "/about" },
 ] as const;
 
-const mobileNavigation = [
-  ...navigation,
-  { label: "Contact", href: "/contact" },
-] as const;
+const mobileNavigation = navigation;
 
 export const siteConfig = {
   name: "Studio KRiX",
@@ -19,9 +16,6 @@ export const siteConfig = {
   navigation,
   mobileNavigation,
   footerNavigation: [
-    { label: "Photography", href: "/photography" },
-    { label: "Music", href: "/music" },
-    { label: "Development", href: "/development" },
     { label: "About Me", href: "/about" },
     { label: "Contact", href: "/contact" },
     { label: "Support", href: "/support" },
