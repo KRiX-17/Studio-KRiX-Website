@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable @next/next/no-img-element -- Signed private preview URLs must bypass the shared Next image optimizer. */
 
 import { DragEvent, FormEvent, useRef, useState } from "react";
 import styles from "@/app/admin/galleries/[id]/gallery.module.css";

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getPublicGallery } from "@/lib/portfolio/public";
 import styles from "./gallery.module.css";
@@ -17,6 +18,7 @@ export async function generateMetadata({
 
   return {
     title: data.gallery.title,
+    alternates: { canonical: `/photography/${encodeURIComponent(slug)}` },
     description:
       data.gallery.description ||
       "Photography gallery by Studio KRiX in Sydney.",
@@ -53,7 +55,7 @@ export default async function PublicGalleryPage({
         {data.assets.map((asset, index) => (
           <figure className={styles.frame} key={asset.id}>
             {asset.url ? (
-              <img alt={asset.alt_text} src={asset.url} />
+              <Image alt={asset.alt_text || data.gallery.title} src={asset.url} width={asset.width || 1200} height={asset.height || 900} sizes="(max-width: 700px) 100vw, 46vw" />
             ) : (
               <div className={styles.missing}>Image unavailable</div>
             )}

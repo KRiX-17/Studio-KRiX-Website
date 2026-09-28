@@ -58,8 +58,8 @@
 .page :global(.page-intro__content h1) {
   max-width: 8ch;
   font-size: clamp(4rem, 9vw, 8rem);
-  line-height: .78;
-  letter-spacing: -.075em;
+  line-height: .9;
+  letter-spacing: var(--tracking-display);
   font-weight: 500;
 }
 
@@ -97,7 +97,7 @@
 .page :global(.artist-profile h2),
 .page :global(.music-collaboration h2) {
   color: #f5f2ed;
-  letter-spacing: -.055em;
+  letter-spacing: var(--tracking-section);
 }
 
 .page :global(.music-release p),

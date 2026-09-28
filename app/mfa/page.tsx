@@ -8,6 +8,7 @@ import {
   getProfile,
 } from "@/lib/supabase/auth-rest";
 import { MfaPanel } from "@/components/auth/mfa-panel";
+import { safeReturnPath } from "@/lib/supabase/request-security";
 import styles from "./mfa.module.css";
 
 export const dynamic = "force-dynamic";
@@ -34,10 +35,9 @@ export default async function MfaPage({
   if (!profile?.is_active) redirect("/login");
   if (profile.role !== "super_admin") redirect("/portal");
 
-  const next =
-    params.next?.startsWith("/") && !params.next.startsWith("//")
-      ? params.next
-      : "/admin";
+  const requestedNext = safeReturnPath(params.next, "/admin");
+  const next = requestedNext === "/admin" || requestedNext.startsWith("/admin/")
+    ? requestedNext : "/admin";
 
   if (getAal(accessToken) === "aal2") redirect(next);
 

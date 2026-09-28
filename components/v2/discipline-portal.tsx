@@ -3,8 +3,6 @@ import Link from "next/link";
 import styles from "./discipline-portal.module.css";
 
 export function DisciplinePortal() {
-  const photographyCover = "/images/photography/portrait-garden.webp";
-
   const worlds = [
     {
       index: "01",
@@ -12,8 +10,7 @@ export function DisciplinePortal() {
       title: "Photography",
       href: "/photography",
       className: styles.photography,
-      image: photographyCover,
-      remote: false,
+      image: "/images/photography/portrait-garden.webp",
     },
     {
       index: "02",
@@ -22,7 +19,6 @@ export function DisciplinePortal() {
       href: "/music",
       className: styles.music,
       image: "/images/music/drift-glass-cover.webp",
-      remote: false,
     },
     {
       index: "03",
@@ -31,7 +27,6 @@ export function DisciplinePortal() {
       href: "/development",
       className: styles.development,
       image: "/images/ohmxact/home.webp",
-      remote: false,
     },
   ];
 
@@ -52,27 +47,14 @@ export function DisciplinePortal() {
             key={world.href}
             aria-label={"Explore " + world.title}
           >
-            {world.image ? (
-              world.remote ? (
-                <img alt="" className={styles.image} src={world.image} />
-              ) : (
-                <Image
-                  alt=""
-                  className={styles.image}
-                  fill
-                  priority={world.href === "/music"}
-                  sizes="(max-width: 760px) 100vw, 34vw"
-                  src={world.image}
-                />
-              )
-            ) : (
-              <div className={styles.photoPlaceholder} aria-hidden="true">
-                <div className={styles.editorialFrame}>
-                  <span>SK / PHOTO</span>
-                </div>
-                <span className={styles.placeholderNote}>Your next hero frame</span>
-              </div>
-            )}
+            <Image
+              alt=""
+              className={styles.image}
+              fill
+              priority={world.href === "/photography"}
+              sizes="(max-width: 760px) 100vw, 34vw"
+              src={world.image}
+            />
             <div className={styles.overlay} />
             <div className={styles.content}>
               <span className={styles.index}>{world.index}</span>

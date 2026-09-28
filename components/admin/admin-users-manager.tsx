@@ -15,9 +15,7 @@ type User = {
 export function AdminUsersManager({ users }: { users: User[] }) {
   const [busy, setBusy] = useState<string | null>(null);
   const [invite, setInvite] = useState<{
-    emailSent: boolean;
     inviteUrl: string;
-    emailError?: string | null;
   } | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -28,34 +26,33 @@ export function AdminUsersManager({ users }: { users: User[] }) {
     setError(null);
 
     const form = new FormData(event.currentTarget);
-    const response = await fetch("/api/admin/invite", {
+    const response = await fetch("/api/admin/portal", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        displayName: form.get("displayName"),
-        email: form.get("email"),
-        role: form.get("role"),
+        action: "create_client",
+        body: {
+          displayName: form.get("displayName"),
+          email: form.get("email"),
+          role: form.get("role"),
+        },
       }),
     });
 
     const result = (await response.json()) as {
       error?: string;
-      emailSent?: boolean;
-      inviteUrl?: string;
-      emailError?: string | null;
+      inviteToken?: string;
     };
 
     setBusy(null);
 
-    if (!response.ok || !result.inviteUrl) {
+    if (!response.ok || !result.inviteToken) {
       setError(result.error ?? "Could not create client.");
       return;
     }
 
     setInvite({
-      emailSent: Boolean(result.emailSent),
-      inviteUrl: result.inviteUrl,
-      emailError: result.emailError,
+      inviteUrl: new URL("/claim?token=" + encodeURIComponent(result.inviteToken), window.location.origin).toString(),
     });
     event.currentTarget.reset();
   }
@@ -122,9 +119,8 @@ export function AdminUsersManager({ users }: { users: User[] }) {
       {invite && (
         <section className={styles.inviteResult}>
           <strong>
-            {invite.emailSent ? "Invite email sent ✓" : "Client created · email needs manual help"}
+            Client created · share this link privately
           </strong>
-          {invite.emailError && <p>{invite.emailError}</p>}
           <label>
             One-time invite link
             <input readOnly value={invite.inviteUrl} onFocus={(event) => event.currentTarget.select()} />

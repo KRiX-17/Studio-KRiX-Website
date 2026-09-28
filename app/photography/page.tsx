@@ -7,10 +7,10 @@ import styles from "./photography.module.css";
 export const dynamic = "force-dynamic";
 
 const portraits = [
-  { src: "/images/photography/portrait-garden.webp", width: 1492, height: 1800, category: "Portraits", title: "In the garden", alt: "Close portrait in a floral outfit framed by soft greenery, with the original Emma Corsa watermark" },
   { src: "/images/photography/fashion-floral.webp", width: 1144, height: 1800, category: "Fashion", title: "Floral study", alt: "Fashion portrait in a floral outfit against a soft green background" },
   { src: "/images/photography/portrait-butterflies.webp", width: 1200, height: 1800, category: "Portraits", title: "Quiet moment", alt: "Portrait of a woman in a butterfly-print outfit beneath the trees, with the original Emma Corsa watermark" },
 ] as const;
+const leadPortrait = { src: "/images/photography/portrait-garden.webp", width: 1492, height: 1800, alt: "Close portrait in a floral outfit framed by soft greenery, with the original Emma Corsa watermark" } as const;
 
 const places = [
   { src: "/images/photography/beach-from-above.webp", width: 1182, height: 665, category: "Travel", title: "The shore from above", alt: "Aerial view of swimmers and long shadows along a turquoise shoreline, with the original Emma Corsa watermark" },
@@ -22,6 +22,7 @@ const places = [
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Photography",
+    alternates: { canonical: "/photography" },
     description:
       "Portrait, fashion, event, travel, automotive and creative photography by Studio KRiX in Sydney.",
     robots: { index: true, follow: true },
@@ -48,7 +49,7 @@ export default async function PhotographyPage() {
           </div>
         </div>
         <figure className={styles.heroPhoto}>
-          <Image src={portraits[0].src} alt={portraits[0].alt} width={portraits[0].width} height={portraits[0].height} sizes="(max-width: 700px) 100vw, 45vw" priority />
+          <Image src={leadPortrait.src} alt={leadPortrait.alt} width={leadPortrait.width} height={leadPortrait.height} sizes="(max-width: 700px) 100vw, 45vw" priority />
           <figcaption>Portraits / Emma Corsa archive</figcaption>
         </figure>
       </section>
@@ -60,9 +61,9 @@ export default async function PhotographyPage() {
           <p>Natural expression and styling, captured with room for the person to come through.</p>
         </div>
         <div className={styles.portraitGrid}>
-          {portraits.map((photo, index) => (
-            <figure className={index === 0 ? styles.portraitLead : styles.portraitCard} key={photo.src}>
-              <Image src={photo.src} alt={photo.alt} width={photo.width} height={photo.height} sizes={index === 0 ? "(max-width: 700px) 100vw, 45vw" : "(max-width: 700px) 46vw, 23vw"} />
+          {portraits.map((photo) => (
+            <figure key={photo.src}>
+              <Image src={photo.src} alt={photo.alt} width={photo.width} height={photo.height} sizes="(max-width: 700px) 100vw, 46vw" />
               <figcaption><span>{photo.category}</span>{photo.title}</figcaption>
             </figure>
           ))}
@@ -91,7 +92,7 @@ export default async function PhotographyPage() {
             <Link className={styles.portfolioCard} href={"/photography/" + gallery.slug} key={gallery.id}>
               <div className={styles.portfolioImage}>
                 {gallery.cover_url ? (
-                  <img alt={gallery.cover_alt} src={gallery.cover_url} />
+                  <Image alt={gallery.cover_alt || gallery.title} src={gallery.cover_url} fill sizes="(max-width: 700px) 100vw, 46vw" />
                 ) : (
                   <span>No cover selected</span>
                 )}

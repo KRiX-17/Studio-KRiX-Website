@@ -60,12 +60,9 @@ describe("Studio KRiX positioning refresh", () => {
     expect(professional).toContain(
       "he develops software, designs and administers networks, and builds practical connected-system concepts",
     );
-    expect(about).toContain(
-      "Studio KRiX connects that foundation with evolving work in connected environments, home automation, local AI and deeper systems integration",
-    );
-    expect(about).toContain(
-      "a personal platform rather than a large company or agency",
-    );
+    expect(about).toContain("My background is deeply practical and technical");
+    expect(about).toContain("automotive electrical work, diagnostics and fabrication");
+    expect(about).toContain("It is not pretending to be a giant agency");
   });
 
   it("groups connected-system, automation and AI capability honestly", () => {
@@ -89,10 +86,10 @@ describe("Studio KRiX positioning refresh", () => {
       "software, technical systems, connected environments, automotive or electrical work, professional opportunities and creative projects",
     );
     expect(site).toContain(
-      "Software, automotive and electrical technology, connected systems, automation, local AI and electronic music",
+      "Photography, music production, DJ work and software development by Studio KRiX in Sydney, Australia.",
     );
-    expect(layout).toContain('"Network infrastructure"');
-    expect(layout).toContain('"Local AI architecture"');
+    expect(layout).toContain('"Photography"');
+    expect(layout).toContain('"Software development"');
   });
 
   it("removes the superseded broad-positioning language", () => {

@@ -12,6 +12,7 @@ describe("security headers", () => {
     expect(policy).toContain("object-src 'none'");
     expect(policy).toContain("base-uri 'self'");
     expect(policy).toContain("frame-ancestors 'none'");
+    expect(policy).toContain("script-src-attr 'none'");
     expect(policy).toContain("form-action 'self'");
     expect(policy).toContain(
       "frame-src https://challenges.cloudflare.com",

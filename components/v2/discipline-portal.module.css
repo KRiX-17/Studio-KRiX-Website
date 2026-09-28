@@ -72,7 +72,7 @@
   text-transform: uppercase;
   letter-spacing: 0.28em;
   font-size: 0.68rem;
-  opacity: 0.52;
+  opacity: 0.72;
 }
 
 .intro h1 {
@@ -80,7 +80,7 @@
   max-width: 12ch;
   font-size: clamp(2.7rem, 6.2vw, 6.3rem);
   line-height: 0.88;
-  letter-spacing: -0.067em;
+  letter-spacing: var(--tracking-display);
   font-weight: 500;
 }
 
@@ -89,7 +89,7 @@
   margin: 0 0 .45rem;
   font-size: clamp(.9rem, 1.15vw, 1.02rem);
   line-height: 1.55;
-  opacity: 0.56;
+  opacity: 0.76;
 }
 
 .grid {
@@ -135,9 +135,8 @@
 }
 
 .photography .image {
-  object-fit: contain;
-  object-position: center top;
-  height: calc(100% - 7rem);
+  object-fit: cover;
+  object-position: center bottom;
 }
 
 .music {
@@ -171,63 +170,6 @@
     radial-gradient(circle at 50% 40%, rgba(107, 145, 255, 0.28), transparent 24rem),
     linear-gradient(145deg, #101720, #07090c);
   background-size: 36px 36px, 36px 36px, auto, auto;
-}
-
-.photoPlaceholder {
-  position: absolute;
-  inset: 0;
-  z-index: -3;
-  display: grid;
-  place-items: center;
-  padding: clamp(2rem, 5vw, 5rem);
-  background:
-    linear-gradient(90deg, rgba(16,16,20,.035) 1px, transparent 1px),
-    #ece8df;
-  background-size: 20% 100%, auto;
-}
-
-.editorialFrame {
-  position: relative;
-  width: min(74%, 24rem);
-  aspect-ratio: .72;
-  overflow: hidden;
-  background:
-    radial-gradient(circle at 54% 27%, rgba(238,233,223,.94), transparent 0 8%, transparent 19%),
-    linear-gradient(168deg, transparent 0 22%, rgba(17,17,20,.76) 22.5% 68%, rgba(17,17,20,.92) 68.5%),
-    linear-gradient(145deg, #bbb5aa, #e9e5dc 55%, #c9c3b8);
-  box-shadow: 0 2.5rem 6rem rgba(16,16,20,.15);
-  transform: rotate(-1.5deg);
-  transition: transform 600ms cubic-bezier(.2,.8,.2,1);
-}
-
-.editorialFrame::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 12%;
-  width: 1px;
-  height: 100%;
-  background: rgba(222,59,82,.7);
-}
-
-.editorialFrame span {
-  position: absolute;
-  bottom: .8rem;
-  left: .8rem;
-  font-size: .55rem;
-  letter-spacing: .22em;
-  color: rgba(242,240,234,.7);
-}
-
-.placeholderNote {
-  position: absolute;
-  right: 1rem;
-  top: 1rem;
-  font-size: 0.58rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(16,16,20,.36);
-  writing-mode: vertical-rl;
 }
 
 .overlay {
@@ -268,14 +210,14 @@
   padding-top: 0.4rem;
   font-size: 0.68rem;
   letter-spacing: 0.2em;
-  opacity: .48;
+  opacity: .78;
 }
 
 .content h2 {
   margin: 0;
   font-size: clamp(2.25rem, 4.1vw, 4.8rem);
   line-height: 0.88;
-  letter-spacing: -0.055em;
+  letter-spacing: var(--tracking-section);
   font-weight: 520;
   text-transform: uppercase;
 }
@@ -285,7 +227,7 @@
   font-size: clamp(0.64rem, .95vw, 0.78rem);
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  opacity: .58;
+  opacity: .86;
 }
 
 .enter {
@@ -306,10 +248,6 @@
 
 .card:is(:hover, :focus-visible) .image {
   transform: scale(1.045);
-}
-
-.card:is(:hover, :focus-visible) .editorialFrame {
-  transform: rotate(0deg) scale(1.025);
 }
 
 .card:is(:hover, :focus-visible) .enter {
@@ -337,7 +275,7 @@
   font-size: .62rem;
   letter-spacing: .12em;
   text-transform: uppercase;
-  opacity: .4;
+  opacity: .72;
 }
 
 @media (max-width: 760px) {
@@ -380,7 +318,6 @@
   .grid,
   .card,
   .image,
-  .editorialFrame,
   .enter {
     transition: none;
   }

@@ -27,7 +27,6 @@ export type PublicGalleryDetail = {
   };
   assets: Array<{
     id: string;
-    filename: string;
     alt_text: string;
     caption: string | null;
     width: number | null;

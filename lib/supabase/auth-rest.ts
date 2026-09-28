@@ -231,7 +231,11 @@ export async function getClientGalleryAccess(
     "gallery_access?" + params.toString(),
     accessToken,
   );
-  return result.ok ? result.data ?? [] : [];
+  return result.ok
+    ? (result.data ?? []).filter((entry) =>
+        !entry.expires_at || new Date(entry.expires_at).getTime() > Date.now(),
+      )
+    : [];
 }
 
 export function invokePortalFunction<T>(

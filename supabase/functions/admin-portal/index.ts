@@ -1,6 +1,7 @@
 
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "npm:@supabase/supabase-js@2";
+import { validImageTicket } from "../_shared/image-upload.ts";
 
 const json = (body: unknown, status = 200) =>
   new Response(JSON.stringify(body), {
@@ -192,12 +193,17 @@ Deno.serve(async (req: Request) => {
       .order("sort_order");
 
     if (publishing) {
+      // Only explicitly generated web derivatives may enter the public bucket.
+      // An original without a derivative keeps the gallery private.
+      if ((assets ?? []).some((asset) => !asset.web_storage_path)) {
+        return json({ error: "Every photo needs a web preview before publishing." }, 400);
+      }
       const copied: Array<{ id: string; path: string }> = [];
 
       for (const asset of assets ?? []) {
         if (asset.public_storage_path) continue;
 
-        const sourcePath = asset.web_storage_path || asset.storage_path;
+        const sourcePath = asset.web_storage_path;
         const sourceName =
           sourcePath.split("/").pop() || asset.filename;
         const publicPath =
@@ -283,10 +289,8 @@ Deno.serve(async (req: Request) => {
 
     const { data: gallery } = await admin.from("galleries").select("id").eq("id", galleryId).maybeSingle();
     if (!gallery) return json({ error: "Gallery not found" }, 404);
-    if (!["image/jpeg", "image/png", "image/webp"].includes(mimeType)) return json({ error: "Unsupported image type" }, 415);
-    if (bytes > 50 * 1024 * 1024) return json({ error: "File too large" }, 413);
-
     const kind = body.kind === "web" ? "web" : "original";
+    if (!validImageTicket(filename, mimeType, bytes, kind)) return json({ error: "Invalid image type, extension or size" }, 400);
     const storagePath =
       galleryId +
       "/" +
@@ -308,11 +312,17 @@ Deno.serve(async (req: Request) => {
     if (!storagePath.startsWith(galleryId + "/original/")) {
       return json({ error: "Invalid original path" }, 400);
     }
-    if (
-      webStoragePath &&
-      !webStoragePath.startsWith(galleryId + "/web/")
-    ) {
+    if (!webStoragePath.startsWith(galleryId + "/web/")) {
       return json({ error: "Invalid web preview path" }, 400);
+    }
+    const [{ data: original }, { data: web }] = await Promise.all([
+      admin.storage.from("client-galleries").info(storagePath),
+      admin.storage.from("client-galleries").info(webStoragePath),
+    ]);
+    if (!original || !web || !validImageTicket(filename, String(body.mimeType ?? ""), Number(original.size), "original") ||
+        !Number.isSafeInteger(Number(web.size)) || Number(web.size) <= 0 || Number(web.size) > 15 * 1024 * 1024 ||
+        !webStoragePath.toLowerCase().endsWith(".webp")) {
+      return json({ error: "Uploaded image or web preview is missing or invalid" }, 400);
     }
 
     const { count } = await admin.from("gallery_assets").select("*", { count: "exact", head: true }).eq("gallery_id", galleryId);
@@ -348,8 +358,8 @@ Deno.serve(async (req: Request) => {
 
     let finalAsset = asset;
 
-    if (gallery?.status === "published" && gallery.slug) {
-      const publicSource = webStoragePath || storagePath;
+    if (gallery?.status === "published" && gallery.slug && webStoragePath) {
+      const publicSource = webStoragePath;
       const publicName =
         publicSource.split("/").pop() || filename;
       const publicPath =

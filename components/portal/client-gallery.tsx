@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable @next/next/no-img-element -- Short-lived private signed URLs must not be cached by the image optimizer. */
 
 import {
   DragEvent,

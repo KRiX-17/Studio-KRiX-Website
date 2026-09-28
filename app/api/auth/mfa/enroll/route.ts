@@ -1,10 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
+import { noStore, rejectCrossOriginPost } from "@/lib/supabase/request-security";
 import {
   ACCESS_COOKIE,
   enrollTotp,
 } from "@/lib/supabase/auth-rest";
 
 export async function POST(request: NextRequest) {
+  const crossOrigin = rejectCrossOriginPost(request);
+  if (crossOrigin) return crossOrigin;
   const accessToken = request.cookies.get(ACCESS_COOKIE)?.value;
   if (!accessToken) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -19,5 +22,5 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  return NextResponse.json(result.data);
+  return noStore(NextResponse.json(result.data));
 }

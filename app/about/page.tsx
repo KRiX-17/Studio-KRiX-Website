@@ -5,6 +5,7 @@ import styles from "./about.module.css";
 
 export const metadata: Metadata = {
   title: "About Me",
+  alternates: { canonical: "/about" },
   description:
     "About Christopher Helene, Studio KRiX and the photography, music and development work behind the studio.",
 };
