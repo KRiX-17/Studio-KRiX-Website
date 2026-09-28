@@ -97,7 +97,11 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
               Go to product support
             </ButtonLink>
           </div>
-          <ContactForm defaultSubject={defaultSubject} mode="contact" />
+          <ContactForm
+            defaultSubject={defaultSubject}
+            key={defaultSubject || "contact"}
+            mode="contact"
+          />
         </div>
       </section>
 
