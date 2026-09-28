@@ -91,8 +91,9 @@ export function AdminUsersManager({ users }: { users: User[] }) {
           <p className={styles.kicker}>Create client</p>
           <h2>Invite someone into their gallery.</h2>
           <p>
-            Client accounts are invitation-only. They choose their own password
-            from a one-time Studio KRiX claim link.
+            Portal accounts are invitation-only. Clients can view/download their
+            assigned galleries; collaborators can also be granted per-gallery
+            upload access.
           </p>
         </div>
 
@@ -151,7 +152,7 @@ export function AdminUsersManager({ users }: { users: User[] }) {
               </div>
               <span>{user.role.replace("_", " ")}</span>
               <span>{user.is_active ? "Active" : "Disabled"}</span>
-              {user.role === "client" ? (
+              {user.role !== "super_admin" ? (
                 <button
                   disabled={busy === user.id}
                   onClick={() => setActive(user.id, !user.is_active)}
