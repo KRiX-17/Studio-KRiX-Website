@@ -6213,6 +6213,10 @@ textarea {
   margin-top: 2rem;
 }
 
+.music-release__actions .music-action {
+  grid-template-columns: minmax(0, 1fr) 1.25rem;
+}
+
 .directory-heading {
   display: flex;
   align-items: end;
