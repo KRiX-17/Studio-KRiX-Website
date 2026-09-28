@@ -1,13 +1,16 @@
 export const CONTACT_SUBJECTS = [
-  "General enquiry",
-  "Professional opportunity",
+  "Photography enquiry",
+  "Music / KRiX enquiry",
+  "Development / software enquiry",
   "Creative collaboration",
-  "OhmXact question",
+  "General enquiry",
 ] as const;
 
 export const SUPPORT_PRODUCTS = [
   "OhmXact for iPhone",
   "OhmXact for iPad",
+  "OhmXact for Mac",
+  "OhmXact for Apple Watch",
   "Other Studio KRiX software",
 ] as const;
 
