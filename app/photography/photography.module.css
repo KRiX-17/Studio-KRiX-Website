@@ -1,185 +1,280 @@
 .page {
-  background: #080809;
-  color: #f7f6f3;
+  --paper: #f2f0ea;
+  --paper-deep: #e6e2da;
+  --ink: #111114;
+  --muted: #77736d;
+  --line: rgba(17,17,20,.18);
+  --signal: #de3b52;
   min-height: 100svh;
+  background: var(--paper);
+  color: var(--ink);
 }
 
 .hero,
 .featured,
-.adminNote {
-  width: min(100% - 2rem, 88rem);
+.endNote {
+  width: min(100% - 2rem, 92rem);
   margin-inline: auto;
 }
 
 .hero {
-  padding: clamp(5rem, 12vw, 10rem) 0 clamp(4rem, 8vw, 7rem);
-  border-bottom: 1px solid rgba(255,255,255,.14);
+  min-height: min(54rem, calc(100svh - 5rem));
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(4rem, 9vw, 8rem) 0 clamp(2rem, 5vw, 4rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.heroMeta,
+.heroBottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: end;
+}
+
+.heroMeta span,
+.issue {
+  font-size: .64rem;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  color: var(--muted);
 }
 
 .kicker {
-  margin: 0 0 .8rem;
+  margin: 0;
   text-transform: uppercase;
   letter-spacing: .24em;
   font-size: .68rem;
-  color: rgba(255,255,255,.55);
+  color: var(--muted);
 }
 
 .hero h1 {
-  margin: 0;
-  max-width: 12ch;
-  font-size: clamp(3.5rem, 10vw, 8.5rem);
-  line-height: .9;
-  letter-spacing: -.065em;
-  font-weight: 480;
+  margin: clamp(3rem, 8vw, 8rem) 0;
+  max-width: 9ch;
+  font-size: clamp(4rem, 12vw, 11rem);
+  line-height: .78;
+  letter-spacing: -.075em;
+  font-weight: 490;
 }
 
 .lead {
-  max-width: 42rem;
-  margin: 2rem 0 0;
-  font-size: clamp(1rem, 2vw, 1.3rem);
-  line-height: 1.6;
-  color: rgba(255,255,255,.68);
+  max-width: 34rem;
+  margin: 0;
+  font-size: clamp(1rem, 1.8vw, 1.28rem);
+  line-height: 1.55;
+  color: #4f4b46;
 }
 
 .featured {
-  padding: clamp(4rem, 8vw, 7rem) 0;
+  padding: clamp(4rem, 8vw, 8rem) 0;
 }
 
 .sectionHeading {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr minmax(18rem, .62fr);
+  gap: 2rem 6rem;
   align-items: end;
-  gap: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: clamp(2rem, 5vw, 4rem);
 }
 
 .sectionHeading h2,
-.adminNote h2 {
-  margin: 0;
-  font-size: clamp(2.2rem, 5vw, 4.6rem);
-  line-height: .98;
-  letter-spacing: -.045em;
+.endNote h2 {
+  margin: .7rem 0 0;
+  font-size: clamp(2.8rem, 6vw, 6.2rem);
+  line-height: .9;
+  letter-spacing: -.06em;
   font-weight: 500;
 }
 
 .sectionHeading > p {
-  max-width: 30rem;
+  max-width: 34rem;
   margin: 0;
-  color: rgba(255,255,255,.58);
-}
-
-.placeholderGallery {
-  display: grid;
-  gap: 1.25rem;
+  color: var(--muted);
+  line-height: 1.65;
 }
 
 .heroCard {
+  min-height: 40rem;
   display: grid;
-  grid-template-columns: minmax(0, 1.8fr) minmax(15rem, .7fr);
-  border: 1px solid rgba(255,255,255,.15);
-  min-height: 30rem;
-  background: #0c0c0e;
+  grid-template-columns: minmax(0, 1.7fr) minmax(18rem, .72fr);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
 .frame {
-  min-height: 30rem;
+  position: relative;
+  min-height: 40rem;
+  overflow: hidden;
   background:
-    radial-gradient(circle at 72% 26%, rgba(255,238,220,.7), transparent 0 6%, transparent 22%),
-    linear-gradient(140deg, rgba(255, 173, 113, .18), transparent 35%),
-    linear-gradient(150deg, #4b3128 0%, #1b1214 40%, #080809 100%);
+    radial-gradient(circle at 57% 25%, #e7e1d8 0 6%, transparent 6.5% 18%, transparent 19%),
+    linear-gradient(160deg, transparent 0 19%, rgba(16,16,20,.76) 19.5% 67%, rgba(16,16,20,.92) 67.5%),
+    linear-gradient(140deg, #b8b0a4 0%, #e5dfd5 48%, #c8c0b4 100%);
 }
 
-.heroCard > div:last-child {
-  padding: clamp(1.5rem, 4vw, 3rem);
+.frame::before {
+  content: "";
+  position: absolute;
+  left: 8%;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background: rgba(242,240,234,.4);
+}
+
+.frame::after {
+  content: "";
+  position: absolute;
+  right: 16%;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background: var(--signal);
+}
+
+.frame span {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  color: rgba(242,240,234,.68);
+  font-size: .6rem;
+  letter-spacing: .18em;
+}
+
+.heroCardCopy {
+  padding: clamp(1.5rem, 4vw, 3.5rem);
   display: flex;
   flex-direction: column;
   justify-content: end;
+  border-left: 1px solid var(--line);
 }
 
-.heroCard p,
-.heroCard span {
+.heroCardCopy > p:first-child,
+.heroCardCopy > span {
   margin: 0;
-  font-size: .72rem;
+  font-size: .65rem;
   text-transform: uppercase;
-  letter-spacing: .16em;
-  color: rgba(255,255,255,.55);
+  letter-spacing: .15em;
+  color: var(--muted);
 }
 
-.heroCard h3 {
-  margin: .65rem 0 1rem;
-  font-size: clamp(2rem, 4vw, 4rem);
-  line-height: .95;
-  letter-spacing: -.04em;
+.heroCardCopy h3 {
+  margin: .8rem 0 1.5rem;
+  font-size: clamp(2.5rem, 5vw, 5.2rem);
+  line-height: .87;
+  letter-spacing: -.055em;
   font-weight: 500;
+}
+
+.heroCardCopy > p:nth-of-type(2) {
+  margin: 0 0 2.5rem;
+  line-height: 1.65;
+  color: #5f5a54;
 }
 
 .categoryGrid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1rem;
+  margin-top: 2rem;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
 }
 
 .categoryCard {
-  min-height: 13rem;
+  min-height: 16rem;
   padding: 1.25rem;
-  border: 1px solid rgba(255,255,255,.13);
-  background: linear-gradient(155deg, rgba(255,255,255,.04), transparent);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  transition: background 180ms ease, color 180ms ease;
+}
+
+.categoryCard:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.categoryCard > span {
+  font-size: .64rem;
+  letter-spacing: .16em;
+  color: var(--muted);
 }
 
 .categoryCard h3 {
   margin: 0 0 .65rem;
-  font-size: 1.45rem;
+  font-size: 1.8rem;
+  font-weight: 520;
+  letter-spacing: -.035em;
 }
 
 .categoryCard p {
   margin: 0;
-  color: rgba(255,255,255,.58);
+  color: var(--muted);
   line-height: 1.55;
 }
 
-.adminNote {
-  padding: clamp(3rem, 7vw, 6rem) 0;
-  border-top: 1px solid rgba(255,255,255,.14);
+.categoryCard:hover p {
+  color: rgba(242,240,234,.62);
+}
+
+.endNote {
+  padding: clamp(4rem, 10vw, 9rem) 0;
+  border-top: 1px solid var(--line);
+}
+
+.endNote h2 {
+  max-width: 12ch;
+}
+
+.endNote > div {
   display: flex;
-  justify-content: space-between;
-  gap: 2rem;
-  align-items: end;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  margin-top: 2.5rem;
 }
 
-.adminNote > div {
-  max-width: 48rem;
-}
-
-.adminNote p:last-child {
-  color: rgba(255,255,255,.6);
-  line-height: 1.6;
-}
-
-.adminNote a {
+.endNote a {
   color: inherit;
   text-decoration: none;
-  border-bottom: 1px solid rgba(255,255,255,.45);
-  padding-bottom: .2rem;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: .15rem;
 }
 
 @media (max-width: 760px) {
-  .sectionHeading,
-  .adminNote {
+  .hero {
+    min-height: 76svh;
+  }
+
+  .heroMeta,
+  .heroBottom,
+  .sectionHeading {
     display: block;
   }
 
-  .sectionHeading > p,
-  .adminNote a {
+  .heroMeta span,
+  .issue {
     display: block;
-    margin-top: 1rem;
+    margin-top: .65rem;
+  }
+
+  .sectionHeading > p {
+    margin-top: 1.5rem;
   }
 
   .heroCard {
     grid-template-columns: 1fr;
   }
 
+  .heroCardCopy {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+
   .frame {
-    min-height: 62svh;
+    min-height: 65svh;
   }
 
   .categoryGrid {

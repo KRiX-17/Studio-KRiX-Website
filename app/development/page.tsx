@@ -1,97 +1,100 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import styles from "./development.module.css";
 
 export const metadata: Metadata = {
   title: "Development",
   description: "Apps, tools and software projects by Studio KRiX.",
 };
 
+const principles = [
+  ["01", "Useful", "Solve a real problem before adding decoration."],
+  ["02", "Precise", "Interfaces should feel deliberate, fast and dependable."],
+  ["03", "Accessible", "Good tools should not make people fight the interface."],
+] as const;
+
 export default function DevelopmentPage() {
   return (
-    <div
-      style={{
-        minHeight: "100svh",
-        background: "#08090b",
-        color: "#f7f7f5",
-        padding: "clamp(5rem, 10vw, 9rem) max(1rem, calc((100vw - 88rem) / 2))",
-      }}
-    >
-      <p style={{ textTransform: "uppercase", letterSpacing: ".22em", fontSize: ".7rem", opacity: .58 }}>
-        Studio KRiX / Development
-      </p>
-      <h1
-        style={{
-          margin: ".8rem 0 1.25rem",
-          fontSize: "clamp(3.6rem, 10vw, 8rem)",
-          lineHeight: .9,
-          letterSpacing: "-.06em",
-          fontWeight: 500,
-        }}
-      >
-        Apps, tools and software.
-      </h1>
-      <p style={{ maxWidth: "42rem", lineHeight: 1.65, opacity: .66 }}>
-        Practical products and experiments, from OhmXact to LaCaz and whatever
-        Studio KRiX builds next.
-      </p>
-
-      <section
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(17rem, 1fr))",
-          gap: "1rem",
-          marginTop: "4rem",
-        }}
-      >
-        <Link
-          href="/ohmxact"
-          style={{
-            minHeight: "25rem",
-            border: "1px solid rgba(255,255,255,.14)",
-            color: "inherit",
-            textDecoration: "none",
-            padding: "1.5rem",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            background: "linear-gradient(145deg, #101923, #08090b)",
-          }}
-        >
-          <Image
-            src="/images/ohmxact-iphone-dark.png"
-            alt="OhmXact on iPhone"
-            width={360}
-            height={720}
-            style={{ width: "auto", height: "15rem", objectFit: "contain", alignSelf: "center" }}
-          />
-          <div>
-            <p style={{ opacity: .55, margin: 0, fontSize: ".72rem", textTransform: "uppercase", letterSpacing: ".14em" }}>
-              Available product
-            </p>
-            <h2 style={{ margin: ".45rem 0 0", fontSize: "2rem" }}>OhmXact</h2>
-          </div>
-        </Link>
-
-        <Link
-          href="/lakaz"
-          style={{
-            minHeight: "25rem",
-            border: "1px solid rgba(255,255,255,.14)",
-            color: "inherit",
-            textDecoration: "none",
-            padding: "1.5rem",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "end",
-            background: "linear-gradient(145deg, rgba(36,83,82,.42), #08090b)",
-          }}
-        >
-          <p style={{ opacity: .55, margin: 0, fontSize: ".72rem", textTransform: "uppercase", letterSpacing: ".14em" }}>
-            In development
+    <div className={styles.page}>
+      <section className={styles.hero}>
+        <div className={styles.status}>
+          <span />
+          Studio KRiX / Development
+        </div>
+        <h1>Tools for real life.</h1>
+        <div className={styles.heroFoot}>
+          <p>
+            Apps, practical software and experiments built around useful problems,
+            clean interfaces and systems that hold up outside a mock-up.
           </p>
-          <h2 style={{ margin: ".45rem 0 0", fontSize: "2rem" }}>LaCaz</h2>
-        </Link>
+          <span>BUILD / TEST / SHIP</span>
+        </div>
+      </section>
+
+      <section className={styles.projects} aria-labelledby="development-projects">
+        <div className={styles.heading}>
+          <p>Selected products</p>
+          <h2 id="development-projects">Current builds.</h2>
+        </div>
+
+        <div className={styles.projectGrid}>
+          <Link className={styles.ohmxact} href="/ohmxact">
+            <div className={styles.cardTop}>
+              <span>01 / Available</span>
+              <strong>OhmXact ↗</strong>
+            </div>
+            <div className={styles.device}>
+              <Image
+                src="/images/ohmxact-iphone-dark.png"
+                alt="OhmXact on iPhone"
+                width={360}
+                height={720}
+                sizes="(max-width: 760px) 60vw, 24rem"
+              />
+            </div>
+            <div className={styles.cardCopy}>
+              <h3>Electrical calculation tools.</h3>
+              <p>
+                Resistor, Ohm&apos;s Law and practical electrical tools designed for
+                fast use across iPhone, iPad, Mac and Apple Watch.
+              </p>
+            </div>
+          </Link>
+
+          <Link className={styles.lakaz} href="/lakaz">
+            <div className={styles.cardTop}>
+              <span>02 / In development</span>
+              <strong>LaCaz ↗</strong>
+            </div>
+            <div className={styles.systemGraphic} aria-hidden="true">
+              <span>HOME</span>
+              <span>TASKS</span>
+              <span>MEALS</span>
+              <span>SHOPPING</span>
+              <i />
+            </div>
+            <div className={styles.cardCopy}>
+              <h3>A household operating layer.</h3>
+              <p>
+                A calmer way to coordinate tasks, meals, shopping and home systems
+                without turning everyday life into another admin job.
+              </p>
+            </div>
+          </Link>
+        </div>
+      </section>
+
+      <section className={styles.principles}>
+        {principles.map(([index, title, body]) => (
+          <article key={title}>
+            <span>{index}</span>
+            <div>
+              <h2>{title}</h2>
+              <p>{body}</p>
+            </div>
+          </article>
+        ))}
       </section>
     </div>
   );
