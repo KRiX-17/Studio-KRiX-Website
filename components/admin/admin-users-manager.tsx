@@ -34,6 +34,7 @@ export function AdminUsersManager({ users }: { users: User[] }) {
       body: JSON.stringify({
         displayName: form.get("displayName"),
         email: form.get("email"),
+        role: form.get("role"),
       }),
     });
 
@@ -103,6 +104,13 @@ export function AdminUsersManager({ users }: { users: User[] }) {
           <label>
             Email
             <input name="email" type="email" required placeholder="client@example.com" />
+          </label>
+          <label>
+            Account type
+            <select name="role" defaultValue="client">
+              <option value="client">Client</option>
+              <option value="collaborator">Collaborator</option>
+            </select>
           </label>
           <button disabled={busy === "invite"} type="submit">
             {busy === "invite" ? "Creating…" : "Create & invite →"}
