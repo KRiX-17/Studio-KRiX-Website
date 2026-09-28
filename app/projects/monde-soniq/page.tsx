@@ -22,6 +22,12 @@ const baseMetadata = createMetadata({
   title,
   description,
   path,
+  image: {
+    url: "/images/monde-soniq/vorpal.webp",
+    width: 1440,
+    height: 1800,
+    alt: "Monde Soniq event artwork",
+  },
 });
 
 export const metadata: Metadata = {
