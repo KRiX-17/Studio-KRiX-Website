@@ -2,6 +2,7 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "npm:@supabase/supabase-js@2";
 const json=(b:unknown,s=200)=>new Response(JSON.stringify(b),{status:s,headers:{"Content-Type":"application/json"}});
+function safeName(input:string){return input.replace(/[^a-zA-Z0-9._-]+/g,"-").slice(-120);}
 Deno.serve(async(req:Request)=>{
  if(req.method!=="POST") return json({error:"Method not allowed"},405);
  const authHeader=req.headers.get("Authorization");
@@ -20,13 +21,38 @@ Deno.serve(async(req:Request)=>{
  const action=String(payload?.action??"");
  const body=payload?.body??{};
  async function accessFor(galleryId:string){
-   if(profile.role==="super_admin") return {allowed:true,canDownload:true};
-   const {data:gallery}=await admin.from("galleries").select("id,status").eq("id",galleryId).maybeSingle();
-   if(!gallery) return {allowed:false,canDownload:false};
-   if(gallery.status==="published") return {allowed:true,canDownload:true};
-   const {data:access}=await admin.from("gallery_access").select("can_download,expires_at").eq("gallery_id",galleryId).eq("user_id",user.id).maybeSingle();
-   const valid=Boolean(access&&(!access.expires_at||new Date(access.expires_at).getTime()>Date.now()));
-   return {allowed:valid,canDownload:valid&&Boolean(access?.can_download)};
+   if(profile.role==="super_admin"){
+     return {allowed:true,canDownload:true,canUpload:true};
+   }
+
+   const {data:gallery}=await admin.from("galleries")
+     .select("id,status")
+     .eq("id",galleryId)
+     .maybeSingle();
+
+   if(!gallery){
+     return {allowed:false,canDownload:false,canUpload:false};
+   }
+
+   const {data:access}=await admin.from("gallery_access")
+     .select("can_download,can_upload,expires_at")
+     .eq("gallery_id",galleryId)
+     .eq("user_id",user.id)
+     .maybeSingle();
+
+   const valid=Boolean(
+     access &&
+     (!access.expires_at || new Date(access.expires_at).getTime()>Date.now())
+   );
+
+   return {
+     allowed: gallery.status==="published" || valid,
+     canDownload: valid && Boolean(access?.can_download),
+     canUpload:
+       valid &&
+       profile.role==="collaborator" &&
+       Boolean(access?.can_upload),
+   };
  }
  if(action==="gallery"){
    const slug=String(body.slug??"");
@@ -40,7 +66,94 @@ Deno.serve(async(req:Request)=>{
    const urlByPath=new Map((signedResult.data??[]).map((s:any)=>[s.path,s.signedUrl]));
    const {data:selections}=await admin.from("gallery_selections").select("asset_id,selected").eq("gallery_id",gallery.id).eq("user_id",user.id);
    const {data:comments}=await admin.from("gallery_comments").select("id,asset_id,user_id,body,is_resolved,created_at").eq("gallery_id",gallery.id).order("created_at");
-   return json({gallery,canDownload:access.canDownload,assets:(assets??[]).map((a:any)=>({...a,preview_url:urlByPath.get(a.web_storage_path||a.storage_path)??null})),selections:selections??[],comments:comments??[]});
+   return json({gallery,canDownload:access.canDownload,canUpload:access.canUpload,assets:(assets??[]).map((a:any)=>({...a,preview_url:urlByPath.get(a.web_storage_path||a.storage_path)??null})),selections:selections??[],comments:comments??[]});
+ }
+ if(action==="create_upload_url"){
+   const galleryId=String(body.galleryId??"");
+   const access=await accessFor(galleryId);
+   if(!access.allowed||!access.canUpload) return json({error:"Upload access required"},403);
+
+   const filename=safeName(String(body.filename??"photo.jpg"));
+   const mimeType=String(body.mimeType??"image/jpeg");
+   const bytes=Number(body.bytes??0);
+   if(!["image/jpeg","image/png","image/webp"].includes(mimeType)) return json({error:"Unsupported image type"},415);
+   if(bytes>50*1024*1024) return json({error:"File too large"},413);
+
+   const kind=body.kind==="web"?"web":"original";
+   const storagePath=galleryId+"/"+kind+"/"+crypto.randomUUID()+"-"+filename;
+   const {data,error}=await admin.storage.from("client-galleries").createSignedUploadUrl(storagePath);
+   if(error||!data) return json({error:error?.message??"Upload URL failed"},500);
+   return json({storagePath,signedUrl:data.signedUrl});
+ }
+
+ if(action==="complete_upload"){
+   const galleryId=String(body.galleryId??"");
+   const access=await accessFor(galleryId);
+   if(!access.allowed||!access.canUpload) return json({error:"Upload access required"},403);
+
+   const storagePath=String(body.storagePath??"");
+   const webStoragePath=String(body.webStoragePath??"");
+   const filename=safeName(String(body.filename??"photo.jpg"));
+
+   if(!storagePath.startsWith(galleryId+"/original/")) return json({error:"Invalid original path"},400);
+   if(webStoragePath&&!webStoragePath.startsWith(galleryId+"/web/")) return json({error:"Invalid web preview path"},400);
+
+   const {count}=await admin.from("gallery_assets")
+     .select("*",{count:"exact",head:true})
+     .eq("gallery_id",galleryId);
+
+   const {data:asset,error}=await admin.from("gallery_assets").insert({
+     gallery_id:galleryId,
+     storage_path:storagePath,
+     web_storage_path:webStoragePath||null,
+     filename,
+     mime_type:body.mimeType||"image/jpeg",
+     width:body.width||null,
+     height:body.height||null,
+     bytes:body.bytes||null,
+     alt_text:body.altText||"",
+     caption:body.caption||null,
+     sort_order:count??0,
+     uploaded_by:user.id,
+   }).select("*").single();
+
+   if(error||!asset) return json({error:error?.message??"Register failed"},400);
+
+   const {data:gallery}=await admin.from("galleries")
+     .select("cover_asset_id,status,slug")
+     .eq("id",galleryId)
+     .single();
+
+   if(!gallery?.cover_asset_id){
+     await admin.from("galleries").update({cover_asset_id:asset.id}).eq("id",galleryId);
+   }
+
+   if(gallery?.status==="published"&&gallery.slug){
+     const sourcePath=webStoragePath||storagePath;
+     const sourceName=sourcePath.split("/").pop()||filename;
+     const publicPath=gallery.slug+"/"+asset.id+"-"+safeName(sourceName);
+     const {error:copyError}=await admin.storage.from("client-galleries").copy(
+       sourcePath,
+       publicPath,
+       {destinationBucket:"portfolio-public"},
+     );
+     if(!copyError){
+       await admin.from("gallery_assets")
+         .update({public_storage_path:publicPath})
+         .eq("id",asset.id);
+     }
+   }
+
+   await admin.from("audit_events").insert({
+     actor_user_id:user.id,
+     event_type:"collaborator.asset_uploaded",
+     entity_type:"gallery_asset",
+     entity_id:asset.id,
+     details:{gallery_id:galleryId,filename},
+     user_agent:req.headers.get("user-agent"),
+   });
+
+   return json({asset});
  }
  if(action==="download_asset"){
    const assetId=String(body.assetId??"");
