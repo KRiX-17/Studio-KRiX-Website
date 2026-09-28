@@ -12,7 +12,7 @@ const appStoreUrl = "https://apps.apple.com/app/id6795690387";
 export const metadata = createMetadata({
   title: "OhmXact",
   description:
-    "A fast resistor calculation app designed for the workshop, the bench and your pocket.",
+    "A fast electrical calculation app for iPhone, iPad and Mac, designed for the workshop, the bench and your pocket.",
   path: "/ohmxact",
 });
 
@@ -24,7 +24,7 @@ const capabilities = [
   {
     title: "Available now on Apple devices",
     description:
-      "Download OhmXact for iPhone and iPad. Android is coming soon.",
+      "Download OhmXact for iPhone, iPad and Mac. Android is coming soon.",
   },
   {
     title: "Ready where work happens",
@@ -38,7 +38,7 @@ const softwareStructuredData = {
   "@type": "SoftwareApplication",
   name: "OhmXact",
   applicationCategory: "UtilitiesApplication",
-  operatingSystem: "iOS, iPadOS",
+  operatingSystem: "iOS, iPadOS, macOS",
   softwareVersion: "1.0",
   downloadUrl: appStoreUrl,
   description:
@@ -61,7 +61,7 @@ export default function OhmXactPage() {
               Built for the workshop, the bench, and your pocket.
             </p>
             <p className="body-muted">
-              OhmXact is available now for iPhone and iPad, with Android coming
+              OhmXact is available now for iPhone, iPad and Mac, with Android coming
               soon.
             </p>
             <div className="product-hero__actions">
@@ -109,7 +109,7 @@ export default function OhmXactPage() {
         <div className="site-container product-detail__grid">
           <div className="section-rule">
             <span>Designed with purpose</span>
-            <span>iPhone + iPad</span>
+            <span>iPhone + iPad + Mac</span>
           </div>
           <Reveal className="product-detail__statement">
             <p>
