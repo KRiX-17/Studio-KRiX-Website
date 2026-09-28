@@ -29,11 +29,24 @@ export async function POST(request: Request) {
     );
   }
 
-  const fallback = profile.role === "super_admin" ? "/admin" : "/portal";
-  const next =
-    requestedNext.startsWith("/") && !requestedNext.startsWith("//")
-      ? requestedNext
-      : fallback;
+  let next = "/portal";
+  if (profile.role === "super_admin") {
+    const mfa = new URL("/mfa", request.url);
+    if (
+      requestedNext.startsWith("/") &&
+      !requestedNext.startsWith("//")
+    ) {
+      mfa.searchParams.set("next", requestedNext);
+    } else {
+      mfa.searchParams.set("next", "/admin");
+    }
+    next = mfa.pathname + mfa.search;
+  } else if (
+    requestedNext.startsWith("/") &&
+    !requestedNext.startsWith("//")
+  ) {
+    next = requestedNext;
+  }
 
   return setSessionCookies(
     NextResponse.redirect(new URL(next, request.url), 303),

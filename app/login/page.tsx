@@ -10,7 +10,12 @@ export const metadata: Metadata = {
 export default async function LoginPage({
   searchParams,
 }: {
-  searchParams: Promise<{ error?: string; next?: string }>;
+  searchParams: Promise<{
+    error?: string;
+    next?: string;
+    claimed?: string;
+    owner?: string;
+  }>;
 }) {
   const params = await searchParams;
 
@@ -23,9 +28,17 @@ export default async function LoginPage({
           Client galleries and Studio KRiX administration live behind this door.
         </p>
 
+        {(params.claimed === "1" || params.owner === "ready") && (
+          <p className={styles.success}>
+            Account ready. Sign in to continue.
+          </p>
+        )}
+
         {params.error && (
           <p className={styles.error}>
-            Sign-in didn&apos;t work. Check your details and try again.
+            {params.error === "inactive"
+              ? "This portal account has been disabled."
+              : "Sign-in didn’t work. Check your details and try again."}
           </p>
         )}
 

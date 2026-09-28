@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { MobileNavigation } from "@/components/mobile-navigation";
 import { StudioKrixLogo } from "@/components/studio-krix-logo";
-import { ThemeToggle } from "@/components/theme-toggle";
 import { siteConfig } from "@/config/site";
 
 export function SiteHeader() {
@@ -25,7 +24,9 @@ export function SiteHeader() {
               </Link>
             ))}
           </nav>
-          <ThemeToggle />
+          <Link className="portal-entry" href="/login">
+            Portal
+          </Link>
           <MobileNavigation items={siteConfig.mobileNavigation} />
         </div>
       </div>

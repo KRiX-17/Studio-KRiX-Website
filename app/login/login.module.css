@@ -90,3 +90,11 @@
 .foot a {
   color: #f2f0ea;
 }
+
+.success {
+  margin: 1.5rem 0 0;
+  padding: .8rem 1rem;
+  border: 1px solid rgba(101,214,199,.45);
+  background: rgba(101,214,199,.07);
+  color: #b9f4e9;
+}

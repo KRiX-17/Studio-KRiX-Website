@@ -1,44 +1,49 @@
 import Image from "next/image";
 import Link from "next/link";
+import { getPublicGalleries } from "@/lib/portfolio/public";
 import styles from "./discipline-portal.module.css";
 
-const worlds = [
-  {
-    index: "01",
-    eyebrow: "Fashion · Portraits · Events · Creative",
-    title: "Photography",
-    href: "/photography",
-    className: styles.photography,
-    image: null,
-  },
-  {
-    index: "02",
-    eyebrow: "DJ · Production · Releases · Live",
-    title: "KRiX",
-    href: "/music",
-    className: styles.music,
-    image: "/images/monde-soniq/ok-williams.webp",
-  },
-  {
-    index: "03",
-    eyebrow: "Apps · Tools · Software · Experiments",
-    title: "Development",
-    href: "/development",
-    className: styles.development,
-    image: "/images/ohmxact-iphone-dark.png",
-  },
-] as const;
+export async function DisciplinePortal() {
+  const galleries = await getPublicGalleries();
+  const photographyCover = galleries[0]?.cover_url ?? null;
 
-export function DisciplinePortal() {
+  const worlds = [
+    {
+      index: "01",
+      eyebrow: "Fashion · Portraits · Events · Creative",
+      title: "Photography",
+      href: "/photography",
+      className: styles.photography,
+      image: photographyCover,
+      remote: Boolean(photographyCover),
+    },
+    {
+      index: "02",
+      eyebrow: "DJ · Production · Releases · Live",
+      title: "KRiX",
+      href: "/music",
+      className: styles.music,
+      image: "/images/monde-soniq/ok-williams.webp",
+      remote: false,
+    },
+    {
+      index: "03",
+      eyebrow: "Apps · Tools · Software · Experiments",
+      title: "Development",
+      href: "/development",
+      className: styles.development,
+      image: "/images/ohmxact-iphone-dark.png",
+      remote: false,
+    },
+  ];
+
   return (
     <section className={styles.shell} aria-labelledby="studio-krix-v2-title">
       <div className={styles.ambient} aria-hidden="true" />
       <div className={styles.intro}>
         <p className={styles.kicker}>Studio KRiX · Sydney</p>
         <h1 id="studio-krix-v2-title">Three disciplines. One studio.</h1>
-        <p>
-          Images, sound and software. Same hands. Different rooms.
-        </p>
+        <p>Images, sound and software. Same hands. Different rooms.</p>
       </div>
 
       <div className={styles.grid}>
@@ -47,17 +52,21 @@ export function DisciplinePortal() {
             className={[styles.card, world.className].join(" ")}
             href={world.href}
             key={world.href}
-            aria-label={`Explore ${world.title}`}
+            aria-label={"Explore " + world.title}
           >
             {world.image ? (
-              <Image
-                alt=""
-                className={styles.image}
-                fill
-                priority={world.href === "/music"}
-                sizes="(max-width: 760px) 100vw, 34vw"
-                src={world.image}
-              />
+              world.remote ? (
+                <img alt="" className={styles.image} src={world.image} />
+              ) : (
+                <Image
+                  alt=""
+                  className={styles.image}
+                  fill
+                  priority={world.href === "/music"}
+                  sizes="(max-width: 760px) 100vw, 34vw"
+                  src={world.image}
+                />
+              )
             ) : (
               <div className={styles.photoPlaceholder} aria-hidden="true">
                 <div className={styles.editorialFrame}>
@@ -73,9 +82,7 @@ export function DisciplinePortal() {
                 <h2>{world.title}</h2>
                 <p>{world.eyebrow}</p>
               </div>
-              <span className={styles.enter} aria-hidden="true">
-                ↗
-              </span>
+              <span className={styles.enter} aria-hidden="true">↗</span>
             </div>
           </Link>
         ))}
