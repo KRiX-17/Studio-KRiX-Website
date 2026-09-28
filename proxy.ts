@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import {
   ACCESS_COOKIE,
   REFRESH_COOKIE,
+  getAal,
   getAuthUser,
   getProfile,
 } from "@/lib/supabase/auth-rest";
@@ -32,7 +33,6 @@ export async function proxy(request: NextRequest) {
       refreshUrl.searchParams.set("next", nextPath);
       return NextResponse.redirect(refreshUrl);
     }
-
     return NextResponse.redirect(new URL("/login", request.url));
   }
 
@@ -41,11 +41,15 @@ export async function proxy(request: NextRequest) {
     return NextResponse.redirect(new URL("/login?error=inactive", request.url));
   }
 
-  if (
-    request.nextUrl.pathname.startsWith("/admin") &&
-    profile.role !== "super_admin"
-  ) {
-    return NextResponse.redirect(new URL("/portal", request.url));
+  if (request.nextUrl.pathname.startsWith("/admin")) {
+    if (profile.role !== "super_admin") {
+      return NextResponse.redirect(new URL("/portal", request.url));
+    }
+    if (getAal(accessToken) !== "aal2") {
+      const mfaUrl = new URL("/mfa", request.url);
+      mfaUrl.searchParams.set("next", nextPath);
+      return NextResponse.redirect(mfaUrl);
+    }
   }
 
   return NextResponse.next();
