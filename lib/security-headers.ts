@@ -1,13 +1,14 @@
 const cloudflareTurnstileOrigin = "https://challenges.cloudflare.com";
+const supabaseOrigin = "https://vvigsolnmebfbaztpixd.supabase.co";
 
 export function createContentSecurityPolicy(isProduction: boolean) {
   const directives = [
     "default-src 'self'",
     `script-src 'self' 'unsafe-inline' ${cloudflareTurnstileOrigin}`,
     "style-src 'self' 'unsafe-inline'",
-    "img-src 'self' data: blob:",
+    `img-src 'self' data: blob: ${supabaseOrigin}`,
     "font-src 'self'",
-    `connect-src 'self' ${cloudflareTurnstileOrigin}`,
+    `connect-src 'self' ${cloudflareTurnstileOrigin} ${supabaseOrigin}`,
     `frame-src ${cloudflareTurnstileOrigin}`,
     "worker-src 'self' blob:",
     "object-src 'none'",
@@ -15,7 +16,7 @@ export function createContentSecurityPolicy(isProduction: boolean) {
     "form-action 'self'",
     "frame-ancestors 'none'",
     "manifest-src 'self'",
-    "media-src 'self'",
+    `media-src 'self' ${supabaseOrigin}`,
   ];
 
   if (isProduction) {
