@@ -73,7 +73,10 @@ const sharedShape = {
 export const contactSubmissionSchema = z
   .object({
     ...sharedShape,
+    campaign: z.preprocess(normalizeSingleLine, z.string().max(160)).optional().default(""),
+    medium: z.preprocess(normalizeSingleLine, z.string().max(100)).optional().default(""),
     message: multiline("Message", FORM_LIMITS.message, 20),
+    source: z.preprocess(normalizeSingleLine, z.string().max(100)).optional().default(""),
     subject: z.preprocess(normalizeSingleLine, z.enum(CONTACT_SUBJECTS)),
   })
   .strict();
