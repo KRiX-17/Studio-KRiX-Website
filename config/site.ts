@@ -1,15 +1,9 @@
 const navigation = [
-  { label: "Home", href: "/" },
-  { label: "Music", href: "/music" },
-  { label: "Projects", href: "/projects" },
-  { label: "Professional", href: "/professional" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
+  { label: "About Me", href: "/about" },
 ] as const;
 
 const mobileNavigation = [
-  ...navigation.slice(0, -1),
-  { label: "Links", href: "/links" },
+  ...navigation,
   { label: "Contact", href: "/contact" },
 ] as const;
 
@@ -17,7 +11,7 @@ export const siteConfig = {
   name: "Studio KRiX",
   founder: "Christopher Helene",
   description:
-    "Software, automotive and electrical technology, connected systems, automation, local AI and electronic music by Christopher Helene in Sydney, Australia.",
+    "Photography, music production, DJ work and software development by Studio KRiX in Sydney, Australia.",
   url: "https://studiokrix.com.au",
   location: "Sydney, Australia",
   linkedIn: "https://www.linkedin.com/in/chris-helene-b0791ba5",
@@ -25,12 +19,10 @@ export const siteConfig = {
   navigation,
   mobileNavigation,
   footerNavigation: [
-    { label: "Home", href: "/" },
+    { label: "Photography", href: "/photography" },
     { label: "Music", href: "/music" },
-    { label: "Projects", href: "/projects" },
-    { label: "Professional", href: "/professional" },
-    { label: "About", href: "/about" },
-    { label: "Links", href: "/links" },
+    { label: "Development", href: "/development" },
+    { label: "About Me", href: "/about" },
     { label: "Contact", href: "/contact" },
     { label: "Support", href: "/support" },
     { label: "Privacy", href: "/privacy" },

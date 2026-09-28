@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { MusicSection } from "@/components/sections/music-section";
 import { PageIntro } from "@/components/page-intro";
 import { createMetadata } from "@/lib/metadata";
+import styles from "./music.module.css";
 
 const title = "Music by KRiX | Studio KRiX";
 const description =
@@ -22,13 +23,14 @@ export const metadata: Metadata = {
 
 export default function MusicPage() {
   return (
-    <>
+    <div className={styles.page}>
+      <div className={styles.glow} aria-hidden="true" />
       <PageIntro
         description="Electronic music shaped by atmosphere, rhythm and emotion."
-        index="KRiX"
+        index="KRiX / Studio KRiX"
         title="Music by KRiX"
       />
       <MusicSection />
-    </>
+    </div>
   );
 }

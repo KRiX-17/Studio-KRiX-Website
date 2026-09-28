@@ -15,10 +15,12 @@ const geist = Geist({
   display: "swap",
 });
 
+const homeTitle = "Studio KRiX — Photography, music and development";
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Studio KRiX — Technology, engineering and music",
+    default: homeTitle,
     template: "%s — Studio KRiX",
   },
   description: siteConfig.description,
@@ -26,27 +28,14 @@ export const metadata: Metadata = {
   authors: [{ name: siteConfig.founder, url: `${siteConfig.url}/about` }],
   creator: siteConfig.founder,
   publisher: siteConfig.name,
-  category: "technology",
   alternates: {
     canonical: siteConfig.url,
   },
   icons: {
     icon: [
-      {
-        url: "/brand/studio-krix/studio-krix-sk-logo-16.png",
-        sizes: "16x16",
-        type: "image/png",
-      },
-      {
-        url: "/brand/studio-krix/studio-krix-sk-logo-32.png",
-        sizes: "32x32",
-        type: "image/png",
-      },
-      {
-        url: "/brand/studio-krix/studio-krix-sk-logo-48.png",
-        sizes: "48x48",
-        type: "image/png",
-      },
+      { url: "/brand/studio-krix/studio-krix-sk-logo-16.png", sizes: "16x16", type: "image/png" },
+      { url: "/brand/studio-krix/studio-krix-sk-logo-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/brand/studio-krix/studio-krix-sk-logo-48.png", sizes: "48x48", type: "image/png" },
     ],
     shortcut: "/brand/studio-krix/studio-krix-sk-logo-32.png",
     apple: {
@@ -57,7 +46,7 @@ export const metadata: Metadata = {
   },
   manifest: "/manifest.json",
   openGraph: {
-    title: "Studio KRiX — Technology, engineering and music",
+    title: homeTitle,
     description: siteConfig.description,
     url: siteConfig.url,
     siteName: siteConfig.name,
@@ -68,13 +57,13 @@ export const metadata: Metadata = {
         url: "/social-preview.svg",
         width: 1200,
         height: 630,
-        alt: "Studio KRiX — technology, engineering and music brought together",
+        alt: "Studio KRiX — photography, music and development",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Studio KRiX — Technology, engineering and music",
+    title: homeTitle,
     description: siteConfig.description,
     images: ["/social-preview.svg"],
   },
@@ -99,7 +88,7 @@ const structuredData = {
       name: siteConfig.name,
       url: siteConfig.url,
       description:
-        "A personal platform connecting engineering, software, connected systems, automation, local AI and creative work.",
+        "A Sydney creative studio spanning photography, electronic music and software development.",
       logo: {
         "@type": "ImageObject",
         url: `${siteConfig.url}/brand/studio-krix/studio-krix-sk-logo-512.png`,
@@ -107,9 +96,7 @@ const structuredData = {
         height: 512,
       },
       sameAs: [siteConfig.linkedIn, siteConfig.github],
-      founder: {
-        "@id": `${siteConfig.url}/#christopher-helene`,
-      },
+      founder: { "@id": `${siteConfig.url}/#christopher-helene` },
       address: {
         "@type": "PostalAddress",
         addressLocality: "Sydney",
@@ -120,33 +107,22 @@ const structuredData = {
       "@type": "Person",
       "@id": `${siteConfig.url}/#christopher-helene`,
       name: siteConfig.founder,
-      url: `${siteConfig.url}/professional`,
-      jobTitle:
-        "Automotive technician, software developer and electronic music producer",
+      url: `${siteConfig.url}/about`,
       knowsAbout: [
-        "Automotive diagnostics",
-        "Automotive electrical systems",
-        "Disability vehicle modifications",
-        "CAN and LIN vehicle communication",
-        "Software development",
-        "Network infrastructure",
-        "Connected systems",
-        "Home automation",
-        "Local AI architecture",
+        "Photography",
+        "Fashion photography",
         "Electronic music production",
+        "DJ performance",
+        "Software development",
+        "Automotive electrical systems",
       ],
-      worksFor: {
-        "@id": `${siteConfig.url}/#organization`,
-      },
+      worksFor: { "@id": `${siteConfig.url}/#organization` },
       sameAs: [siteConfig.linkedIn, siteConfig.github],
       subjectOf: [
-        `${siteConfig.url}/about`,
-        `${siteConfig.url}/professional`,
-        `${siteConfig.url}/projects`,
-        `${siteConfig.url}/projects/monde-soniq`,
-        `${siteConfig.url}/connected-systems`,
-        `${siteConfig.url}/lakaz`,
+        `${siteConfig.url}/photography`,
         `${siteConfig.url}/music`,
+        `${siteConfig.url}/development`,
+        `${siteConfig.url}/about`,
       ],
     },
     {
@@ -154,9 +130,7 @@ const structuredData = {
       "@id": `${siteConfig.url}/#website`,
       name: siteConfig.name,
       url: siteConfig.url,
-      publisher: {
-        "@id": `${siteConfig.url}/#organization`,
-      },
+      publisher: { "@id": `${siteConfig.url}/#organization` },
     },
   ],
 };

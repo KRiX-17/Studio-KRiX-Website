@@ -4,16 +4,10 @@ import { siteConfig } from "@/config/site";
 const routes = [
   "",
   "/music",
-  "/professional",
-  "/links",
-  "/projects",
-  "/projects/monde-soniq",
-  "/connected-systems",
-  "/connected-systems/home-automation",
-  "/connected-systems/local-ai",
-  "/lakaz",
-  "/ohmxact",
+  "/development",
   "/about",
+  "/ohmxact",
+  "/lakaz",
   "/support",
   "/privacy",
   "/contact",
@@ -22,29 +16,18 @@ const routes = [
 export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map((route) => ({
     url: `${siteConfig.url}${route}`,
-    lastModified: new Date("2026-08-09"),
+    lastModified: new Date("2026-09-28"),
     changeFrequency:
-      route === "" ||
-      route === "/music" ||
-      route === "/links" ||
-      route === "/projects/monde-soniq"
+      route === "" || route === "/music" || route === "/development"
         ? "monthly"
         : "yearly",
     priority:
       route === ""
         ? 1
-        : route === "/ohmxact"
+        : route === "/music" || route === "/development"
           ? 0.9
-          : route === "/music" ||
-              route === "/professional" ||
-              route === "/connected-systems" ||
-              route === "/connected-systems/home-automation" ||
-              route === "/connected-systems/local-ai" ||
-              route === "/lakaz" ||
-              route === "/projects/monde-soniq"
+          : route === "/ohmxact"
             ? 0.85
-          : route === "/links"
-            ? 0.8
             : 0.7,
   }));
 }
