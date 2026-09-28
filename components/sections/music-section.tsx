@@ -8,6 +8,7 @@ import {
   getLinksByCategory,
   getMusicServiceLinks,
 } from "@/data/links";
+import { driftGlassRelease, releaseTimeline } from "@/data/music";
 import { mondeSoniqEvents } from "@/data/monde-soniq";
 
 const musicServices = getMusicServiceLinks();
@@ -15,13 +16,18 @@ const trackLinks = getLinksByCategory("track");
 const socialLinks = getLinksByCategory("social").filter(
   (item) => item.title === "Instagram" || item.title === "TikTok",
 );
-const driftGlassPreorderHref = "https://krix17.bandcamp.com";
+
 
 function ExternalLabel() {
   return <span className="sr-only">(opens in a new tab)</span>;
 }
 
 export function MusicSection() {
+  const driftGlassReleased =
+    Date.now() >= new Date(driftGlassRelease.releaseAt).getTime();
+  const spotify = musicServices.find((item) => item.title === "Spotify");
+  const appleMusic = musicServices.find((item) => item.title === "Apple Music");
+
   return (
     <>
       <section className="music-release">
@@ -31,28 +37,70 @@ export function MusicSection() {
               alt="Drift Glass by KRiX cover artwork"
               height={1800}
               sizes="(max-width: 960px) calc(100vw - 3rem), (max-width: 1400px) 40vw, 450px"
-              src="/images/music/drift-glass-cover.webp"
+              src={driftGlassRelease.artwork}
               width={1800}
             />
           </div>
           <div className="music-release__content">
-            <p className="section-label">Upcoming single</p>
-            <h2>Drift Glass</h2>
+            <p className="section-label">
+              {driftGlassReleased ? "Latest single" : "Upcoming single"}
+            </p>
+            <h2>{driftGlassRelease.title}</h2>
             <p>
-              Coming 2 October 2026 at 3:00 PM Sydney time. Pre-order now on
-              Bandcamp, with the full streaming release landing on release day.
+              {driftGlassReleased
+                ? `Released ${driftGlassRelease.dateLabel}. Open KRiX on your preferred platform or head to Bandcamp.`
+                : `Coming ${driftGlassRelease.dateLabel} at ${driftGlassRelease.timeLabel}. Pre-order now on Bandcamp, with the full streaming release landing on release day.`}
             </p>
             <div className="music-release__actions">
-              <a
-                className="music-action music-action--primary"
-                href={driftGlassPreorderHref}
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <span>Pre-order on Bandcamp</span>
-                <ArrowUpRightIcon />
-                <ExternalLabel />
-              </a>
+              {driftGlassReleased ? (
+                <>
+                  {spotify ? (
+                    <a
+                      className="music-action music-action--primary"
+                      href={spotify.href}
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <span>Open KRiX on Spotify</span>
+                      <ArrowUpRightIcon />
+                      <ExternalLabel />
+                    </a>
+                  ) : null}
+                  {appleMusic ? (
+                    <a
+                      className="music-action"
+                      href={appleMusic.href}
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <span>Open KRiX on Apple Music</span>
+                      <ArrowUpRightIcon />
+                      <ExternalLabel />
+                    </a>
+                  ) : null}
+                  <a
+                    className="music-action"
+                    href={driftGlassRelease.bandcampHref}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <span>Bandcamp</span>
+                    <ArrowUpRightIcon />
+                    <ExternalLabel />
+                  </a>
+                </>
+              ) : (
+                <a
+                  className="music-action music-action--primary"
+                  href={driftGlassRelease.bandcampHref}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <span>Pre-order on Bandcamp</span>
+                  <ArrowUpRightIcon />
+                  <ExternalLabel />
+                </a>
+              )}
             </div>
           </div>
         </Reveal>
@@ -112,6 +160,30 @@ export function MusicSection() {
                 </a>
               ))}
             </div>
+          </div>
+        </Reveal>
+      </section>
+
+      <section className="music-discography" aria-labelledby="music-discography-title">
+        <Reveal className="site-container">
+          <div className="directory-heading">
+            <div>
+              <p className="section-label">Release timeline</p>
+              <h2 id="music-discography-title">KRiX releases</h2>
+            </div>
+            <p>A compact record of released and scheduled music.</p>
+          </div>
+          <div className="music-discography__list">
+            {releaseTimeline.map((release, index) => (
+              <article key={release.title}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <div>
+                  <p>{release.type} · {release.dateLabel}</p>
+                  <h3>{release.title}</h3>
+                </div>
+                <strong>{release.status}</strong>
+              </article>
+            ))}
           </div>
         </Reveal>
       </section>
