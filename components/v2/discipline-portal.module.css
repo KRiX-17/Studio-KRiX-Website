@@ -136,7 +136,8 @@
 
 .photography .image {
   object-fit: contain;
-  object-position: center 18%;
+  object-position: center top;
+  height: calc(100% - 7rem);
 }
 
 .music {
@@ -236,7 +237,7 @@
 }
 
 .photography .overlay {
-  background: linear-gradient(to top, rgba(242,240,234,.96) 0%, rgba(242,240,234,0) 55%);
+  background: linear-gradient(to top, rgba(242,240,234,.97) 0%, rgba(242,240,234,0) 19%);
 }
 
 .music .overlay {
