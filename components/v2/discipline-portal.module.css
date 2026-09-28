@@ -135,9 +135,8 @@
 }
 
 .photography .image {
-  object-fit: contain;
-  object-position: center top;
-  height: calc(100% - 7rem);
+  object-fit: cover;
+  object-position: center bottom;
 }
 
 .music {
