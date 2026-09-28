@@ -9050,3 +9050,50 @@ section[id] {
     display: none;
   }
 }
+
+.site-footer__networks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 2.5rem;
+  align-items: flex-end;
+}
+.site-footer__network-group {
+  display: grid;
+  gap: .65rem;
+}
+.site-footer__network-label {
+  color: var(--text-muted);
+  font-size: .65rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.site-footer__socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+}
+.site-footer__social-link {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--text-muted);
+  transition:
+    color 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease,
+    transform 160ms ease;
+}
+.site-footer__social-link svg {
+  width: 1rem;
+  height: 1rem;
+}
+.site-footer__social-link:hover,
+.site-footer__social-link:focus-visible {
+  color: var(--text);
+  border-color: var(--accent-gold-border);
+  background: var(--accent-gold-glow);
+  transform: translateY(-1px);
+}
