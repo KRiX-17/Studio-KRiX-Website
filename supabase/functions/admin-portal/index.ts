@@ -92,8 +92,8 @@ Deno.serve(async (req: Request) => {
     const [{ data: gallery }, { data: assets }, { data: access }, { data: clients }] = await Promise.all([
       admin.from("galleries").select("*").eq("id", galleryId).maybeSingle(),
       admin.from("gallery_assets").select("*").eq("gallery_id", galleryId).order("sort_order"),
-      admin.from("gallery_access").select("gallery_id,user_id,can_download,expires_at,granted_at").eq("gallery_id", galleryId),
-      admin.from("profiles").select("id,email,display_name,role,is_active").eq("role", "client").eq("is_active", true).order("display_name"),
+      admin.from("gallery_access").select("gallery_id,user_id,can_download,can_upload,expires_at,granted_at").eq("gallery_id", galleryId),
+      admin.from("profiles").select("id,email,display_name,role,is_active").in("role", ["client", "collaborator"]).eq("is_active", true).order("display_name"),
     ]);
     if (!gallery) return json({ error: "Gallery not found" }, 404);
 
@@ -455,18 +455,28 @@ Deno.serve(async (req: Request) => {
     const galleryId = String(body.galleryId ?? "");
     const userId = String(body.userId ?? "");
     const canDownload = body.canDownload !== false;
+    const requestedUpload = body.canUpload === true;
     const { data: client } = await admin.from("profiles").select("id,role,is_active").eq("id", userId).maybeSingle();
-    if (!client?.is_active || client.role !== "client") return json({ error: "Client not found" }, 404);
+    if (!client?.is_active || !["client", "collaborator"].includes(client.role)) {
+      return json({ error: "Portal user not found" }, 404);
+    }
+    const canUpload =
+      client.role === "collaborator" && requestedUpload;
     const { error } = await admin.from("gallery_access").upsert({
       gallery_id: galleryId,
       user_id: userId,
       can_download: canDownload,
+      can_upload: canUpload,
       expires_at: body.expiresAt || null,
       granted_by: caller.id,
       granted_at: new Date().toISOString(),
     });
     if (error) return json({ error: error.message }, 400);
-    await audit("gallery.access_granted", "gallery", galleryId, { user_id: userId, can_download: canDownload });
+    await audit("gallery.access_granted", "gallery", galleryId, {
+      user_id: userId,
+      can_download: canDownload,
+      can_upload: canUpload,
+    });
     return json({ ok: true });
   }
 
@@ -491,6 +501,8 @@ Deno.serve(async (req: Request) => {
   if (action === "create_client") {
     const email = String(body.email ?? "").trim().toLowerCase();
     const displayName = String(body.displayName ?? "").trim();
+    const requestedRole =
+      body.role === "collaborator" ? "collaborator" : "client";
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json({ error: "Valid email required" }, 400);
 
     const { data: existing } = await admin.from("profiles").select("id,email,role").eq("email", email).maybeSingle();
@@ -520,6 +532,13 @@ Deno.serve(async (req: Request) => {
       return json({ error: createError?.message ?? "Could not create client" }, 400);
     }
 
+    if (requestedRole === "collaborator") {
+      await admin
+        .from("profiles")
+        .update({ role: "collaborator", updated_at: new Date().toISOString() })
+        .eq("id", created.user.id);
+    }
+
     const { error: inviteError } = await admin.from("client_invites").insert({
       user_id: created.user.id,
       email,
@@ -534,9 +553,18 @@ Deno.serve(async (req: Request) => {
       return json({ error: inviteError.message }, 500);
     }
 
-    await audit("client.created", "user", created.user.id, { email, display_name: displayName || null });
+    await audit("portal_user.created", "user", created.user.id, {
+      email,
+      display_name: displayName || null,
+      role: requestedRole,
+    });
     return json({
-      user: { id: created.user.id, email, displayName: displayName || null },
+      user: {
+        id: created.user.id,
+        email,
+        displayName: displayName || null,
+        role: requestedRole,
+      },
       inviteToken,
       expiresAt,
     });
