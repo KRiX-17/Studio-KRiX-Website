@@ -12,6 +12,12 @@ const baseMetadata = createMetadata({
   title,
   description,
   path: "/music",
+  image: {
+    url: "/images/music/drift-glass-cover.webp",
+    width: 1800,
+    height: 1800,
+    alt: "Drift Glass by KRiX cover artwork",
+  },
 });
 
 export const revalidate = 900;
