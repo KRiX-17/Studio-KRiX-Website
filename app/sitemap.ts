@@ -3,7 +3,6 @@ import { siteConfig } from "@/config/site";
 
 const routes = [
   "",
-  "/photography",
   "/music",
   "/development",
   "/about",
@@ -19,13 +18,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${siteConfig.url}${route}`,
     lastModified: new Date("2026-09-28"),
     changeFrequency:
-      route === "" || route === "/photography" || route === "/music" || route === "/development"
+      route === "" || route === "/music" || route === "/development"
         ? "monthly"
         : "yearly",
     priority:
       route === ""
         ? 1
-        : route === "/photography" || route === "/music" || route === "/development"
+        : route === "/music" || route === "/development"
           ? 0.9
           : route === "/ohmxact"
             ? 0.85
