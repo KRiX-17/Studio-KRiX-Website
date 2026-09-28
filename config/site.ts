@@ -1,8 +1,5 @@
 const navigation = [
-  { label: "Photography", href: "/photography" },
-  { label: "Music", href: "/music" },
-  { label: "Development", href: "/development" },
-  { label: "About", href: "/about" },
+  { label: "About Me", href: "/about" },
 ] as const;
 
 const mobileNavigation = [
@@ -25,7 +22,7 @@ export const siteConfig = {
     { label: "Photography", href: "/photography" },
     { label: "Music", href: "/music" },
     { label: "Development", href: "/development" },
-    { label: "About", href: "/about" },
+    { label: "About Me", href: "/about" },
     { label: "Contact", href: "/contact" },
     { label: "Support", href: "/support" },
     { label: "Privacy", href: "/privacy" },
