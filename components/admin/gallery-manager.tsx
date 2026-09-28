@@ -48,6 +48,67 @@ async function adminAction<T>(action: string, body: Record<string, unknown>) {
   return result;
 }
 
+async function createWebPreview(file: File) {
+  const bitmap = await createImageBitmap(file);
+  const originalWidth = bitmap.width;
+  const originalHeight = bitmap.height;
+  const longest = Math.max(originalWidth, originalHeight);
+  const scale = Math.min(1, 3200 / longest);
+  const width = Math.max(1, Math.round(originalWidth * scale));
+  const height = Math.max(1, Math.round(originalHeight * scale));
+
+  const canvas = document.createElement("canvas");
+  canvas.width = width;
+  canvas.height = height;
+  const context = canvas.getContext("2d", { alpha: false });
+
+  if (!context) {
+    bitmap.close();
+    throw new Error("Your browser could not create the web preview.");
+  }
+
+  context.drawImage(bitmap, 0, 0, width, height);
+  bitmap.close();
+
+  const blob = await new Promise<Blob>((resolve, reject) => {
+    canvas.toBlob(
+      (result) =>
+        result
+          ? resolve(result)
+          : reject(new Error("Could not encode the web preview.")),
+      "image/webp",
+      0.88,
+    );
+  });
+
+  const stem = file.name.replace(/\.[^.]+$/, "") || "photo";
+
+  return {
+    file: new File([blob], stem + "-web.webp", {
+      type: "image/webp",
+      lastModified: Date.now(),
+    }),
+    originalWidth,
+    originalHeight,
+  };
+}
+
+async function uploadToSignedUrl(signedUrl: string, file: File) {
+  const body = new FormData();
+  body.append("cacheControl", "3600");
+  body.append("", file);
+
+  const response = await fetch(signedUrl, {
+    method: "PUT",
+    headers: { "x-upsert": "false" },
+    body,
+  });
+
+  if (!response.ok) {
+    throw new Error("Storage upload failed for " + file.name);
+  }
+}
+
 export function GalleryManager({ data }: { data: GalleryData }) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [assets, setAssets] = useState(data.assets);
@@ -93,32 +154,52 @@ export function GalleryManager({ data }: { data: GalleryData }) {
       for (let index = 0; index < images.length; index += 1) {
         const file = images[index];
         setMessage(
-          "Uploading " + String(index + 1) + " of " + String(images.length) + " · " + file.name,
+          "Preparing " +
+            String(index + 1) +
+            " of " +
+            String(images.length) +
+            " · " +
+            file.name,
         );
 
-        const ticket = await adminAction<{
-          storagePath: string;
-          signedUrl: string;
-        }>("create_upload_url", {
-          galleryId: gallery.id,
-          filename: file.name,
-          mimeType: file.type,
-          bytes: file.size,
-        });
+        const preview = await createWebPreview(file);
 
-        const uploadBody = new FormData();
-        uploadBody.append("cacheControl", "3600");
-        uploadBody.append("", file);
+        const [originalTicket, webTicket] = await Promise.all([
+          adminAction<{
+            storagePath: string;
+            signedUrl: string;
+          }>("create_upload_url", {
+            galleryId: gallery.id,
+            filename: file.name,
+            mimeType: file.type,
+            bytes: file.size,
+            kind: "original",
+          }),
+          adminAction<{
+            storagePath: string;
+            signedUrl: string;
+          }>("create_upload_url", {
+            galleryId: gallery.id,
+            filename: preview.file.name,
+            mimeType: preview.file.type,
+            bytes: preview.file.size,
+            kind: "web",
+          }),
+        ]);
 
-        const upload = await fetch(ticket.signedUrl, {
-          method: "PUT",
-          headers: { "x-upsert": "false" },
-          body: uploadBody,
-        });
+        setMessage(
+          "Uploading " +
+            String(index + 1) +
+            " of " +
+            String(images.length) +
+            " · " +
+            file.name,
+        );
 
-        if (!upload.ok) {
-          throw new Error("Upload failed for " + file.name);
-        }
+        await Promise.all([
+          uploadToSignedUrl(originalTicket.signedUrl, file),
+          uploadToSignedUrl(webTicket.signedUrl, preview.file),
+        ]);
 
         const defaultAlt = file.name
           .replace(/\.[^.]+$/, "")
@@ -127,16 +208,21 @@ export function GalleryManager({ data }: { data: GalleryData }) {
 
         await adminAction("complete_upload", {
           galleryId: gallery.id,
-          storagePath: ticket.storagePath,
+          storagePath: originalTicket.storagePath,
+          webStoragePath: webTicket.storagePath,
           filename: file.name,
           mimeType: file.type,
           bytes: file.size,
+          width: preview.originalWidth,
+          height: preview.originalHeight,
           altText: defaultAlt,
         });
       }
 
-      setMessage("Uploads complete. Refreshing gallery…");
-      window.location.reload();
+      setMessage(
+        "Uploads complete. Full-resolution files are private; web previews are optimised automatically.",
+      );
+      window.setTimeout(() => window.location.reload(), 450);
     } catch (error) {
       setMessage(error instanceof Error ? error.message : "Upload failed.");
       setBusy(null);
@@ -326,7 +412,7 @@ export function GalleryManager({ data }: { data: GalleryData }) {
             }}
           />
           <strong>Drag finished JPGs here.</strong>
-          <span>JPEG, PNG or WebP · maximum 50 MB each</span>
+          <span>Full-resolution JPEG, PNG or WebP · max 50 MB · 3200px web preview generated automatically</span>
           <button
             disabled={busy === "upload"}
             onClick={() => inputRef.current?.click()}
