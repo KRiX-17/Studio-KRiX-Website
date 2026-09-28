@@ -1,51 +1,56 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { PortfolioAdminDemo } from "@/components/v2/portfolio-admin-demo";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+import {
+  ACCESS_COOKIE,
+  invokePortalFunction,
+} from "@/lib/supabase/auth-rest";
+import { AdminDashboard } from "@/components/admin/admin-dashboard";
+import styles from "./admin.module.css";
 
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Portfolio Admin",
-  robots: {
-    index: false,
-    follow: false,
-    nocache: true,
-  },
+  title: "Studio KRiX Admin",
+  robots: { index: false, follow: false, nocache: true },
 };
 
-export default function AdminPage() {
+export default async function AdminPage() {
+  const accessToken = (await cookies()).get(ACCESS_COOKIE)?.value;
+  if (!accessToken) redirect("/login");
+
+  const result = await invokePortalFunction<{
+    galleries: Array<{
+      id: string;
+      slug: string;
+      title: string;
+      category: string | null;
+      status: string;
+      event_date: string | null;
+      location: string | null;
+      is_featured: boolean;
+      published_at: string | null;
+      created_at: string;
+    }>;
+    users: Array<{
+      id: string;
+      email: string | null;
+      display_name: string | null;
+      role: string;
+      is_active: boolean;
+    }>;
+    audits: Array<{
+      id: number;
+      event_type: string;
+      created_at: string;
+    }>;
+  }>("admin-portal", accessToken, { action: "overview", body: {} });
+
+  if (!result.ok || !result.data) redirect("/mfa?next=/admin");
+
   return (
-    <>
-      <div
-        style={{
-          background: "#070708",
-          color: "#f7f6f3",
-          padding: "1rem max(1rem, calc((100vw - 88rem) / 2)) 0",
-          display: "flex",
-          gap: "1.25rem",
-          flexWrap: "wrap",
-        }}
-      >
-        <Link style={{ color: "inherit" }} href="/admin/users">
-          Clients & users ↗
-        </Link>
-        <form action="/api/auth/logout" method="post">
-          <button
-            style={{
-              border: 0,
-              padding: 0,
-              background: "transparent",
-              color: "inherit",
-              textDecoration: "underline",
-              cursor: "pointer",
-            }}
-            type="submit"
-          >
-            Sign out
-          </button>
-        </form>
-      </div>
-      <PortfolioAdminDemo />
-    </>
+    <div className={styles.page}>
+      <AdminDashboard data={result.data} />
+    </div>
   );
 }
