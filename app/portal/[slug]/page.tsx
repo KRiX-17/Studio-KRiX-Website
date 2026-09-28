@@ -37,6 +37,7 @@ export default async function ClientGalleryPage({
       status: string;
     };
     canDownload: boolean;
+    canUpload: boolean;
     assets: Array<{
       id: string;
       filename: string;
