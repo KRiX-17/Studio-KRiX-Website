@@ -86,7 +86,8 @@
   padding: clamp(4rem, 8vw, 8rem) 0;
 }
 
-.heading p {
+.heading p,
+.secondaryHeading p {
   margin: 0 0 .6rem;
   color: var(--mint);
   text-transform: uppercase;
@@ -94,7 +95,8 @@
   font-size: .66rem;
 }
 
-.heading h2 {
+.heading h2,
+.secondaryHeading h2 {
   margin: 0 0 2.5rem;
   font-size: clamp(2.8rem, 6vw, 6rem);
   line-height: .9;
@@ -283,5 +285,86 @@
 @media (prefers-reduced-motion: reduce) {
   .projectGrid > a {
     transition: none;
+  }
+}
+
+
+.secondaryHeading {
+  margin-top: clamp(4.5rem, 8vw, 7rem);
+  padding-top: clamp(3rem, 5vw, 4.5rem);
+  border-top: 1px solid var(--line);
+}
+
+.secondaryGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .75rem;
+}
+
+.secondaryGrid > a {
+  position: relative;
+  min-height: 19rem;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  padding: 1.35rem;
+  background:
+    radial-gradient(circle at 80% 20%, rgba(107,145,255,.08), transparent 12rem),
+    rgba(13,18,24,.72);
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    transform 180ms ease;
+}
+
+.secondaryGrid > a:hover,
+.secondaryGrid > a:focus-visible {
+  border-color: rgba(101,214,199,.45);
+  background: rgba(17,23,32,.9);
+  transform: translateY(-.25rem);
+}
+
+.secondaryGrid span {
+  color: var(--mint);
+  font-size: .64rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.secondaryGrid h3 {
+  margin: auto 0 .8rem;
+  font-size: clamp(1.75rem, 3vw, 2.8rem);
+  font-weight: 500;
+  line-height: .95;
+  letter-spacing: -.04em;
+}
+
+.secondaryGrid p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.secondaryGrid strong {
+  position: absolute;
+  top: 1.15rem;
+  right: 1.2rem;
+  color: var(--electric);
+  font-weight: 500;
+}
+
+@media (max-width: 900px) {
+  .secondaryGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .secondaryGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .secondaryGrid > a {
+    min-height: 15rem;
   }
 }
