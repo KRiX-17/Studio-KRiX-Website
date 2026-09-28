@@ -6,7 +6,6 @@
   --mint: #65d6c7;
   --ambient-a: rgba(222, 59, 82, 0.08);
   --ambient-b: rgba(107, 145, 255, 0.08);
-  --pulse: rgba(107, 145, 255, 0.48);
   position: relative;
   min-height: calc(100svh - 5rem);
   overflow: hidden;
@@ -34,7 +33,6 @@
   --ink: #f5f2ed;
   --ambient-a: rgba(222, 59, 82, 0.22);
   --ambient-b: rgba(117, 92, 255, 0.18);
-  --pulse: rgba(140, 112, 255, 0.48);
 }
 
 .shell:has(.development:is(:hover, :focus-visible)) {
@@ -42,7 +40,6 @@
   --ink: #f3f4f5;
   --ambient-a: rgba(107, 145, 255, 0.2);
   --ambient-b: rgba(101, 214, 199, 0.14);
-  --pulse: rgba(101, 214, 199, 0.5);
 }
 
 .shell:has(.photography:is(:hover, :focus-visible)) {
@@ -50,7 +47,6 @@
   --ink: #101014;
   --ambient-a: rgba(222, 59, 82, 0.06);
   --ambient-b: rgba(170, 166, 158, 0.12);
-  --pulse: rgba(222, 59, 82, 0.42);
 }
 
 .intro,
@@ -180,79 +176,6 @@
   position: absolute;
   inset: 0;
   z-index: -1;
-}
-
-.pageTraceHorizontal,
-.pageTraceVertical {
-  position: absolute;
-  z-index: 4;
-  width: .18rem;
-  height: .18rem;
-  border-radius: 999px;
-  background: var(--pulse);
-  box-shadow: 0 0 .34rem var(--pulse);
-  opacity: 0;
-  pointer-events: none;
-}
-
-.pageTraceHorizontal {
-  top: -.035rem;
-  left: -.45rem;
-  animation: page-trace-horizontal 21s linear infinite;
-  animation-delay: -7s;
-}
-
-.pageTraceVertical {
-  top: -.45rem;
-  right: -.035rem;
-  animation: page-trace-vertical 27s linear infinite;
-  animation-delay: -18s;
-}
-
-@keyframes page-trace-horizontal {
-  0%,
-  28% {
-    left: -.45rem;
-    opacity: 0;
-  }
-  31% {
-    opacity: .38;
-  }
-  54% {
-    opacity: .28;
-  }
-  68% {
-    left: calc(100% + .08rem);
-    opacity: .34;
-  }
-  71%,
-  100% {
-    left: calc(100% + .45rem);
-    opacity: 0;
-  }
-}
-
-@keyframes page-trace-vertical {
-  0%,
-  46% {
-    top: -.45rem;
-    opacity: 0;
-  }
-  49% {
-    opacity: .32;
-  }
-  70% {
-    opacity: .24;
-  }
-  86% {
-    top: calc(100% + .08rem);
-    opacity: .3;
-  }
-  89%,
-  100% {
-    top: calc(100% + .45rem);
-    opacity: 0;
-  }
 }
 
 .photography .overlay {
@@ -399,9 +322,4 @@
     transition: none;
   }
 
-  .pageTraceHorizontal,
-  .pageTraceVertical {
-    animation: none;
-    opacity: 0;
-  }
 }
