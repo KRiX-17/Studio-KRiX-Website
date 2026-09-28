@@ -5,8 +5,11 @@ import {
   verifyMfa,
 } from "@/lib/supabase/auth-rest";
 import { setSessionCookies } from "@/lib/supabase/session-cookies";
+import { noStore, rejectCrossOriginPost, safeReturnPath } from "@/lib/supabase/request-security";
 
 export async function POST(request: NextRequest) {
+  const crossOrigin = rejectCrossOriginPost(request);
+  if (crossOrigin) return crossOrigin;
   const accessToken = request.cookies.get(ACCESS_COOKIE)?.value;
   if (!accessToken) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -18,10 +21,9 @@ export async function POST(request: NextRequest) {
 
   const factorId = String(body?.factorId ?? "");
   const code = String(body?.code ?? "").replace(/\D/g, "");
-  const next =
-    body?.next?.startsWith("/") && !body.next.startsWith("//")
-      ? body.next
-      : "/admin";
+  const requestedNext = safeReturnPath(body?.next, "/admin");
+  const next = requestedNext === "/admin" || requestedNext.startsWith("/admin/")
+    ? requestedNext : "/admin";
 
   if (!factorId || code.length < 6) {
     return NextResponse.json({ error: "Invalid MFA code" }, { status: 400 });
@@ -53,8 +55,8 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  return setSessionCookies(
+  return noStore(setSessionCookies(
     NextResponse.json({ ok: true, next }),
     verified.data,
-  );
+  ));
 }

@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable @next/next/no-img-element -- Local blob previews are generated in this browser and have no stable image URL. */
 
 import { ChangeEvent, DragEvent, useMemo, useRef, useState } from "react";
 import styles from "./portfolio-admin-demo.module.css";

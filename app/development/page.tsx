@@ -5,6 +5,7 @@ import styles from "./development.module.css";
 
 export const metadata: Metadata = {
   title: "Development",
+  alternates: { canonical: "/development" },
   description: "Apps, tools and software projects by Studio KRiX.",
 };
 

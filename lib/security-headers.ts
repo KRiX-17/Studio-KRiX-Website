@@ -5,6 +5,7 @@ export function createContentSecurityPolicy(isProduction: boolean) {
   const directives = [
     "default-src 'self'",
     `script-src 'self' 'unsafe-inline' ${cloudflareTurnstileOrigin}`,
+    "script-src-attr 'none'",
     "style-src 'self' 'unsafe-inline'",
     `img-src 'self' data: blob: ${supabaseOrigin}`,
     "font-src 'self'",

@@ -5,6 +5,7 @@ import { getPublicGalleries } from "@/lib/portfolio/public";
 const routes = [
   "",
   "/music",
+  "/photography",
   "/development",
   "/about",
   "/ohmxact",
@@ -34,16 +35,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             : 0.7,
   }));
 
-  if (galleries.length === 0) return staticRoutes;
-
   return [
     ...staticRoutes,
-    {
-      url: siteConfig.url + "/photography",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
     ...galleries.map((gallery) => ({
       url: siteConfig.url + "/photography/" + gallery.slug,
       lastModified: gallery.published_at

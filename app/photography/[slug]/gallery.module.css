@@ -1,1 +1,27 @@
-.page{min-height:100svh;background:#f2f0ea;color:#111114;padding:2rem max(1rem,calc((100vw - 96rem)/2)) 6rem}.topbar{display:flex;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid rgba(17,17,20,.18);font-size:.72rem;color:#77736d}.topbar a{color:#111114}.hero{padding:clamp(4rem,10vw,9rem) 0;border-bottom:1px solid rgba(17,17,20,.18)}.kicker{margin:0 0 .9rem;color:#de3b52;text-transform:uppercase;letter-spacing:.18em;font-size:.64rem}.hero h1{margin:0;max-width:10ch;font-size:clamp(4rem,12vw,10rem);line-height:.79;letter-spacing:-.075em;font-weight:500}.hero>p:last-child{max-width:42rem;margin:2rem 0 0;color:#5d5852;line-height:1.65}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(1rem,3vw,3rem);padding-top:clamp(2rem,5vw,4rem)}.frame{margin:0}.frame img,.missing{width:100%;aspect-ratio:4/5;object-fit:cover;background:#e4e0d8}.missing{display:grid;place-items:center;color:#77736d}.frame figcaption{display:flex;gap:1rem;padding:.7rem 0;color:#77736d;font-size:.76rem}.frame figcaption p{margin:0}@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.page {
+  min-height: 100svh;
+  padding: 2rem max(var(--page-gutter), calc((100vw - 92rem) / 2)) var(--section-rhythm);
+  background: #f2f0ea;
+  color: #111114;
+}
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(17,17,20,.18);
+  font-size: .72rem;
+  color: #625e59;
+}
+.topbar a { color: #111114; }
+.hero { padding: var(--section-rhythm) 0; border-bottom: 1px solid rgba(17,17,20,.18); }
+.kicker { margin: 0 0 .9rem; color: #b5263c; text-transform: uppercase; letter-spacing: var(--tracking-eyebrow); font-size: var(--type-eyebrow); }
+.hero h1 { max-width: 10ch; margin: 0; font-size: clamp(3.2rem, 10vw, 9rem); line-height: .9; letter-spacing: var(--tracking-display); font-weight: 500; }
+.hero > p:last-child { max-width: 42rem; margin: var(--copy-gap) 0 0; color: #5d5852; line-height: var(--leading-body); }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--image-gap); padding-top: var(--section-rhythm); }
+.frame { min-width: 0; margin: 0; }
+.frame img { display: block; width: 100%; height: auto; background: #e4e0d8; }
+.missing { display: grid; place-items: center; width: 100%; aspect-ratio: 4/5; background: #e4e0d8; color: #625e59; }
+.frame figcaption { display: flex; gap: var(--card-gap); padding: var(--caption-gap) 0; color: #625e59; font-size: .76rem; }
+.frame figcaption p { margin: 0; }
+@media (max-width: 700px) { .grid { grid-template-columns: 1fr; } }

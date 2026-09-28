@@ -1,6 +1,7 @@
 
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "npm:@supabase/supabase-js@2";
+import { validImageTicket } from "../_shared/image-upload.ts";
 const json=(b:unknown,s=200)=>new Response(JSON.stringify(b),{status:s,headers:{"Content-Type":"application/json"}});
 function safeName(input:string){return input.replace(/[^a-zA-Z0-9._-]+/g,"-").slice(-120);}
 Deno.serve(async(req:Request)=>{
@@ -46,7 +47,9 @@ Deno.serve(async(req:Request)=>{
    );
 
    return {
-     allowed: gallery.status==="published" || valid,
+     // The public portfolio is served separately. A portal session still needs
+     // an explicit, unexpired assignment, even for a published gallery.
+     allowed: valid,
      canDownload: valid && Boolean(access?.can_download),
      canUpload:
        valid &&
@@ -73,7 +76,11 @@ Deno.serve(async(req:Request)=>{
      commentsQuery=commentsQuery.eq("user_id",user.id);
    }
    const {data:comments}=await commentsQuery;
-   return json({gallery,canDownload:access.canDownload,canUpload:access.canUpload,assets:(assets??[]).map((a:any)=>({...a,preview_url:urlByPath.get(a.web_storage_path||a.storage_path)??null})),selections:selections??[],comments:comments??[]});
+   return json({gallery,canDownload:access.canDownload,canUpload:access.canUpload,assets:(assets??[]).map((a:any)=>({
+     id:a.id,filename:a.filename,alt_text:a.alt_text,caption:a.caption,
+     is_downloadable:a.is_downloadable,
+     preview_url:urlByPath.get(a.web_storage_path||a.storage_path)??null,
+   })),selections:selections??[],comments:comments??[]});
  }
  if(action==="create_upload_url"){
    const galleryId=String(body.galleryId??"");
@@ -83,10 +90,8 @@ Deno.serve(async(req:Request)=>{
    const filename=safeName(String(body.filename??"photo.jpg"));
    const mimeType=String(body.mimeType??"image/jpeg");
    const bytes=Number(body.bytes??0);
-   if(!["image/jpeg","image/png","image/webp"].includes(mimeType)) return json({error:"Unsupported image type"},415);
-   if(bytes>50*1024*1024) return json({error:"File too large"},413);
-
    const kind=body.kind==="web"?"web":"original";
+   if(!validImageTicket(filename,mimeType,bytes,kind)) return json({error:"Invalid image type, extension or size"},400);
    const storagePath=galleryId+"/"+kind+"/"+crypto.randomUUID()+"-"+filename;
    const {data,error}=await admin.storage.from("client-galleries").createSignedUploadUrl(storagePath);
    if(error||!data) return json({error:error?.message??"Upload URL failed"},500);
@@ -103,7 +108,14 @@ Deno.serve(async(req:Request)=>{
    const filename=safeName(String(body.filename??"photo.jpg"));
 
    if(!storagePath.startsWith(galleryId+"/original/")) return json({error:"Invalid original path"},400);
-   if(webStoragePath&&!webStoragePath.startsWith(galleryId+"/web/")) return json({error:"Invalid web preview path"},400);
+   if(!webStoragePath.startsWith(galleryId+"/web/")) return json({error:"Invalid web preview path"},400);
+   const [{data:original},{data:web}]=await Promise.all([
+     admin.storage.from("client-galleries").info(storagePath),
+     admin.storage.from("client-galleries").info(webStoragePath),
+   ]);
+   if(!original||!web||!validImageTicket(filename,String(body.mimeType??""),Number(original.size),"original")||
+      !Number.isSafeInteger(Number(web.size))||Number(web.size)<=0||Number(web.size)>15*1024*1024||
+      !webStoragePath.toLowerCase().endsWith(".webp")) return json({error:"Uploaded image or web preview is missing or invalid"},400);
 
    const {count}=await admin.from("gallery_assets")
      .select("*",{count:"exact",head:true})
@@ -135,8 +147,8 @@ Deno.serve(async(req:Request)=>{
      await admin.from("galleries").update({cover_asset_id:asset.id}).eq("id",galleryId);
    }
 
-   if(gallery?.status==="published"&&gallery.slug){
-     const sourcePath=webStoragePath||storagePath;
+   if(gallery?.status==="published"&&gallery.slug&&webStoragePath){
+     const sourcePath=webStoragePath;
      const sourceName=sourcePath.split("/").pop()||filename;
      const publicPath=gallery.slug+"/"+asset.id+"-"+safeName(sourceName);
      const {error:copyError}=await admin.storage.from("client-galleries").copy(
@@ -198,10 +210,14 @@ Deno.serve(async(req:Request)=>{
    const selected=body.selected!==false;
    const access=await accessFor(galleryId);
    if(!access.allowed) return json({error:"Forbidden"},403);
+   const {data:asset}=await admin.from("gallery_assets").select("id").eq("id",assetId).eq("gallery_id",galleryId).maybeSingle();
+   if(!asset) return json({error:"Asset not found in gallery"},404);
    if(selected){
-     await admin.from("gallery_selections").upsert({gallery_id:galleryId,asset_id:assetId,user_id:user.id,selected:true,updated_at:new Date().toISOString()});
+     const {error}=await admin.from("gallery_selections").upsert({gallery_id:galleryId,asset_id:assetId,user_id:user.id,selected:true,updated_at:new Date().toISOString()});
+     if(error) return json({error:"Selection failed"},400);
    } else {
-     await admin.from("gallery_selections").delete().eq("asset_id",assetId).eq("user_id",user.id);
+     const {error}=await admin.from("gallery_selections").delete().eq("gallery_id",galleryId).eq("asset_id",assetId).eq("user_id",user.id);
+     if(error) return json({error:"Selection failed"},400);
    }
    return json({ok:true});
  }
@@ -212,6 +228,10 @@ Deno.serve(async(req:Request)=>{
    if(!text||text.length>2000) return json({error:"Invalid comment"},400);
    const access=await accessFor(galleryId);
    if(!access.allowed) return json({error:"Forbidden"},403);
+   if(assetId){
+     const {data:asset}=await admin.from("gallery_assets").select("id").eq("id",assetId).eq("gallery_id",galleryId).maybeSingle();
+     if(!asset) return json({error:"Asset not found in gallery"},404);
+   }
    const {data:comment,error}=await admin.from("gallery_comments").insert({gallery_id:galleryId,asset_id:assetId,user_id:user.id,body:text}).select("id,asset_id,user_id,body,is_resolved,created_at").single();
    if(error||!comment) return json({error:error?.message??"Comment failed"},400);
    await admin.from("audit_events").insert({actor_user_id:user.id,event_type:"gallery.comment_added",entity_type:"gallery",entity_id:galleryId,details:{asset_id:assetId},user_agent:req.headers.get("user-agent")});

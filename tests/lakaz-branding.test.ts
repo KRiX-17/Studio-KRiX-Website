@@ -1,17 +1,19 @@
 import { readFileSync } from "node:fs";
 
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
+vi.mock("@/lib/portfolio/public", () => ({ getPublicGalleries: async () => [] }));
 import sitemap from "@/app/sitemap";
 
 const readSource = (path: string) =>
   readFileSync(new URL(path, import.meta.url), "utf8");
 
 describe("Lakaz branding", () => {
-  it("publishes Lakaz as the canonical household-operations route", () => {
-    const entries = sitemap().map((entry) => entry.url);
+  it("publishes Lakaz and the curated Photography page as canonical routes", async () => {
+    const entries = (await sitemap()).map((entry) => entry.url);
 
     expect(entries).toContain("https://studiokrix.com.au/lakaz");
     expect(entries).not.toContain("https://studiokrix.com.au/casa");
+    expect(entries).toContain("https://studiokrix.com.au/photography");
 
     const page = readSource("../app/lakaz/page.tsx");
     expect(page).toContain('const title = "Lakaz | Studio KRiX"');

@@ -13,6 +13,17 @@ const nextConfig: NextConfig = {
         source: "/:path*",
         headers: createSecurityHeaders(isProduction),
       },
+      {
+        source: "/claim",
+        headers: [
+          { key: "Referrer-Policy", value: "no-referrer" },
+          { key: "Cache-Control", value: "private, no-store" },
+        ],
+      },
+      {
+        source: "/api/:path*",
+        headers: [{ key: "Cache-Control", value: "private, no-store" }],
+      },
     ];
   },
   async redirects() {
@@ -40,6 +51,11 @@ const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
     qualities: [75, 92],
+    remotePatterns: [{
+      protocol: "https",
+      hostname: "vvigsolnmebfbaztpixd.supabase.co",
+      pathname: "/storage/v1/object/public/portfolio-public/**",
+    }],
   },
 };
 

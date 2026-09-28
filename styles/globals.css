@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
-@theme {
+@theme inline {
   --color-ink: #0a0a0c;
   --color-surface: #131316;
   --color-signal: #9f233b;
-  --font-sans: var(--font-sans);
+  --font-sans: var(--font-geist);
 }
 
 /* Progressive scroll reveal: visible by default, enhanced after hydration. */
@@ -3568,10 +3568,24 @@
   --glass-blur: 24px;
   --glass-blur-compact: 16px;
   --glass-saturation: 128%;
-  --font-ui: var(--font-sans), "Helvetica Neue", Arial, sans-serif;
+  --font-ui: var(--font-geist), "Helvetica Neue", Arial, sans-serif;
   --container: 92rem;
   --gutter: clamp(1.25rem, 4vw, 4rem);
   --section-space: clamp(5rem, 10vw, 9rem);
+  --page-gutter: clamp(1rem, 4vw, 4rem);
+  --section-rhythm: clamp(3.5rem, 7vw, 7rem);
+  --image-gap: clamp(.8rem, 2vw, 2rem);
+  --card-gap: clamp(.8rem, 1.5vw, 1.5rem);
+  --text-gap: 1rem;
+  --copy-gap: 2rem;
+  --caption-gap: .8rem;
+  --tracking-display: -.067em;
+  --tracking-section: -.052em;
+  --tracking-eyebrow: .18em;
+  --tracking-metadata: .13em;
+  --tracking-button: .08em;
+  --type-eyebrow: .68rem;
+  --leading-body: 1.62;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 

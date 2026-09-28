@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable @next/next/no-img-element -- The authenticator QR is a user-specific data URI, not a cacheable image. */
 
 import { FormEvent, useState } from "react";
 import styles from "@/app/mfa/mfa.module.css";

@@ -10,7 +10,7 @@ import "@/styles/globals.css";
 
 const geist = Geist({
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-geist",
   display: "swap",
 });
 
@@ -27,9 +27,6 @@ export const metadata: Metadata = {
   authors: [{ name: siteConfig.founder, url: `${siteConfig.url}/about` }],
   creator: siteConfig.founder,
   publisher: siteConfig.name,
-  alternates: {
-    canonical: siteConfig.url,
-  },
   icons: {
     icon: [
       { url: "/brand/studio-krix/studio-krix-sk-logo-16.png", sizes: "16x16", type: "image/png" },

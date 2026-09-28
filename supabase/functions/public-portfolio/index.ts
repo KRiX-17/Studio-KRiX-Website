@@ -32,7 +32,7 @@ Deno.serve(async(req:Request)=>{
    const slug=String(body.slug??"");
    const {data:gallery}=await admin.from("galleries").select("id,slug,title,description,category,event_date,location,cover_asset_id,published_at").eq("slug",slug).eq("status","published").maybeSingle();
    if(!gallery) return json({error:"Gallery not found"},404);
-   const {data:assets}=await admin.from("gallery_assets").select("id,public_storage_path,filename,alt_text,caption,width,height,sort_order").eq("gallery_id",gallery.id).not("public_storage_path","is",null).order("sort_order");
+   const {data:assets}=await admin.from("gallery_assets").select("id,public_storage_path,alt_text,caption,width,height,sort_order").eq("gallery_id",gallery.id).not("public_storage_path","is",null).order("sort_order");
    return json({
      gallery,
      assets:(assets??[]).map((a:any)=>{
@@ -40,7 +40,8 @@ Deno.serve(async(req:Request)=>{
          ? admin.storage.from("portfolio-public").getPublicUrl(a.public_storage_path).data
          : null;
        return {
-         ...a,
+         id: a.id, alt_text: a.alt_text, caption: a.caption,
+         width: a.width, height: a.height, sort_order: a.sort_order,
          url: publicData?.publicUrl ?? null,
        };
      }),
