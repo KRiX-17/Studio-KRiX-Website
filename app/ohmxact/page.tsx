@@ -12,7 +12,7 @@ const appStoreUrl = "https://apps.apple.com/app/id6795690387";
 export const metadata = createMetadata({
   title: "OhmXact",
   description:
-    "A fast electrical calculation app for iPhone, iPad and Mac, designed for the workshop, the bench and your pocket.",
+    "Electrical calculation tools for iPhone, iPad and Mac, with an Apple Watch companion, designed for the workshop, the bench and your pocket.",
   path: "/ohmxact",
 });
 
@@ -24,7 +24,7 @@ const capabilities = [
   {
     title: "Available now on Apple devices",
     description:
-      "Download OhmXact for iPhone, iPad and Mac. Android is coming soon.",
+      "Download OhmXact for iPhone, iPad and Mac, with an Apple Watch companion. Android is coming soon.",
   },
   {
     title: "Ready where work happens",
@@ -38,11 +38,11 @@ const softwareStructuredData = {
   "@type": "SoftwareApplication",
   name: "OhmXact",
   applicationCategory: "UtilitiesApplication",
-  operatingSystem: "iOS, iPadOS, macOS",
-  softwareVersion: "1.0",
+  operatingSystem: "iOS, iPadOS, macOS, watchOS",
+  softwareVersion: "2.0.3",
   downloadUrl: appStoreUrl,
   description:
-    "A fast resistor calculation app designed for the workshop, the bench and your pocket.",
+    "Electrical calculation tools for iPhone, iPad and Mac, with an Apple Watch companion.",
   creator: {
     "@type": "Organization",
     name: siteConfig.name,
@@ -61,8 +61,8 @@ export default function OhmXactPage() {
               Built for the workshop, the bench, and your pocket.
             </p>
             <p className="body-muted">
-              OhmXact is available now for iPhone, iPad and Mac, with Android coming
-              soon.
+              OhmXact is available now for iPhone, iPad and Mac, with an Apple Watch
+              companion. Android is coming soon.
             </p>
             <div className="product-hero__actions">
               <ButtonLink external href={appStoreUrl}>
@@ -109,7 +109,7 @@ export default function OhmXactPage() {
         <div className="site-container product-detail__grid">
           <div className="section-rule">
             <span>Designed with purpose</span>
-            <span>iPhone + iPad + Mac</span>
+            <span>iPhone + iPad + Mac + Watch</span>
           </div>
           <Reveal className="product-detail__statement">
             <p>
