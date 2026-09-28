@@ -28,12 +28,14 @@ type GalleryData = {
   access: Array<{
     user_id: string;
     can_download: boolean;
+    can_upload: boolean;
     expires_at: string | null;
   }>;
   clients: Array<{
     id: string;
     email: string | null;
     display_name: string | null;
+    role: "client" | "collaborator";
   }>;
 };
 
@@ -294,12 +296,17 @@ export function GalleryManager({ data }: { data: GalleryData }) {
     window.location.reload();
   }
 
-  async function grant(userId: string, canDownload: boolean) {
+  async function grant(
+    userId: string,
+    canDownload: boolean,
+    canUpload = false,
+  ) {
     setBusy("access-" + userId);
     await adminAction("grant_access", {
       galleryId: gallery.id,
       userId,
       canDownload,
+      canUpload,
     });
     window.location.reload();
   }
@@ -492,22 +499,77 @@ export function GalleryManager({ data }: { data: GalleryData }) {
               return (
                 <article key={client.id}>
                   <div>
-                    <strong>{client.display_name || client.email || "Client"}</strong>
-                    <span>{client.email}</span>
+                    <strong>{client.display_name || client.email || "Portal user"}</strong>
+                    <span>
+                      {client.email} · {client.role}
+                    </span>
                   </div>
                   <div className={styles.clientActions}>
                     {current ? (
                       <>
-                        <span>{current.can_download ? "Download access" : "View only"}</span>
-                        <button onClick={() => grant(client.id, !current.can_download)} type="button">
-                          {current.can_download ? "Make view only" : "Allow downloads"}
+                        <span>
+                          {current.can_download ? "Download" : "View only"}
+                          {current.can_upload ? " · Upload" : ""}
+                        </span>
+                        <button
+                          onClick={() =>
+                            grant(
+                              client.id,
+                              !current.can_download,
+                              current.can_upload,
+                            )
+                          }
+                          type="button"
+                        >
+                          {current.can_download
+                            ? "Make view only"
+                            : "Allow downloads"}
                         </button>
-                        <button onClick={() => revoke(client.id)} type="button">Revoke</button>
+                        {client.role === "collaborator" && (
+                          <button
+                            onClick={() =>
+                              grant(
+                                client.id,
+                                current.can_download,
+                                !current.can_upload,
+                              )
+                            }
+                            type="button"
+                          >
+                            {current.can_upload
+                              ? "Remove upload"
+                              : "Allow upload"}
+                          </button>
+                        )}
+                        <button
+                          onClick={() => revoke(client.id)}
+                          type="button"
+                        >
+                          Revoke
+                        </button>
                       </>
                     ) : (
                       <>
-                        <button onClick={() => grant(client.id, false)} type="button">Grant view</button>
-                        <button onClick={() => grant(client.id, true)} type="button">Grant + download</button>
+                        <button
+                          onClick={() => grant(client.id, false)}
+                          type="button"
+                        >
+                          Grant view
+                        </button>
+                        <button
+                          onClick={() => grant(client.id, true)}
+                          type="button"
+                        >
+                          Grant + download
+                        </button>
+                        {client.role === "collaborator" && (
+                          <button
+                            onClick={() => grant(client.id, false, true)}
+                            type="button"
+                          >
+                            Grant + upload
+                          </button>
+                        )}
                       </>
                     )}
                   </div>
