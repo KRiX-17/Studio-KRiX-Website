@@ -39,7 +39,7 @@
   align-items: center;
   min-height: 2.8rem;
   padding: .65rem 1rem;
-  border: 1px solid rgba(255,255,255,.18);
+  border: 1px solid var(--line);
   border-radius: 999px;
   text-transform: uppercase;
   letter-spacing: .08em;
@@ -49,8 +49,8 @@
 .heroActions a:focus-visible,
 .booking > a:hover,
 .booking > a:focus-visible {
-  border-color: rgba(216,178,103,.7);
-  background: rgba(216,178,103,.08);
+  border-color: rgba(222,59,82,.55);
+  background: rgba(222,59,82,.06);
 }
 .archive {
   padding: clamp(4rem, 8vw, 8rem) max(1.5rem, calc((100vw - 1180px) / 2));
@@ -69,23 +69,23 @@
 .archiveIntro p,
 .booking p,
 .discipline p {
-  color: rgba(255,255,255,.62);
+  color: var(--muted);
   line-height: 1.65;
 }
 .disciplineGrid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0,1fr));
-  border-top: 1px solid rgba(255,255,255,.14);
-  border-left: 1px solid rgba(255,255,255,.14);
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
 }
 .discipline {
   min-height: 230px;
   padding: 1.5rem;
-  border-right: 1px solid rgba(255,255,255,.14);
-  border-bottom: 1px solid rgba(255,255,255,.14);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
 .discipline span {
-  color: rgba(255,255,255,.42);
+  color: var(--muted);
   font-size: .7rem;
   letter-spacing: .14em;
 }
@@ -96,7 +96,7 @@
 .booking {
   margin: 0 max(1.5rem, calc((100vw - 1180px) / 2));
   padding: clamp(2rem,5vw,4rem);
-  border: 1px solid rgba(255,255,255,.14);
+  border: 1px solid var(--line);
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
