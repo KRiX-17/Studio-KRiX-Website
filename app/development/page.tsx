@@ -1,25 +1,21 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { createMetadata } from "@/lib/metadata";
 import styles from "./development.module.css";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createMetadata({
   title: "Development",
-  alternates: { canonical: "/development" },
-  description: "Apps, tools, connected systems and software projects by Studio KRiX.",
-  openGraph: {
-    images: [{
-      url: "/images/connected-systems/network-rack-concept.webp",
-      width: 1672,
-      height: 940,
-      alt: "Studio KRiX connected systems concept infrastructure",
-    }],
+  description:
+    "Apps, tools, connected systems and software projects by Studio KRiX.",
+  path: "/development",
+  image: {
+    url: "/images/connected-systems/network-rack-concept.webp",
+    width: 1672,
+    height: 940,
+    alt: "Studio KRiX connected systems concept infrastructure",
   },
-  twitter: {
-    card: "summary_large_image",
-    images: ["/images/connected-systems/network-rack-concept.webp"],
-  },
-};
+});
 
 const systems = [
   {
