@@ -40,6 +40,8 @@ export function DisciplinePortal() {
       </div>
 
       <div className={styles.grid}>
+        <span className={styles.pageTraceHorizontal} aria-hidden="true" />
+        <span className={styles.pageTraceVertical} aria-hidden="true" />
         {worlds.map((world) => (
           <Link
             className={[styles.card, world.className].join(" ")}
@@ -56,8 +58,6 @@ export function DisciplinePortal() {
               src={world.image}
             />
             <div className={styles.overlay} />
-            <span className={styles.traceHorizontal} aria-hidden="true" />
-            <span className={styles.traceVertical} aria-hidden="true" />
             <div className={styles.content}>
               <span className={styles.index}>{world.index}</span>
               <div>
