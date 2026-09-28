@@ -203,6 +203,7 @@ export async function getAdminProfiles(accessToken: string) {
 export type ClientGalleryAccess = {
   gallery_id: string;
   can_download: boolean;
+  can_upload: boolean;
   expires_at: string | null;
   galleries: {
     id: string;
@@ -223,7 +224,7 @@ export async function getClientGalleryAccess(
   const params = new URLSearchParams({
     user_id: "eq." + userId,
     select:
-      "gallery_id,can_download,expires_at,galleries!gallery_access_gallery_id_fkey(id,slug,title,description,category,event_date,location,status)",
+      "gallery_id,can_download,can_upload,expires_at,galleries!gallery_access_gallery_id_fkey(id,slug,title,description,category,event_date,location,status)",
     order: "granted_at.desc",
   });
   const result = await restGet<ClientGalleryAccess[]>(
