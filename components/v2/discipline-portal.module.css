@@ -6,6 +6,7 @@
   --mint: #65d6c7;
   --ambient-a: rgba(222, 59, 82, 0.08);
   --ambient-b: rgba(107, 145, 255, 0.08);
+  --pulse: rgba(107, 145, 255, 0.48);
   position: relative;
   min-height: calc(100svh - 5rem);
   overflow: hidden;
@@ -33,6 +34,7 @@
   --ink: #f5f2ed;
   --ambient-a: rgba(222, 59, 82, 0.22);
   --ambient-b: rgba(117, 92, 255, 0.18);
+  --pulse: rgba(140, 112, 255, 0.48);
 }
 
 .shell:has(.development:is(:hover, :focus-visible)) {
@@ -40,6 +42,7 @@
   --ink: #f3f4f5;
   --ambient-a: rgba(107, 145, 255, 0.2);
   --ambient-b: rgba(101, 214, 199, 0.14);
+  --pulse: rgba(101, 214, 199, 0.5);
 }
 
 .shell:has(.photography:is(:hover, :focus-visible)) {
@@ -47,6 +50,7 @@
   --ink: #101014;
   --ambient-a: rgba(222, 59, 82, 0.06);
   --ambient-b: rgba(170, 166, 158, 0.12);
+  --pulse: rgba(222, 59, 82, 0.42);
 }
 
 .intro,
@@ -130,11 +134,6 @@
 }
 
 .photography {
-  --trace-color: rgba(222, 59, 82, .95);
-  --trace-x-duration: 10.7s;
-  --trace-y-duration: 13.9s;
-  --trace-x-delay: -3.8s;
-  --trace-y-delay: -8.1s;
   color: #111114;
   background: #e8e4dc;
 }
@@ -145,20 +144,10 @@
 }
 
 .music {
-  --trace-color: rgba(117, 92, 255, .95);
-  --trace-x-duration: 12.3s;
-  --trace-y-duration: 9.8s;
-  --trace-x-delay: -7.2s;
-  --trace-y-delay: -2.6s;
   background: #08080b;
 }
 
 .development {
-  --trace-color: rgba(101, 214, 199, .98);
-  --trace-x-duration: 9.4s;
-  --trace-y-duration: 14.8s;
-  --trace-x-delay: -5.1s;
-  --trace-y-delay: -10.3s;
   background: #0d1219;
 }
 
@@ -193,77 +182,75 @@
   z-index: -1;
 }
 
-.traceHorizontal,
-.traceVertical {
+.pageTraceHorizontal,
+.pageTraceVertical {
   position: absolute;
-  z-index: 2;
-  width: .28rem;
-  height: .28rem;
+  z-index: 4;
+  width: .18rem;
+  height: .18rem;
   border-radius: 999px;
-  background: var(--trace-color, rgba(107, 145, 255, .9));
-  box-shadow:
-    0 0 .45rem var(--trace-color, rgba(107, 145, 255, .9)),
-    0 0 .9rem color-mix(in srgb, var(--trace-color, #6b91ff) 55%, transparent);
+  background: var(--pulse);
+  box-shadow: 0 0 .34rem var(--pulse);
   opacity: 0;
   pointer-events: none;
 }
 
-.traceHorizontal {
-  top: -.08rem;
-  left: -.5rem;
-  animation: trace-horizontal var(--trace-x-duration, 11s) linear infinite;
-  animation-delay: var(--trace-x-delay, -4s);
+.pageTraceHorizontal {
+  top: -.035rem;
+  left: -.45rem;
+  animation: page-trace-horizontal 21s linear infinite;
+  animation-delay: -7s;
 }
 
-.traceVertical {
-  top: -.5rem;
-  right: -.08rem;
-  animation: trace-vertical var(--trace-y-duration, 13s) linear infinite;
-  animation-delay: var(--trace-y-delay, -7s);
+.pageTraceVertical {
+  top: -.45rem;
+  right: -.035rem;
+  animation: page-trace-vertical 27s linear infinite;
+  animation-delay: -18s;
 }
 
-@keyframes trace-horizontal {
+@keyframes page-trace-horizontal {
   0%,
-  10% {
-    left: -.5rem;
+  28% {
+    left: -.45rem;
     opacity: 0;
   }
-  16% {
-    opacity: .9;
+  31% {
+    opacity: .38;
   }
-  58% {
-    opacity: .72;
+  54% {
+    opacity: .28;
   }
-  78% {
-    left: calc(100% + .1rem);
-    opacity: .9;
+  68% {
+    left: calc(100% + .08rem);
+    opacity: .34;
   }
-  86%,
+  71%,
   100% {
-    left: calc(100% + .5rem);
+    left: calc(100% + .45rem);
     opacity: 0;
   }
 }
 
-@keyframes trace-vertical {
+@keyframes page-trace-vertical {
   0%,
-  18% {
-    top: -.5rem;
+  46% {
+    top: -.45rem;
     opacity: 0;
   }
-  24% {
-    opacity: .82;
+  49% {
+    opacity: .32;
   }
-  62% {
-    opacity: .68;
+  70% {
+    opacity: .24;
   }
-  82% {
-    top: calc(100% + .1rem);
-    opacity: .88;
+  86% {
+    top: calc(100% + .08rem);
+    opacity: .3;
   }
-  90%,
+  89%,
   100% {
-    top: calc(100% + .5rem);
+    top: calc(100% + .45rem);
     opacity: 0;
   }
 }
@@ -412,8 +399,8 @@
     transition: none;
   }
 
-  .traceHorizontal,
-  .traceVertical {
+  .pageTraceHorizontal,
+  .pageTraceVertical {
     animation: none;
     opacity: 0;
   }
