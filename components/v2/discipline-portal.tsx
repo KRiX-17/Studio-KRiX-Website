@@ -8,7 +8,7 @@ const worlds = [
     eyebrow: "Fashion · Portraits · Events · Creative",
     title: "Photography",
     href: "/photography",
-    className: styles.photography,
+    className: null,
     image: null,
   },
   {
@@ -43,7 +43,7 @@ export function DisciplinePortal() {
       <div className={styles.grid}>
         {worlds.map((world) => (
           <Link
-            className={`${styles.card} ${world.className}`}
+            className={[styles.card, world.className].filter(Boolean).join(" ")}
             href={world.href}
             key={world.href}
             aria-label={`Explore ${world.title}`}
