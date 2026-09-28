@@ -82,9 +82,10 @@ describe("Studio KRiX positioning refresh", () => {
     expect(projects).toContain('"Apps & software"');
     expect(projects).toContain('"Networking & infrastructure"');
     expect(projects).toContain('"Music & creative projects"');
-    expect(contact).toContain(
-      "software, technical systems, connected environments, automotive or electrical work, professional opportunities and creative projects",
-    );
+    expect(contact).toContain("Photography");
+    expect(contact).toContain("Music / KRiX");
+    expect(contact).toContain("Development");
+    expect(contact).toContain("Three disciplines, one inbox, less guesswork.");
     expect(site).toContain(
       "Photography, music production, DJ work and software development by Studio KRiX in Sydney, Australia.",
     );
