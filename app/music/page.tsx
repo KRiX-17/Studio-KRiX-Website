@@ -14,6 +14,8 @@ const baseMetadata = createMetadata({
   path: "/music",
 });
 
+export const revalidate = 900;
+
 export const metadata: Metadata = {
   ...baseMetadata,
   title: {
