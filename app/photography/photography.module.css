@@ -1,0 +1,194 @@
+.page {
+  background: #080809;
+  color: #f7f6f3;
+  min-height: 100svh;
+}
+
+.hero,
+.featured,
+.adminNote {
+  width: min(100% - 2rem, 88rem);
+  margin-inline: auto;
+}
+
+.hero {
+  padding: clamp(5rem, 12vw, 10rem) 0 clamp(4rem, 8vw, 7rem);
+  border-bottom: 1px solid rgba(255,255,255,.14);
+}
+
+.kicker {
+  margin: 0 0 .8rem;
+  text-transform: uppercase;
+  letter-spacing: .24em;
+  font-size: .68rem;
+  color: rgba(255,255,255,.55);
+}
+
+.hero h1 {
+  margin: 0;
+  max-width: 12ch;
+  font-size: clamp(3.5rem, 10vw, 8.5rem);
+  line-height: .9;
+  letter-spacing: -.065em;
+  font-weight: 480;
+}
+
+.lead {
+  max-width: 42rem;
+  margin: 2rem 0 0;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  line-height: 1.6;
+  color: rgba(255,255,255,.68);
+}
+
+.featured {
+  padding: clamp(4rem, 8vw, 7rem) 0;
+}
+
+.sectionHeading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.sectionHeading h2,
+.adminNote h2 {
+  margin: 0;
+  font-size: clamp(2.2rem, 5vw, 4.6rem);
+  line-height: .98;
+  letter-spacing: -.045em;
+  font-weight: 500;
+}
+
+.sectionHeading > p {
+  max-width: 30rem;
+  margin: 0;
+  color: rgba(255,255,255,.58);
+}
+
+.placeholderGallery {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.heroCard {
+  display: grid;
+  grid-template-columns: minmax(0, 1.8fr) minmax(15rem, .7fr);
+  border: 1px solid rgba(255,255,255,.15);
+  min-height: 30rem;
+  background: #0c0c0e;
+}
+
+.frame {
+  min-height: 30rem;
+  background:
+    radial-gradient(circle at 72% 26%, rgba(255,238,220,.7), transparent 0 6%, transparent 22%),
+    linear-gradient(140deg, rgba(255, 173, 113, .18), transparent 35%),
+    linear-gradient(150deg, #4b3128 0%, #1b1214 40%, #080809 100%);
+}
+
+.heroCard > div:last-child {
+  padding: clamp(1.5rem, 4vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.heroCard p,
+.heroCard span {
+  margin: 0;
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  color: rgba(255,255,255,.55);
+}
+
+.heroCard h3 {
+  margin: .65rem 0 1rem;
+  font-size: clamp(2rem, 4vw, 4rem);
+  line-height: .95;
+  letter-spacing: -.04em;
+  font-weight: 500;
+}
+
+.categoryGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.categoryCard {
+  min-height: 13rem;
+  padding: 1.25rem;
+  border: 1px solid rgba(255,255,255,.13);
+  background: linear-gradient(155deg, rgba(255,255,255,.04), transparent);
+}
+
+.categoryCard h3 {
+  margin: 0 0 .65rem;
+  font-size: 1.45rem;
+}
+
+.categoryCard p {
+  margin: 0;
+  color: rgba(255,255,255,.58);
+  line-height: 1.55;
+}
+
+.adminNote {
+  padding: clamp(3rem, 7vw, 6rem) 0;
+  border-top: 1px solid rgba(255,255,255,.14);
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: end;
+}
+
+.adminNote > div {
+  max-width: 48rem;
+}
+
+.adminNote p:last-child {
+  color: rgba(255,255,255,.6);
+  line-height: 1.6;
+}
+
+.adminNote a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,.45);
+  padding-bottom: .2rem;
+}
+
+@media (max-width: 760px) {
+  .sectionHeading,
+  .adminNote {
+    display: block;
+  }
+
+  .sectionHeading > p,
+  .adminNote a {
+    display: block;
+    margin-top: 1rem;
+  }
+
+  .heroCard {
+    grid-template-columns: 1fr;
+  }
+
+  .frame {
+    min-height: 62svh;
+  }
+
+  .categoryGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .categoryGrid {
+    grid-template-columns: 1fr;
+  }
+}
