@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import {
@@ -57,14 +58,18 @@ export default async function PortalPage() {
             <span>00</span>
             <h2>No galleries shared yet.</h2>
             <p>
-              When Studio KRiX publishes a gallery for you, it will appear here
+              When Studio KRiX shares a gallery with you, it will appear here
               automatically.
             </p>
           </div>
         ) : (
           access.map((entry, index) =>
             entry.galleries ? (
-              <article className={styles.gallery} key={entry.gallery_id}>
+              <Link
+                className={styles.gallery}
+                href={"/portal/" + entry.galleries.slug}
+                key={entry.gallery_id}
+              >
                 <span>{String(index + 1).padStart(2, "0")}</span>
                 <div>
                   <p>
@@ -77,7 +82,8 @@ export default async function PortalPage() {
                     {entry.can_download ? "Downloads enabled" : "View only"}
                   </small>
                 </div>
-              </article>
+                <b aria-hidden="true">↗</b>
+              </Link>
             ) : null,
           )
         )}
