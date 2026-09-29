@@ -22,6 +22,12 @@ const baseMetadata = createMetadata({
   title,
   description,
   path,
+  image: {
+    url: "/images/monde-soniq/vorpal.webp",
+    width: 1440,
+    height: 1800,
+    alt: "Monde Soniq event artwork",
+  },
 });
 
 export const metadata: Metadata = {
@@ -487,7 +493,7 @@ export default function MondeSoniqPage() {
           </div>
           <div className="monde-related__grid">
             <Link className="monde-related__project" href="/ohmxact">
-              <span>Software · iPhone and iPad</span>
+              <span>Software · iPhone · iPad · Mac · Watch</span>
               <h3>OhmXact</h3>
               <p>
                 A practical resistor calculation app for the workshop, the

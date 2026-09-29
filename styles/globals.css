@@ -9254,3 +9254,136 @@ section[id] {
     opacity: 0;
   }
 }
+
+
+/* Studio KRiX contact paths */
+
+.contact-paths {
+  padding: 0 0 clamp(4rem, 7vw, 6.5rem);
+}
+
+.contact-paths__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: .75rem;
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+.contact-paths__grid > a {
+  position: relative;
+  min-height: 13rem;
+  border: 1px solid var(--line);
+  border-radius: .65rem;
+  padding: 1.35rem;
+  background: color-mix(in srgb, var(--surface) 64%, transparent);
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    transform 180ms var(--ease-out);
+}
+
+.contact-paths__grid > a:hover,
+.contact-paths__grid > a:focus-visible {
+  border-color: var(--accent-gold-border);
+  background: var(--surface-raised);
+  transform: translateY(-2px);
+}
+
+.contact-paths__grid span {
+  color: var(--text);
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
+  font-weight: 610;
+  letter-spacing: -.025em;
+}
+
+.contact-paths__grid p {
+  margin: 1rem 0 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.contact-paths__grid strong {
+  position: absolute;
+  right: 1.25rem;
+  bottom: 1.1rem;
+  color: var(--accent-soft);
+  font-size: 1.25rem;
+}
+
+@media (max-width: 900px) {
+  .contact-paths__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .contact-paths__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-paths__grid > a {
+    min-height: 10rem;
+  }
+}
+
+
+/* KRiX release timeline */
+
+.music-discography {
+  padding-block: clamp(4.75rem, 8vw, 8rem);
+}
+
+.music-discography__list {
+  border-top: 1px solid var(--line);
+}
+
+.music-discography__list article {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr) auto;
+  gap: 1.25rem;
+  align-items: center;
+  min-height: 7.5rem;
+  border-bottom: 1px solid var(--line);
+  padding-block: 1rem;
+}
+
+.music-discography__list article > span {
+  color: var(--quiet);
+  font-size: .72rem;
+  letter-spacing: .12em;
+}
+
+.music-discography__list p {
+  margin: 0 0 .35rem;
+  color: var(--muted);
+  font-size: .72rem;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.music-discography__list h3 {
+  margin: 0;
+  font-size: clamp(1.55rem, 3vw, 2.7rem);
+  font-weight: 610;
+  letter-spacing: -.04em;
+}
+
+.music-discography__list strong {
+  color: var(--accent-soft);
+  font-size: .8rem;
+  font-weight: 570;
+  letter-spacing: .06em;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+@media (max-width: 560px) {
+  .music-discography__list article {
+    grid-template-columns: 2rem minmax(0, 1fr);
+  }
+
+  .music-discography__list strong {
+    grid-column: 2;
+    text-align: left;
+  }
+}

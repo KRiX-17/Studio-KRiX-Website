@@ -147,6 +147,34 @@ describe("contact endpoint", () => {
     expect(resendBody).not.toHaveProperty("html");
   });
 
+  it("includes optional campaign attribution without exposing it as HTML", async () => {
+    const providerFetch = successfulProviderMock();
+    vi.stubGlobal("fetch", providerFetch);
+
+    const response = await handleSubmission(
+      submissionRequest(
+        validPayload({
+          source: "instagram",
+          medium: "social",
+          campaign: "studio-krix-launch",
+        }),
+      ),
+      "contact",
+    );
+
+    expect(response.status).toBe(200);
+    const resendCall = providerFetch.mock.calls[1];
+    const resendOptions = resendCall?.[1] as RequestInit;
+    const resendBody = JSON.parse(String(resendOptions.body)) as Record<string, unknown>;
+    expect(resendBody.text).toEqual(
+      expect.stringContaining("Campaign source: instagram"),
+    );
+    expect(resendBody.text).toEqual(
+      expect.stringContaining("Campaign name: studio-krix-launch"),
+    );
+    expect(resendBody).not.toHaveProperty("html");
+  });
+
   it("suppresses a duplicate submission after the first delivery", async () => {
     const providerFetch = successfulProviderMock();
     vi.stubGlobal("fetch", providerFetch);

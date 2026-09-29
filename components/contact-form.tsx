@@ -185,10 +185,11 @@ function validateClientForm(mode: FormMode, formData: FormData) {
 }
 
 type ContactFormProps = {
+  defaultSubject?: string;
   mode: FormMode;
 };
 
-export function ContactForm({ mode }: ContactFormProps) {
+export function ContactForm({ defaultSubject = "", mode }: ContactFormProps) {
   const formId = useId();
   const [startedAt, setStartedAt] = useState(() => Date.now());
   const [turnstileToken, setTurnstileToken] = useState("");
@@ -200,7 +201,45 @@ export function ContactForm({ mode }: ContactFormProps) {
     message: string;
   }>({ kind: "idle", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [campaign, setCampaign] = useState({
+    source: "",
+    medium: "",
+    campaign: "",
+  });
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+
+  useEffect(() => {
+    if (mode !== "contact") {
+      return;
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const nextCampaign = {
+      source: params.get("utm_source")?.slice(0, 100) ?? "",
+      medium: params.get("utm_medium")?.slice(0, 100) ?? "",
+      campaign: params.get("utm_campaign")?.slice(0, 160) ?? "",
+    };
+
+    if (nextCampaign.source || nextCampaign.medium || nextCampaign.campaign) {
+      sessionStorage.setItem("studio-krix-campaign", JSON.stringify(nextCampaign));
+      setCampaign(nextCampaign);
+      return;
+    }
+
+    try {
+      const stored = sessionStorage.getItem("studio-krix-campaign");
+      if (stored) {
+        const parsed = JSON.parse(stored) as Partial<typeof nextCampaign>;
+        setCampaign({
+          source: String(parsed.source ?? "").slice(0, 100),
+          medium: String(parsed.medium ?? "").slice(0, 100),
+          campaign: String(parsed.campaign ?? "").slice(0, 160),
+        });
+      }
+    } catch {
+      sessionStorage.removeItem("studio-krix-campaign");
+    }
+  }, [mode]);
 
   const handleToken = useCallback((token: string) => {
     setTurnstileToken(token);
@@ -245,7 +284,10 @@ export function ContactForm({ mode }: ContactFormProps) {
       mode === "contact"
         ? {
             ...common,
+            campaign: campaign.campaign,
+            medium: campaign.medium,
             message: String(formData.get("message") ?? ""),
+            source: campaign.source,
             subject: String(formData.get("subject") ?? ""),
           }
         : {
@@ -346,7 +388,13 @@ export function ContactForm({ mode }: ContactFormProps) {
             <select
               aria-describedby={fieldErrors.subject ? "subject-error" : undefined}
               aria-invalid={Boolean(fieldErrors.subject)}
-              defaultValue=""
+              defaultValue={
+                CONTACT_SUBJECTS.includes(
+                  defaultSubject as (typeof CONTACT_SUBJECTS)[number],
+                )
+                  ? defaultSubject
+                  : ""
+              }
               id="subject"
               name="subject"
             >

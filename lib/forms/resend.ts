@@ -58,6 +58,13 @@ function contactEmail(submission: ContactSubmission) {
       `Name: ${submission.name}`,
       `Reply email: ${submission.replyEmail}`,
       `Enquiry type: ${submission.subject}`,
+      ...(submission.source || submission.medium || submission.campaign
+        ? [
+            `Campaign source: ${submission.source || "—"}`,
+            `Campaign medium: ${submission.medium || "—"}`,
+            `Campaign name: ${submission.campaign || "—"}`,
+          ]
+        : []),
       "",
       "Message:",
       submission.message,

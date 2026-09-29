@@ -7,6 +7,7 @@ export function DisciplinePortal() {
     {
       index: "01",
       eyebrow: "Fashion · Portraits · Events · Creative",
+      status: "Under construction",
       title: "Photography",
       href: "/photography",
       className: styles.photography,
@@ -15,6 +16,7 @@ export function DisciplinePortal() {
     {
       index: "02",
       eyebrow: "DJ · Production · Releases · Live",
+      status: null,
       title: "KRiX",
       href: "/music",
       className: styles.music,
@@ -23,6 +25,7 @@ export function DisciplinePortal() {
     {
       index: "03",
       eyebrow: "Apps · Tools · Software · Experiments",
+      status: null,
       title: "Development",
       href: "/development",
       className: styles.development,
@@ -59,6 +62,9 @@ export function DisciplinePortal() {
             <div className={styles.content}>
               <span className={styles.index}>{world.index}</span>
               <div>
+                {world.status ? (
+                  <span className={styles.status}>{world.status}</span>
+                ) : null}
                 <h2>{world.title}</h2>
                 <p>{world.eyebrow}</p>
               </div>

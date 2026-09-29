@@ -18,20 +18,20 @@ describe("OhmXact public launch", () => {
 
   it("keeps release copy and structured data accurate", () => {
     expect(page).toContain(
-      "OhmXact is available now for iPhone and iPad, with Android coming",
+      "OhmXact is available now for iPhone, iPad and Mac, with an Apple Watch",
     );
     expect(page).toContain('title: "Available now on Apple devices"');
     expect(page).toContain(
-      '"Download OhmXact for iPhone and iPad. Android is coming soon."',
+      '"Download OhmXact for iPhone, iPad and Mac, with an Apple Watch companion. Android is coming soon."',
     );
-    expect(page).toContain('operatingSystem: "iOS, iPadOS"');
-    expect(page).toContain('softwareVersion: "1.0"');
+    expect(page).toContain('operatingSystem: "iOS, iPadOS, macOS, watchOS"');
+    expect(page).toContain('softwareVersion: "2.0.3"');
     expect(page).toContain("downloadUrl: appStoreUrl");
   });
 
   it("marks the project released without claiming Android availability", () => {
     expect(projects).toContain(
-      'platforms: ["iPhone", "iPad", "Android coming soon"]',
+      'platforms: ["iPhone", "iPad", "Mac", "Apple Watch", "Android coming soon"]',
     );
     expect(projects).toContain('status: "Released"');
   });

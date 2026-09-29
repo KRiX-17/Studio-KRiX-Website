@@ -41,6 +41,14 @@ export const metadata: Metadata = {
     },
   },
   manifest: "/manifest.json",
+  verification: {
+    ...(process.env.GOOGLE_SITE_VERIFICATION
+      ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+      : {}),
+    ...(process.env.BING_SITE_VERIFICATION
+      ? { other: { "msvalidate.01": process.env.BING_SITE_VERIFICATION } }
+      : {}),
+  },
   openGraph: {
     title: homeTitle,
     description: siteConfig.description,

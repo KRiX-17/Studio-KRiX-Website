@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { createMetadata } from "@/lib/metadata";
 import { getPublicGalleries } from "@/lib/portfolio/public";
 import styles from "./photography.module.css";
 
@@ -21,10 +22,18 @@ const places = [
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Photography",
-    alternates: { canonical: "/photography" },
-    description:
-      "Portrait, fashion, event, travel, automotive and creative photography by Studio KRiX in Sydney.",
+    ...createMetadata({
+      title: "Photography",
+      description:
+        "Portrait, fashion, event, travel, automotive and creative photography by Studio KRiX in Sydney.",
+      path: "/photography",
+      image: {
+        url: leadPortrait.src,
+        width: leadPortrait.width,
+        height: leadPortrait.height,
+        alt: leadPortrait.alt,
+      },
+    }),
     robots: { index: true, follow: true },
   };
 }
@@ -36,12 +45,13 @@ export default async function PhotographyPage() {
     <div className={styles.page}>
       <section className={styles.portfolioHero}>
         <div className={styles.heroCopy}>
-          <p className={styles.status}>Studio KRiX / Photography</p>
+          <p className={styles.status}>Studio KRiX / Photography / Under construction</p>
           <h1>People, places and moments.</h1>
           <p className={styles.lead}>
             Photography has been part of the Studio KRiX story since 2012.
-            The work was previously published as Emma Corsa and now returns as a
-            considered selection of portraits, fashion and places seen from above.
+            A small preview is live while the full portfolio is being rebuilt.
+            The work was previously published as Emma Corsa and is returning as
+            Studio KRiX with more galleries and new work still to come.
           </p>
           <div className={styles.heroActions}>
             <a href="#work">Explore the work ↓</a>
@@ -121,7 +131,7 @@ export default async function PhotographyPage() {
       </section>
 
       <section className={styles.note}>
-        <p>Selected work from the Emma Corsa archive, with new Studio KRiX galleries to follow.</p>
+        <p>This photography portfolio is still under construction. Selected work from the Emma Corsa archive is live now, with more archive material and new Studio KRiX galleries to follow.</p>
         <div>
           <a href="https://500px.com/p/studio_krix" target="_blank" rel="noreferrer">500px ↗</a>
           <a href="https://gurushots.com/studiokrix/photos" target="_blank" rel="noreferrer">GuruShots ↗</a>
