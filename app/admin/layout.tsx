@@ -32,6 +32,11 @@ export default async function AdminLayout({ children }: { children: React.ReactN
       </aside>
       <div className={styles.workspace}>
         <div className={styles.topline}><span>STUDIO KRIX / OPERATIONS</span><span>PRIVATE WORKSPACE</span></div>
+        {process.env.VERCEL_ENV === "preview" && (
+          <div className={styles.previewNotice} role="note">
+            <strong>Preview build</strong> · Live portal data is connected. Creating customers, galleries or uploads here also changes the production database. The Demo gallery is sample-only.
+          </div>
+        )}
         {children}
       </div>
     </div>
