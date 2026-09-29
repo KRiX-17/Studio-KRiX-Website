@@ -166,3 +166,21 @@
   .metaForm,.assetGrid{grid-template-columns:1fr}.wide{grid-column:auto}
   .clientList article{display:block}.clientActions{margin-top:1rem;justify-content:flex-start}
 }
+
+/* Gallery tools share the compact admin workspace. */
+.page{min-height:0;background:transparent;padding:0 0 3rem}
+.topbar{padding:.9rem 0;color:#aab3c0}
+.hero{padding:1.35rem 0;align-items:center}
+.hero h1{font-size:clamp(1.7rem,3vw,2.8rem);line-height:1.1;letter-spacing:-.045em}
+.hero p:last-child{margin:.45rem 0 0}
+.section{padding:1.2rem 0}
+.sectionHeading{margin-bottom:1rem;gap:.8rem}
+.sectionHeading h2{font-size:1.2rem;line-height:1.2;letter-spacing:-.02em}
+.sectionHeading>span{color:#94ded0}
+.kicker{color:#94ded0}
+.metaForm{gap:.75rem}
+.metaForm label,.assetForm label{font-size:.76rem;letter-spacing:normal;text-transform:none;color:#aeb7c4}
+.metaForm input,.metaForm select,.metaForm textarea,.assetForm input{background:#0e131b;border-color:#3b4451;border-radius:.25rem;padding:.65rem .75rem}
+.clientList article{padding:.75rem 0}
+.clientList span{color:#aab3c0}
+@media(max-width:700px){.hero button{margin-top:1rem}}

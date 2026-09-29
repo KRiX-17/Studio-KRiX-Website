@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import {
@@ -60,23 +59,15 @@ export default async function AuditPage() {
     <div className={styles.page}>
       <header className={styles.hero}>
         <div>
-          <p className={styles.kicker}>Studio KRiX / Super Admin</p>
-          <h1>Audit.</h1>
+          <p className={styles.kicker}>SYSTEM / ACTIVITY</p>
+          <h1>Audit & downloads</h1>
           <p>Who did what, and when.</p>
         </div>
-        <Link href="/admin">← Admin</Link>
       </header>
-
-      <nav className={styles.nav}>
-        <Link href="/admin">Galleries</Link>
-        <Link href="/admin/users">Clients & Users</Link>
-        <Link href="/admin/audit">Audit</Link>
-        <Link href="/admin/monitoring">Monitoring</Link>
-      </nav>
 
       <section className={styles.section}>
         <p className={styles.kicker}>Activity</p>
-        <h2>Recent events.</h2>
+        <h2>Recent events</h2>
         <div className={styles.log}>
           {audit.data.events.map((event) => (
             <article key={event.id}>
@@ -99,7 +90,7 @@ export default async function AuditPage() {
 
       <section className={styles.section}>
         <p className={styles.kicker}>Downloads</p>
-        <h2>Delivery activity.</h2>
+        <h2>Delivery activity</h2>
         <div className={styles.log}>
           {audit.data.downloads.length === 0 ? (
             <p className={styles.muted}>No client downloads yet.</p>

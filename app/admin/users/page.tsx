@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import {
@@ -26,10 +25,10 @@ export default async function AdminUsersPage() {
     <div className={styles.page}>
       <header className={styles.header}>
         <div>
-          <p>Studio KRiX / Super Admin</p>
-          <h1>Clients & users.</h1>
+          <p>ACCOUNTS / ACCESS</p>
+          <h1>Clients & users</h1>
         </div>
-        <Link href="/admin">← Admin</Link>
+        <span>Invitation only · {users.length} accounts</span>
       </header>
 
       <AdminUsersManager users={users} />

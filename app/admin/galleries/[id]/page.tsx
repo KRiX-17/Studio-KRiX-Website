@@ -69,7 +69,7 @@ export default async function AdminGalleryPage({
   return (
     <div className={styles.page}>
       <div className={styles.topbar}>
-        <Link href="/admin">← Galleries</Link>
+        <Link href="/admin">← All galleries</Link>
         <span>/{result.data.gallery.slug}</span>
       </div>
       <GalleryManager data={result.data} />

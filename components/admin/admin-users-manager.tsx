@@ -83,15 +83,11 @@ export function AdminUsersManager({ users }: { users: User[] }) {
 
   return (
     <>
-      <section className={styles.create}>
+      <section className={styles.create} id="invite">
         <div>
           <p className={styles.kicker}>Create client</p>
-          <h2>Invite someone into their gallery.</h2>
-          <p>
-            Portal accounts are invitation-only. Clients can view/download their
-            assigned galleries; collaborators can also be granted per-gallery
-            upload access.
-          </p>
+          <h2>Invite a client</h2>
+          <p>Create an account, then privately share its one-time activation link. Assign gallery access from the gallery manager.</p>
         </div>
 
         <form className={styles.inviteForm} onSubmit={createClient}>
@@ -111,7 +107,7 @@ export function AdminUsersManager({ users }: { users: User[] }) {
             </select>
           </label>
           <button disabled={busy === "invite"} type="submit">
-            {busy === "invite" ? "Creating…" : "Create & invite →"}
+            {busy === "invite" ? "Creating…" : "Create & invite"}
           </button>
         </form>
       </section>
@@ -136,7 +132,7 @@ export function AdminUsersManager({ users }: { users: User[] }) {
 
       {error && <p className={styles.error}>{error}</p>}
 
-      <section className={styles.list}>
+      <section className={styles.list} aria-label="Portal accounts">
         {users.length === 0 ? (
           <p>No portal users yet.</p>
         ) : (

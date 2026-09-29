@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import {
@@ -44,27 +43,16 @@ export default async function MonitoringPage() {
     <div className={styles.page}>
       <header className={styles.hero}>
         <div>
-          <p className={styles.kicker}>Studio KRiX / Super Admin</p>
-          <h1>Monitoring.</h1>
-          <p>Portal health and security posture at a glance.</p>
+          <p className={styles.kicker}>SYSTEM / STATUS</p>
+          <h1>Monitoring</h1>
+          <p>Portal counters and the latest recorded activity.</p>
         </div>
-        <Link href="/admin">← Admin</Link>
       </header>
 
-      <nav className={styles.nav}>
-        <Link href="/admin">Galleries</Link>
-        <Link href="/admin/users">Clients & Users</Link>
-        <Link href="/admin/audit">Audit</Link>
-        <Link href="/admin/monitoring">Monitoring</Link>
-      </nav>
-
       <section className={styles.healthGrid}>
-        <article><span>Portal</span><strong>{data.status}</strong><i /></article>
-        <article><span>Database</span><strong>{data.database}</strong><i /></article>
-        <article><span>Private storage</span><strong>{data.storage}</strong><i /></article>
-        <article><span>Super Admin MFA</span><strong>required</strong><i /></article>
-        <article><span>Public signup</span><strong>blocked</strong><i /></article>
-        <article><span>Client assets</span><strong>private</strong><i /></article>
+        <article><span>Portal response</span><strong>{data.status}</strong></article>
+        <article><span>Database query</span><strong>{data.database}</strong></article>
+        <article><span>Storage configuration</span><strong>{data.storage}</strong></article>
       </section>
 
       <section className={styles.metrics}>
@@ -88,6 +76,7 @@ export default async function MonitoringPage() {
               new Date(data.latestAudit.created_at).toLocaleString("en-AU")
             : ""}
         </p>
+        <p className={styles.muted}>These values confirm the admin function can query the database. They do not test every upload, RLS policy or customer login.</p>
       </section>
     </div>
   );
