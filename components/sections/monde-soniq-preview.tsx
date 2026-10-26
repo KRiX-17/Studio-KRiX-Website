@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { ButtonLink } from "@/components/button-link";
 import { MondeSoniqLogo } from "@/components/monde-soniq-logo";
-import { mondeSoniqEvents } from "@/data/monde-soniq";
+import { mondeSoniqAnniversary } from "@/data/monde-soniq";
 import { mondeSoniqProject } from "@/data/projects";
 
 type MondeSoniqPreviewProps = {
@@ -26,14 +26,14 @@ export function MondeSoniqPreview({
           </p>
           <figure className="monde-preview__artwork">
             <Image
-              alt={mondeSoniqEvents[0].alt}
-              height={mondeSoniqEvents[0].height}
+              alt={mondeSoniqAnniversary.artworkAlt}
+              height={mondeSoniqAnniversary.imageHeight}
               sizes="(max-width: 680px) calc(100vw - 4.5rem), 240px"
-              src={mondeSoniqEvents[0].src}
+              src={mondeSoniqAnniversary.artwork}
               unoptimized
-              width={mondeSoniqEvents[0].width}
+              width={mondeSoniqAnniversary.imageWidth}
             />
-            <figcaption>Brain to Brain · Sydney, 2025</figcaption>
+            <figcaption>Monde Soniq: One Year · 20 November 2026</figcaption>
           </figure>
         </div>
         <div className="monde-preview__copy">
