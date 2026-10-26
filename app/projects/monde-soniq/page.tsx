@@ -7,6 +7,7 @@ import { ArrowRightIcon } from "@/components/icons";
 import { MondeSoniqLogo } from "@/components/monde-soniq-logo";
 import { siteConfig } from "@/config/site";
 import {
+  mondeSoniqAnniversary,
   mondeSoniqEvents,
   mondeSoniqLinks,
   mondeSoniqUpdates,
@@ -23,10 +24,10 @@ const baseMetadata = createMetadata({
   description,
   path,
   image: {
-    url: "/images/monde-soniq/vorpal.webp",
-    width: 1440,
-    height: 1800,
-    alt: "Monde Soniq event artwork",
+    url: mondeSoniqAnniversary.artwork,
+    width: mondeSoniqAnniversary.imageWidth,
+    height: mondeSoniqAnniversary.imageHeight,
+    alt: mondeSoniqAnniversary.artworkAlt,
   },
 });
 
@@ -189,6 +190,77 @@ export default function MondeSoniqPage() {
               </ButtonLink>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section
+        className="monde-page-section monde-anniversary"
+        aria-labelledby="monde-anniversary-title"
+      >
+        <div className="site-container monde-anniversary__panel">
+          <div className="monde-anniversary__content">
+            <p className="section-label">Next event · First anniversary</p>
+            <h2 id="monde-anniversary-title">
+              One year in.
+              <span> Back to back, all night.</span>
+            </h2>
+            <p>{mondeSoniqAnniversary.description}</p>
+            <dl className="monde-anniversary__details">
+              <div>
+                <dt>When</dt>
+                <dd>
+                  <time dateTime={mondeSoniqAnniversary.date}>
+                    {mondeSoniqAnniversary.dateLabel}
+                  </time>
+                  <span>{mondeSoniqAnniversary.timeLabel}</span>
+                </dd>
+              </div>
+              <div>
+                <dt>Where</dt>
+                <dd>
+                  {mondeSoniqAnniversary.venue}
+                  <span>{mondeSoniqAnniversary.address}</span>
+                </dd>
+              </div>
+            </dl>
+            <div className="monde-anniversary__feature">
+              <span>Featuring</span>
+              <strong>KRiX B2B NFRMT</strong>
+            </div>
+            <div className="monde-anniversary__actions">
+              <ButtonLink href={mondeSoniqAnniversary.ticketUrl} external>
+                Get tickets on Humanitix
+              </ButtonLink>
+              <ButtonLink href="#monde-anniversary-lineup" variant="secondary">
+                Explore the lineup
+              </ButtonLink>
+            </div>
+          </div>
+          <figure className="monde-anniversary__visual">
+            <Image
+              alt={mondeSoniqAnniversary.artworkAlt}
+              height={mondeSoniqAnniversary.imageHeight}
+              sizes="(max-width: 900px) calc(100vw - 3rem), 48vw"
+              src={mondeSoniqAnniversary.artwork}
+              unoptimized
+              width={mondeSoniqAnniversary.imageWidth}
+            />
+            <figcaption>One year. Six pairings. One dancefloor.</figcaption>
+          </figure>
+        </div>
+        <div className="site-container monde-anniversary__lineup" id="monde-anniversary-lineup">
+          <div>
+            <p className="section-label">The lineup</p>
+            <h3>Different sounds. One booth.</h3>
+          </div>
+          <ul>
+            {mondeSoniqAnniversary.pairings.map((pairing, index) => (
+              <li key={pairing}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <strong>{pairing}</strong>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
@@ -370,8 +442,8 @@ export default function MondeSoniqPage() {
               <h2 id="monde-latest-title">Recent and next up</h2>
             </div>
             <p>
-              Recent Monde Soniq activity, plus the next publicly listed
-              Chinese Laundry takeover.
+              Monde Soniq’s upcoming anniversary celebration and highlights
+              from the events that brought us here.
             </p>
           </div>
           <div className="monde-related__grid">

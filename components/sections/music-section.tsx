@@ -9,7 +9,7 @@ import {
   getMusicServiceLinks,
 } from "@/data/links";
 import { driftGlassRelease, releaseTimeline } from "@/data/music";
-import { mondeSoniqEvents } from "@/data/monde-soniq";
+import { mondeSoniqAnniversary, mondeSoniqEvents } from "@/data/monde-soniq";
 
 const musicServices = getMusicServiceLinks();
 const trackLinks = getLinksByCategory("track");
@@ -30,6 +30,43 @@ export function MusicSection() {
 
   return (
     <>
+      <section className="music-gig" aria-labelledby="music-gig-title">
+        <Reveal className="site-container music-gig__panel">
+          <div className="music-gig__content">
+            <p className="section-label">Next live appearance · 20 November 2026</p>
+            <h2 id="music-gig-title">KRiX B2B NFRMT</h2>
+            <p className="music-gig__event">Monde Soniq: One Year</p>
+            <p>
+              Six pairings across six hours, celebrating one year of Monde
+              Soniq at The Abercrombie in Chippendale. From techno and breaks
+              to bass, jungle and beyond.
+            </p>
+            <p className="music-gig__date">
+              Friday 20 November · 10 pm – 4 am AEDT · The Abercrombie, Sydney
+            </p>
+            <div className="music-gig__actions">
+              <ButtonLink href={mondeSoniqAnniversary.ticketUrl} external>
+                Get tickets
+              </ButtonLink>
+              <ButtonLink href="/projects/monde-soniq" variant="secondary">
+                Event and lineup
+              </ButtonLink>
+            </div>
+          </div>
+          <div className="music-gig__artwork">
+            <Image
+              alt={mondeSoniqAnniversary.artworkAlt}
+              height={mondeSoniqAnniversary.imageHeight}
+              priority
+              sizes="(max-width: 900px) calc(100vw - 3rem), 42vw"
+              src={mondeSoniqAnniversary.artwork}
+              unoptimized
+              width={mondeSoniqAnniversary.imageWidth}
+            />
+          </div>
+        </Reveal>
+      </section>
+
       <section className="music-release">
         <Reveal className="site-container music-release__panel">
           <div className="music-release__artwork">

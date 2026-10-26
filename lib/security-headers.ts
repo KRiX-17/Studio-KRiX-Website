@@ -7,7 +7,7 @@ export function createContentSecurityPolicy(isProduction: boolean) {
     `script-src 'self' 'unsafe-inline' ${cloudflareTurnstileOrigin}`,
     "script-src-attr 'none'",
     "style-src 'self' 'unsafe-inline'",
-    `img-src 'self' data: blob: ${supabaseOrigin}`,
+    `img-src 'self' data: blob: ${supabaseOrigin} https://images.humanitix.com`,
     "font-src 'self'",
     `connect-src 'self' ${cloudflareTurnstileOrigin} ${supabaseOrigin}`,
     `frame-src ${cloudflareTurnstileOrigin}`,

@@ -139,7 +139,47 @@ export const mondeSoniqEvents = [
   },
 ] as const satisfies readonly MondeSoniqEventAsset[];
 
+// Publicly listed first-anniversary event. Artwork is supplied by KRiX.
+export const mondeSoniqAnniversary = {
+  id: "monde-soniq-one-year-2026",
+  title: "Monde Soniq: One Year",
+  date: "2026-11-20",
+  dateLabel: "Friday 20 November 2026",
+  timeLabel: "10 pm – 4 am AEDT",
+  venue: "The Abercrombie",
+  address: "100 Broadway, Chippendale NSW 2008",
+  description:
+    "Six back-to-back pairings across six hours. A first-anniversary celebration of techno, breaks, bass, UK rave, jungle and beyond, with different artists meeting in the booth.",
+  artwork: "https://images.humanitix.com/i/0650c1c9-08d4-4320-a76c-8595b67faef9.png@responsive-1250.webp",
+  artworkAlt:
+    "Monde Soniq anniversary teaser artwork showing pairs of artist portraits in transparent zip-lock bags",
+  imageWidth: 1250,
+  imageHeight: 625,
+  eventUrl: "https://events.humanitix.com/monde-soniq",
+  ticketUrl: "https://events.humanitix.com/monde-soniq",
+  pairings: [
+    "KASSITA B2B MASHEEN",
+    "NULTY B2B SUBCOR",
+    "LEGGY B2B TOMATOEGG",
+    "KRiX B2B NFRMT",
+    "SCUSII B2B DEVERENCE",
+    "FAIRY XARA B2B MISS SUNSHINE",
+  ],
+} as const;
+
 export const mondeSoniqUpdates = [
+  {
+    id: "monde-soniq-one-year-2026",
+    status: "Next up",
+    date: "2026-11-20",
+    dateLabel: "20 November 2026",
+    title: "Monde Soniq: One Year",
+    venue: "The Abercrombie",
+    description:
+      "Six hours, six B2B pairings, including KRiX B2B NFRMT. 10 pm – 4 am in Chippendale.",
+    sourceUrl: "https://events.humanitix.com/monde-soniq",
+    sourceLabel: "View event and tickets",
+  },
   {
     id: "deverence-friends-july-2026",
     status: "Past event",
@@ -154,13 +194,13 @@ export const mondeSoniqUpdates = [
   },
   {
     id: "chinese-laundry-october-2026",
-    status: "Next up",
+    status: "Past event",
     date: "2026-10-09",
     dateLabel: "9 October 2026",
     title: "Monde Soniq Takeover + Miss Sunshine and Friends",
     venue: "Chinese Laundry",
     description:
-      "The next Chinese Laundry takeover is listed for October, with the event page currently marking the lineup as coming soon.",
+      "A Chinese Laundry takeover sharing the venue with Miss Sunshine & Friends, spanning diverse underground club sounds.",
     sourceUrl:
       "https://www.moshtix.com.au/v2/event/chinese-laundry-monde-soniq-takeover-miss-sunshine-and-friends/200856",
     sourceLabel: "View event and tickets",
