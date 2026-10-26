@@ -51,11 +51,18 @@ const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
     qualities: [75, 92],
-    remotePatterns: [{
-      protocol: "https",
-      hostname: "vvigsolnmebfbaztpixd.supabase.co",
-      pathname: "/storage/v1/object/public/portfolio-public/**",
-    }],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "vvigsolnmebfbaztpixd.supabase.co",
+        pathname: "/storage/v1/object/public/portfolio-public/**",
+      },
+      {
+        protocol: "https",
+        hostname: "images.humanitix.com",
+        pathname: "/i/**",
+      },
+    ],
   },
 };
 
