@@ -150,11 +150,11 @@ export const mondeSoniqAnniversary = {
   address: "100 Broadway, Chippendale NSW 2008",
   description:
     "Six back-to-back pairings across six hours. A first-anniversary celebration of techno, breaks, bass, UK rave, jungle and beyond, with different artists meeting in the booth.",
-  artwork: "/images/monde-soniq/monde-soniq-anniversary-2026.webp",
+  artwork: "https://images.humanitix.com/i/0650c1c9-08d4-4320-a76c-8595b67faef9.png@responsive-1250.webp",
   artworkAlt:
     "Monde Soniq anniversary teaser artwork showing pairs of artist portraits in transparent zip-lock bags",
-  imageWidth: 900,
-  imageHeight: 473,
+  imageWidth: 1250,
+  imageHeight: 625,
   eventUrl: "https://events.humanitix.com/monde-soniq",
   ticketUrl: "https://events.humanitix.com/monde-soniq/tickets",
   pairings: [
