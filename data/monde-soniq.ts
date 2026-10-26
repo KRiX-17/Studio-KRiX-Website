@@ -156,7 +156,7 @@ export const mondeSoniqAnniversary = {
   imageWidth: 1250,
   imageHeight: 625,
   eventUrl: "https://events.humanitix.com/monde-soniq",
-  ticketUrl: "https://events.humanitix.com/monde-soniq/tickets",
+  ticketUrl: "https://events.humanitix.com/monde-soniq",
   pairings: [
     "KASSITA B2B MASHEEN",
     "NULTY B2B SUBCOR",
