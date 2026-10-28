@@ -42,6 +42,13 @@
   --ambient-b: rgba(101, 214, 199, 0.14);
 }
 
+.shell:has(.mondeSoniq:is(:hover, :focus-visible)) {
+  --paper: #07070a;
+  --ink: #f5f2ed;
+  --ambient-a: rgba(255, 51, 95, 0.25);
+  --ambient-b: rgba(51, 164, 255, 0.2);
+}
+
 .shell:has(.photography:is(:hover, :focus-visible)) {
   --paper: #f5f2eb;
   --ink: #101014;
@@ -95,7 +102,6 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  min-height: min(66rem, 67svh);
   gap: .65rem;
   transition: grid-template-columns 480ms cubic-bezier(.2,.8,.2,1);
 }
@@ -117,6 +123,7 @@
 
 .card {
   position: relative;
+  min-height: min(66rem, 67svh);
   min-width: 0;
   overflow: hidden;
   text-decoration: none;
@@ -147,6 +154,12 @@
   background: #0d1219;
 }
 
+.mondeSoniq {
+  grid-column: 1 / -1;
+  min-height: clamp(22rem, 42svh, 34rem);
+  background: #07070a;
+}
+
 .image {
   position: absolute;
   inset: 0;
@@ -172,6 +185,11 @@
   background-size: 36px 36px, 36px 36px, auto, auto;
 }
 
+.mondeSoniq .image {
+  object-position: center 46%;
+  filter: saturate(.9) contrast(1.06) brightness(.7);
+}
+
 .overlay {
   position: absolute;
   inset: 0;
@@ -193,6 +211,31 @@
   background:
     linear-gradient(to top, rgba(7, 10, 14, .97), transparent 60%),
     radial-gradient(circle at 82% 18%, rgba(101,214,199,.16), transparent 18rem);
+}
+
+.mondeSoniq .overlay {
+  background:
+    linear-gradient(90deg, rgba(5, 5, 8, .94) 0%, rgba(5, 5, 8, .42) 48%, rgba(5, 5, 8, .64) 100%),
+    linear-gradient(to top, rgba(5, 5, 8, .96), transparent 68%),
+    radial-gradient(circle at 76% 24%, rgba(70, 165, 255, .22), transparent 26rem),
+    radial-gradient(circle at 26% 70%, rgba(255, 42, 91, .24), transparent 28rem);
+}
+
+.mondeSoniq .content {
+  align-items: center;
+}
+
+.mondeHeading {
+  margin: 0;
+}
+
+.mondeLogo {
+  width: clamp(11rem, 18vw, 16rem);
+}
+
+.mondeSoniq .content p {
+  max-width: 48rem;
+  font-size: clamp(.68rem, 1vw, .84rem);
 }
 
 .content {
@@ -294,12 +337,29 @@
   .grid,
   .grid:has(.photography:hover),
   .grid:has(.music:hover),
-  .grid:has(.development:hover) {
+  .grid:has(.development:hover),
+  .grid:has(.mondeSoniq:hover) {
     grid-template-columns: 1fr;
   }
 
   .card {
     min-height: min(74svh, 40rem);
+  }
+
+  .mondeSoniq {
+    min-height: min(64svh, 34rem);
+  }
+
+  .mondeSoniq .image {
+    object-position: 57% center;
+  }
+
+  .mondeSoniq .content {
+    align-items: end;
+  }
+
+  .mondeLogo {
+    width: min(12rem, 54vw);
   }
 
   .content h2 {
