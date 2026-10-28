@@ -44,7 +44,7 @@ const systems = [
     eyebrow: "Case study",
     title: "Monde Soniq",
     body: "Operational, digital and creative infrastructure supporting an independent Sydney music platform.",
-    href: "/projects/monde-soniq",
+    href: "/mondesoniq",
   },
   {
     index: "07",

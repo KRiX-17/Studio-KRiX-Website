@@ -25,7 +25,7 @@ export const mondeSoniqProject: Project = {
   tagline: "The structure behind the sound.",
   platforms: ["Music", "Events", "Creative infrastructure"],
   status: "Ongoing collaboration",
-  href: "/projects/monde-soniq",
+  href: "/mondesoniq",
   accent: "#9f233b",
   featured: true,
 };

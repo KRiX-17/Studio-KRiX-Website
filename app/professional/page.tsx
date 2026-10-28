@@ -110,7 +110,7 @@ export default function ProfessionalPage() {
             </Link>
             <Link
               className="professional-project professional-project--monde"
-              href="/projects/monde-soniq"
+              href="/mondesoniq"
             >
               <span>Music · Events · Creative infrastructure</span>
               <MondeSoniqLogo

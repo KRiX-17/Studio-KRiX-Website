@@ -17,7 +17,7 @@ import { createMetadata } from "@/lib/metadata";
 const title = "Monde Soniq × Studio KRiX | Creative Event Infrastructure";
 const description =
   "Discover how Studio KRiX supports Monde Soniq, an independent Sydney electronic-music platform led by NFRMT, through technical, operational and creative infrastructure.";
-const path = "/projects/monde-soniq";
+const path = "/mondesoniq";
 
 const baseMetadata = createMetadata({
   title,

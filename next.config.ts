@@ -29,6 +29,11 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/projects/monde-soniq",
+        destination: "/mondesoniq",
+        permanent: true,
+      },
+      {
         source: "/:path*",
         has: [{ type: "host", value: "studiokrix.com" }],
         destination: "https://studiokrix.com.au/:path*",
