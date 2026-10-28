@@ -223,10 +223,6 @@ export default function MondeSoniqPage() {
                 </dd>
               </div>
             </dl>
-            <div className="monde-anniversary__feature">
-              <span>Featuring</span>
-              <strong>KRiX B2B NFRMT</strong>
-            </div>
             <div className="monde-anniversary__actions">
               <ButtonLink href={mondeSoniqAnniversary.ticketUrl} external>
                 Get tickets on Humanitix
