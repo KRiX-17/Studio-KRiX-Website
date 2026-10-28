@@ -61,7 +61,7 @@ export default function NowPage() {
       body: nextMondeSoniq
         ? `${nextMondeSoniq.title} at ${nextMondeSoniq.venue}. The Studio KRiX case study tracks the practical infrastructure around the collaboration.`
         : "Studio KRiX continues to support Monde Soniq behind the scenes across practical, digital and creative infrastructure.",
-      href: "/projects/monde-soniq",
+      href: "/mondesoniq",
       link: "Explore Monde Soniq",
     },
   ] as const;

@@ -48,7 +48,7 @@ export function MusicSection() {
               <ButtonLink href={mondeSoniqAnniversary.ticketUrl} external>
                 Get tickets
               </ButtonLink>
-              <ButtonLink href="/projects/monde-soniq" variant="secondary">
+              <ButtonLink href="/mondesoniq" variant="secondary">
                 Event and lineup
               </ButtonLink>
             </div>
@@ -275,7 +275,7 @@ export function MusicSection() {
               connects music, events and the systems required to keep creative
               projects moving.
             </p>
-            <ButtonLink href="/projects/monde-soniq" variant="secondary">
+            <ButtonLink href="/mondesoniq" variant="secondary">
               Explore Monde Soniq
             </ButtonLink>
           </div>

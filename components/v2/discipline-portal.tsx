@@ -11,7 +11,7 @@ export function DisciplinePortal() {
       eyebrow: `One year · ${mondeSoniqAnniversary.dateLabel} · ${mondeSoniqAnniversary.venue}`,
       status: "Next event",
       title: "Monde Soniq",
-      href: "/projects/monde-soniq",
+      href: "/mondesoniq",
       className: styles.mondeSoniq,
       image: mondeSoniqAnniversary.artwork,
       logo: true,

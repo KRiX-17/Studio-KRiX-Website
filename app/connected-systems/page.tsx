@@ -522,7 +522,7 @@ export default function ConnectedSystemsPage() {
             </Link>
             <Link
               className="connected-related__project"
-              href="/projects/monde-soniq"
+              href="/mondesoniq"
             >
               <span>Music · Events · Creative infrastructure</span>
               <h3>Monde Soniq</h3>

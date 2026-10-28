@@ -18,7 +18,7 @@ const routes = [
   "/connected-systems/home-automation",
   "/connected-systems/local-ai",
   "/projects",
-  "/projects/monde-soniq",
+  "/mondesoniq",
 ] as const;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
