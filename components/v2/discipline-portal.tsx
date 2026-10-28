@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import { MondeSoniqLogo } from "@/components/monde-soniq-logo";
+import { mondeSoniqAnniversary } from "@/data/monde-soniq";
 import styles from "./discipline-portal.module.css";
 
 export function DisciplinePortal() {
@@ -31,6 +33,16 @@ export function DisciplinePortal() {
       className: styles.development,
       image: "/images/ohmxact/home.webp",
     },
+    {
+      index: "04",
+      eyebrow: `One year · ${mondeSoniqAnniversary.dateLabel} · ${mondeSoniqAnniversary.venue}`,
+      status: "Next event",
+      title: "Monde Soniq",
+      href: "/projects/monde-soniq",
+      className: styles.mondeSoniq,
+      image: mondeSoniqAnniversary.artwork,
+      logo: true,
+    },
   ];
 
   return (
@@ -57,6 +69,7 @@ export function DisciplinePortal() {
               priority={world.href === "/photography"}
               sizes="(max-width: 760px) 100vw, 34vw"
               src={world.image}
+              unoptimized={"logo" in world}
             />
             <div className={styles.overlay} />
             <div className={styles.content}>
@@ -65,7 +78,18 @@ export function DisciplinePortal() {
                 {world.status ? (
                   <span className={styles.status}>{world.status}</span>
                 ) : null}
-                <h2>{world.title}</h2>
+                {"logo" in world ? (
+                  <h2 className={styles.mondeHeading}>
+                    <span className="sr-only">{world.title}</span>
+                    <MondeSoniqLogo
+                      className={styles.mondeLogo}
+                      decorative
+                      sizes="(max-width: 760px) 190px, 260px"
+                    />
+                  </h2>
+                ) : (
+                  <h2>{world.title}</h2>
+                )}
                 <p>{world.eyebrow}</p>
               </div>
               <span className={styles.enter} aria-hidden="true">↗</span>
@@ -76,7 +100,7 @@ export function DisciplinePortal() {
 
       <div className={styles.footerLine}>
         <span>Christopher Helene / KRiX</span>
-        <span>Photography · Music · Development</span>
+        <span>Photography · Music · Development · Monde Soniq</span>
       </div>
     </section>
   );
