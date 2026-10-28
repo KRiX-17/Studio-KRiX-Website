@@ -176,7 +176,7 @@ export const mondeSoniqUpdates = [
     title: "Monde Soniq: One Year",
     venue: "The Abercrombie",
     description:
-      "Six hours, six B2B pairings, including KRiX B2B NFRMT. 10 pm – 4 am in Chippendale.",
+      "Six hours and six B2B pairings spanning techno, breaks, bass, UK rave, jungle and beyond. 10 pm – 4 am in Chippendale.",
     sourceUrl: "https://events.humanitix.com/monde-soniq",
     sourceLabel: "View event and tickets",
   },

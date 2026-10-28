@@ -8,6 +8,16 @@ export function DisciplinePortal() {
   const worlds = [
     {
       index: "01",
+      eyebrow: `One year · ${mondeSoniqAnniversary.dateLabel} · ${mondeSoniqAnniversary.venue}`,
+      status: "Next event",
+      title: "Monde Soniq",
+      href: "/projects/monde-soniq",
+      className: styles.mondeSoniq,
+      image: mondeSoniqAnniversary.artwork,
+      logo: true,
+    },
+    {
+      index: "02",
       eyebrow: "Fashion · Portraits · Events · Creative",
       status: "Under construction",
       title: "Photography",
@@ -16,7 +26,7 @@ export function DisciplinePortal() {
       image: "/images/photography/portrait-garden.webp",
     },
     {
-      index: "02",
+      index: "03",
       eyebrow: "DJ · Production · Releases · Live",
       status: null,
       title: "KRiX",
@@ -25,23 +35,13 @@ export function DisciplinePortal() {
       image: "/images/music/drift-glass-cover.webp",
     },
     {
-      index: "03",
+      index: "04",
       eyebrow: "Apps · Tools · Software · Experiments",
       status: null,
       title: "Development",
       href: "/development",
       className: styles.development,
       image: "/images/ohmxact/home.webp",
-    },
-    {
-      index: "04",
-      eyebrow: `One year · ${mondeSoniqAnniversary.dateLabel} · ${mondeSoniqAnniversary.venue}`,
-      status: "Next event",
-      title: "Monde Soniq",
-      href: "/projects/monde-soniq",
-      className: styles.mondeSoniq,
-      image: mondeSoniqAnniversary.artwork,
-      logo: true,
     },
   ];
 
@@ -66,7 +66,7 @@ export function DisciplinePortal() {
               alt=""
               className={styles.image}
               fill
-              priority={world.href === "/photography"}
+              priority={"logo" in world}
               sizes="(max-width: 760px) 100vw, 34vw"
               src={world.image}
               unoptimized={"logo" in world}
@@ -84,6 +84,7 @@ export function DisciplinePortal() {
                     <MondeSoniqLogo
                       className={styles.mondeLogo}
                       decorative
+                      priority
                       sizes="(max-width: 760px) 190px, 260px"
                     />
                   </h2>

@@ -9455,8 +9455,7 @@ section[id] {
   padding-top: 1rem;
 }
 
-.monde-anniversary__details dt,
-.monde-anniversary__feature > span {
+.monde-anniversary__details dt {
   color: var(--muted);
   font-size: 0.76rem;
   font-weight: 600;
@@ -9476,21 +9475,6 @@ section[id] {
   color: var(--muted);
   font-size: 0.9rem;
   font-weight: 400;
-}
-
-.monde-anniversary__feature {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.75rem 1.5rem;
-  margin-top: 1.75rem;
-}
-
-.monde-anniversary__feature strong {
-  color: var(--text);
-  font-size: clamp(1.4rem, 2.4vw, 2rem);
-  font-weight: 630;
-  letter-spacing: -0.035em;
 }
 
 .monde-anniversary__actions,
@@ -9641,10 +9625,5 @@ section[id] {
 
   .monde-anniversary__lineup ul {
     grid-template-columns: minmax(0, 1fr);
-  }
-
-  .monde-anniversary__feature {
-    align-items: flex-start;
-    flex-direction: column;
   }
 }
