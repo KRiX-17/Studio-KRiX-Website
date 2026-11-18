@@ -15,7 +15,7 @@ describe("security headers", () => {
     expect(policy).toContain("script-src-attr 'none'");
     expect(policy).toContain("form-action 'self'");
     expect(policy).toContain(
-      "frame-src https://challenges.cloudflare.com",
+      "frame-src https://challenges.cloudflare.com https://w.soundcloud.com",
     );
     expect(policy).toContain("upgrade-insecure-requests");
     expect(policy).not.toMatch(/(?:^| )https:(?: |;|$)/);
