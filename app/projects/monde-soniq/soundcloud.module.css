@@ -1,0 +1,95 @@
+.section {
+  background: radial-gradient(circle at 12% 36%, var(--accent-subtle), transparent 36rem);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  align-items: center;
+  gap: clamp(2.5rem, 6vw, 6rem);
+}
+
+.copy h2 {
+  max-width: 13ch;
+  margin: 1rem 0 0;
+  font-size: clamp(2.35rem, 4vw, 4rem);
+  font-weight: 610;
+  line-height: 1;
+  letter-spacing: -0.055em;
+}
+
+.copy > p:not(:first-child) {
+  max-width: 35rem;
+  margin: 1.5rem 0 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.35vw, 1.15rem);
+  line-height: 1.65;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 2rem;
+}
+
+.playerShell {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+  background: color-mix(in srgb, var(--surface) 68%, transparent);
+  box-shadow: 0 1.5rem 4rem -3.2rem var(--shadow);
+}
+
+.playerLabel {
+  margin: 0;
+  border-bottom: 1px solid var(--line);
+  padding: 1rem 1.25rem;
+  color: var(--muted-strong);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.player {
+  display: block;
+  width: 100%;
+  height: clamp(19rem, 35vw, 25rem);
+  border: 0;
+  background: #111114;
+}
+
+.fallback {
+  margin: 0;
+  padding: 0.85rem 1.25rem 1.1rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.fallback a {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.fallback a:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 4px;
+}
+
+@media (max-width: 820px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .copy h2 {
+    max-width: none;
+  }
+
+  .player {
+    height: 23rem;
+  }
+}
