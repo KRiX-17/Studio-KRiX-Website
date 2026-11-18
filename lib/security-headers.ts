@@ -10,7 +10,7 @@ export function createContentSecurityPolicy(isProduction: boolean) {
     `img-src 'self' data: blob: ${supabaseOrigin} https://images.humanitix.com`,
     "font-src 'self'",
     `connect-src 'self' ${cloudflareTurnstileOrigin} ${supabaseOrigin}`,
-    `frame-src ${cloudflareTurnstileOrigin}`,
+    `frame-src ${cloudflareTurnstileOrigin} https://w.soundcloud.com`,
     "worker-src 'self' blob:",
     "object-src 'none'",
     "base-uri 'self'",

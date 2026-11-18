@@ -209,6 +209,7 @@ export const mondeSoniqUpdates = [
 
 export const mondeSoniqLinks = {
   instagram: "https://www.instagram.com/mondesoniq/",
+  soundcloud: "https://soundcloud.com/monde-soniq",
   muzeek: "https://muzeek.com/mondesoniq",
 } as const;
 

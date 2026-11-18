@@ -6,6 +6,7 @@ import { ButtonLink } from "@/components/button-link";
 import { ArrowRightIcon } from "@/components/icons";
 import { MondeSoniqLogo } from "@/components/monde-soniq-logo";
 import { siteConfig } from "@/config/site";
+import soundcloudStyles from "./soundcloud.module.css";
 import {
   mondeSoniqAnniversary,
   mondeSoniqEvents,
@@ -18,6 +19,7 @@ const title = "Monde Soniq × Studio KRiX | Creative Event Infrastructure";
 const description =
   "Discover how Studio KRiX supports Monde Soniq, an independent Sydney electronic-music platform led by NFRMT, through technical, operational and creative infrastructure.";
 const path = "/mondesoniq";
+const soundcloudPlayerUrl = `https://w.soundcloud.com/player/?url=${encodeURIComponent(mondeSoniqLinks.soundcloud)}&color=%239f233b&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&visual=false`;
 
 const baseMetadata = createMetadata({
   title,
@@ -182,6 +184,9 @@ export default function MondeSoniqPage() {
               <ButtonLink href="#what-monde-soniq-is">
                 Discover Monde Soniq
               </ButtonLink>
+              <ButtonLink href="#monde-listen" variant="secondary">
+                Listen to the sets
+              </ButtonLink>
               <ButtonLink href="/music" variant="secondary">
                 Explore Music
               </ButtonLink>
@@ -257,6 +262,50 @@ export default function MondeSoniqPage() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      <section
+        className={`monde-page-section ${soundcloudStyles.section}`}
+        id="monde-listen"
+        aria-labelledby="monde-listen-title"
+      >
+        <div className={`site-container ${soundcloudStyles.layout}`}>
+          <div className={soundcloudStyles.copy}>
+            <p className="section-label">Monde Soniq on SoundCloud</p>
+            <h2 id="monde-listen-title">The sound lives here.</h2>
+            <p>
+              Step into the music behind the nights. Explore Monde Soniq’s
+              mixes and uploads, then follow the page to catch what comes next.
+            </p>
+            <div className={soundcloudStyles.actions}>
+              <ButtonLink href={mondeSoniqLinks.soundcloud} external>
+                Follow on SoundCloud
+              </ButtonLink>
+            </div>
+          </div>
+          <div className={soundcloudStyles.playerShell}>
+            <p className={soundcloudStyles.playerLabel}>Listen · Monde Soniq</p>
+            <iframe
+              className={soundcloudStyles.player}
+              title="Monde Soniq SoundCloud audio player"
+              src={soundcloudPlayerUrl}
+              loading="lazy"
+              allow="autoplay"
+              referrerPolicy="strict-origin-when-cross-origin"
+            />
+            <p className={soundcloudStyles.fallback}>
+              Player not loading?{" "}
+              <a
+                href={mondeSoniqLinks.soundcloud}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Listen directly on SoundCloud
+              </a>
+              .
+            </p>
+          </div>
         </div>
       </section>
 
@@ -533,6 +582,9 @@ export default function MondeSoniqPage() {
           <div className="monde-links__actions">
             <ButtonLink href={mondeSoniqLinks.instagram} external>
               Monde Soniq on Instagram
+            </ButtonLink>
+            <ButtonLink href={mondeSoniqLinks.soundcloud} external>
+              Listen on SoundCloud
             </ButtonLink>
             <ButtonLink href={mondeSoniqLinks.muzeek} external>
               Monde Soniq on Muzeek
