@@ -44,8 +44,6 @@
 
 .playerLabel {
   margin: 0;
-  border-bottom: 1px solid var(--line);
-  padding: 1rem 1.25rem;
   color: var(--muted-strong);
   font-size: 0.74rem;
   font-weight: 600;
@@ -53,10 +51,15 @@
   text-transform: uppercase;
 }
 
+.playerShell > .playerLabel {
+  border-bottom: 1px solid var(--line);
+  padding: 1rem 1.25rem;
+}
+
 .player {
   display: block;
   width: 100%;
-  height: clamp(19rem, 35vw, 25rem);
+  height: 19rem;
   border: 0;
   background: #111114;
 }
@@ -75,6 +78,71 @@
   text-underline-offset: 0.2em;
 }
 
+.profileCard {
+  display: grid;
+  grid-template-columns: minmax(8rem, 0.72fr) minmax(0, 1.28fr);
+  min-height: 19rem;
+}
+
+.profileBrand {
+  display: grid;
+  min-height: 100%;
+  place-items: center;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border-right: 1px solid var(--line);
+  background:
+    radial-gradient(circle at 50% 50%, var(--accent-subtle), transparent 72%),
+    color-mix(in srgb, var(--surface-raised) 36%, transparent);
+}
+
+.profileLogo {
+  width: min(100%, 8.5rem);
+}
+
+.profileBody {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: clamp(1.5rem, 3.5vw, 2.6rem);
+}
+
+.profileBody h3 {
+  margin: 1rem 0 0;
+  font-size: clamp(1.6rem, 2.5vw, 2.5rem);
+  font-weight: 620;
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+}
+
+.profileBody > p:not(.playerLabel) {
+  max-width: 28rem;
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 0.93rem;
+  line-height: 1.6;
+}
+
+.profileLink {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  gap: 0.9rem;
+  margin-top: 1.5rem;
+  border-bottom: 1px solid var(--line-strong);
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 610;
+  text-decoration: none;
+  transition: border-color 160ms ease;
+}
+
+.profileLink:hover {
+  border-color: var(--text);
+}
+
+.profileLink:focus-visible,
 .fallback a:focus-visible {
   outline: 2px solid var(--text);
   outline-offset: 4px;
@@ -88,8 +156,30 @@
   .copy h2 {
     max-width: none;
   }
+}
 
-  .player {
-    height: 23rem;
+@media (max-width: 490px) {
+  .profileCard {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .profileBrand {
+    min-height: 9rem;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .profileLogo {
+    width: 6rem;
+  }
+
+  .profileBody {
+    padding: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .profileLink {
+    transition: none;
   }
 }

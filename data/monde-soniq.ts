@@ -207,6 +207,10 @@ export const mondeSoniqUpdates = [
   },
 ] as const;
 
+// Feature a verified public track or playlist URL here once one is available.
+// Do not embed the SoundCloud profile URL: its widget can show an empty track list.
+export const mondeSoniqFeaturedMixUrl: string | null = null;
+
 export const mondeSoniqLinks = {
   instagram: "https://www.instagram.com/mondesoniq/",
   soundcloud: "https://soundcloud.com/monde-soniq",
