@@ -8,6 +8,7 @@ import {
   getLinksByCategory,
   getMusicServiceLinks,
 } from "@/data/links";
+import { artistLiveEvents } from "@/data/live-events";
 import { driftGlassRelease, releaseTimeline } from "@/data/music";
 import { mondeSoniqAnniversary, mondeSoniqEvents } from "@/data/monde-soniq";
 
@@ -23,8 +24,7 @@ function ExternalLabel() {
 }
 
 export function MusicSection() {
-  const driftGlassReleased =
-    Date.now() >= new Date(driftGlassRelease.releaseAt).getTime();
+  const driftGlassReleased = true;
   const spotify = musicServices.find((item) => item.title === "Spotify");
   const appleMusic = musicServices.find((item) => item.title === "Apple Music");
 
@@ -33,7 +33,9 @@ export function MusicSection() {
       <section className="music-gig" aria-labelledby="music-gig-title">
         <Reveal className="site-container music-gig__panel">
           <div className="music-gig__content">
-            <p className="section-label">Next live appearance · 20 November 2026</p>
+            <p className="section-label">
+              Live appearance · 20 November 2026
+            </p>
             <h2 id="music-gig-title">KRiX B2B NFRMT</h2>
             <p className="music-gig__event">Monde Soniq: One Year</p>
             <p>
@@ -60,9 +62,84 @@ export function MusicSection() {
               priority
               sizes="(max-width: 900px) calc(100vw - 3rem), 42vw"
               src={mondeSoniqAnniversary.artwork}
-              unoptimized
               width={mondeSoniqAnniversary.imageWidth}
             />
+          </div>
+        </Reveal>
+      </section>
+
+      <section
+        className="music-live-archive"
+        aria-labelledby="music-live-archive-title"
+      >
+        <Reveal className="site-container">
+          <div className="directory-heading">
+            <div>
+              <p className="section-label">Selected appearances</p>
+              <h2 id="music-live-archive-title">Live archive</h2>
+            </div>
+            <p>
+              Public Sydney bookings across club rooms, bass-community nights
+              and independent electronic events.
+            </p>
+          </div>
+          <div className="music-live-archive__grid">
+            {artistLiveEvents.map((event) => (
+              <article className="music-live-event" key={event.id}>
+                <a
+                  aria-label={`${event.sourceLabel}: ${event.title}`}
+                  className="music-live-event__artwork"
+                  href={event.sourceUrl}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <Image
+                    alt={event.artwork.alt}
+                    height={event.artwork.height}
+                    sizes="(max-width: 680px) calc(100vw - 3rem), (max-width: 1080px) 44vw, 29vw"
+                    src={event.artwork.src}
+                    width={event.artwork.width}
+                  />
+                  <span>{event.dateLabel}</span>
+                </a>
+                <div className="music-live-event__content">
+                  <p className="music-live-event__role">{event.role}</p>
+                  <h3>{event.title}</h3>
+                  <p className="music-live-event__venue">
+                    {event.venue}
+                    {event.venueDetail ? ` · ${event.venueDetail}` : null}
+                    {event.timeLabel ? ` · ${event.timeLabel}` : null}
+                  </p>
+                  <p>{event.summary}</p>
+                  <ul aria-label={`${event.title} music styles`}>
+                    {event.genres.map((genre) => (
+                      <li key={genre}>{genre}</li>
+                    ))}
+                  </ul>
+                  <a
+                    className="music-live-event__source"
+                    href={event.sourceUrl}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <span>{event.sourceLabel}</span>
+                    <ArrowUpRightIcon />
+                    <ExternalLabel />
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+          <div className="music-live-archive__private">
+            <p className="section-label">Private bookings</p>
+            <p>
+              Additional private events across Sydney are kept off the public
+              archive. Club, festival, support-slot and private-event enquiries
+              are welcome.
+            </p>
+            <ButtonLink href="/contact" variant="secondary">
+              Book KRiX
+            </ButtonLink>
           </div>
         </Reveal>
       </section>

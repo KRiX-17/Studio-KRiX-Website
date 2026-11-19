@@ -6168,6 +6168,7 @@ textarea {
 
 .featured-music,
 .music-release,
+.music-live-archive,
 .music-platforms,
 .selected-tracks,
 .artist-profile,
@@ -6355,6 +6356,148 @@ textarea {
 
 .music-release__actions .music-action {
   grid-template-columns: minmax(0, 1fr) 1.25rem;
+}
+
+.music-live-archive__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: clamp(2rem, 4vw, 3.5rem);
+}
+
+.music-live-event {
+  overflow: hidden;
+  border: 1px solid var(--glass-border, var(--line));
+  border-radius: 0.75rem;
+  background: var(--glass-fallback, var(--surface));
+  box-shadow: var(--glass-shadow), var(--glass-inset);
+}
+
+.music-live-event__artwork {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  border-bottom: 1px solid var(--line);
+  background: #050507;
+}
+
+.music-live-event__artwork img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 260ms var(--ease-out);
+}
+
+.music-live-event__artwork:hover img {
+  transform: scale(1.015);
+}
+
+.music-live-event__artwork > span {
+  position: absolute;
+  right: 0.85rem;
+  bottom: 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(5, 5, 7, 0.82);
+  padding: 0.45rem 0.7rem;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 620;
+  letter-spacing: 0.05em;
+  backdrop-filter: blur(10px);
+}
+
+.music-live-event__content {
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.music-live-event__role {
+  margin: 0 0 0.75rem;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 620;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.music-live-event h3 {
+  margin: 0;
+  font-size: clamp(1.65rem, 2.5vw, 2.5rem);
+  font-weight: 610;
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+
+.music-live-event__venue {
+  min-height: 3.2rem;
+  margin: 1rem 0 0;
+  color: var(--muted-strong);
+  font-size: 0.92rem;
+  font-weight: 560;
+  line-height: 1.55;
+}
+
+.music-live-event__content > p:not(.music-live-event__role, .music-live-event__venue) {
+  margin: 1rem 0 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.music-live-event ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.music-live-event li {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.35rem 0.6rem;
+  color: var(--muted-strong);
+  font-size: 0.72rem;
+}
+
+.music-live-event__source {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 1rem;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  padding-top: 1rem;
+  font-size: 0.88rem;
+  font-weight: 560;
+}
+
+.music-live-event__source svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.music-live-archive__private {
+  display: grid;
+  grid-template-columns: minmax(9rem, 0.28fr) minmax(18rem, 1fr) auto;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: center;
+  margin-top: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.music-live-archive__private .section-label,
+.music-live-archive__private > p {
+  margin: 0;
+}
+
+.music-live-archive__private > p {
+  color: var(--muted);
+  line-height: 1.6;
 }
 
 .directory-heading {
@@ -6761,6 +6904,7 @@ textarea {
   }
 
   .music-connect__grid,
+  .music-live-archive__grid,
   .identity-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -6778,6 +6922,7 @@ textarea {
 @media (max-width: 680px) {
   .featured-music,
   .music-release,
+  .music-live-archive,
   .music-platforms,
   .selected-tracks,
   .artist-profile,
@@ -6802,8 +6947,13 @@ textarea {
   .featured-music__actions,
   .professional-projects__grid,
   .music-connect__grid,
+  .music-live-archive__grid,
   .identity-grid,
   .contact-directory__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .music-live-archive__private {
     grid-template-columns: 1fr;
   }
 

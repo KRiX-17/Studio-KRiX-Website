@@ -69,6 +69,7 @@
 }
 
 .page :global(.music-release),
+.page :global(.music-live-archive),
 .page :global(.music-platforms),
 .page :global(.selected-tracks),
 .page :global(.artist-profile),
@@ -79,6 +80,7 @@
 }
 
 .page :global(.music-release__panel),
+.page :global(.music-live-event),
 .page :global(.music-collaboration__panel) {
   border-color: rgba(245,242,237,.14);
   background:
@@ -92,6 +94,8 @@
 }
 
 .page :global(.music-release h2),
+.page :global(.music-live-archive h2),
+.page :global(.music-live-event h3),
 .page :global(.directory-heading h2),
 .page :global(.selected-track h2),
 .page :global(.artist-profile h2),
@@ -101,6 +105,7 @@
 }
 
 .page :global(.music-release p),
+.page :global(.music-live-event p),
 .page :global(.directory-heading > p),
 .page :global(.artist-profile p),
 .page :global(.music-collaboration p) {
