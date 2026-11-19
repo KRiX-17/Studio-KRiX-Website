@@ -9,6 +9,7 @@ import {
   getMusicServiceLinks,
 } from "@/data/links";
 import { artistLiveEvents, type ArtistLiveEvent } from "@/data/live-events";
+import { groupArtistEvents } from "@/lib/artist-events";
 import { driftGlassRelease, releaseTimeline } from "@/data/music";
 import { mondeSoniqAnniversary, mondeSoniqEvents } from "@/data/monde-soniq";
 
@@ -95,13 +96,18 @@ function LiveEventCard({ event }: { event: ArtistLiveEvent }) {
   );
 }
 
-export function MusicSection() {
+export function MusicSection({ nowIso }: { nowIso: string }) {
+  const { upcoming, past } = groupArtistEvents(artistLiveEvents, new Date(nowIso));
+  const anniversaryUpcoming = upcoming.some(
+    (event) => event.id === "monde-soniq-one-year-2026",
+  );
   const driftGlassReleased = true;
   const spotify = musicServices.find((item) => item.title === "Spotify");
   const appleMusic = musicServices.find((item) => item.title === "Apple Music");
 
   return (
     <>
+      {anniversaryUpcoming ? (
       <section className="music-gig" aria-labelledby="music-gig-title">
         <Reveal className="site-container music-gig__panel">
           <div className="music-gig__content">
@@ -142,6 +148,7 @@ export function MusicSection() {
           </div>
         </Reveal>
       </section>
+      ) : null}
 
       <section
         className="music-live-archive"
@@ -150,19 +157,45 @@ export function MusicSection() {
         <Reveal className="site-container">
           <div className="directory-heading">
             <div>
-              <p className="section-label">Selected appearances</p>
-              <h2 id="music-live-archive-title">Live archive</h2>
+              <p className="section-label">KRiX / Live</p>
+              <h2 id="music-live-archive-title">Shows &amp; appearances</h2>
             </div>
-            <p>
-              Selected Sydney bookings and performances, including upcoming
-              shows and independent electronic events.
-            </p>
+            <p>Upcoming dates and previous Sydney performances, with original
+              event artwork and promoter links.</p>
           </div>
-          <div className="music-live-archive__grid">
-            {artistLiveEvents.map((event) => (
-              <LiveEventCard event={event} key={event.id} />
-            ))}
-          </div>
+
+          <section className="music-live-archive__group" aria-labelledby="music-upcoming-events">
+            <div className="music-live-archive__group-heading">
+              <h3 id="music-upcoming-events">Upcoming shows</h3>
+              <p>Automatically updated as event dates pass.</p>
+            </div>
+            {upcoming.length ? (
+              <div className="music-live-archive__grid">
+                {upcoming.map((event) => (
+                  <LiveEventCard event={event} key={event.id} />
+                ))}
+              </div>
+            ) : (
+              <div className="music-live-archive__empty">
+                <p>No newly announced dates yet. Follow KRiX on Resident Advisor for event updates.</p>
+                <ButtonLink href="https://ra.co/dj/krix" external variant="secondary">
+                  Resident Advisor profile
+                </ButtonLink>
+              </div>
+            )}
+          </section>
+
+          <section className="music-live-archive__group" aria-labelledby="music-past-events">
+            <div className="music-live-archive__group-heading">
+              <h3 id="music-past-events">Past performances</h3>
+              <p>A growing archive of real shows and event artwork.</p>
+            </div>
+            <div className="music-live-archive__grid">
+              {past.map((event) => (
+                <LiveEventCard event={event} key={event.id} />
+              ))}
+            </div>
+          </section>
           <div className="music-live-archive__private">
             <p className="section-label">Private bookings</p>
             <p>
@@ -170,7 +203,7 @@ export function MusicSection() {
               archive. Club, festival, support-slot and private-event enquiries
               are welcome.
             </p>
-            <ButtonLink href="/contact" variant="secondary">
+            <ButtonLink href="/book-krix" variant="secondary">
               Book KRiX
             </ButtonLink>
           </div>
@@ -351,8 +384,8 @@ export function MusicSection() {
               <ButtonLink href="https://ra.co/dj/krix" external>
                 View KRiX on Resident Advisor
               </ButtonLink>
-              <ButtonLink href="/contact" variant="secondary">
-                Booking enquiries
+              <ButtonLink href="/book-krix" variant="secondary">
+                Booking / EPK
               </ButtonLink>
               <ButtonLink href="/about" variant="text">
                 About Studio KRiX
