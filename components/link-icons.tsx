@@ -96,6 +96,31 @@ export function LinkIcon({ name, ...props }: LinkIconProps) {
           />
         </svg>
       );
+    case "resident-advisor":
+      return (
+        <svg {...sharedProps} {...props}>
+          <rect
+            x="2.75"
+            y="2.75"
+            width="18.5"
+            height="18.5"
+            rx="3"
+            stroke="currentColor"
+            strokeWidth="1.5"
+          />
+          <text
+            x="12"
+            y="15.6"
+            fill="currentColor"
+            fontSize="10"
+            fontWeight="750"
+            letterSpacing="-0.8"
+            textAnchor="middle"
+          >
+            RA
+          </text>
+        </svg>
+      );
     case "spotify":
       return (
         <svg {...sharedProps} {...props}>
