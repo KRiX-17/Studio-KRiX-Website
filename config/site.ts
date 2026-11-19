@@ -1,6 +1,7 @@
 const navigation = [
   { label: "Photography", href: "/photography" },
   { label: "Music", href: "/music" },
+  { label: "Book KRiX", href: "/book-krix" },
   { label: "Development", href: "/development" },
   { label: "About Me", href: "/about" },
 ] as const;
@@ -34,6 +35,7 @@ export const siteConfig = {
   homeMobileNavigation,
   footerNavigation: [
     { label: "Now", href: "/now" },
+    { label: "Book KRiX", href: "/book-krix" },
     { label: "About Me", href: "/about" },
     { label: "Contact", href: "/contact" },
     { label: "Support", href: "/support" },
