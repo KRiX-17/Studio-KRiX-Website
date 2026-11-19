@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { MusicSection } from "@/components/sections/music-section";
 import { PageIntro } from "@/components/page-intro";
 import { createMetadata } from "@/lib/metadata";
+import { currentInstant } from "@/lib/artist-events";
 import styles from "./music.module.css";
 
 const title = "Music by KRiX | Studio KRiX";
@@ -38,7 +39,7 @@ export default function MusicPage() {
         index="KRiX / Studio KRiX"
         title="Music by KRiX"
       />
-      <MusicSection />
+      <MusicSection nowIso={currentInstant().toISOString()} />
     </div>
   );
 }

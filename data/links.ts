@@ -64,6 +64,15 @@ export const linksHubItems = [
     external: false,
   },
   {
+    title: "Book KRiX",
+    description: "DJ bookings, electronic press kit and Sydney event history.",
+    href: "/book-krix",
+    category: "featured",
+    icon: "soundcloud",
+    featured: true,
+    external: false,
+  },
+  {
     title: "Professional Profile",
     description:
       "Automotive, electrical, software and connected-system capabilities.",

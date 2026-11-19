@@ -167,6 +167,58 @@
 }
 
 
+/* Upcoming and past views use the existing full-tile event cards. */
+.page :global(.music-live-archive__group) {
+  margin-top: clamp(2rem, 4vw, 3.5rem);
+}
+
+.page :global(.music-live-archive__group-heading) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(245, 242, 237, .14);
+  padding-bottom: 1rem;
+}
+
+.page :global(.music-live-archive__group-heading h3) {
+  margin: 0;
+  color: #f5f2ed;
+  font-size: clamp(1.45rem, 2.6vw, 2.4rem);
+  font-weight: 580;
+  letter-spacing: -.04em;
+}
+
+.page :global(.music-live-archive__group-heading p) {
+  margin: 0;
+  color: #c3bbc0;
+  font-size: .92rem;
+}
+
+.page :global(.music-live-archive__group .music-live-archive__grid) {
+  margin-top: 1.5rem;
+}
+
+.page :global(.music-live-archive__empty) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  border: 1px solid rgba(245,242,237,.14);
+  border-radius: .75rem;
+  padding: clamp(1.25rem,3vw,2rem);
+}
+
+.page :global(.music-live-archive__empty p) {
+  max-width: 37rem;
+  margin: 0;
+  color: #c3bbc0;
+  line-height: 1.65;
+}
+
 /* Each archive card is a single keyboard-accessible, full-tile source link. */
 .page :global(.music-live-event) {
   transition: border-color 180ms ease, transform 180ms ease;

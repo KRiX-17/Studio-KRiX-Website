@@ -6,6 +6,8 @@ export type ArtistLiveEvent = {
   venue: string;
   venueDetail?: string;
   timeLabel?: string;
+  /** Verified finishing time, including Sydney timezone offset, for overnight gigs. */
+  endsAt?: string;
   role: string;
   summary: string;
   genres: readonly string[];
@@ -23,6 +25,7 @@ export const artistLiveEvents: readonly ArtistLiveEvent[] = [
   {
     id: "monde-soniq-one-year-2026",
     title: "MONDE SONIQ: One Year",
+    endsAt: "2026-11-21T04:00:00+11:00",
     date: "2026-11-20",
     dateLabel: "20 November 2026",
     venue: "The Abercrombie",
