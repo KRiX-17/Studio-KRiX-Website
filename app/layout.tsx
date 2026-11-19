@@ -118,7 +118,7 @@ const structuredData = {
         "Automotive electrical systems",
       ],
       worksFor: { "@id": `${siteConfig.url}/#organization` },
-      sameAs: [siteConfig.linkedIn, siteConfig.github],
+      sameAs: [siteConfig.linkedIn, siteConfig.github, "https://ra.co/dj/krix"],
       subjectOf: [
         `${siteConfig.url}/photography`,
         `${siteConfig.url}/music`,

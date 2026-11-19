@@ -6,7 +6,7 @@ import styles from "./music.module.css";
 
 const title = "Music by KRiX | Studio KRiX";
 const description =
-  "Electronic music, releases and official listening links from KRiX.";
+  "KRiX electronic music releases, Sydney DJ appearances, Resident Advisor event listings and official listening links.";
 
 const baseMetadata = createMetadata({
   title,

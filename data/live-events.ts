@@ -9,17 +9,52 @@ export type ArtistLiveEvent = {
   role: string;
   summary: string;
   genres: readonly string[];
-  artwork: {
+  artwork?: {
     src: string;
     alt: string;
     width: number;
     height: number;
   };
-  sourceUrl: string;
-  sourceLabel: string;
+  sourceUrl?: string;
+  sourceLabel?: string;
 };
 
 export const artistLiveEvents: readonly ArtistLiveEvent[] = [
+  {
+    id: "monde-soniq-one-year-2026",
+    title: "MONDE SONIQ: One Year",
+    date: "2026-11-20",
+    dateLabel: "20 November 2026",
+    venue: "The Abercrombie",
+    venueDetail: "Chippendale, Sydney",
+    timeLabel: "10 pm – 4 am AEDT",
+    role: "KRiX B2B NFRMT · DJ set",
+    summary:
+      "Monde Soniq's first-anniversary celebration, with six B2B pairings spanning techno, breaks, bass, jungle and club sounds.",
+    genres: ["Techno", "Bass", "Breaks", "Jungle"],
+    artwork: {
+      src: "/images/music/events/monde-soniq-one-year-2026.jpg",
+      alt: "Monde Soniq anniversary flyer featuring KRiX B2B NFRMT",
+      width: 800,
+      height: 1135,
+    },
+    sourceUrl: "https://ra.co/events/2569336",
+    sourceLabel: "View event on Resident Advisor",
+  },
+  {
+    id: "tush-secret-studio-2026",
+    title: "TUSH presents: Secret Studio",
+    date: "2026-11-14",
+    dateLabel: "14 November 2026",
+    venue: "TUSH · Secret location",
+    venueDetail: "Sydney",
+    role: "KRiX · DJ appearance",
+    summary:
+      "An intimate TUSH studio session connecting emerging DJs and producers in Sydney's underground electronic scene.",
+    genres: ["Techno", "Bass"],
+    sourceUrl: "https://ra.co/events/2582282",
+    sourceLabel: "View the TUSH event on Resident Advisor",
+  },
   {
     id: "elements-tech-bass-2026",
     title: "The Elements of Tech & Bass",
@@ -81,5 +116,17 @@ export const artistLiveEvents: readonly ArtistLiveEvent[] = [
     },
     sourceUrl: "https://www.instagram.com/reel/DNhwi-gPhOq/",
     sourceLabel: "View the original Home Sydney post",
+  },
+  {
+    id: "your-shot-sydney-2025",
+    title: "Your Shot Sydney",
+    date: "2025-08-02",
+    dateLabel: "2 August 2025",
+    venue: "Home The Venue",
+    venueDetail: "Sydney",
+    role: "KRiX · DJ appearance",
+    summary:
+      "A Your Shot Sydney performance at Home The Venue. A matching Resident Advisor event listing has not been verified.",
+    genres: ["Electronic", "DJ showcase"],
   },
 ];

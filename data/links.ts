@@ -12,6 +12,7 @@ export type LinkIconName =
   | "tiktok"
   | "youtube"
   | "soundcloud"
+  | "resident-advisor"
   | "spotify"
   | "apple-music"
   | "tidal"
@@ -126,6 +127,15 @@ export const linksHubItems = [
     href: "https://soundcloud.com/krix17",
     category: "social",
     icon: "soundcloud",
+    featured: false,
+    external: true,
+  },
+  {
+    title: "Resident Advisor",
+    description: "KRiX DJ profile and event listings on Resident Advisor.",
+    href: "https://ra.co/dj/krix",
+    category: "social",
+    icon: "resident-advisor",
     featured: false,
     external: true,
   },

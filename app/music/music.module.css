@@ -166,6 +166,38 @@
   filter: saturate(.82) contrast(1.04);
 }
 
+
+/* Text-led event cards when a verified flyer is not available. */
+.page :global(.music-live-event__typographic) {
+  display: flex;
+  height: 100%;
+  min-height: 15rem;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: clamp(1.4rem, 2.5vw, 2rem);
+  background:
+    radial-gradient(circle at 75% 18%, rgba(222, 59, 82, .24), transparent 45%),
+    linear-gradient(140deg, #1b141d, #07070a 72%);
+  color: #f5f2ed;
+}
+
+.page :global(.music-live-event__typographic > span) {
+  color: #de3b52;
+  font-size: .73rem;
+  font-weight: 650;
+  letter-spacing: .22em;
+}
+
+.page :global(.music-live-event__typographic > strong) {
+  max-width: 11ch;
+  margin-bottom: 2.2rem;
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -.055em;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .page :global(.music-action),
   .page :global(.music-service),
