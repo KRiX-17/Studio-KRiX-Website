@@ -8,19 +8,55 @@ import {
   getLinksByCategory,
   getMusicServiceLinks,
 } from "@/data/links";
-import { artistLiveEvents } from "@/data/live-events";
+import { artistLiveEvents, type ArtistLiveEvent } from "@/data/live-events";
 import { driftGlassRelease, releaseTimeline } from "@/data/music";
 import { mondeSoniqAnniversary, mondeSoniqEvents } from "@/data/monde-soniq";
 
 const musicServices = getMusicServiceLinks();
 const trackLinks = getLinksByCategory("track");
 const socialLinks = getLinksByCategory("social").filter(
-  (item) => item.title === "Instagram" || item.title === "TikTok",
+  (item) => item.title === "Instagram" || item.title === "TikTok" || item.title === "Resident Advisor",
 );
 
 
 function ExternalLabel() {
   return <span className="sr-only">(opens in a new tab)</span>;
+}
+
+function LiveEventArtwork({ event }: { event: ArtistLiveEvent }) {
+  const visual = (
+    <>
+      {event.artwork ? (
+        <Image
+          alt={event.artwork.alt}
+          height={event.artwork.height}
+          sizes="(max-width: 680px) calc(100vw - 3rem), (max-width: 1080px) 44vw, 29vw"
+          src={event.artwork.src}
+          width={event.artwork.width}
+        />
+      ) : (
+        <div className="music-live-event__typographic" aria-hidden="true">
+          <span>KRiX / LIVE</span>
+          <strong>{event.title}</strong>
+        </div>
+      )}
+      <span>{event.dateLabel}</span>
+    </>
+  );
+
+  return event.sourceUrl ? (
+    <a
+      aria-label={`View event listing: ${event.title}`}
+      className="music-live-event__artwork"
+      href={event.sourceUrl}
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      {visual}
+    </a>
+  ) : (
+    <div className="music-live-event__artwork">{visual}</div>
+  );
 }
 
 export function MusicSection() {
@@ -53,6 +89,9 @@ export function MusicSection() {
               <ButtonLink href="/mondesoniq" variant="secondary">
                 Event and lineup
               </ButtonLink>
+              <ButtonLink href="https://ra.co/events/2569336" external variant="secondary">
+                Resident Advisor event
+              </ButtonLink>
             </div>
           </div>
           <div className="music-gig__artwork">
@@ -79,29 +118,14 @@ export function MusicSection() {
               <h2 id="music-live-archive-title">Live archive</h2>
             </div>
             <p>
-              Public Sydney bookings across club rooms, bass-community nights
-              and independent electronic events.
+              Selected Sydney bookings and performances, including upcoming
+              shows and independent electronic events.
             </p>
           </div>
           <div className="music-live-archive__grid">
             {artistLiveEvents.map((event) => (
               <article className="music-live-event" key={event.id}>
-                <a
-                  aria-label={`${event.sourceLabel}: ${event.title}`}
-                  className="music-live-event__artwork"
-                  href={event.sourceUrl}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  <Image
-                    alt={event.artwork.alt}
-                    height={event.artwork.height}
-                    sizes="(max-width: 680px) calc(100vw - 3rem), (max-width: 1080px) 44vw, 29vw"
-                    src={event.artwork.src}
-                    width={event.artwork.width}
-                  />
-                  <span>{event.dateLabel}</span>
-                </a>
+                <LiveEventArtwork event={event} />
                 <div className="music-live-event__content">
                   <p className="music-live-event__role">{event.role}</p>
                   <h3>{event.title}</h3>
@@ -116,16 +140,18 @@ export function MusicSection() {
                       <li key={genre}>{genre}</li>
                     ))}
                   </ul>
-                  <a
-                    className="music-live-event__source"
-                    href={event.sourceUrl}
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    <span>{event.sourceLabel}</span>
-                    <ArrowUpRightIcon />
-                    <ExternalLabel />
-                  </a>
+                  {event.sourceUrl && event.sourceLabel ? (
+                    <a
+                      className="music-live-event__source"
+                      href={event.sourceUrl}
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <span>{event.sourceLabel}</span>
+                      <ArrowUpRightIcon />
+                      <ExternalLabel />
+                    </a>
+                  ) : null}
                 </div>
               </article>
             ))}
@@ -310,13 +336,21 @@ export function MusicSection() {
           </div>
           <div>
             <p>
-              KRiX is the electronic music identity of Christopher Helene.
-              The work explores atmosphere, rhythm and emotion as part of the
-              wider Studio KRiX creative practice.
+              KRiX is the Sydney-based DJ and electronic music identity of
+              Christopher Helene, exploring drum & bass, bass music, Latin and
+              tribal rhythms, and energetic club sounds.
             </p>
-            <ButtonLink href="/about" variant="text">
-              About Christopher and Studio KRiX
-            </ButtonLink>
+            <div className="music-gig__actions">
+              <ButtonLink href="https://ra.co/dj/krix" external>
+                View KRiX on Resident Advisor
+              </ButtonLink>
+              <ButtonLink href="/contact" variant="secondary">
+                Booking enquiries
+              </ButtonLink>
+              <ButtonLink href="/about" variant="text">
+                About Studio KRiX
+              </ButtonLink>
+            </div>
           </div>
         </Reveal>
       </section>
