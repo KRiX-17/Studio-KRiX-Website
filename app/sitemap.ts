@@ -5,6 +5,7 @@ import { getPublicGalleries } from "@/lib/portfolio/public";
 const routes = [
   "",
   "/music",
+  "/book-krix",
   "/now",
   "/photography",
   "/development",
@@ -28,13 +29,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: siteConfig.url + route,
     lastModified: new Date("2026-09-29"),
     changeFrequency:
-      route === "" || route === "/music" || route === "/development"
+      route === "" || route === "/music" || route === "/book-krix" || route === "/development"
         ? "monthly"
         : "yearly",
     priority:
       route === ""
         ? 1
-        : route === "/music" || route === "/development"
+        : route === "/music" || route === "/book-krix" || route === "/development"
           ? 0.9
           : route === "/ohmxact"
             ? 0.85
