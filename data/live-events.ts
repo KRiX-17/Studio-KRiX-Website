@@ -128,5 +128,13 @@ export const artistLiveEvents: readonly ArtistLiveEvent[] = [
     summary:
       "A Your Shot Sydney performance at Home The Venue. A matching Resident Advisor event listing has not been verified.",
     genres: ["Electronic", "DJ showcase"],
+    artwork: {
+      src: "/images/music/events/your-shot-sydney-2025.webp",
+      alt: "Your Shot NSW 2025 promotional artwork for the Sydney DJ showcase",
+      width: 550,
+      height: 690,
+    },
+    sourceUrl: "https://www.instagram.com/p/DMrvB5Jy-p_/?img_index=1",
+    sourceLabel: "View the original Your Shot Instagram post",
   },
 ];
