@@ -24,8 +24,8 @@ function ExternalLabel() {
 }
 
 function LiveEventArtwork({ event }: { event: ArtistLiveEvent }) {
-  const visual = (
-    <>
+  return (
+    <div className="music-live-event__artwork">
       {event.artwork ? (
         <Image
           alt={event.artwork.alt}
@@ -41,21 +41,57 @@ function LiveEventArtwork({ event }: { event: ArtistLiveEvent }) {
         </div>
       )}
       <span>{event.dateLabel}</span>
+    </div>
+  );
+}
+
+function LiveEventCard({ event }: { event: ArtistLiveEvent }) {
+  const content = (
+    <>
+      <LiveEventArtwork event={event} />
+      <div className="music-live-event__content">
+        <p className="music-live-event__role">{event.role}</p>
+        <h3>{event.title}</h3>
+        <p className="music-live-event__venue">
+          {event.venue}
+          {event.venueDetail ? ` · ${event.venueDetail}` : null}
+          {event.timeLabel ? ` · ${event.timeLabel}` : null}
+        </p>
+        <p>{event.summary}</p>
+        <ul aria-label={`${event.title} music styles`}>
+          {event.genres.map((genre) => (
+            <li key={genre}>{genre}</li>
+          ))}
+        </ul>
+        {event.sourceUrl && event.sourceLabel ? (
+          <span className="music-live-event__source">
+            <span>{event.sourceLabel}</span>
+            <ArrowUpRightIcon />
+            <ExternalLabel />
+          </span>
+        ) : null}
+      </div>
     </>
   );
 
-  return event.sourceUrl ? (
-    <a
-      aria-label={`View event listing: ${event.title}`}
-      className="music-live-event__artwork"
-      href={event.sourceUrl}
-      rel="noopener noreferrer"
-      target="_blank"
-    >
-      {visual}
-    </a>
-  ) : (
-    <div className="music-live-event__artwork">{visual}</div>
+  return (
+    <article className="music-live-event">
+      {event.sourceUrl ? (
+        <a
+          aria-label={`${event.title}: ${event.sourceLabel ?? "View event source"} (opens in a new tab)`}
+          className="music-live-event__tile"
+          href={event.sourceUrl}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          {content}
+        </a>
+      ) : (
+        <div className="music-live-event__tile music-live-event__tile--static">
+          {content}
+        </div>
+      )}
+    </article>
   );
 }
 
@@ -124,36 +160,7 @@ export function MusicSection() {
           </div>
           <div className="music-live-archive__grid">
             {artistLiveEvents.map((event) => (
-              <article className="music-live-event" key={event.id}>
-                <LiveEventArtwork event={event} />
-                <div className="music-live-event__content">
-                  <p className="music-live-event__role">{event.role}</p>
-                  <h3>{event.title}</h3>
-                  <p className="music-live-event__venue">
-                    {event.venue}
-                    {event.venueDetail ? ` · ${event.venueDetail}` : null}
-                    {event.timeLabel ? ` · ${event.timeLabel}` : null}
-                  </p>
-                  <p>{event.summary}</p>
-                  <ul aria-label={`${event.title} music styles`}>
-                    {event.genres.map((genre) => (
-                      <li key={genre}>{genre}</li>
-                    ))}
-                  </ul>
-                  {event.sourceUrl && event.sourceLabel ? (
-                    <a
-                      className="music-live-event__source"
-                      href={event.sourceUrl}
-                      rel="noopener noreferrer"
-                      target="_blank"
-                    >
-                      <span>{event.sourceLabel}</span>
-                      <ArrowUpRightIcon />
-                      <ExternalLabel />
-                    </a>
-                  ) : null}
-                </div>
-              </article>
+              <LiveEventCard event={event} key={event.id} />
             ))}
           </div>
           <div className="music-live-archive__private">

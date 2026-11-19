@@ -167,6 +167,55 @@
 }
 
 
+/* Each archive card is a single keyboard-accessible, full-tile source link. */
+.page :global(.music-live-event) {
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+
+.page :global(.music-live-event__tile) {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  color: inherit;
+  text-decoration: none;
+}
+
+.page :global(a.music-live-event__tile) {
+  cursor: pointer;
+}
+
+.page :global(.music-live-event__tile--static) {
+  cursor: default;
+}
+
+.page :global(.music-live-event__content) {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.page :global(.music-live-event__source) {
+  margin-top: auto;
+  padding-top: 1.5rem;
+}
+
+.page :global(.music-live-event:has(a.music-live-event__tile:hover)),
+.page :global(.music-live-event:has(a.music-live-event__tile:focus-visible)) {
+  border-color: rgba(222, 59, 82, .7);
+  transform: translateY(-3px);
+}
+
+.page :global(a.music-live-event__tile:hover .music-live-event__artwork img),
+.page :global(a.music-live-event__tile:focus-visible .music-live-event__artwork img) {
+  transform: scale(1.015);
+}
+
+.page :global(a.music-live-event__tile:focus-visible) {
+  outline: 3px solid #de3b52;
+  outline-offset: -3px;
+  border-radius: .75rem;
+}
+
 /* Text-led event cards when a verified flyer is not available. */
 .page :global(.music-live-event__typographic) {
   display: flex;
@@ -199,6 +248,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .page :global(.music-live-event),
+  .page :global(.music-live-event__artwork img),
   .page :global(.music-action),
   .page :global(.music-service),
   .page :global(.selected-track__links a),
