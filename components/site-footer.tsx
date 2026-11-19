@@ -4,7 +4,7 @@ import { StudioKrixLogo } from "@/components/studio-krix-logo";
 import { siteConfig } from "@/config/site";
 import { linksHubItems } from "@/data/links";
 
-const footerSocialNames = ["Instagram", "TikTok", "YouTube", "SoundCloud"] as const;
+const footerSocialNames = ["Instagram", "TikTok", "YouTube", "SoundCloud", "Resident Advisor"] as const;
 const footerMusicNames = ["Spotify", "Apple Music", "TIDAL"] as const;
 
 const socialLinks = footerSocialNames.flatMap((name) => {
