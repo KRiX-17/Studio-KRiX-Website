@@ -52,6 +52,12 @@ export const artistLiveEvents: readonly ArtistLiveEvent[] = [
     summary:
       "An intimate TUSH studio session connecting emerging DJs and producers in Sydney's underground electronic scene.",
     genres: ["Techno", "Bass"],
+    artwork: {
+      src: "/images/music/events/tush-secret-studio-2026.jpg",
+      alt: "TUSH presents Secret Studio flyer for 14 November 2026 in Sydney",
+      width: 582,
+      height: 773,
+    },
     sourceUrl: "https://ra.co/events/2582282",
     sourceLabel: "View the TUSH event on Resident Advisor",
   },
@@ -129,10 +135,10 @@ export const artistLiveEvents: readonly ArtistLiveEvent[] = [
       "A Your Shot Sydney performance at Home The Venue. A matching Resident Advisor event listing has not been verified.",
     genres: ["Electronic", "DJ showcase"],
     artwork: {
-      src: "/images/music/events/your-shot-sydney-2025.webp",
-      alt: "Your Shot NSW 2025 promotional artwork for the Sydney DJ showcase",
-      width: 550,
-      height: 690,
+      src: "/images/music/events/your-shot-sydney-2025-correct.jpg",
+      alt: "Your Shot NSW02 2025 finalists flyer for the Sydney showcase",
+      width: 482,
+      height: 538,
     },
     sourceUrl: "https://www.instagram.com/p/DMrvB5Jy-p_/?img_index=1",
     sourceLabel: "View the original Your Shot Instagram post",
